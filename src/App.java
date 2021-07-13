@@ -11,8 +11,10 @@ public class App {
         int b = 4;
         System.out.println(a + b);
 
+
         123456
 
+        abcdefg
 
 
 
@@ -28,7 +30,6 @@ public class App {
 
 
 
-        
     
     }
 }
