@@ -3,7 +3,7 @@ public class App {
 
         System.out.println("Hello, World!");
         Memes.printIDKstuff("Idk man");
-        
+        Memes.printName();
 
     }
 }
