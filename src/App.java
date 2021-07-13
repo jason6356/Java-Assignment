@@ -12,6 +12,8 @@ public class App {
         System.out.println(a + b);
 
         lkdsfkjdhfksdhf
+        kang sheng 바보
+    
 
     }
 }
