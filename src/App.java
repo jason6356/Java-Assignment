@@ -5,15 +5,6 @@ public class App {
         Memes.printIDKstuff("Idk man");
         Memes.printName();
 
-        System.out.println("Hello, World!");
-        Memes.printIDKstuff("Idk man");
-        Memes.printName();
-
-        System.out.println("Hello, World!");
-        Memes.printIDKstuff("Idk man");
-        Memes.printName();
-        System.out.println("Hello, World!");
-        Memes.printIDKstuff("Idk man");
-        Memes.printName();
+        Memes.saySohaiStuff();
     }
 }

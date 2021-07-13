@@ -11,4 +11,12 @@ public class Memes {
         System.out.println(name);
     }
 
+    static void saySohaiStuff(){
+
+        System.out.println("i dun know u, i think u are very sohai ! ");
+    }
+
+
+
+
 }
