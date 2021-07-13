@@ -11,6 +11,8 @@ public class App {
         int b = 4;
         System.out.println(a + b);
 
+        System.out.println("This is another message");
+
 
         //123456
 
