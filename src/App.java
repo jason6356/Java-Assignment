@@ -15,11 +15,6 @@ public class App {
 
         System.out.println("Random stuff");
 
-        //123456
-
-        //abcdefg
-
-
     // 1. ctrl + shift + p
     // 2. type Git: clone 
     // 3. paste the url below 
