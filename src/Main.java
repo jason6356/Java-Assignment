@@ -1,19 +1,5 @@
-public class App {
+public class Main {
     public static void main(String[] args){
-
-        System.out.println("Hello, World!");
-        Memes.printIDKstuff("Idk man");
-        Memes.printName();
-
-        Memes.saySohaiStuff();
-
-        int a =3;
-        int b = 4;
-        System.out.println(a + b);
-
-        System.out.println("This is another message");
-
-        System.out.println("Random stuff");
 
     // 1. ctrl + shift + p
     // 2. type Git: clone 
