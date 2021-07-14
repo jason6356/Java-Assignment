@@ -13,6 +13,7 @@ public class App {
 
         System.out.println("This is another message");
 
+        System.out.println("Random stuff");
 
         //123456
 
