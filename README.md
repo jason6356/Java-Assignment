@@ -19,7 +19,7 @@ This the assignment for the course AACS2204 Object-Oriented Programming Techniqu
 
 This assignment will be implement from a class diagram about Airline Reservation System with all the OOP concepts.
 
-## Assignment Purpose
+## Github Purpose
 
 To improve the efficiency for the collabration for the assignment team by be able to syncronize the code better.
 
