@@ -19,5 +19,7 @@ public class Main {
     // 3. bottom left got a word "Master", beside it got arrow up and down ( same position as the refresh button )
     //     - press it and press ok
     // 4. done
-    }
+
+    System.out.println("Hello world");    
+}
 }
