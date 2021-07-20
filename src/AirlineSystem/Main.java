@@ -21,6 +21,6 @@ public class Main {
     // 4. done
 
     System.out.println("Hello world");    
-    System.out.println("KANGSHENG VERY GAYYYY");
+    System.out.println("KANGSHENG SIBEH LAN 7 GAYYYY");
 }
 }
