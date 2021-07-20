@@ -21,5 +21,6 @@ public class Main {
     // 4. done
 
     System.out.println("Hello world");    
+    System.out.println("KANGSSHENG VERY GAY");
 }
 }
