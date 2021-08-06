@@ -1,30 +1,43 @@
 package AirlineSystem;
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args){
+        //list of registered account
+        List<Account> accountList = new ArrayList<Account>();
 
-    // 1. ctrl + shift + p
-    // 2. type Git: clone 
-    // 3. paste the url below 
-    //      https://github.com/jason6356/Java-Assignment 
-    //  4. done import the assignment file :) 
+        //pre-generated guest account
 
-    // Before you start coding (to synchronize the latest code from the others)
-    // 1. bottom left got a word "Master", beside it got an icon looks like refresh 
-    //     - press it and press ok 
+        Account guestAcc = new Account();
+        
+        Scanner s = new Scanner(System.in);
+        int choice = displayMenu(s);
 
-    // After you done coding (to synchronize the latest code to github )
-    // 1. press the source control on your right hand side ( third icon [below search] )
-    // 2. enter related message (ep: added 1 new method) and press ctrl+enter, then press ok 
-    // 3. bottom left got a word "Master", beside it got arrow up and down ( same position as the refresh button )
-    //     - press it and press ok
-    // 4. done
+        if(choice == 1)
+            guestAcc.searchAvailableFlights();
+        else if(choice == 2){}
+            //get user input for registration //validate the input
+            //down cast the guestAcc to RegisteredAccount
+            //append the account to the registered account list
+        
+            //iterate the registered account list 
+            // if user id == user id, then check password,
+            //if password not equal then display error in password
+            //else login change the guestAcc object reference to the object reference found in the list
+            // 
 
-    System.out.println("Hello world");    
 
-    System.out.println("JunWei is gay");
+    }
 
-    System.out.println("KANGSHENG SIBEH LAN 7 GAYYYY");
+    private static int displayMenu(Scanner keyboard){
+        System.out.println("Menu");
+        System.out.println("1. Search Available Flights");
+        System.out.println("2. Register an account");
+        System.out.println("3. Login");
 
-}
+        return keyboard.nextInt();
+
+    }
 }
