@@ -1,8 +1,16 @@
 package AirlineSystem;
 
-public class Staff {
+public class Staff extends Account{
     private String staffID;
-    private String password; 
+
+    //constructor 
+    public Staff(){}
+
+    public Staff(String password, String firstName, String lastName, Address address, char gender, int age, String email, 
+                 String phoneNum, String staffID){
+        super(password, firstName, lastName, address, gender, age, email, phoneNum);
+        this.staffID = staffID;
+    }
 
     //method 
     public boolean addFilght(Flight flight){

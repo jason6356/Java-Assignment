@@ -1,7 +1,7 @@
 package AirlineSystem;
 
 public class Account {
-
+   
     private String password;
     private String firstName;
     private String lastName;
@@ -81,6 +81,7 @@ public class Account {
 
 
 
+
     ///////////////////////////////////methods////////////////////////////////////
     
     public boolean validateEmailFormat(String email)
@@ -88,14 +89,16 @@ public class Account {
         return email.matches("^(.+)@(.+)$");
     }
 
+
     public boolean Checking(String password)
     {
         return password.matches("(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{7,}"); 
     } 
 
     
-    public void searchAvailableFlights()
-    {
+    
+
+    public void searchAvailableFlights(){
         System.out.println("Searching available flights?");
     }
 }

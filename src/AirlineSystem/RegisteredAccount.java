@@ -15,6 +15,7 @@ public class RegisteredAccount extends Account {
             char gender, int age, String email, String phoneNum, int creditCardNumber) {
         super(password, firstName, lastName, address, gender, age, email, phoneNum);
         this.accID = accID;
+
         this.creditCardNumber = creditCardNumber;
     }
 
@@ -31,6 +32,8 @@ public class RegisteredAccount extends Account {
     public void setCreditCardNumber(int creditCardNumber) {
         this.creditCardNumber = creditCardNumber;
     }
+
+
 
     public void setAccID(int accID) {
         this.accID = accID;
