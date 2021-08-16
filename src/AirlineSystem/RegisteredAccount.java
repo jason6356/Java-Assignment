@@ -1,101 +1,84 @@
 package AirlineSystem;
 
-public class RegisteredAccount extends Account{
-    private String password;
-    private String firstName;
-    private String lastName;
-    private Address address;
-    private char gender;
-    private int age;
-    private String email;
-    private String phoneNum;
+import java.util.Scanner;
+
+public class RegisteredAccount extends Account {
+
+    private static int regAccCount = 1;
+    private int accID;
     private int creditCardNumber;
 
-    public RegisteredAccount(){}
+    public RegisteredAccount() {
+    }
 
-    public RegisteredAccount(String userID, String password, String firstName, String lastName, 
-    Address address, char gender, int age, String email, String phoneNum, int creditCardNumber)
-    {
-        this.userID = userID;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.gender = gender;
-        this.age =age;
-        this.email = email;
-        this.phoneNum = phoneNum;
+    public RegisteredAccount(int accID, String password, String firstName, String lastName, Address address,
+            char gender, int age, String email, String phoneNum, int creditCardNumber) {
+        super(password, firstName, lastName, address, gender, age, email, phoneNum);
+        this.accID = accID;
         this.creditCardNumber = creditCardNumber;
     }
 
-    ///////////////////////////////////////////getter///////////////////////////////////////
-    public String getPassword() {
-        return password;
+    /////////////////////////////////// getter////////////////////////////////////
+    public int getAccID() {
+        return accID;
     }
-    public String getFirstName() {
-        return firstName;
-    }
-    public String getLastName() {
-        return lastName;
-    }
-    public Address getAddress() {
-        return address;
-    }
-    public char getGender() {
-        return gender;
-    }
-    public int getAge() {
-        return age;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public String getPhoneNum() {
-        return phoneNum;
-    }
+
     public int getCreditCardNumber() {
         return creditCardNumber;
     }
-    ///////////////////////////////////Setter/////////////////////////////////////////////
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-    public void setGender(char gender) {
-        this.gender = gender;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
-    }
+
+    ///////////////////////////////// setter///////////////////////////////////////
     public void setCreditCardNumber(int creditCardNumber) {
         this.creditCardNumber = creditCardNumber;
     }
-    
+
+    public void setAccID(int accID) {
+        this.accID = accID;
+    }
+
+    //////////////////////////////// method///////////////////////////////////////////
     public void updateProfile(){
+        Scanner scan = new Scanner (System.in);
+        System.out.println("\n\n\t\tUpdate Profile\n============================================"); //header
+        System.out.print("1. First Name  [ " + super.getFirstName() + " ]\n" + 
+                           "2. Last Name   [ " + super.getLastName() + " ]\n" + 
+                           "3. Password \n"+ 
+                           "4. Gender      [ " + super.getGender() + " ]\n" + 
+                           "5. Age         [ " + super.getAge() + " ]\n" + 
+                           "6. Email       [ " + super.getEmail() + " ]\n" + 
+                           "7. Phone No.   [ " + super.getPhoneNum() + " ]\n"  +
+                           "8. Exit \n\n" +
+                           "Please Enter The Number that you wished to change > " );
+        int updateOption = scan.nextInt();
+
+
+        switch (updateOption){
+        case 1:
+
+        break;
+        case 2:
+                                  
+        case 3:
         
+        break;
+        case 4:
+        
+        break;
+        case 5:
+        
+        break;
+        case 6:
+        
+        break;
+        case 7:
+        
+        break;
+        case 8:
+            return;
+        
+        default:
+        System.out.println("Invalid Input. Please Try Again. ");
+        break;
     }
-
-    public boolean validateEmailFormat(String email)
-    {
-        return email.matches("^(.+)@(.+)$");
-    }
-
-    public boolean Checking(String password)
-    {
-        return password.matches("(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{7,}"); 
-    } 
+   }
 }
