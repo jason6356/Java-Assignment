@@ -86,7 +86,7 @@ public class RegisteredAccount extends Account{
     }
     
     public void updateProfile(){
-
+        
     }
 
     public boolean validateEmailFormat(String email)
