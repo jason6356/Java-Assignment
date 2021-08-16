@@ -14,8 +14,7 @@ public class RegisteredAccount extends Account{
     public RegisteredAccount(){}
 
     public RegisteredAccount(String userID, String password, String firstName, String lastName, 
-    Address address, char gender, int age, String email, String phoneNum, int creditCardNumber)
-    {
+    Address address, char gender, int age, String email, String phoneNum, int creditCardNumber){
         this.userID = userID;
         this.password = password;
         this.firstName = firstName;
@@ -86,7 +85,7 @@ public class RegisteredAccount extends Account{
     }
     
     public void updateProfile(){
-        
+
     }
 
     public boolean validateEmailFormat(String email)
