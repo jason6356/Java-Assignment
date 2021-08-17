@@ -14,15 +14,16 @@ public class Staff extends Account{
 
     //method 
     public boolean addFilght(Flight flight){
-
+        //stub method
+        return false;
     }
 
     public boolean addAirport(Airport airport){
-
+        return false;
     }
 
     public boolean addAirline(Airline airline){
-
+        return false;
     }
 
     public void checkRequest(){
