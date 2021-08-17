@@ -1,5 +1,3 @@
-package AirlineSystem;
-
 public class Reservation {
     private String reservationNo;
     private String reservationTime;
@@ -18,15 +16,61 @@ public class Reservation {
         this.flight = flight;
     }
 
-    //getter and setter
+    // getter and setter
+    public String getReservationNo() {
+        return reservationNo;
+    }
 
-    public validateDate(){
-        
+    public void setReservationNo(String reservationNo) {
+        this.reservationNo = reservationNo;
+    }
+
+    public String getReservationTime() {
+        return reservationTime;
+    }
+
+    public void setReservationTime(String reservationTime) {
+        this.reservationTime = reservationTime;
+    }
+
+    public rStatus getReservationStatus() {
+        return reservationStatus;
+    }
+
+    public void setReservationStatus(rStatus reservationStatus) {
+        this.reservationStatus = reservationStatus;
+    }
+
+    public int getNoOfSeatBooked() {
+        return noOfSeatBooked;
+    }
+
+    public void setNoOfSeatBooked(int noOfSeatBooked) {
+        this.noOfSeatBooked = noOfSeatBooked;
+    }
+
+    public double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public FlightSchedule getFlightSchedule() {
+        return flight;
+    }
+
+    public void setFlightSchedule(FlightSchedule flight) {
+        this.flight = flight;
+    }
+
+
+    public boolean validateDate() {
+        return true;
     }
 }
 
-enum rStatus{
-    PENDING,
-    BOOKED,
-    PAID
+enum rStatus {
+    PENDING, BOOKED, PAID
 }
