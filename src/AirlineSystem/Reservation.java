@@ -1,3 +1,5 @@
+package AirlineSystem;
+
 public class Reservation {
     private String reservationNo;
     private String reservationTime;
