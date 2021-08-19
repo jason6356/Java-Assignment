@@ -1,7 +1,7 @@
 package AirlineSystem;
 
 enum rqStatus {
-    APPROVED, REJECTED;
+    APPROVED, REJECTED
 }
 
 public class Request {
@@ -24,47 +24,46 @@ public class Request {
         this.reservation = reservation;
     }
 
-/////////////////////////////////////////// getter///////////////////////////////////////
-public String getRequestID() {
-    return requestID;
-}
+    /////////////////////////////////////////// getter///////////////////////////////////////
+    public String getRequestID() {
+        return requestID;
+    }
 
-public String getRequestDescription() {
-    return requestDescription;
-}
+    public String getRequestDescription() {
+        return requestDescription;
+    }
 
-public String getReason() {
-    return reason;
-}
+    public String getReason() {
+        return reason;
+    }
 
-public rqStatus getRequestStatus() {
-    return requestStatus;
-}
+    public rqStatus getRequestStatus() {
+        return requestStatus;
+    }
 
-public Reservation getReservation() {
-    return reservation;
-}
+    public Reservation getReservation() {
+        return reservation;
+    }
 
+    /////////////////////////////////// Setter/////////////////////////////////////////////
+    public void setRequestID(String requestID) {
+        this.requestID = requestID;
+    }
 
-/////////////////////////////////// Setter/////////////////////////////////////////////
-public void setRequestID(String requestID) {
-    this.requestID = requestID;
-}
+    public void setRequestDescription(String requestDescription) {
+        this.requestDescription = requestDescription;
+    }
 
-public void setRequestDescription(String requestDescription) {
-    this.requestDescription = requestDescription;
-}
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
 
-public void setReason(String reason) {
-    this.reason = reason;
-}
+    public void setRequestStatus(rqStatus requestStatus) {
+        this.requestStatus = requestStatus;
+    }
 
-public void setRequestStatus(rqStatus requestStatus) {
-    this.requestStatus = requestStatus;
-}
-
-public void setReservation(Reservation reservation) {
-    this.reservation = reservation;
-}
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
 
 }
