@@ -67,9 +67,14 @@ public class Reservation {
         this.flight = flight;
     }
 
-
     public boolean validateDate() {
         return true;
+    }
+
+    public String toString() {
+        return "\nReservation No: " + reservationNo + "\nReservation Time: " + reservationTime
+                + "\nReservation Status: " + reservationStatus + "\nNumber of seat booked: " + noOfSeatBooked
+                + "\nTotal Amount: " + totalAmount + flight.toString();
     }
 }
 

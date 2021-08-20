@@ -108,8 +108,4 @@ public class Account {
         System.out.println("Searching available flights?");
     }
 
-    public void rescheduleTicket(Reservation reservation, FlightSchedule schedule, Request request) {
-        if (request.getRequestStatus() == rqStatus.APPROVED)
-            reservation.setFlightSchedule(schedule);
-    }
 }

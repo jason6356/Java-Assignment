@@ -84,4 +84,43 @@ public class RegisteredAccount extends Account {
         break;
     }
    }
+
+   public void rescheduleTicket(Reservation reservation, FlightSchedule[] schedule) {
+    Scanner scanner = new Scanner (System.in);
+    Request request = new Request();
+    Reservation newReservation = new Reservation(reservation.getReservationNo(), reservation.getReservationTime(), reservation.getReservationStatus(), reservation.getNoOfSeatBooked(),
+    reservation.getTotalAmount(), reservation.getFlightSchedule());
+
+    System.out.println("\nRESERVATION DETAILS\n"+reservation.toString());
+
+    System.out.println("\nAVAILABLE FLIGHT SCHEDULE");
+
+    for(int i=0;i<schedule.length;i++){
+        System.out.println(" Schedule " + (i+1) + schedule[i].toString() + "\n---------------------------------------------\n");
+    }   
+    System.out.print("Enter new schedule choice: ");
+    int choice=scanner.nextInt();
+    newReservation.setFlightSchedule(schedule[choice-1]);
+
+    System.out.print("\nReason of reschedule: ");
+    request.setReason(scanner.nextLine());
+
+    System.out.println("\nConfirm to reschedule? (Y/N) > ");
+    String next = scanner.next();
+
+    if(next == "Y"){
+        request.setRequestID(reservation.getReservationNo());
+        request.setRequestDescription("reschedule ticket request");
+        request.setReservation(newReservation);
+        if (request.getRequestStatus() == rqStatus.APPROVED){
+            reservation.setFlightSchedule(schedule[choice-1]);
+            System.out.println("Request Approved.");
+        }
+        else
+            System.out.println("Request Rejected.");
+    }
+       
+
+        scanner.close();
+}
 }

@@ -20,6 +20,12 @@ class Flight {
         this.totalSeat = totalSeat;
     }
 
+    public String getFlightCode(){
+        return flightCode;
+    }
+
+    
+
 
 
 }
