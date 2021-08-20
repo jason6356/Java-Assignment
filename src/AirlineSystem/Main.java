@@ -4,30 +4,58 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args){
-        //list of registered account
-        List<Account> accountList = new ArrayList<Account>();
-
-        //pre-generated guest account
-
+    //predefined data to store
+    Staff staffAccount = new Staff();
+    List<RegisteredAccount> accountList = new ArrayList<RegisteredAccount>();
+    List<FlightSchedule> flightScheduleList = new ArrayList<FlightSchedule>();
+    List<Airport> airportList = new ArrayList<Airport>();
+    List<Airline> airlineList = new ArrayList<Airline>();
+    List<Flight> flightList = new ArrayList<Flight>();
+    public static void main(String[] args){        
         Account guestAcc = new Account();
         
         Scanner s = new Scanner(System.in);
-        int choice = displayMenu(s);
+        boolean leave = true;
+        do{
+            int choice = displayMenu(s);
+            leave = true;
+            switch(choice){
+                case 1:
+                    guestAcc.searchAvailableFlights();
+                    break;
+                case 2:
+                    //call the register account here
+                    //implement the logic as well
+                    guestAcc = new RegisteredAccount();
+                    break;
+                case 3:
+                    //call the login function here, included with validation and loop
+                    guestAcc = new RegisteredAccount();
+                    break;
+                case 4:
+                    //staff login
+                    guestAcc = new Staff();
+                    break;
+                default:
+                    System.out.println("Invalid choice!!!");
+                    leave = false;
+                break;
+            }
+        }while(!leave);
 
-        if(choice == 1)
-            guestAcc.searchAvailableFlights();
-        else if(choice == 2){}
-            //get user input for registration //validate the input
-            //down cast the guestAcc to RegisteredAccount
-            //append the account to the registered account list
-        
-            //iterate the registered account list 
-            // if user id == user id, then check password,
-            //if password not equal then display error in password
-            //else login change the guestAcc object reference to the object reference found in the list
-            // 
-
+        //check whether the user is a guest or a registered account or staff
+        if(guestAcc instanceof RegisteredAccount){
+            //all the registered account is here
+            System.out.println("This is a registered account instance");
+        }
+        else if(guestAcc instanceof Staff){
+            //staff module here
+            System.out.println("This is a staff account instance");
+        }
+        else{
+            //guest account stuff here
+            System.out.println("This is a guest account instance");
+        }
 
     }
 
@@ -36,8 +64,11 @@ public class Main {
         System.out.println("1. Search Available Flights");
         System.out.println("2. Register an account");
         System.out.println("3. Login");
-
+        System.out.println("4. Staff Login");
         return keyboard.nextInt();
+    }
 
+    static void insertDataToList(){
+        
     }
 }

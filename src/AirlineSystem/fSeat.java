@@ -19,13 +19,4 @@ class fSeat extends Seat {
         this.seatPrice = seatPrice;
         this.seatStatus = seatStatus;
     }
-
-
-
-
-
-
-
-
-
 }
