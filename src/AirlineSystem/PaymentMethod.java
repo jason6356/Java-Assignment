@@ -4,6 +4,6 @@ package AirlineSystem;
  * PaymentMethod
  */
 public interface PaymentMethod {
-    public void pay();
+    public void pay(double amount);
     
 }

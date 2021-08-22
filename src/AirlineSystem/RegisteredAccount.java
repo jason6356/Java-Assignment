@@ -6,17 +6,16 @@ public class RegisteredAccount extends Account {
 
     private static int regAccCount = 1;
     private int accID;
-    private int creditCardNumber;
+    
 
     public RegisteredAccount() {
     }
 
     public RegisteredAccount(int accID, String password, String firstName, String lastName, Address address,
-            char gender, int age, String email, String phoneNum, int creditCardNumber) {
+            char gender, int age, String email, String phoneNum) {
         super(password, firstName, lastName, address, gender, age, email, phoneNum);
         this.accID = accID;
 
-        this.creditCardNumber = creditCardNumber;
     }
 
     /////////////////////////////////// getter////////////////////////////////////
@@ -24,17 +23,8 @@ public class RegisteredAccount extends Account {
         return accID;
     }
 
-    public int getCreditCardNumber() {
-        return creditCardNumber;
-    }
-
     ///////////////////////////////// setter///////////////////////////////////////
-    public void setCreditCardNumber(int creditCardNumber) {
-        this.creditCardNumber = creditCardNumber;
-    }
-
-
-
+  
     public void setAccID(int accID) {
         this.accID = accID;
     }

@@ -51,8 +51,11 @@ public class DebitCardAccount implements PaymentMethod{
 
     ////////////////////////////////methods/////////////////////////////////////////
     @Override
-    public void pay() {
-        
+    public void pay(double amount) {
+        if(balance<amount)
+        System.out.println("Payment failed");
+    else 
+        balance -=amount;
         
     }
     
