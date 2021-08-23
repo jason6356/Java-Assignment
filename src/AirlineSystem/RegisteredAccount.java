@@ -8,16 +8,17 @@ public class RegisteredAccount extends Account {
 
     private static int regAccCount = 1;
     private int accID;
-    
+    private int creditCardNumber;
 
     public RegisteredAccount() {
     }
 
     public RegisteredAccount(int accID, String password, String firstName, String lastName, Address address,
-            char gender, int age, String email, String phoneNum) {
+            char gender, int age, String email, String phoneNum, int creditCardNumber) {
         super(password, firstName, lastName, address, gender, age, email, phoneNum);
         this.accID = accID;
 
+        this.creditCardNumber = creditCardNumber;
     }
 
     /////////////////////////////////// getter////////////////////////////////////
@@ -25,8 +26,17 @@ public class RegisteredAccount extends Account {
         return accID;
     }
 
+    public int getCreditCardNumber() {
+        return creditCardNumber;
+    }
+
     ///////////////////////////////// setter///////////////////////////////////////
-  
+    public void setCreditCardNumber(int creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
+    }
+
+
+
     public void setAccID(int accID) {
         this.accID = accID;
     }
@@ -132,11 +142,12 @@ public class RegisteredAccount extends Account {
 
     if(next == "Y"){
         request.setRequestID(reservation.getReservationNo());
-        request.setRequestDescription("reschedule ticket request");
+        request.setRequestDescription("Reschedule Ticket Request");
         request.setReservation(newReservation);
+        System.out.println("Requested for Rescheduling Ticket.");
         if (request.getRequestStatus() == rqStatus.APPROVED){
             reservation.setFlightSchedule(schedule[choice-1]);
-            System.out.println("Request Approved.");
+            System.out.println("Request Approved, Ticket Rescheduled");
         }
         else
             System.out.println("Request Rejected.");
@@ -145,4 +156,37 @@ public class RegisteredAccount extends Account {
 
         scanner.close();
 }
+
+public void cancelTicket(Reservation reservation) {
+    Scanner scanner = new Scanner (System.in);
+    
+    System.out.println("\nRESERVATION DETAILS\n"+reservation.toString());
+
+    System.out.print("\nReason of cancellation: ");
+    String reason = scanner.nextLine();
+
+    System.out.println("\nConfirm to cancel? (Y/N) > ");
+    String next = scanner.next();
+
+    if(next == "Y"){
+        Request request = new Request();
+
+        request.setRequestID(reservation.getReservationNo());
+        request.setRequestDescription("Cancel Ticket Request");
+        request.setReason(reason);
+        request.setReservation(reservation);
+
+        System.out.println("Requested for Cancelling Ticket.");
+        if (request.getRequestStatus() == rqStatus.APPROVED){
+            reservation = null;
+            System.out.println("Request Approved, Ticket Cancelled.");
+        }
+        else
+            System.out.println("Request Rejected.");
+    }
+
+    scanner.close();
+}
+
+
 }
