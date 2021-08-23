@@ -1,19 +1,22 @@
 package AirlineSystem;
-
 import java.util.List;
 import java.util.ArrayList;
 
 public class Airline {
     private String airlineName;
     private String airlineCode;
-    List<Airline> flightList = new ArrayList<Airline>();
+    private List<Flight> flightList = new ArrayList<Flight>();
 
-    //constructor 
-    public Airline(){}
+    //parameter constructor
+    public Airline(String airlineName, String airlineCode){
+        this.airlineName = airlineName;
+        this.airlineCode = airlineCode;
+    }
 
-    // public Airline(String airlineName, String airlineCode) 
-    //not sure how to do another constructor 
-
+    //no args constructor
+    public Airline(){
+        this("","");
+    };
     //getter 
     public String getAirlineName() {
         return airlineName;
@@ -23,11 +26,9 @@ public class Airline {
         return airlineCode;
     }
 
-    public List<Airline> getFlightList() {
+    public List<Flight> getFlightList() {
         return flightList;
     }
-
-
     //setter 
     public void setAirlineName(String airlineName) {
         this.airlineName = airlineName;
@@ -37,7 +38,39 @@ public class Airline {
         this.airlineCode = airlineCode;
     }
 
-    public void setFlightList(List<Airline> flightList) {
-        this.flightList = flightList;
+    //toString
+    /**
+     * @return AirlineName, AirlineCode, List of FlightCode in String format
+     */
+    @Override
+    public String toString() {
+        String str = String.format("AirlineName : %s \n AirlineCode : %s \n FlightList : ", airlineName, airlineCode);
+        for (Flight flight : flightList) {
+            str += flight.getFlightCode() + "\n";
+        }
+        return str;
+    }
+    
+    //Method of the class
+    /**
+     * Add Flights to the Airline
+     * @param flight
+     */
+    public void addFlight(Flight flight){
+        flightList.add(flight);
+        System.out.println("Flight added successfully!");
+    }
+    /**
+     * Remove Specific Flight from the Airline
+     * @param flightCode
+     */
+    public void removeFlight(String flightCode){
+        int i = 0;
+        for (Flight flight : flightList) {
+            if(flight.getFlightCode() == flightCode){
+                flightList.remove(i);
+            }
+            i++;
+        }
     }
 }

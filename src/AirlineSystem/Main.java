@@ -11,6 +11,7 @@ public class Main {
     List<Airport> airportList = new ArrayList<Airport>();
     List<Airline> airlineList = new ArrayList<Airline>();
     List<Flight> flightList = new ArrayList<Flight>();
+    List<Request> requests = new ArrayList<Request>();
     public static void main(String[] args){        
         Account guestAcc = new Account();
         
@@ -68,7 +69,7 @@ public class Main {
         return keyboard.nextInt();
     }
 
-    static void insertDataToList(){
-        
+    private static void insertDataToList(){
+            return;    
     }
 }
