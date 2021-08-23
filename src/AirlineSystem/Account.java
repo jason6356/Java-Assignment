@@ -102,7 +102,7 @@ public class Account {
 
     public boolean Checking(String password) {
         return password.matches("(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{7,}");
-    }
+    }//Minimum 7 characters, at least one letter and one number
 
     public void searchAvailableFlights() {
         System.out.println("Searching available flights?");

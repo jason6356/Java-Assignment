@@ -2,6 +2,8 @@ package AirlineSystem;
 
 import java.util.Scanner;
 
+
+
 public class RegisteredAccount extends Account {
 
     private static int regAccCount = 1;
@@ -42,6 +44,8 @@ public class RegisteredAccount extends Account {
     //////////////////////////////// method///////////////////////////////////////////
     public void updateProfile(){
         Scanner scan = new Scanner (System.in);
+    int again;
+    do{
         System.out.println("\n\n\t\tUpdate Profile\n============================================"); //header
         System.out.print("1. First Name  [ " + super.getFirstName() + " ]\n" + 
                            "2. Last Name   [ " + super.getLastName() + " ]\n" + 
@@ -57,12 +61,36 @@ public class RegisteredAccount extends Account {
 
         switch (updateOption){
         case 1:
-
+            System.out.print("Enter your First Name > ");
+            super.setFirstName(scan.nextLine());
+            System.out.println("\n\nFirst Name updated successfully !");
         break;
         case 2:
-                                  
+            System.out.print("Enter your Last Name > ");
+            super.setLastName(scan.nextLine());
+            System.out.println("\n\nLast Name updated successfully !");                   
         case 3:
-        
+            System.out.print("Enter your old password > ");
+            String oldPassword = scan.nextLine();
+            if(super.getPassword().equals(oldPassword) == false)
+            {
+                System.out.println("Wrong Password");
+            }
+            else
+            {
+                System.out.println("\t*NOTE*\nYour password should be fulfilled the requirement below :\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number");
+                System.out.println("Enter your NEW Password >");
+                String newPassword = scan.nextLine();
+                if(super.Checking(newPassword) == false)
+                {
+                    System.out.println("Invalid Password");
+                }
+                else
+                {
+                    super.setPassword(newPassword);
+                    System.out.println("\n\nPassword Updated Successfully !");
+                }
+            }
         break;
         case 4:
         
@@ -80,9 +108,13 @@ public class RegisteredAccount extends Account {
             return;
         
         default:
-        System.out.println("Invalid Input. Please Try Again. ");
+        System.out.println("Invalid Input.");
         break;
     }
+
+    System.out.print("Another Update? (0 = No) > ");
+    again = scan.nextInt();
+} while (again !=0);
    }
 
    public void rescheduleTicket(Reservation reservation, FlightSchedule[] schedule) {
