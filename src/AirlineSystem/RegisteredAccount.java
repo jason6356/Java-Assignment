@@ -188,10 +188,15 @@ public class RegisteredAccount extends Account {
     System.out.print("\nReason of reschedule: ");
     String reason = scanner.nextLine();
 
-    System.out.println("\nConfirm to reschedule? (Y/N) > ");
-    String next = scanner.next();
+    System.out.print("\nConfirm to reschedule? (Y/N) > ");
+    char next = scanner.next().charAt(0);
+    while(!super.validateOption(next)){
+        System.out.println("Invalid Input.");
+        System.out.print("Confirm to reschedule? (Y/N) >");
+        next = scanner.next().charAt(0);
+    }
 
-    if(next == "Y"){
+    if(next == 'Y'){
         //get request list from the data storage
         List<Request> requestList = Main.getRequests(); //data storage
 
@@ -226,10 +231,15 @@ public void cancelTicket(Reservation reservation) {
     System.out.print("\nEnter Choice of Reason: ");
     String reason = scanner.nextLine();
 
-    System.out.println("\nConfirm to cancel? (Y/N) > ");
-    String next = scanner.next();
+    System.out.print("\nConfirm to cancel? (Y/N) > ");
+    char next = scanner.next().charAt(0);
+    while(!super.validateOption(next)){
+        System.out.println("Invalid Input.");
+        System.out.print("Confirm to cancel? (Y/N) > ");
+        next = scanner.next().charAt(0);
+    }
 
-    if(next == "Y"){
+    if(next == 'Y'){
         Request request = new Request("Cancel Ticket Request", reason, reservation, null);
 
         System.out.println("Requested for Cancelling Ticket.");
