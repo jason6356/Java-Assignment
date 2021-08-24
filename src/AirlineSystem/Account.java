@@ -28,7 +28,7 @@ public class Account {
 
     }
 
-    /////////////////////////////////////////// getter///////////////////////////////////////
+    //getter
     public String getPassword() {
         return password;
     }
@@ -61,7 +61,7 @@ public class Account {
         return phoneNum;
     }
 
-    /////////////////////////////////// Setter/////////////////////////////////////////////
+    // Setter
     public void setPassword(String password) {
         this.password = password;
     }
@@ -94,10 +94,10 @@ public class Account {
         this.phoneNum = phoneNum;
     }
 
-    /////////////////////////////////// methods////////////////////////////////////
+    // methods
 
     public boolean validateEmailFormat(String email) {
-        return email.matches("^(.+)@(.+)$");
+        return email.matches("^(.+)@(.+)$"); // anything but must have "@"
     }
 
     public boolean validatePassword(String password) {
@@ -114,11 +114,7 @@ public class Account {
     }
 
     public boolean validateGender(char gender){
-        Character.toUpperCase(gender);
-        if(gender == 'M' || gender == 'F')
-        return true;
-        else 
-        return false;
+        return (Character.toUpperCase(gender)=='F' || Character.toUpperCase(gender)=='M');
     }
 
     public boolean validatePhoneNum(String phoneNumber)
@@ -127,11 +123,8 @@ public class Account {
     }
 
     public boolean validateOption(char option){ 
-        Character.toUpperCase(option);
-        if(option =='Y' || option == 'N')
-        return true;
-        else 
-        return false;
+        return (Character.toUpperCase(option)=='Y' || Character.toUpperCase(option)=='N');
+    
     }
 
     

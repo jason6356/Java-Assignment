@@ -107,7 +107,7 @@ public class RegisteredAccount extends Account {
         case 4:
                 System.out.print("Enter your Gender (M/F) > ");                 //ENTER GENDER
                 char newGender = scan.next().charAt(0);
-                while(super.validateGender(newGender)==false)                   //VALIDATE GENDER EITHER M OR F
+                while(!super.validateGender(newGender))                   //VALIDATE GENDER EITHER M OR F
                 {
                     System.out.println("Male or Female only");
                     System.out.print("Enter your Gender (M/F) > ");
@@ -156,7 +156,7 @@ public class RegisteredAccount extends Account {
     }
     System.out.print("Another Update? (Y/N) > ");
     another = scan.next().charAt(0);
-    while(super.validateOption(another) == false){
+    while(!super.validateOption(another)){
         System.out.println("Invalid Input.");
         System.out.print("Another Update? (Y/N) > ");
         another = scan.next().charAt(0);

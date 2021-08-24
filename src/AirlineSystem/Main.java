@@ -110,7 +110,7 @@ public class Main {
 
         System.out.print("3. Gender (M/F) > ");             //ENTER GENDER
         char regGender = regScan.next().charAt(0);
-        while(acc.validateGender(regGender)==false)         //VALIDATE ONLY EITHER M OR F
+        while(!acc.validateGender(regGender))         //VALIDATE ONLY EITHER M OR F
         {
             System.out.println("Male or Female only");
             System.out.print("3. Gender (M/F) > ");
