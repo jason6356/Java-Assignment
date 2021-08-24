@@ -141,10 +141,18 @@ public class RegisteredAccount extends Account {
     String next = scanner.next();
 
     if(next == "Y"){
+        //get request list from the data storage
+        List<Request> requestList = Main.getRequests(); //data storage
+        //customer request
+        Request customerRequest = new Request(reservation.getReservationNo(), "Reschedule Ticket Request", newReservation);
+        //add the request to the request list
+        requestList.add(customerRequest);
+        
         request.setRequestID(reservation.getReservationNo());
         request.setRequestDescription("Reschedule Ticket Request");
         request.setReservation(newReservation);
         System.out.println("Requested for Rescheduling Ticket.");
+        //can put in staff module
         if (request.getRequestStatus() == rqStatus.APPROVED){
             reservation.setFlightSchedule(schedule[choice-1]);
             System.out.println("Request Approved, Ticket Rescheduled");

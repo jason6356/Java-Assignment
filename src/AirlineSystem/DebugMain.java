@@ -12,11 +12,7 @@ import java.util.Iterator;
 class DebugMain{
     
     public static void main(String[] args) {
-        //Linking Connection Test <- can delete
-        Airline a1 = new Airline("Airasia","A001");
-        Flight flight = new Flight("F001",a1,50);
-        a1.addFlight(flight);
-        System.out.println(flight);
+
     }
     
 }

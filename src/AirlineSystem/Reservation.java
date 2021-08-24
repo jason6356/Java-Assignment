@@ -1,21 +1,52 @@
 package AirlineSystem;
+import java.time.LocalDateTime;
+
+enum rStatus {
+    PENDING, BOOKED, PAID
+}
 
 public class Reservation {
+    private static int reservationCount = 0;
     private String reservationNo;
-    private String reservationTime;
+    private LocalDateTime reservationTime;
     private rStatus reservationStatus;
     private int noOfSeatBooked;
     private double totalAmount;
     private FlightSchedule flight;
+   //TODO: Do Specific Booked Seat!
 
-    public Reservation(String reservationNo, String reservationTime, rStatus reservationStatus, int noOfSeatBooked,
-            double totalAmount, FlightSchedule flight) {
-        this.reservationNo = reservationNo;
-        this.reservationTime = reservationTime;
-        this.reservationStatus = rStatus.PENDING;
+
+
+    //Parameterized
+    public Reservation(int noOfSeatBooked,double totalAmount, FlightSchedule flight) {
+        this.reservationNo = makeReservationID();
+        this.reservationTime = LocalDateTime.now(); // get the current time
+        this.reservationStatus = rStatus.PENDING; //default value
         this.noOfSeatBooked = noOfSeatBooked;
         this.totalAmount = totalAmount;
         this.flight = flight;
+        
+        // sum of all the seat book in price
+        reservationCount++;
+    }
+
+    //Default
+    public Reservation(){
+        this(0,0.0,null);
+    }
+
+    /**
+    Method to create ReservationID in sequence
+    @return ReservationID in String
+     */
+    private static String makeReservationID(){
+        if(reservationCount<10)
+            return "R00" +reservationCount;
+        
+        else if(reservationCount < 100)
+            return "R0" + reservationCount;
+
+        return "R" + reservationCount; 
     }
 
     // getter and setter
@@ -23,16 +54,8 @@ public class Reservation {
         return reservationNo;
     }
 
-    public void setReservationNo(String reservationNo) {
-        this.reservationNo = reservationNo;
-    }
-
-    public String getReservationTime() {
+    public LocalDateTime getReservationTime() {
         return reservationTime;
-    }
-
-    public void setReservationTime(String reservationTime) {
-        this.reservationTime = reservationTime;
     }
 
     public rStatus getReservationStatus() {
@@ -66,18 +89,11 @@ public class Reservation {
     public void setFlightSchedule(FlightSchedule flight) {
         this.flight = flight;
     }
-
-    public boolean validateDate() {
-        return true;
-    }
-
+    
+    //TODO: Use String.format better
     public String toString() {
         return "\nReservation No: " + reservationNo + "\nReservation Time: " + reservationTime
                 + "\nReservation Status: " + reservationStatus + "\nNumber of seat booked: " + noOfSeatBooked
                 + "\nTotal Amount: " + totalAmount + flight.toString();
     }
-}
-
-enum rStatus {
-    PENDING, BOOKED, PAID
 }

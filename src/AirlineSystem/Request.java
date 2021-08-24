@@ -9,7 +9,8 @@ public class Request {
     private String requestDescription;
     private String reason;
     private rqStatus requestStatus;
-    private Reservation reservation;
+    private Reservation oldReservation; //if reschedule then we will have oldReservation and new reservation
+    private Reservation newReservation; // cancel, oldReservation, new Reservation == null
 
     Request() {
 
