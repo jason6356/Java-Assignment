@@ -91,25 +91,54 @@ public class Main {
         Boolean passwordMatch = true; 
 
         System.out.println("Fill in the details below to sign up: ");
-        System.out.print("1. First Name > ");
-        String regFirstName = regScan.nextLine();
-        System.out.print("2. Last Name > ");
+        System.out.print("1. First Name > ");              //ENTER FIRST NAME
+        String regFirstName = regScan.nextLine();           
+        while (!acc.validateName(regFirstName))             //VALIDATE IF IT ONLY CONTAIN CHARACTERS
+        {
+            System.out.println("Invalid Name. Only Alphabets ");
+            System.out.print("1. First Name > ");
+            regFirstName = regScan.nextLine();
+        }
+        System.out.print("2. Last Name > ");                //ENTER LAST NAME
         String regLastName = regScan.nextLine();
-        System.out.print("3. Gender (F/M) > ");
+        while (!acc.validateName(regLastName))
+        {
+            System.out.println("Invalid Name. Only Alphabets ");
+            System.out.print("2. Last Name > ");
+            regFirstName = regScan.nextLine();
+        }
+
+        System.out.print("3. Gender (M/F) > ");             //ENTER GENDER
         char regGender = regScan.next().charAt(0);
-        System.out.print("4. Age > ");
+        while(acc.validateGender(regGender)==false)         //VALIDATE ONLY EITHER M OR F
+        {
+            System.out.println("Male or Female only");
+            System.out.print("3. Gender (M/F) > ");
+            regGender = regScan.next().charAt(0);
+        }
+
+        System.out.print("4. Age > ");                      //ENTER AGE
         int regAge = regScan.nextInt();
-        System.out.print("5. Phone Number  > ");
+
+        System.out.print("5. Phone Number  > ");            //ENTER PHONE NUMBER
         String regPhoneNum = regScan.nextLine();
-        System.out.print("6. Email > ");
+        while(!acc.validatePhoneNum(regPhoneNum))           //VALIDATE ONLY NUMBER WITH +COUNTRY CODE
+        {
+            System.out.println("Phone Number Should Start With '+' followed by country code and phone number");
+            System.out.println("Eg : +60123456789");
+            System.out.print("5. Phone Number  > ");
+            regPhoneNum = regScan.nextLine();
+        }
+
+        System.out.print("6. Email > ");                      // ENTER EMAIL
         String regEmail = regScan.nextLine();
-        while (!acc.validateEmailFormat(regEmail))
+        while (!acc.validateEmailFormat(regEmail))             //VALIDATE EMAIL IF IT CONTAIN "@"
         {
             System.out.println("Invalid Email. Try Again ");
             System.out.print("6. Email > ");
             regEmail = regScan.nextLine();
         }
-        System.out.println("7. Address > ");
+        System.out.println("7. Address > ");                    //ENTER ADDRESS
         System.out.print("7.1 Unit > ");
         String regAddUnit = regScan.nextLine();
         System.out.print("7.2 Road > ");
@@ -125,10 +154,10 @@ public class Main {
 
     do{
         System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
-        System.out.print("8. Password > ");
+        System.out.print("8. Password > ");                         //ENTER PASSWORD
         regPassword = regScan.nextLine();
         
-        while (!acc.Checking(regPassword))
+        while (!acc.validatePassword(regPassword))                  //VALIDATE PASSWORD REQUIREMENT
         {
             System.out.println("Invalid Password. ");
             System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
@@ -136,9 +165,9 @@ public class Main {
             regPassword = regScan.nextLine();
         }
 
-        System.out.print("8.1 Confirm Password > ");
-        String confirmPassword = regScan.nextLine();
-        if (!regPassword.equals(confirmPassword))
+        System.out.print("8.1 Confirm Password > ");               //INPUT CONFIRM PASSWORD
+        String confirmPassword = regScan.nextLine();                
+        if (!regPassword.equals(confirmPassword))                   // COMPARE BOTH PASSWORD
         {
             passwordMatch = false;
             System.out.println("Password Does Not Match! Re-Enter Again! ");
@@ -146,11 +175,11 @@ public class Main {
 
     }while (passwordMatch == false );
     
-
+        //CREATE OBJECT 
         Address regAddress = new Address(regAddUnit, regAddRoad, regAddPostcode, regAddCity, regAddState, regAddCountry);
-        RegisteredAccount register = new RegisteredAccount((1000+RegisteredAccount.getRegAccCount()), regPassword, regFirstName,regLastName, regAddress, regGender, regAge, regEmail,regPhoneNum);
+        RegisteredAccount register = new RegisteredAccount(regPassword, regFirstName,regLastName, regAddress, regGender, regAge, regEmail,regPhoneNum);
         regScan.close();
-        accountList.add(register);
+        accountList.add(register); // ADD TO ACCOUNTLIST
         register.welcome(); // can remove if dont want  line 210
     }
 }

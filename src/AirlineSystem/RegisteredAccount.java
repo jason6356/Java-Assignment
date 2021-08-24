@@ -7,40 +7,36 @@ import java.util.Scanner;
 
 public class RegisteredAccount extends Account {
 
-    private static int regAccCount = 1;
-    private int accID;
+    private static int nthAcc = 0;
+    private String accID;
 
 
     public RegisteredAccount() {
     }
 
-    public RegisteredAccount(int accID, String password, String firstName, String lastName, Address address,
+    public RegisteredAccount(String password, String firstName, String lastName, Address address,
             char gender, int age, String email, String phoneNum) {
         super(password, firstName, lastName, address, gender, age, email, phoneNum);
-        this.accID = accID;
-
-        regAccCount++;
+        this.accID = makeAccID();
+        //Increment Once a staff has been created
+        nthAcc++;
     }
 
     //getter
-    public int getAccID() {
+    public String getAccID() {
         return accID;
     }
-    public static int getRegAccCount() {
-        return regAccCount;
+    public static int getNthAcc() {
+        return nthAcc;
     }
     
     //setter
-   
 
-    public void setAccID(int accID) {
-        this.accID = accID;
-    }
 
     //methods
     public void updateProfile(){
         Scanner scan = new Scanner (System.in);
-        String again;
+        char another;
     do{
         System.out.println("\n\n\t\tUpdate Profile\n============================================"); //header
         System.out.print("1. First Name  [ " + super.getFirstName() + " ]\n" + 
@@ -54,47 +50,71 @@ public class RegisteredAccount extends Account {
                            "Please Enter The Number that you wished to change > " );
         int updateOption = scan.nextInt();
 
-
         switch (updateOption){
         case 1:
-            System.out.print("Enter your First Name > ");
-            super.setFirstName(scan.nextLine());
+            System.out.print("Enter your First Name > ");   //INPUT NEW FIRST NAME
+            String newFirstName = scan.nextLine();
+            while(!super.validateName(newFirstName))          //VALIDATE FIRST NAME
+            {
+                System.out.println("Your Name Should Only Contain Characters");
+                System.out.print("Enter your First Name > ");
+                newFirstName = scan.nextLine();
+            }
+            super.setFirstName(newFirstName);           //UPDATE FIRST NAME
             System.out.println("\n\nFirst Name updated successfully !");
-            // only alphabet
+           
         break;
         case 2:
+        System.out.print("Enter your Last Name > ");            //INPUT NEW LAST NAME    
+        String newLastName = scan.nextLine();           
+        while(!super.validateName(newLastName))                    //VALIDATE NEW LAST NAME
+        {
+            System.out.println("Your Name Should Only Contain Characters");
             System.out.print("Enter your Last Name > ");
-            super.setLastName(scan.nextLine());
-            System.out.println("\n\nLast Name updated successfully !");                   
+            newLastName = scan.nextLine();
+        }
+        super.setFirstName(newLastName);                    //UPDATE LAST NAME
+        System.out.println("\n\nLast Name updated successfully !");
+
         case 3:
-            System.out.print("Enter your old password > ");
+            System.out.println("GUIDE---> Input 'abc' if forget password");
+            System.out.print("Enter your old password > ");         //ENTER OLD PASSWORD
             String oldPassword = scan.nextLine();
-            if(!(super.getPassword().equals(oldPassword)))
+            while((!(super.getPassword().equals(oldPassword))) )          //COMPARE PASSWORD AND INPUT
             {
+                if(oldPassword == "abc")                               //if user forget password then return back to mainmenu
+                {
+                    return;
+                }
                 System.out.println("Wrong Password");
+                System.out.print("Enter your old password > ");         //ENTER OLD PASSWORD
+                oldPassword = scan.nextLine();
             }
-            else
-            {
                 System.out.println("\t*NOTE*\nYour password should be fulfilled the requirement below :\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number");
-                System.out.println("Enter your NEW Password >");
+                System.out.println("Enter your NEW Password >");        //ENTER NEW PASSWORD
                 String newPassword = scan.nextLine();
-                //Checking chg name
-                if(!super.Checking(newPassword))
+               
+                if(!super.validatePassword(newPassword))                //VALIDATE NEW PASSWORD FORMAT
                 {
                     System.out.println("Invalid Password");
                 }
                 else
                 {
-                    super.setPassword(newPassword);
+                    super.setPassword(newPassword);                     //UPDATE PASSWORD
                     System.out.println("\n\nPassword Updated Successfully !");
                 }
-            }
         break;
         case 4:
-                System.out.print("Enter your Gender > ");
-                super.setGender(scan.next().charAt(0));
+                System.out.print("Enter your Gender (M/F) > ");                 //ENTER GENDER
+                char newGender = scan.next().charAt(0);
+                while(super.validateGender(newGender)==false)                   //VALIDATE GENDER EITHER M OR F
+                {
+                    System.out.println("Male or Female only");
+                    System.out.print("Enter your Gender (M/F) > ");
+                    newGender = scan.next().charAt(0);
+                }
+                super.setGender(Character.toUpperCase(newGender));              //UPDATE GENDER WITH CAPITAL
                 System.out.println("\n\nGender updated successfully !"); 
-                //validate M or F only
         break;
         case 5:
                 System.out.print("Enter your Age > ");
@@ -102,23 +122,30 @@ public class RegisteredAccount extends Account {
                 System.out.println("\n\nAge updated successfully !"); 
         break;
         case 6:
-                System.out.println("Enter your Email > ");
+                System.out.println("Enter your Email > ");                  //ENTER EMAIL
                 String newEmail = scan.nextLine();
-                if(!super.validateEmailFormat(newEmail))
+                while(!super.validateEmailFormat(newEmail))                    //VALIDATE EMAIL FORMAT, CONTAIN "@"
                 {
-                    System.out.println("Invalid Email");//@
+                    System.out.println("Invalid Email");
+                    System.out.println("Enter your Email > ");                 
+                    newEmail = scan.nextLine();
+  
                 }
-                else
-                {
-                    super.setEmail(newEmail);
+                    super.setEmail(newEmail);                                   //UPDATE EMAIL
                     System.out.println("\n\nEmail updated Successfully !");
-                }
         break;
         case 7:
-                System.out.print("Enter your Phone Number > ");
-                super.setPhoneNum(scan.nextLine());
+                System.out.print("Enter your Phone Number > ");         //ENTER NUMBER
+                String newPhoneNum = scan.nextLine();
+                while(!super.validatePhoneNum(newPhoneNum))           //VALIDATE ONLY NUMBER WITH +COUNTRY CODE
+                {
+                    System.out.println("Phone Number Should Start With '+' followed by country code and phone number");
+                    System.out.println("Eg : +60123456789");
+                    System.out.print("Enter your Phone Number > ");
+                    newPhoneNum = scan.nextLine();
+                }
+                super.setPhoneNum(newPhoneNum);
                 System.out.println("\n\nPhone Number updated successfully !"); 
-                // only digit and - +
         break;
         case 8:
             return;
@@ -127,11 +154,14 @@ public class RegisteredAccount extends Account {
         System.out.println("Invalid Input.");
         break;
     }
-
     System.out.print("Another Update? (Y/N) > ");
-    again = scan.next();
-    //B <- invalid input
-} while (again == "Y");
+    another = scan.next().charAt(0);
+    while(super.validateOption(another) == false){
+        System.out.println("Invalid Input.");
+        System.out.print("Another Update? (Y/N) > ");
+        another = scan.next().charAt(0);
+    }
+} while (Character.toUpperCase(another) == 'Y');
     scan.close();
    }
 
@@ -217,4 +247,12 @@ public void welcome(){ // can remove if dw, main line 149
     System.out.println("\n\n\n\n\n\n\n\n\nWelcome To SaiLou Airline !");
 }
 
+private static String makeAccID(){
+    if(nthAcc < 10)
+        return "A00" + nthAcc;
+    else if(nthAcc < 100)
+        return "A0" + nthAcc;
+
+    return "A" + nthAcc;
+}
 }

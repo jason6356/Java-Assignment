@@ -100,12 +100,40 @@ public class Account {
         return email.matches("^(.+)@(.+)$");
     }
 
-    public boolean Checking(String password) {
+    public boolean validatePassword(String password) {
         return password.matches("(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{7,}");
     }//Minimum 7 characters, at least one letter and one number
+
 
     public void searchAvailableFlights() {
         System.out.println("Searching available flights?");
     }
+
+    public boolean validateName(String name){
+        return name.matches("[A-Za-z]+"); // only alphabet
+    }
+
+    public boolean validateGender(char gender){
+        Character.toUpperCase(gender);
+        if(gender == 'M' || gender == 'F')
+        return true;
+        else 
+        return false;
+    }
+
+    public boolean validatePhoneNum(String phoneNumber)
+    {
+        return phoneNumber.matches("(\\+[1-9]{1})[0-9]{9,14}"); //+X123456 ; Xis country code(can more than 1 digit)
+    }
+
+    public boolean validateOption(char option){ 
+        Character.toUpperCase(option);
+        if(option =='Y' || option == 'N')
+        return true;
+        else 
+        return false;
+    }
+
+    
 
 }
