@@ -5,13 +5,13 @@ import java.util.ArrayList;
 
 public class Main {
     //predefined data to store
-    Staff staffAccount = new Staff();
-    List<RegisteredAccount> accountList = new ArrayList<RegisteredAccount>();
-    List<FlightSchedule> flightScheduleList = new ArrayList<FlightSchedule>();
-    List<Airport> airportList = new ArrayList<Airport>();
-    List<Airline> airlineList = new ArrayList<Airline>();
-    List<Flight> flightList = new ArrayList<Flight>();
-    List<Request> requests = new ArrayList<Request>();
+    private static Staff staffAccount = new Staff();
+    private static List<RegisteredAccount> accountList = new ArrayList<RegisteredAccount>();
+    private static List<FlightSchedule> flightScheduleList = new ArrayList<FlightSchedule>();
+    private static List<Airport> airportList = new ArrayList<Airport>();
+    private static List<Airline> airlineList = new ArrayList<Airline>();
+    private static List<Flight> flightList = new ArrayList<Flight>();
+    private static List<Request> requests = new ArrayList<Request>();
     public static void main(String[] args){        
         Account guestAcc = new Account();
         
@@ -71,5 +71,9 @@ public class Main {
 
     private static void insertDataToList(){
             return;    
+    }
+
+    public static List<Request> getRequests() {
+        return requests;
     }
 }

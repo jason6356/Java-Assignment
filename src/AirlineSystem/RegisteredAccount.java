@@ -147,7 +147,7 @@ public class RegisteredAccount extends Account {
         Request customerRequest = new Request(reservation.getReservationNo(), "Reschedule Ticket Request", newReservation);
         //add the request to the request list
         requestList.add(customerRequest);
-        
+
         request.setRequestID(reservation.getReservationNo());
         request.setRequestDescription("Reschedule Ticket Request");
         request.setReservation(newReservation);
