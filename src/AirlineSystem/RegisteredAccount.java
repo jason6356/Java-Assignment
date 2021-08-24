@@ -207,5 +207,8 @@ public void cancelTicket(Reservation reservation) {
     scanner.close();
 }
 
+public void welcome(){ // can remove if dw, main line 149
+    System.out.println("\n\n\n\n\n\n\n\n\nWelcome To SaiLou Airline !");
+}
 
 }
