@@ -1,5 +1,6 @@
 package AirlineSystem;
 
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -18,10 +19,10 @@ public class RegisteredAccount extends Account {
         super(password, firstName, lastName, address, gender, age, email, phoneNum);
         this.accID = accID;
 
-        regAccCount ++;
+        regAccCount++;
     }
 
-    /////////////////////////////////// getter////////////////////////////////////
+    //getter
     public int getAccID() {
         return accID;
     }
@@ -29,14 +30,14 @@ public class RegisteredAccount extends Account {
         return regAccCount;
     }
     
-    ///////////////////////////////// setter///////////////////////////////////////
+    //setter
    
 
     public void setAccID(int accID) {
         this.accID = accID;
     }
 
-    //////////////////////////////// method///////////////////////////////////////////
+    //methods
     public void updateProfile(){
         Scanner scan = new Scanner (System.in);
         String again;
@@ -59,6 +60,7 @@ public class RegisteredAccount extends Account {
             System.out.print("Enter your First Name > ");
             super.setFirstName(scan.nextLine());
             System.out.println("\n\nFirst Name updated successfully !");
+            // only alphabet
         break;
         case 2:
             System.out.print("Enter your Last Name > ");
@@ -67,7 +69,7 @@ public class RegisteredAccount extends Account {
         case 3:
             System.out.print("Enter your old password > ");
             String oldPassword = scan.nextLine();
-            if(super.getPassword().equals(oldPassword) == false)
+            if(!(super.getPassword().equals(oldPassword)))
             {
                 System.out.println("Wrong Password");
             }
@@ -76,7 +78,8 @@ public class RegisteredAccount extends Account {
                 System.out.println("\t*NOTE*\nYour password should be fulfilled the requirement below :\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number");
                 System.out.println("Enter your NEW Password >");
                 String newPassword = scan.nextLine();
-                if(super.Checking(newPassword) == false)
+                //Checking chg name
+                if(!super.Checking(newPassword))
                 {
                     System.out.println("Invalid Password");
                 }
@@ -91,6 +94,7 @@ public class RegisteredAccount extends Account {
                 System.out.print("Enter your Gender > ");
                 super.setGender(scan.next().charAt(0));
                 System.out.println("\n\nGender updated successfully !"); 
+                //validate M or F only
         break;
         case 5:
                 System.out.print("Enter your Age > ");
@@ -100,9 +104,9 @@ public class RegisteredAccount extends Account {
         case 6:
                 System.out.println("Enter your Email > ");
                 String newEmail = scan.nextLine();
-                if(super.validateEmailFormat(newEmail) == false)
+                if(!super.validateEmailFormat(newEmail))
                 {
-                    System.out.println("Invalid Email");
+                    System.out.println("Invalid Email");//@
                 }
                 else
                 {
@@ -114,6 +118,7 @@ public class RegisteredAccount extends Account {
                 System.out.print("Enter your Phone Number > ");
                 super.setPhoneNum(scan.nextLine());
                 System.out.println("\n\nPhone Number updated successfully !"); 
+                // only digit and - +
         break;
         case 8:
             return;
@@ -125,6 +130,7 @@ public class RegisteredAccount extends Account {
 
     System.out.print("Another Update? (Y/N) > ");
     again = scan.next();
+    //B <- invalid input
 } while (again == "Y");
     scan.close();
    }
@@ -134,15 +140,21 @@ public class RegisteredAccount extends Account {
     List<FlightSchedule> flightScheduleList = Main.getFlightSchedules();
     Reservation newReservation = new Reservation(int noOfSeatBooked, double totalAmount, FlightSchedule flight);
 
-    System.out.println("\nRESERVATION DETAILS\n"+reservation.toString());
+    System.out.println("\nRESERVATION DETAILS\n"+ reservation.toString());
 
     System.out.println("\nAVAILABLE FLIGHT SCHEDULE");
+
+        for (FlightSchedule schedule : flightScheduleList ) {
+            System.out.println(flightScheduleList.toString());
+        }
+
     System.out.println(flightScheduleList.toString());
 
     System.out.print("Enter new schedule choice: ");
     int choice=scanner.nextInt();
-    newReservation.setFlightSchedule(flightScheduleList[choice-1]);
+    newReservation.setFlightSchedule(flightScheduleList.get(choice - 1));
 
+    //DO A MENU (LIST OF REASONS)
     System.out.print("\nReason of reschedule: ");
     String reason = scanner.nextLine();
 
@@ -164,12 +176,9 @@ public class RegisteredAccount extends Account {
         //can put in staff module
         if (customerRequest.getRequestStatus() == rqStatus.APPROVED){
             //reservation = new reservation
-            System.out.println("Request Approved, Ticket Rescheduled");
         }
-        else
-            System.out.println("Request Rejected.");
+    
     }
-       
 
         scanner.close();
 }
@@ -179,7 +188,12 @@ public void cancelTicket(Reservation reservation) {
     
     System.out.println("\nRESERVATION DETAILS\n"+reservation.toString());
 
-    System.out.print("\nReason of cancellation: ");
+//DO MENU
+    System.out.println("\nReason of Cancel: ");
+    System.out.println("\n1.  ");
+    System.out.println("\n2.  ");
+    System.out.println("\n3. Other");
+    System.out.print("\nEnter Choice of Reason: ");
     String reason = scanner.nextLine();
 
     System.out.println("\nConfirm to cancel? (Y/N) > ");
@@ -192,10 +206,7 @@ public void cancelTicket(Reservation reservation) {
         
         if (request.getRequestStatus() == rqStatus.APPROVED){
             reservation = null;
-            System.out.println("Request Approved, Ticket Cancelled.");
         }
-        else
-            System.out.println("Request Rejected.");
     }
 
     scanner.close();

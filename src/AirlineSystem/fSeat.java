@@ -44,7 +44,6 @@ class fSeat extends Seat {
         return super.toString() + String.format("SeatPrice = %.2f \nSeatStatus = %s \n", seatPrice,seatStatus.toString());
     }
 
-
     //Methods
     /**
      * This method makes the seat become seated     

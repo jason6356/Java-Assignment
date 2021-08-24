@@ -1,70 +1,50 @@
 package AirlineSystem;
-
 import java.util.List;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class FlightSchedule {
-    private String departureTime;
-    private String flightDate;
-    private String location;
-    private String destination;
-    private String estimatedArrivalTime;
+    private LocalDateTime departureTime;
+    private LocalDateTime flightDate;
+    private Airport location;
+    private Airport destination;
+    private LocalDateTime estimatedArrivalTime;
     private Flight flight;
-    List<FlightSchedule> flightSeat = new ArrayList<FlightSchedule>();
+    List<fSeat> flightSeat = new ArrayList<fSeat>();
 
-    // getter
-    public String getDepartureTime() {
-        return departureTime;
-    }
-
-    public String getFlightDate() {
-        return flightDate;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public String getDestination() {
-        return destination;
-    }
-
-    public String getEstimatedArrivalTime() {
-        return estimatedArrivalTime;
-    }
-
-    public Flight getFlight() {
-        return flight;
-    }
-
-    public List<FlightSchedule> getFlightSeat() {
-        return flightSeat;
-    }
-
-    // setter
-    public void setDepartureTime(String departureTime) {
+    //Parameterized Constructor
+    public FlightSchedule(LocalDateTime departureTime, LocalDateTime flightDate,Airport location,Airport destination, LocalDateTime estimatedArrivalTime, Flight flight){
         this.departureTime = departureTime;
-    }
-
-    public void setEstimatedArrivalTime(String estimatedArrivalTime) {
-        this.estimatedArrivalTime = estimatedArrivalTime;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
-    }
-
-    public void setFlightDate(String flightDate) {
         this.flightDate = flightDate;
-    }
-
-    public void setLocation(String location) {
         this.location = location;
+        this.destination = destination;
+        this.estimatedArrivalTime = estimatedArrivalTime;
+        this.flight = flight;
+        
+        flightSeat = makefSeatList(flight.getTotalSeat());
     }
 
+    //TODO: Refactor this toString method
+    //ToString
     public String toString() {
-        return "\nDeparture Time: " + departureTime + "\nFlight Date: " + flightDate + "\nLocation: " + location
-                + "\nDestination: " + destination + "\nEstimated Arrival Time: " + estimatedArrivalTime + "\nFlight: "
-                + flight.getFlightCode();
+        return String.format("DepartureTime : ");
+    }
+
+    //Method
+    /**
+     * Create a list of flight seats to the flight schedule
+     * @param totalSeats
+     * @return List of fSeat
+     */
+    private static List<fSeat> makefSeatList(int totalSeats){
+        if(totalSeats == 0)
+            return null;
+        fSeat.setTotalSeat(totalSeats);
+        
+        List<fSeat> fSeatList = new ArrayList<fSeat>();
+        for(int i = 0; i < totalSeats; i++)
+            fSeatList.add(new fSeat());
+
+        return fSeatList;
     }
 }
