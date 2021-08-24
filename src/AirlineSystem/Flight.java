@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 class Flight {
 
-    String flightCode;
-    Airline airline;
-    int totalSeat;
-    List<Seat> seatList = new ArrayList<Seat>();
+    private String flightCode;
+    private Airline airline;
+    private int totalSeat;
+    private List<Seat> seatList = new ArrayList<Seat>();
 
     //Parameterized Constructor
     Flight(String flightCode,Airline airline, int totalSeat){
 
-        this.flightCode = flightCode;
+        this.flightCode = flightCode; //use a method
         this.airline = airline;
         this.totalSeat = totalSeat;
         seatList = createSeatList(totalSeat);
@@ -26,10 +26,28 @@ class Flight {
         return flightCode;
     }
 
+    //getter
+    public int getTotalSeat() {
+        return totalSeat;
+    }
+    public List<Seat> getSeatList() {
+        return seatList;
+    }
+    public Airline getAirline() {
+        return airline;
+    }
+    //setter
+    public void setTotalSeat(int totalSeat) {
+        this.totalSeat = totalSeat;
+    }
+    public void setAirline(Airline airline) {
+        this.airline = airline;
+    }
+
     //ToString
     @Override
     public String toString() {
-        return String.format("FlightCode : %s \nTotalSeat : %d\n",flightCode,totalSeat) + airline;
+        return String.format("FlightCode : %s \nTotalSeat : %d\n Airline : %s \n",flightCode,totalSeat,airline.getAirlineName());
     }
 
     //Methods
@@ -44,7 +62,7 @@ class Flight {
             return null;
     
         List<Seat> seatList = new ArrayList<Seat>();
-        //Set the totalSeat in the Seat Class
+        //Set the totalSeat in the Seat ClassF
         //There are some comments before the Seat Class
         Seat.setTotalSeat(totalSeat);
 

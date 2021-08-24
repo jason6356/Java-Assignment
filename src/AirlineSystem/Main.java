@@ -82,6 +82,7 @@ public class Main {
         return flightScheduleList;
     }
 
+
     public static void registerAccount(){
 
         Scanner regScan = new Scanner(System.in);
@@ -102,7 +103,7 @@ public class Main {
         String regPhoneNum = regScan.nextLine();
         System.out.print("6. Email > ");
         String regEmail = regScan.nextLine();
-        while (acc.validateEmailFormat(regEmail)==false)
+        while (!acc.validateEmailFormat(regEmail))
         {
             System.out.println("Invalid Email. Try Again ");
             System.out.print("6. Email > ");
@@ -122,12 +123,12 @@ public class Main {
         System.out.print("7.6 Country > ");
         String regAddCountry = regScan.nextLine();
 
-       do{
+    do{
         System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
         System.out.print("8. Password > ");
         regPassword = regScan.nextLine();
         
-        while (acc.Checking(regPassword)==false)
+        while (!acc.Checking(regPassword))
         {
             System.out.println("Invalid Password. ");
             System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
@@ -137,7 +138,7 @@ public class Main {
 
         System.out.print("8.1 Confirm Password > ");
         String confirmPassword = regScan.nextLine();
-        if (regPassword.equals(confirmPassword) == false)
+        if (!regPassword.equals(confirmPassword))
         {
             passwordMatch = false;
             System.out.println("Password Does Not Match! Re-Enter Again! ");
