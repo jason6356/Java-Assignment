@@ -129,24 +129,22 @@ public class RegisteredAccount extends Account {
     scan.close();
    }
 
-   public void rescheduleTicket(Reservation reservation, FlightSchedule[] schedule) {
+   public void rescheduleTicket(Reservation reservation) {
     Scanner scanner = new Scanner (System.in);
-    Request request = new Request();
-    Reservation newReservation = new Reservation();
+    List<FlightSchedule> flightScheduleList = Main.getFlightSchedules();
+    Reservation newReservation = new Reservation(int noOfSeatBooked, double totalAmount, FlightSchedule flight);
 
     System.out.println("\nRESERVATION DETAILS\n"+reservation.toString());
 
     System.out.println("\nAVAILABLE FLIGHT SCHEDULE");
+    System.out.println(flightScheduleList.toString());
 
-    for(int i=0;i<schedule.length;i++){
-        System.out.println(" Schedule " + (i+1) + schedule[i].toString() + "\n---------------------------------------------\n");
-    }   
     System.out.print("Enter new schedule choice: ");
     int choice=scanner.nextInt();
-    newReservation.setFlightSchedule(schedule[choice-1]);
+    newReservation.setFlightSchedule(flightScheduleList[choice-1]);
 
     System.out.print("\nReason of reschedule: ");
-    request.setReason(scanner.nextLine());
+    String reason = scanner.nextLine();
 
     System.out.println("\nConfirm to reschedule? (Y/N) > ");
     String next = scanner.next();
@@ -154,18 +152,18 @@ public class RegisteredAccount extends Account {
     if(next == "Y"){
         //get request list from the data storage
         List<Request> requestList = Main.getRequests(); //data storage
+
         //customer request
-        Request customerRequest = new Request(reservation.getReservationNo(), "Reschedule Ticket Request", newReservation);
+        Request customerRequest = new Request("Reschedule Ticket Request", reason, reservation, newReservation);
+
         //add the request to the request list
         requestList.add(customerRequest);
 
-        request.setRequestID(reservation.getReservationNo());
-        request.setRequestDescription("Reschedule Ticket Request");
-        request.setReservation(newReservation);
+  
         System.out.println("Requested for Rescheduling Ticket.");
         //can put in staff module
-        if (request.getRequestStatus() == rqStatus.APPROVED){
-            reservation.setFlightSchedule(schedule[choice-1]);
+        if (customerRequest.getRequestStatus() == rqStatus.APPROVED){
+            //reservation = new reservation
             System.out.println("Request Approved, Ticket Rescheduled");
         }
         else
@@ -188,14 +186,10 @@ public void cancelTicket(Reservation reservation) {
     String next = scanner.next();
 
     if(next == "Y"){
-        Request request = new Request();
-
-        request.setRequestID(reservation.getReservationNo());
-        request.setRequestDescription("Cancel Ticket Request");
-        request.setReason(reason);
-        request.setReservation(reservation);
+        Request request = new Request("Cancel Ticket Request", reason, reservation, null);
 
         System.out.println("Requested for Cancelling Ticket.");
+        
         if (request.getRequestStatus() == rqStatus.APPROVED){
             reservation = null;
             System.out.println("Request Approved, Ticket Cancelled.");
@@ -206,6 +200,7 @@ public void cancelTicket(Reservation reservation) {
 
     scanner.close();
 }
+
 
 public void welcome(){ // can remove if dw, main line 149
     System.out.println("\n\n\n\n\n\n\n\n\nWelcome To SaiLou Airline !");

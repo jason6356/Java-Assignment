@@ -17,7 +17,7 @@ public class Request {
 
     }
 
-    Request(String requestID, String requestDescription, String reason,
+    Request(String requestDescription, String reason,
             Reservation oldReservation, Reservation newReservation) {
         this.requestID = makeRequestID();
         this.requestDescription = requestDescription;
