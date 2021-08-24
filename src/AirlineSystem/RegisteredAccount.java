@@ -8,34 +8,29 @@ public class RegisteredAccount extends Account {
 
     private static int regAccCount = 1;
     private int accID;
-    private int creditCardNumber;
+
 
     public RegisteredAccount() {
     }
 
     public RegisteredAccount(int accID, String password, String firstName, String lastName, Address address,
-            char gender, int age, String email, String phoneNum, int creditCardNumber) {
+            char gender, int age, String email, String phoneNum) {
         super(password, firstName, lastName, address, gender, age, email, phoneNum);
         this.accID = accID;
 
-        this.creditCardNumber = creditCardNumber;
+        regAccCount ++;
     }
 
     /////////////////////////////////// getter////////////////////////////////////
     public int getAccID() {
         return accID;
     }
-
-    public int getCreditCardNumber() {
-        return creditCardNumber;
+    public static int getRegAccCount() {
+        return regAccCount;
     }
-
+    
     ///////////////////////////////// setter///////////////////////////////////////
-    public void setCreditCardNumber(int creditCardNumber) {
-        this.creditCardNumber = creditCardNumber;
-    }
-
-
+   
 
     public void setAccID(int accID) {
         this.accID = accID;
@@ -44,7 +39,7 @@ public class RegisteredAccount extends Account {
     //////////////////////////////// method///////////////////////////////////////////
     public void updateProfile(){
         Scanner scan = new Scanner (System.in);
-    int again;
+        String again;
     do{
         System.out.println("\n\n\t\tUpdate Profile\n============================================"); //header
         System.out.print("1. First Name  [ " + super.getFirstName() + " ]\n" + 
@@ -112,9 +107,10 @@ public class RegisteredAccount extends Account {
         break;
     }
 
-    System.out.print("Another Update? (0 = No) > ");
-    again = scan.nextInt();
-} while (again !=0);
+    System.out.print("Another Update? (Y/N) > ");
+    again = scan.next();
+} while (again == "Y");
+    scan.close();
    }
 
    public void rescheduleTicket(Reservation reservation, FlightSchedule[] schedule) {
