@@ -5,6 +5,7 @@ enum rqStatus {
 }
 
 public class Request {
+    private static int requestCount = 0;
     private String requestID;
     private String requestDescription;
     private String reason;
@@ -16,13 +17,28 @@ public class Request {
 
     }
 
-    Request(String requestID, String requestDescription, String reason, rqStatus requestStatus,
-            Reservation reservation) {
-        this.requestID = requestID;
+    Request(String requestID, String requestDescription, String reason,
+            Reservation oldReservation, Reservation newReservation) {
+        this.requestID = makeRequestID();
         this.requestDescription = requestDescription;
         this.reason = reason;
-        this.requestStatus = requestStatus;
-        this.reservation = reservation;
+        this.oldReservation = oldReservation;
+        this.newReservation = newReservation;
+    }
+
+     /**
+     * Method to create RequestID in sequence
+     * 
+     * @return RequestID in String
+     */
+    private static String makeRequestID() {
+        if (requestCount < 10)
+            return "RQ00" + requestCount;
+
+        else if (requestCount < 100)
+            return "RQ0" + requestCount;
+
+        return "RQ" + requestCount;
     }
 
     /////////////////////////////////////////// getter///////////////////////////////////////
@@ -42,8 +58,12 @@ public class Request {
         return requestStatus;
     }
 
-    public Reservation getReservation() {
-        return reservation;
+    public Reservation getOldReservation() {
+        return oldReservation;
+    }
+
+    public Reservation getNewReservation() {
+        return newReservation;
     }
 
     /////////////////////////////////// Setter/////////////////////////////////////////////
@@ -63,8 +83,12 @@ public class Request {
         this.requestStatus = requestStatus;
     }
 
-    public void setReservation(Reservation reservation) {
-        this.reservation = reservation;
+    public void setOldReservation(Reservation oldReservation) {
+        this.oldReservation = oldReservation;
+    }
+
+    public void setNewReservation(Reservation newReservation) {
+        this.newReservation = newReservation;
     }
 
 }
