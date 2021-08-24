@@ -78,6 +78,10 @@ public class Main {
         return requests;
     }
 
+    public static List<FlightSchedule> getFlightSchedules() {
+        return flightScheduleList;
+    }
+
     public static void registerAccount(){
 
         Scanner regScan = new Scanner(System.in);
