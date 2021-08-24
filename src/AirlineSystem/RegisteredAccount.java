@@ -116,8 +116,7 @@ public class RegisteredAccount extends Account {
    public void rescheduleTicket(Reservation reservation, FlightSchedule[] schedule) {
     Scanner scanner = new Scanner (System.in);
     Request request = new Request();
-    Reservation newReservation = new Reservation(reservation.getReservationNo(), reservation.getReservationTime(), reservation.getReservationStatus(), reservation.getNoOfSeatBooked(),
-    reservation.getTotalAmount(), reservation.getFlightSchedule());
+    Reservation newReservation = new Reservation();
 
     System.out.println("\nRESERVATION DETAILS\n"+reservation.toString());
 
