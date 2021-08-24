@@ -88,16 +88,32 @@ public class RegisteredAccount extends Account {
             }
         break;
         case 4:
-        
+                System.out.print("Enter your Gender > ");
+                super.setGender(scan.next().charAt(0));
+                System.out.println("\n\nGender updated successfully !"); 
         break;
         case 5:
-        
+                System.out.print("Enter your Age > ");
+                super.setAge(scan.nextInt());
+                System.out.println("\n\nAge updated successfully !"); 
         break;
         case 6:
-        
+                System.out.println("Enter your Email > ");
+                String newEmail = scan.nextLine();
+                if(super.validateEmailFormat(newEmail) == false)
+                {
+                    System.out.println("Invalid Email");
+                }
+                else
+                {
+                    super.setEmail(newEmail);
+                    System.out.println("\n\nEmail updated Successfully !");
+                }
         break;
         case 7:
-        
+                System.out.print("Enter your Phone Number > ");
+                super.setPhoneNum(scan.nextLine());
+                System.out.println("\n\nPhone Number updated successfully !"); 
         break;
         case 8:
             return;
