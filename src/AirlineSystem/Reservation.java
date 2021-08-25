@@ -97,4 +97,9 @@ public class Reservation {
                 reservationNo, reservationTime, reservationStatus, noOfSeatBooked, totalAmount);
 
     }
+
+    @Override
+    public boolean equals(Object reservation) {
+        return reservation == ((Reservation) reservation).getReservationNo();
+    }
 }

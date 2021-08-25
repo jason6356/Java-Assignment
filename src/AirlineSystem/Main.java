@@ -12,6 +12,7 @@ public class Main {
     private static List<Airline> airlineList = new ArrayList<Airline>();
     private static List<Flight> flightList = new ArrayList<Flight>();
     private static List<Request> requests = new ArrayList<Request>();
+    private static List<Reservation> reservations = new ArrayList<Reservation>();
     public static void main(String[] args){        
         Account guestAcc = new Account();
         
@@ -81,6 +82,10 @@ public class Main {
 
     public static List<FlightSchedule> getFlightSchedules() {
         return flightScheduleList;
+    }
+
+    public static List<Reservation> getReservations() {
+        return reservations;
     }
 
 

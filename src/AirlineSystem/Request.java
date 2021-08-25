@@ -1,5 +1,7 @@
 package AirlineSystem;
 
+import java.util.List;
+
 enum rqStatus {
     APPROVED, REJECTED
 }
@@ -10,7 +12,7 @@ public class Request {
     private String requestDescription;
     private String reason;
     private rqStatus requestStatus;
-    private Reservation oldReservation; //if reschedule then we will have oldReservation and new reservation
+    private Reservation oldReservation; // if reschedule then we will have oldReservation and new reservation
     private Reservation newReservation; // cancel, oldReservation, new Reservation == null
 
     Request() {
@@ -25,7 +27,7 @@ public class Request {
         this.newReservation = newReservation;
     }
 
-     /**
+    /**
      * Method to create RequestID in sequence
      * 
      * @return RequestID in String
@@ -90,9 +92,33 @@ public class Request {
         this.newReservation = newReservation;
     }
 
+
     //method 
     public String toString() {
         return String.format("%s %s %s %s\n", requestID, requestDescription, reason, oldReservation, newReservation);
+    }
+
+    public void updateRequest(Request request) {
+        List<Reservation> reservationList = Main.getReservations();
+
+        // if status is approved, update the reservation
+        if (request.getRequestStatus() == rqStatus.APPROVED) {
+            if (request.getRequestDescription() == "Cancel Ticket Request") {
+
+                for (Reservation reservation : reservationList) {
+                    if (request.getOldReservation().equals(reservation))
+                        reservation = null;
+                }
+
+            } else if (request.getRequestDescription() == "Reschedule Ticket Request") {
+                
+                for (Reservation reservation : reservationList) {
+                    if (request.getOldReservation().equals(reservation))
+                        reservation = request.newReservation;
+                }
+
+            }
+        }
     }
 
 }
