@@ -188,4 +188,49 @@ public class Main {
         accountList.add(register); // ADD TO ACCOUNTLIST
         register.welcome(); // can remove if dont want  line 210
     }
+
+    public static void staffLogin(){
+        Scanner staffScanner = new Scanner(System.in);
+
+        String[][] staffAcc = {
+            {"S001", "aBC002"}, 
+            {"S002", "pWd001"}
+        };
+        Boolean valid = true; 
+
+        System.out.println("Staff Login");
+        System.out.println("===========");
+        System.out.print("Staff ID: ");
+        String staffID = staffScanner.nextLine();
+        System.out.print("Password: ");
+        String staffPwd = staffScanner.nextLine();
+
+        for(int i=0; i<staffAcc.length; i++){
+            for(int j=0; j<staffAcc[i].length; i++){
+                if((staffID == staffAcc[i][j]) || staffPwd == staffAcc[i][j])
+                    valid = true; 
+                else 
+                    valid = false; 
+            }
+        }
+
+        if(valid == true){
+            System.out.println("Login Successful.");
+            
+            //Staff Menu 
+            System.out.println("Staff Menu");
+            System.out.println("==========");
+            System.out.println("1. Modify");
+            System.out.println("2. Delete");
+            System.out.println("3. Create staff account");
+            System.out.println("3. Check Request List");
+            
+        }else{
+            System.out.println("Login Failed.");
+        }
+            
+
+
+        staffScanner.close();
+    }
 }
