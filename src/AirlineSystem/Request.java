@@ -17,8 +17,7 @@ public class Request {
 
     }
 
-    Request(String requestDescription, String reason,
-            Reservation oldReservation, Reservation newReservation) {
+    Request(String requestDescription, String reason, Reservation oldReservation, Reservation newReservation) {
         this.requestID = makeRequestID();
         this.requestDescription = requestDescription;
         this.reason = reason;
@@ -41,7 +40,7 @@ public class Request {
         return "RQ" + requestCount;
     }
 
-    /////////////////////////////////////////// getter///////////////////////////////////////
+    //getter 
     public String getRequestID() {
         return requestID;
     }
@@ -66,7 +65,7 @@ public class Request {
         return newReservation;
     }
 
-    /////////////////////////////////// Setter/////////////////////////////////////////////
+    //setter 
     public void setRequestID(String requestID) {
         this.requestID = requestID;
     }
@@ -89,6 +88,11 @@ public class Request {
 
     public void setNewReservation(Reservation newReservation) {
         this.newReservation = newReservation;
+    }
+
+    //method 
+    public String toString() {
+        return String.format("%s %s %s %s\n", requestID, requestDescription, reason, oldReservation, newReservation);
     }
 
 }

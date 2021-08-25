@@ -37,6 +37,7 @@ public class Main {
                 case 4:
                     //staff login
                     guestAcc = new Staff();
+                    staffLogin();
                     break;
                 default:
                     System.out.println("Invalid choice!!!");
