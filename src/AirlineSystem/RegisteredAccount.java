@@ -196,7 +196,7 @@ public class RegisteredAccount extends Account {
         next = scanner.next().charAt(0);
     }
 
-    if(next == 'Y'){
+    if(Character.toUpperCase(next) == 'Y'){
         //get request list from the data storage
         List<Request> requestList = Main.getRequests(); //data storage
 
@@ -209,9 +209,6 @@ public class RegisteredAccount extends Account {
   
         System.out.println("Requested for Rescheduling Ticket.");
         //can put in staff module
-        if (customerRequest.getRequestStatus() == rqStatus.APPROVED){
-            //reservation = new reservation
-        }
     
     }
 
@@ -239,14 +236,16 @@ public void cancelTicket(Reservation reservation) {
         next = scanner.next().charAt(0);
     }
 
-    if(next == 'Y'){
+    if(Character.toUpperCase(next) == 'Y'){
+        List<Request> requestList = Main.getRequests();
+
         Request request = new Request("Cancel Ticket Request", reason, reservation, null);
+        
+        //add the request to the request list
+        requestList.add(request);
 
         System.out.println("Requested for Cancelling Ticket.");
-        
-        if (request.getRequestStatus() == rqStatus.APPROVED){
-            reservation = null;
-        }
+    
     }
 
     scanner.close();
@@ -265,4 +264,54 @@ private static String makeAccID(){
 
     return "A" + nthAcc;
 }
+
+public void checkRequestStatus(Reservation reservation){
+    List<Request> requestList = Main.getRequests();
+
+    for (Request request : requestList) {
+
+        if (request.getOldReservation().equals(reservation)){
+
+            if(request.getRequestStatus()==rqStatus.APPROVED){
+                if(request.getRequestDescription() == "Reschedule Ticket Request"){
+
+                    System.out.println("Request Approved.");
+
+                    System.out.println("\nOld Reservation: ");
+                    System.out.println("----------------");
+                    System.out.println((request.getOldReservation()).toString());
+
+                    System.out.println("\nNew Reservation: ");
+                    System.out.println("----------------");
+                    System.out.println((request.getNewReservation()).toString());
+
+                    System.out.println("\nOld Reservation have been updated to New Reservation.");
+                }
+                else if(request.getRequestDescription() == "Cancel Ticket Request"){
+
+                    System.out.println("Request Approved.");
+
+                    System.out.println("\nReservation: ");
+                    System.out.println("-----------");
+                    System.out.println((request.getOldReservation()).toString());
+
+                    System.out.println("\nReservation have been cancellation.");
+                }
+
+            }
+            else if(request.getRequestStatus()==rqStatus.REJECTED){
+                System.out.println("Request Rejected.");
+
+            }
+            else
+                System.out.println("Request Pending.");
+
+        }
+            
+    }
+
+
+}
+
+
 }
