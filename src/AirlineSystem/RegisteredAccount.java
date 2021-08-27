@@ -275,24 +275,27 @@ public void checkRequestStatus(Reservation reservation){
             if(request.getRequestStatus()==rqStatus.APPROVED){
                 if(request.getRequestDescription() == "Reschedule Ticket Request"){
 
-                    System.out.println("Request Approved.");
+                    System.out.println("Request Approved.\n");
 
-                    System.out.println("\nOld Reservation: ");
-                    System.out.println("----------------");
+                    System.out.println("-------------------");
+                    System.out.println("\n| OLD RESERVATION |");
+                    System.out.println("-------------------");
                     System.out.println((request.getOldReservation()).toString());
 
-                    System.out.println("\nNew Reservation: ");
-                    System.out.println("----------------");
+                    System.out.println("-------------------");
+                    System.out.println("\n| NEW RESERVATION |");
+                    System.out.println("-------------------");
                     System.out.println((request.getNewReservation()).toString());
 
                     System.out.println("\nOld Reservation have been updated to New Reservation.");
                 }
                 else if(request.getRequestDescription() == "Cancel Ticket Request"){
 
-                    System.out.println("Request Approved.");
+                    System.out.println("Request Approved.\n");
 
-                    System.out.println("\nReservation: ");
-                    System.out.println("-----------");
+                    System.out.println("---------------");
+                    System.out.println("\n| RESERVATION |");
+                    System.out.println("---------------");
                     System.out.println((request.getOldReservation()).toString());
 
                     System.out.println("\nReservation have been cancellation.");
@@ -300,11 +303,11 @@ public void checkRequestStatus(Reservation reservation){
 
             }
             else if(request.getRequestStatus()==rqStatus.REJECTED){
-                System.out.println("Request Rejected.");
+                System.out.println("Request Rejected.\n");
 
             }
             else
-                System.out.println("Request Pending.");
+                System.out.println("Request Pending.\n");
 
         }
             
