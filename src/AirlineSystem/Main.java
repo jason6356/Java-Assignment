@@ -216,21 +216,75 @@ public class Main {
 
         if(valid == true){
             System.out.println("Login Successful.");
-            
-            //Staff Menu 
-            System.out.println("Staff Menu");
-            System.out.println("==========");
-            System.out.println("1. Modify");
-            System.out.println("2. Delete");
-            System.out.println("3. Create staff account");
-            System.out.println("3. Check Request List");
+
+            int selection;
+            do{
+                //Staff Menu 
+                System.out.println("Staff Menu");
+                System.out.println("==========");
+                System.out.println("1. Modify Records");
+                System.out.println("2. Create staff account");
+                System.out.println("3. Check Request List");
+                System.out.println("4. Change Password");
+                System.out.print("Enter Selection: ");
+                selection = staffScanner.nextInt();
+
+                switch(selection){
+                    case 1:
+                        int choice;
+                        do{
+                            //modify records menu 
+                            System.out.println("Modify Records");
+                            System.out.println("1. Flights");
+                            System.out.println("2. Airline");
+                            System.out.println("3. Airport");
+                            System.out.println("4. Flight Schedule");
+                            System.out.println("5. Seats");
+                            System.out.print("Enter Choice: ");
+                            choice = staffScanner.nextInt();
+
+                            switch(choice){
+                                case 1: 
+                                    //call modify flights
+                                    break;
+                                case 2:
+                                    //call modify airline 
+                                    break;
+                                case 3:
+                                    //call modify airport
+                                    break;
+                                case 4:
+                                    //call modify flight schedule 
+                                    break;
+                                case 5:
+                                    //call modify seats 
+                                    break;
+                                default:
+                                    System.out.println("Invalid Input.");
+                                    break;
+                            }
+                        }while(choice!=1&&choice!=2&&choice!=3&&choice!=4&&choice!=5);
+                        break;
+                    case 2:
+                        //create staff account if staffid == S001
+                        break;
+                    case 3:
+                        //check request list 
+                        staffAccount.checkRequest();
+                        break; 
+                    case 4:
+                        //change password
+                        break;
+                    default:
+                        System.out.println("Invalid Input.");
+                        break;
+                }
+            }while(selection!=1&&selection!=2&&selection!=3);
             
         }else{
             System.out.println("Login Failed.");
         }
             
-
-
         staffScanner.close();
     }
 }
