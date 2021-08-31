@@ -1,14 +1,13 @@
 package AirlineSystem;
 import java.util.Scanner;
 import java.util.List;
-import java.util.ArrayList;
-
-public class Main {
+import java.time.*;
+import java.util.ArrayList;public class Main {
     //predefined data to store
     private static Staff staffAccount = new Staff();
     private static List<RegisteredAccount> accountList = new ArrayList<RegisteredAccount>();
     private static List<FlightSchedule> flightScheduleList = new ArrayList<FlightSchedule>();
-    private static List<Airport> airportList = new ArrayList<Airport>();
+    private static List<Airport> airportList = new ArrayList<Airport>();    
     private static List<Airline> airlineList = new ArrayList<Airline>();
     private static List<Flight> flightList = new ArrayList<Flight>();
     private static List<Request> requests = new ArrayList<Request>();
@@ -28,8 +27,7 @@ public class Main {
                 case 2:
                     //call the register account here
                     //implement the logic as well
-                    guestAcc = new RegisteredAccount();
-                    registerAccount();
+                    guestAcc = registerAccount();
                     break;
                 case 3:
                     //call the login function here, included with validation and loop
@@ -73,7 +71,42 @@ public class Main {
     }
 
     private static void insertDataToList(){
-            return;    
+        //Create 6 airports
+        airportList.add(new Airport("Changi Airport","Singapore"));
+        airportList.add(new Airport("Kuala Lumpur International Airport", "Malaysia"));
+        airportList.add(new Airport("Beijing Capital International Airport", "China"));
+        airportList.add(new Airport("Tokyo International Airport", "Japan"));
+        airportList.add(new Airport("Taiwan Taoyuan International Airport", "Taiwan"));
+        airportList.add(new Airport("Kota Kinabalu International Airport", "Malaysia"));
+
+        //Create Airlines
+        airlineList.add(new Airline("Singapore Airlines","S012"));
+        airlineList.add(new Airline("All Nippon Airways","N029"));
+        airlineList.add(new Airline("Thai Airways","T067"));
+        airlineList.add(new Airline("Japan Airlines","N087"));
+        airlineList.add(new Airline("Airasia", "A092"));
+        airlineList.add(new Airline("Malaysia Airlines", "M073"));
+        //Create 10 flights
+        flightList.add(new Flight(airlineList.get(0),100));
+        flightList.add(new Flight(airlineList.get(1),150));
+        flightList.add(new Flight(airlineList.get(2),100));
+        flightList.add(new Flight(airlineList.get(3),150));
+        flightList.add(new Flight(airlineList.get(4),100));
+        flightList.add(new Flight(airlineList.get(5),150));
+        flightList.add(new Flight(airlineList.get(0),100));
+
+        //Create FlightSchedules
+        //SG -> MY
+        flightScheduleList.add(new FlightSchedule(LocalTime.of(10,0,0),LocalDate.of(2021,10,25),airportList.get(0),airportList.get(1),LocalDateTime.of(2021,10,25,14,0,0),flightList.get(0)));
+        //MY -> SG
+        flightScheduleList.add(new FlightSchedule(LocalTime.of(18,0,0),LocalDate.of(2021,10,25),airportList.get(1),airportList.get(0),LocalDateTime.of(2021,10,25,22,0,0),flightList.get(0)));
+        //MY -> JP
+        flightScheduleList.add(new FlightSchedule(LocalTime.of(05,0,0),LocalDate.of(2021,9,22),airportList.get(1),airportList.get(3),LocalDateTime.of(2021,9,22,12,0),flightList.get(3)));
+        //JP -> CN
+        flightScheduleList.add(new FlightSchedule(LocalTime.of(14,0,0),LocalDate.of(2021,9,23),airportList.get(3),airportList.get(2),LocalDateTime.of(2021,9,22,12,0),flightList.get(1)));
+        //MY -> EAST MY
+        flightScheduleList.add(new FlightSchedule(LocalTime.of(15,0,0),LocalDate.of(2021,8,23),airportList.get(1),airportList.get(5),LocalDateTime.of(2021,8,23,18,0),flightList.get(5)));
+
     }
 
     public static List<Request> getRequests() {
@@ -89,7 +122,7 @@ public class Main {
     }
 
 
-    public static void registerAccount(){
+    public static RegisteredAccount registerAccount(){
 
         Scanner regScan = new Scanner(System.in);
         Account acc = new Account();
@@ -187,6 +220,7 @@ public class Main {
         regScan.close();
         accountList.add(register); // ADD TO ACCOUNTLIST
         register.welcome(); // can remove if dont want  line 210
+        return register;
     }
 
     public static void staffLogin(){

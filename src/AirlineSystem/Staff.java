@@ -53,6 +53,7 @@ public class Staff extends Account{
 
     public void checkRequest(){
         Scanner s = new Scanner(System.in);
+        char continueToModify;
         do{
             //Get RequestList
             List<Request> requestList = Main.getRequests();
@@ -67,9 +68,14 @@ public class Staff extends Account{
             String requestID = s.nextLine();
 
             //go to specific index of the list
-            Request requestToModify = requestList.get(requestList.indexOf(requestID) - 1);
+            Request requestToModify = null;
+            for (Request request : requestList) {
+                if(request.getRequestID() == requestID)
+                    requestToModify = request;
+            }
 
-            //Display details of the request
+            //Display details of the request 
+            //TODO : Check validaity of this Nicole!, if not found need to display error msgs
             System.out.println(requestToModify);
 
             //approve or reject
@@ -83,7 +89,7 @@ public class Staff extends Account{
             
             //if else for accept or reject request 
             if(Character.toUpperCase(choice) == 'Y'){
-                acceptRequest(requestToModify, requestID);
+                // acceptRequest(requestToModify);
             }
             else if (Character.toUpperCase(choice) == 'N'){
                 rejectRequest(requestToModify);
@@ -93,7 +99,7 @@ public class Staff extends Account{
             
             //continue to modify request? 
             System.out.print("Continue to modify request? (Y/N) ");
-            char continueToModify = s.next().charAt(0);
+            continueToModify = s.next().charAt(0);
 
             //validate continueToModify
             if(!super.validateOption(continueToModify)){
@@ -105,21 +111,16 @@ public class Staff extends Account{
         
     }
 
-    public void acceptRequest(Request request, String requestID){
-        //Get RequestList
-        List<Request> requestList = Main.getRequests();
+    // public void acceptRequest(Request request){
+    //     //Get RequestList
+    //     List<Request> requestList = Main.getRequests();
 
-        //change request status 
-        request.setRequestStatus(rqStatus.APPROVED);
+    //     //change request status 
+    //     request.setRequestStatus(rqStatus.APPROVED);
 
-        //call hui yi methods
-
-        //if request is cancel 
-        Request removeRequest = requestList.remove(requestList.indexOf(requestID) - 1);
-        
-        //if request is reschedule 
-        Request rescheduleRequest = requestList.set(requestList.indexOf(requestID) - 1, //reschedule);
-    }
+    //     //call hui yi methodss
+    //      //reschedule);
+    // }
 
     public void rejectRequest(Request request){
         //change request status 

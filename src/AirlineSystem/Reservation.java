@@ -16,6 +16,7 @@ public class Reservation {
     private FlightSchedule flight;
     // TODO: Do Specific Booked Seat!
 
+
     // Parameterized
     public Reservation(int noOfSeatBooked, double totalAmount, FlightSchedule flight) {
         this.reservationNo = makeReservationID();
@@ -24,7 +25,6 @@ public class Reservation {
         this.noOfSeatBooked = noOfSeatBooked;
         this.totalAmount = totalAmount;
         this.flight = flight;
-
         // sum of all the seat book in price
         reservationCount++;
     }

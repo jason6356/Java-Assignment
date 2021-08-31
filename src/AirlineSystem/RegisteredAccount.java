@@ -10,8 +10,8 @@ public class RegisteredAccount extends Account {
     private static int nthAcc = 0;
     private String accID;
 
-
     public RegisteredAccount() {
+        this("","","",null,'\0',0,"","");
     }
 
     public RegisteredAccount(String password, String firstName, String lastName, Address address,
@@ -168,8 +168,7 @@ public class RegisteredAccount extends Account {
    public void rescheduleTicket(Reservation reservation) {
     Scanner scanner = new Scanner (System.in);
     List<FlightSchedule> flightScheduleList = Main.getFlightSchedules();
-    Reservation newReservation = new Reservation(int noOfSeatBooked, double totalAmount, FlightSchedule flight);
-
+    Reservation newReservation = new Reservation();
     System.out.println("\nRESERVATION DETAILS\n"+ reservation.toString());
 
     System.out.println("\nAVAILABLE FLIGHT SCHEDULE");
