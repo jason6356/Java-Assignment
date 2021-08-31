@@ -11,9 +11,11 @@ public class Account {
     private String email;
     private String phoneNum;
 
+    //No-args Constructor
     public Account() {
+        this("","","",null,'\0',0,"","");
     }
-
+    //Parameterized Constructor
     public Account(String password, String firstName, String lastName, Address address, char gender, int age,
             String email, String phoneNum) {
 
@@ -28,7 +30,7 @@ public class Account {
 
     }
 
-    //getter
+    //Getter
     public String getPassword() {
         return password;
     }
@@ -61,7 +63,7 @@ public class Account {
         return phoneNum;
     }
 
-    // Setter
+    //Setter
     public void setPassword(String password) {
         this.password = password;
     }
@@ -94,8 +96,8 @@ public class Account {
         this.phoneNum = phoneNum;
     }
 
-    // methods
-
+    //Methods
+    
     public boolean validateEmailFormat(String email) {
         return email.matches("^(.+)@(.+)$"); // anything but must have "@"
     }
@@ -126,7 +128,4 @@ public class Account {
         return (Character.toUpperCase(option)=='Y' || Character.toUpperCase(option)=='N');
     
     }
-
-    
-
 }

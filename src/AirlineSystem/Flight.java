@@ -8,15 +8,29 @@ class Flight {
     private Airline airline;
     private int totalSeat;
     private List<Seat> seatList = new ArrayList<Seat>();
+    private static int nthFlight = 0;
 
     //Parameterized Constructor
-    Flight(String flightCode,Airline airline, int totalSeat){
+    Flight(Airline airline, int totalSeat){
 
-        this.flightCode = flightCode; //use a method
+         //use a method
+        this.flightCode = createFlightCode();
         this.airline = airline;
         this.totalSeat = totalSeat;
         seatList = createSeatList(totalSeat);
+        nthFlight++;
     }
+
+    private String createFlightCode(){
+        if(nthFlight < 10)
+            return "F00" + nthFlight;
+        else if(nthFlight < 100)
+            return "F0" + nthFlight;
+        else
+            return "F"+nthFlight;
+
+    }
+
     //No-args Constructor
     Flight(){
         this("",null,0);
