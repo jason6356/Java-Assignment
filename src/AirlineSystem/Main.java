@@ -4,7 +4,7 @@ import java.util.List;
 import java.time.*;
 import java.util.ArrayList;public class Main {
     //predefined data to store
-    private static Staff staffAccount = new Staff();
+    private static List<Staff> staffAccountList = new ArrayList<Staff>();
     private static List<RegisteredAccount> accountList = new ArrayList<RegisteredAccount>();
     private static List<FlightSchedule> flightScheduleList = new ArrayList<FlightSchedule>();
     private static List<Airport> airportList = new ArrayList<Airport>();    
@@ -12,9 +12,10 @@ import java.util.ArrayList;public class Main {
     private static List<Flight> flightList = new ArrayList<Flight>();
     private static List<Request> requests = new ArrayList<Request>();
     private static List<Reservation> reservations = new ArrayList<Reservation>();
+
     public static void main(String[] args){        
         Account guestAcc = new Account();
-        
+        insertDataToList();
         Scanner s = new Scanner(System.in);
         boolean leave = true;
         do{
@@ -22,21 +23,20 @@ import java.util.ArrayList;public class Main {
             leave = true;
             switch(choice){
                 case 1:
+                    //TODO: Nicole -> Search Available Flights Feature
                     guestAcc.searchAvailableFlights();
                     break;
                 case 2:
-                    //call the register account here
-                    //implement the logic as well
+                    //Register Account
                     guestAcc = registerAccount();
                     break;
                 case 3:
-                    //call the login function here, included with validation and loop
+                    //TODO: JunWei -> User Login
                     guestAcc = new RegisteredAccount();
                     break;
                 case 4:
-                    //staff login
-                    guestAcc = new Staff();
-                    staffLogin();
+                    //TODO: Nicole -> Staff Login
+                    guestAcc = staffLogin();
                     break;
                 default:
                     System.out.println("Invalid choice!!!");
@@ -47,15 +47,30 @@ import java.util.ArrayList;public class Main {
 
         //check whether the user is a guest or a registered account or staff
         if(guestAcc instanceof RegisteredAccount){
-            //all the registered account is here
+            //TODO : KangSheng -> Make Reservation
+            //TODO : KangSheng -> Confirm Ticket
+            //TODO : Junwei -> Payment
+            //TODO : Huiyi -> Check Reservation 
+            //TODO : Huiyi -> Cancel Ticket
+            //TODO : Huiyi -> Reschedule Ticket
+            //Update Profile (Done)
+
             System.out.println("This is a registered account instance");
         }
         else if(guestAcc instanceof Staff){
-            //staff module here
+            //TODO : Nicole -> add flight,airport,airline
+            //TODO : Nicole -> Check, accept, reject requests 
+            //TODO : Generate Report (Summary of profit, Ranking of most frequent flights made)
             System.out.println("This is a staff account instance");
         }
         else{
-            //guest account stuff here
+            //TODO : Nicole -> Prompt for either the user want to book a reservation
+            
+            //if yes -> ask to register or login
+                // if register -> call register account -> assign the output to guest account
+                // else if login - > call login account -> assign the login to guestAcc
+                // else validation input error
+            //else do nothing
             System.out.println("This is a guest account instance");
         }
 
@@ -107,6 +122,8 @@ import java.util.ArrayList;public class Main {
         //MY -> EAST MY
         flightScheduleList.add(new FlightSchedule(LocalTime.of(15,0,0),LocalDate.of(2021,8,23),airportList.get(1),airportList.get(5),LocalDateTime.of(2021,8,23,18,0),flightList.get(5)));
 
+        //Add a staff account
+        staffAccountList.add(new Staff("abc123","Nicole", "Lai",null,'f',13,"abcasdeawdsa","+08238123123"));
     }
 
     public static List<Request> getRequests() {
@@ -223,7 +240,7 @@ import java.util.ArrayList;public class Main {
         return register;
     }
 
-    public static void staffLogin(){
+    public static Staff staffLogin(){
         Scanner staffScanner = new Scanner(System.in);
 
         String[][] staffAcc = {
@@ -239,14 +256,19 @@ import java.util.ArrayList;public class Main {
         System.out.print("Password: ");
         String staffPwd = staffScanner.nextLine();
 
-        for(int i=0; i<staffAcc.length; i++){
-            for(int j=0; j<staffAcc[i].length; i++){
-                if((staffID == staffAcc[i][j]) || staffPwd == staffAcc[i][j])
-                    valid = true; 
-                else 
-                    valid = false; 
-            }
+        //Iterate the staff list from the main progra
+        for (Staff stf : staffAccountList) {
+            //perform checking
+            if(stf.getStaffID() == staffID)
+                if(stf.getPassword() == staffPwd){
+                    valid = true;
+                    return stf;
+                }
+            
+            valid = false;
         }
+
+        // if there no staff id and password then display error message and return null
 
         if(valid == true){
             System.out.println("Login Successful.");
