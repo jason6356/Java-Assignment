@@ -165,6 +165,7 @@ public class RegisteredAccount extends Account {
     scan.close();
    }
 
+//Reschedule Ticket
    public void rescheduleTicket(Reservation reservation) {
     Scanner scanner = new Scanner (System.in);
     List<FlightSchedule> flightScheduleList = Main.getFlightSchedules();
@@ -214,6 +215,7 @@ public class RegisteredAccount extends Account {
         scanner.close();
 }
 
+//Cancel Ticket
 public void cancelTicket(Reservation reservation) {
     Scanner scanner = new Scanner (System.in);
     
@@ -264,6 +266,7 @@ private static String makeAccID(){
     return "A" + nthAcc;
 }
 
+//Check Reservation
 public void checkRequestStatus(Reservation reservation){
     List<Request> requestList = Main.getRequests();
 
