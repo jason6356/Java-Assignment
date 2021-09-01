@@ -1,5 +1,8 @@
 package AirlineSystem;
 
+import java.util.Scanner;
+import java.util.List;
+
 public class Account {
 
     private String password;
@@ -108,7 +111,16 @@ public class Account {
 
 
     public void searchAvailableFlights() {
-        System.out.println("Searching available flights?");
+        Scanner searchFlight = new Scanner(System.in);
+        List<Flight> flightList = Main.getFlightList(); 
+        System.out.print("Search flight code: ");
+        String flightCode = searchFlight.nextLine();
+        for (Flight flight : flightList) {
+            if(flight.getFlightCode() == flightCode){
+                System.out.println(flight);
+            }
+        } //dk y cannot check 
+        searchFlight.close();
     }
 
     public boolean validateName(String name){

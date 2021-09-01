@@ -39,21 +39,29 @@ public class Staff extends Account{
 
     //method 
     public boolean addFilght(Flight flight){
-        //stub method
+        Scanner add = new Scanner(System.in);
+        List<Flight> flightList = Main.getFlightList();
+        
+
         return false;
     }
 
     public boolean addAirport(Airport airport){
+        List<Airport> airportList = Main.getAirportList();
+
         return false;
     }
 
     public boolean addAirline(Airline airline){
+        List<Airline> airlineList = Main.getAirlineList();
+
         return false;
     }
 
     public void checkRequest(){
         Scanner s = new Scanner(System.in);
         char continueToModify;
+        boolean valid = true;
         do{
             //Get RequestList
             List<Request> requestList = Main.getRequests();
@@ -85,6 +93,7 @@ public class Staff extends Account{
             //validate choice 
             if(!super.validateOption(choice)){
                 System.out.println("Invalid input.");
+                valid = false;
             }
             
             //if else for accept or reject request 
@@ -104,11 +113,11 @@ public class Staff extends Account{
             //validate continueToModify
             if(!super.validateOption(continueToModify)){
                 System.out.println("Invalid input.");
+                valid = false;
             }
-        }while(Character.toUpperCase(continueToModify) == 'Y'); //dk y cannot 
+        }while((Character.toUpperCase(continueToModify) == 'Y') || valid == false); 
 
         s.close();
-        
     }
 
     // public void acceptRequest(Request request){

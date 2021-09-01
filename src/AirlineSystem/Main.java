@@ -24,6 +24,7 @@ import java.util.ArrayList;public class Main {
             switch(choice){
                 case 1:
                     //TODO: Nicole -> Search Available Flights Feature
+                        //dk y cannot display the details of flights (after search)
                     guestAcc.searchAvailableFlights();
                     break;
                 case 2:
@@ -71,6 +72,39 @@ import java.util.ArrayList;public class Main {
                 // else if login - > call login account -> assign the login to guestAcc
                 // else validation input error
             //else do nothing
+            char yesNo;
+            boolean valid = true;
+            do{
+                System.out.print("Wish to make a reservation(Y/N)? ");
+                yesNo = s.next().charAt(0);
+                if(Character.toUpperCase(yesNo) == 'Y'){
+                    System.out.println("Register or Login (R/L)? ");
+                    char registerOrLogin = s.next().charAt(0);
+                    if(Character.toUpperCase(registerOrLogin) == 'R'){
+                        guestAcc = registerAccount();
+                    }
+
+                    if(Character.toUpperCase(registerOrLogin) == 'L'){
+                        //guestAcc = customerLogin();
+                    }
+
+                    //validate registerOrLogin
+                    if(!guestAcc.validateOption(registerOrLogin)){
+                        System.out.println("Invalid Input. Please enter again...");
+                        valid = false;
+                    }
+
+                }
+
+                //validate yesNo
+                if(!guestAcc.validateOption(yesNo)){
+                    System.out.println("Invalid Input. Please enter again...");
+                    valid = false;
+                }
+                
+            }while(valid == false);
+            
+
             System.out.println("This is a guest account instance");
         }
 
@@ -136,6 +170,18 @@ import java.util.ArrayList;public class Main {
 
     public static List<Reservation> getReservations() {
         return reservations;
+    }
+
+    public static List<Flight> getFlightList() {
+        return flightList;
+    }
+
+    public static List<Airport> getAirportList() {
+        return airportList;
+    }
+
+    public static List<Airline> getAirlineList() {
+        return airlineList;
     }
 
 
@@ -278,7 +324,9 @@ import java.util.ArrayList;public class Main {
                 //Staff Menu 
                 System.out.println("Staff Menu");
                 System.out.println("==========");
-                System.out.println("1. Modify Records");
+                System.out.println("1. Add Records");
+                System.out.println("2. Update Records");
+                System.out.println("3. Delete Records");
                 System.out.println("2. Create staff account");
                 System.out.println("3. Check Request List");
                 System.out.println("4. Change Password");
@@ -326,7 +374,7 @@ import java.util.ArrayList;public class Main {
                         break;
                     case 3:
                         //check request list 
-                        staffAccount.checkRequest();
+                        
                         break; 
                     case 4:
                         //change password
