@@ -38,24 +38,67 @@ public class Staff extends Account{
     }
 
     //method 
-    public boolean addFilght(Flight flight){
+    public void addFilght(){
         Scanner add = new Scanner(System.in);
         List<Flight> flightList = Main.getFlightList();
         
+        //Input details 
+        System.out.println("Add Flight");
+        System.out.println("==========");
+        System.out.print("Enter Airline Name: ");
+        String airlineName = add.nextLine();
+        System.out.print("Enter Airline Code: ");
+        String airlineCode = add.next();
+        System.out.print("Enter Total Seats: ");
+        int totalSeat = add.nextInt();
+        
+        //Create object 
+        Airline airline = new Airline(airlineName, airlineCode);
+        Flight flight = new Flight(airline, totalSeat);
+        flightList.add(flight);
 
-        return false;
+        //close scanner 
+        add.close();
     }
 
-    public boolean addAirport(Airport airport){
+    public void addAirport(){
+        Scanner add = new Scanner(System.in);
         List<Airport> airportList = Main.getAirportList();
 
-        return false;
+        //Input details 
+        System.out.println("Add Airport");
+        System.out.println("===========");
+        System.out.print("Enter Airport Name: ");
+        String airportName = add.nextLine();
+        System.out.print("Enter Location: ");
+        String location = add.nextLine();
+
+        //Create object 
+        Airport airport = new Airport(airportName, location);
+        airportList.add(airport);
+
+        //close scanner 
+        add.close();
     }
 
-    public boolean addAirline(Airline airline){
+    public void addAirline(){
+        Scanner add = new Scanner(System.in);
         List<Airline> airlineList = Main.getAirlineList();
 
-        return false;
+        //Input details 
+        System.out.println("Add Airline");
+        System.out.println("===========");
+        System.out.print("Enter Airline Name: ");
+        String airlineName = add.nextLine();
+        System.out.print("Enter Airline Code: ");
+        String airlineCode = add.next();
+
+        //Create object 
+        Airline airline = new Airline(airlineName, airlineCode);
+        airlineList.add(airline);
+
+        //close scanner 
+        add.close();
     }
 
     public void checkRequest(){

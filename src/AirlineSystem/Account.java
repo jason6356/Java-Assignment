@@ -113,13 +113,16 @@ public class Account {
     public void searchAvailableFlights() {
         Scanner searchFlight = new Scanner(System.in);
         List<Flight> flightList = Main.getFlightList(); 
-        System.out.print("Search flight code: ");
-        String flightCode = searchFlight.nextLine();
+        // System.out.print("Search flight code: ");
+        // String flightCode = searchFlight.nextLine();
+        // for (Flight flight : flightList) {
+        //     if(flight.getFlightCode() == flightCode){
+        //         System.out.println(flight);
+        //     }
+        // } //dk y cannot check 
         for (Flight flight : flightList) {
-            if(flight.getFlightCode() == flightCode){
-                System.out.println(flight);
-            }
-        } //dk y cannot check 
+            System.out.println(flight);
+        }
         searchFlight.close();
     }
 

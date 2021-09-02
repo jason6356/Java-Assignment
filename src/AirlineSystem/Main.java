@@ -77,13 +77,16 @@ import java.util.ArrayList;public class Main {
             do{
                 System.out.print("Wish to make a reservation(Y/N)? ");
                 yesNo = s.next().charAt(0);
+
                 if(Character.toUpperCase(yesNo) == 'Y'){
                     System.out.println("Register or Login (R/L)? ");
                     char registerOrLogin = s.next().charAt(0);
+                    //Register account 
                     if(Character.toUpperCase(registerOrLogin) == 'R'){
                         guestAcc = registerAccount();
                     }
 
+                    //Login account 
                     if(Character.toUpperCase(registerOrLogin) == 'L'){
                         //guestAcc = customerLogin();
                     }
