@@ -421,6 +421,8 @@ public void checkRequestStatus(Reservation reservation){
                 System.out.println("Request Pending.\n");
 
         }
+        else
+            System.out.println("Reservation has no request.\n");
             
     }
 
