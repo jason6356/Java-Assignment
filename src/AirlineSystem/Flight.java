@@ -33,7 +33,7 @@ class Flight {
 
     //No-args Constructor
     Flight(){
-        this("",null,0);
+        this(null,0);
     }
 
     public String getFlightCode(){
@@ -76,14 +76,21 @@ class Flight {
             return null;
     
         List<Seat> seatList = new ArrayList<Seat>();
-        //Set the totalSeat in the Seat ClassF
+        //Set the totalSeat in the Seat Class
         //There are some comments before the Seat Class
-        Seat.setTotalSeat(totalSeat);
-
+        char col = 'A';
+        int row = 1;
+        String seatNo;
         for(int i = 0; i < totalSeat; i++){
-            seatList.add(new Seat());
-       }
-
+            
+            if(col > 'H'){
+                col = 'A';
+                row++;
+            }
+            seatNo = String.format("%c%d", col,row);
+            seatList.add(new Seat(seatNo));
+            col++;
+        }
        return seatList;
     }
 

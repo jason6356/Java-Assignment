@@ -10,23 +10,12 @@ enum sClass {
  */
 
 class Seat {
-    private static int totalSeat = 0;
-    private static char seatCol = 'A';
-    private static int seatRow = 1;
     private String seatNo;
     protected sClass seatClass;
     //No-args Constructor
-    Seat(){ 
-        this.seatNo = createSeatNo();
+    Seat(String seatNo){ 
+        this.seatNo = seatNo;
         this.seatClass = createSeatClass();
-        seatCol++;
-        //Reset the seatCol and seatRow once the List of Seats is done created
-        if(totalSeat == 0){
-            seatCol = 'A';
-            seatRow = '1';
-        }
-        //decrement the total amount of seat to be created
-        totalSeat--;
     }
 
     //Getter and setters
@@ -41,13 +30,6 @@ class Seat {
     }
     public void setSeatClass(sClass seatClass) {
         this.seatClass = seatClass;
-    }
-    public static void setTotalSeat(int totalSeat) {
-        Seat.totalSeat = totalSeat;
-    }
-
-    public static int getTotalSeat(){
-        return totalSeat;
     }
 
     /**
@@ -64,13 +46,7 @@ class Seat {
      * Algorithm to create a SeatID in sequence
      * @return SeatNo
      */
-    private String createSeatNo(){
-        if(seatCol > 'H'){ 
-            seatCol = 'A';
-            seatRow++;
-        }
-        return String.format("%c%d", seatCol,seatRow);
-    }
+
 
     /**
      * Algorithm to create a SeatClass according to the location of the seat

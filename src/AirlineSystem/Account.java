@@ -110,20 +110,19 @@ public class Account {
     }//Minimum 7 characters, at least one letter and one number
 
 
-    public void searchAvailableFlights() {
-        Scanner searchFlight = new Scanner(System.in);
+    public void searchAvailableFlights(Scanner searchFlight) {
+        
         List<Flight> flightList = Main.getFlightList(); 
-        // System.out.print("Search flight code: ");
-        // String flightCode = searchFlight.nextLine();
-        // for (Flight flight : flightList) {
-        //     if(flight.getFlightCode() == flightCode){
-        //         System.out.println(flight);
-        //     }
-        // } //dk y cannot check 
+        System.out.print("Search flight code: ");
+        String flightCode = searchFlight.nextLine();
+        for (Flight flight : flightList) {
+            if(flight.getFlightCode() == flightCode){
+                System.out.println(flight);
+            }
+        } //dk y cannot check 
         for (Flight flight : flightList) {
             System.out.println(flight);
         }
-        searchFlight.close();
     }
 
     public boolean validateName(String name){

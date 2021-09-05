@@ -52,11 +52,19 @@ public void makeReservation(Scanner sc){
     String location = sc.next();
     boolean found = false;
 
-    //Print the flightschedules the user wants 
+    System.out.println("Available Flight Schedules");
+    System.out.println("Depart Country : " + location);
+    System.out.println("Arrive Country : " + destination);
+    System.out.printf("%10s       |%5s|%20s|%20s|%16s|  Direction |\n","DepartDate","Time","Location","Destination","Estimated Arrival Time");
+    //Print the flightschedules the user wants
+    int i = 1;
+    int lowerLimit = 1;
     for (FlightSchedule flightSchedule : fsList) {
         if(flightSchedule.getLocation().getLocation().equals(location) && flightSchedule.getDestination().getLocation().equals(destination)){
+            System.out.print(i + " ");
             System.out.println(flightSchedule);
             found = true;
+            i++;
         }
     }
 
@@ -69,7 +77,16 @@ public void makeReservation(Scanner sc){
             System.out.println("Invalid Input");
             System.out.print("Would u like to book it ? (Y/N) - ");
             choice = sc.next().charAt(0);
+        }
 
+        if(choice == 'Y'){
+            //Display Flight Seats
+
+            //Let user key in number of people
+
+            //Loop through n times when buying the seat
+
+            //
         }
     }
     else

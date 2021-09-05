@@ -15,9 +15,9 @@ class fSeat extends Seat {
     private final double ECONOMY_SEAT_PRICE = 750.00;
 
     //no-args constructor
-    public fSeat(){
+    public fSeat(String seatNo){
         //Default Seat
-        super();
+        super(seatNo);
         //Assigning Price with its class type
         this.seatPrice = this.seatClass == sClass.BUSSINESS ? BUSSINESS_SEAT_PRICE : ECONOMY_SEAT_PRICE;
         this.seatStatus = sStatus.NOTSEATED;
@@ -26,6 +26,9 @@ class fSeat extends Seat {
     //getter and setter
     public double getSeatPrice() {
         return seatPrice;
+    }
+    public sStatus getSStatus(){
+        return seatStatus;
     }
     public sStatus getSeatStatus() {
         return seatStatus;

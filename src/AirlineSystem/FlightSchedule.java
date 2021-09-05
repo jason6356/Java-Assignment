@@ -24,13 +24,26 @@ public class FlightSchedule {
         flightSeat = makefSeatList(flight.getTotalSeat());
     }
 
+    private String convertDateToString(){
+        return flightDate.getYear() + "-" + flightDate.getMonth() + "-" + flightDate.getDayOfMonth();
+    }
+
+    private String convertTimeToString(){
+        return departureTime.getHour() + ":" + departureTime.getMinute();
+    }
+
+    private String convertLocalDateTimeToString(){
+        return estimatedArrivalTime.getYear() + "-" + estimatedArrivalTime.getMonthValue() + "-" + estimatedArrivalTime.getDayOfMonth() + " " + estimatedArrivalTime.getHour() + ":" + estimatedArrivalTime.getMinute();
+    }
+
     //TODO: Refactor this toString method
     //ToString
     public String toString() {
-        return String.format("DepartureTime : ");
+        //| DepartDate | DepartTime | Depart Airport | Destination Airport | Estimated Time | Direction |
+        return String.format("%10s|%5s|%-20s|%-20s|%10s|%10s -> %10s|", convertDateToString(),convertTimeToString(),location.getAirportName(),destination.getAirportName(),convertLocalDateTimeToString(),location.getLocation(),destination.getLocation());
     }
 
-    public LocalDateTime getDepartureTime() {
+    public LocalTime getDepartureTime() {
         return departureTime;
     }
     public Airport getDestination() {
@@ -39,7 +52,7 @@ public class FlightSchedule {
     public Flight getFlight() {
         return flight;
     }
-    public LocalDateTime getFlightDate() {
+    public LocalDate getFlightDate() {
         return flightDate;
     }
     public List<fSeat> getFlightSeat() {
@@ -61,12 +74,61 @@ public class FlightSchedule {
     private static List<fSeat> makefSeatList(int totalSeats){
         if(totalSeats == 0)
             return null;
-        fSeat.setTotalSeat(totalSeats);
-        
-        List<fSeat> fSeatList = new ArrayList<fSeat>();
-        for(int i = 0; i < totalSeats; i++)
-            fSeatList.add(new fSeat());
 
+        List<fSeat> fSeatList = new ArrayList<fSeat>();
+        char col = 'A';
+        int row = 1;
+        String seatNo;
+        for(int i = 0; i < totalSeats; i++){
+            
+            if(col > 'H'){
+                col = 'A';
+                row++;
+            }
+            seatNo = String.format("%c%d", col,row);
+            fSeatList.add(new fSeat(seatNo));
+            col++;
+        }
         return fSeatList;
+    }
+    // //front cabinet
+    // A B  C D E F  G H
+    // [][] [][][][] [][]
+    // [][] [][][][] [][]
+    // [][] [][][][] [][]
+    // [][] [][][][] [][]
+
+    // //back cabinet
+
+    public void displaySeats(){
+        System.out.println("  A  B   C  D  E  F   G  H ");
+        int row = 0;
+        int col = 9;
+        for (fSeat seat : flightSeat) 
+        {
+            if(col > 8){
+                System.out.println();
+                row++;
+                System.out.print(row);
+                col = 1;
+            }
+            else if(col == 3 || col == 7){
+                System.out.print(" ");
+            }
+            
+            if(seat.getSStatus() == sStatus.SEATED){
+                System.out.print("[X]");
+            }
+            else{
+                if(seat.getSeatClass() == sClass.BUSSINESS){
+                    System.out.print("[B]");
+                }
+                else
+                    System.out.print("[E]");
+            }
+            col++;
+        }
+        //Next line
+        System.out.println();
     }
 }

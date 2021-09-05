@@ -28,7 +28,7 @@ public class Main {
                 case 1:
                     // TODO: Nicole -> Search Available Flights Feature
                     // dk y cannot display the details of flights (after search)
-                    guestAcc.searchAvailableFlights();
+                    guestAcc.searchAvailableFlights(s);
                     break;
                 case 2:
                     // Register Account
@@ -79,6 +79,7 @@ public class Main {
                         break;
                     case 2:
                         // TODO : KangSheng -> Make Reservation
+                        ((RegisteredAccount)guestAcc).makeReservation(s);
                         break;
                     case 3:
                         // TODO : KangSheng -> Confirm Ticket
@@ -397,7 +398,7 @@ public class Main {
 
             valid = false;
         }
-
+        
         // if there no staff id and password then display error message and return null
 
         if (valid == true) {
@@ -472,7 +473,7 @@ public class Main {
         } else {
             System.out.println("Login Failed.");
         }
-
         staffScanner.close();
+        return null;
     }
 }
