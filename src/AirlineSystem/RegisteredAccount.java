@@ -2,13 +2,14 @@ package AirlineSystem;
 
 import java.util.List;
 import java.util.Scanner;
-
-
+import java.util.List;
+import java.util.ArrayList;
 
 public class RegisteredAccount extends Account {
 
     private static int nthAcc = 0;
     private String accID;
+    private List<Reservation> reservations = new ArrayList<Reservation>();
 
     public RegisteredAccount() {
         this("","","",null,'\0',0,"","");
@@ -29,12 +30,54 @@ public class RegisteredAccount extends Account {
     public static int getNthAcc() {
         return nthAcc;
     }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
     
     //setter
 
 
-    //methods
-    public void updateProfile(){
+//methods
+public void makeReservation(Scanner sc){
+
+    //Input, Country from another country ->
+    List<FlightSchedule> fsList = Main.getFlightSchedules();
+    FlightSchedule fs;
+
+    System.out.println("Reservation Form");
+    System.out.print("Enter the country u would like to go - ");
+    String destination = sc.next();
+    System.out.print("Enter the country u are currently at - ");
+    String location = sc.next();
+    boolean found = false;
+
+    //Print the flightschedules the user wants 
+    for (FlightSchedule flightSchedule : fsList) {
+        if(flightSchedule.getLocation().getLocation().equals(location) && flightSchedule.getDestination().getLocation().equals(destination)){
+            System.out.println(flightSchedule);
+            found = true;
+        }
+    }
+
+    if(found){
+        System.out.println("Found!");
+        System.out.print("Would u like to book it ? (Y/N) - ");
+        char choice = sc.next().charAt(0);
+        //validate choice
+        while(Character.toUpperCase(choice) != 'Y' && Character.toUpperCase(choice) != 'N'){
+            System.out.println("Invalid Input");
+            System.out.print("Would u like to book it ? (Y/N) - ");
+            choice = sc.next().charAt(0);
+
+        }
+    }
+    else
+        System.out.println("No Such country found!");
+
+}
+
+public void updateProfile(){
         Scanner scan = new Scanner (System.in);
         char another;
     do{
@@ -166,7 +209,7 @@ public class RegisteredAccount extends Account {
    }
 
 //Reschedule Ticket
-   public void rescheduleTicket(Reservation reservation) {
+public void rescheduleTicket(Reservation reservation) {
     Scanner scanner = new Scanner (System.in);
     List<FlightSchedule> flightScheduleList = Main.getFlightSchedules();
     Reservation newReservation = new Reservation();
