@@ -101,8 +101,8 @@ public class Staff extends Account{
         add.close();
     }
 
-    //update flights
-    public void updateFlights(){
+    //update or delete flights 
+    public void updateDeleteFlights(int choice){
         Scanner update = new Scanner(System.in);
         List<Flight> flightList = Main.getFlightList();
 
@@ -111,8 +111,14 @@ public class Staff extends Account{
             System.out.println(flight.toString());
         }
 
-        //Enter Flight code to update 
-        System.out.print("Flight Code to update: ");
+        if(choice == 1){
+            System.out.println("Update Flight");
+        }else{
+            System.out.println("Delete Flight");
+        }
+        //Enter Flight code 
+        System.out.println("-------------");
+        System.out.print("Flight Code: ");
         String flightCode = update.nextLine();
 
         //get index 
@@ -122,25 +128,29 @@ public class Staff extends Account{
                 updateIndex = i;
         }
 
-        //Input Details 
-        System.out.println("Update Flight");
-        System.out.println("=============");
-        System.out.print("Enter Airline Name: ");
-        String airlineName = update.nextLine();
-        System.out.print("Enter Airline Code: ");
-        String airlineCode = update.next();
-        System.out.print("Enter Total Seats: ");
-        int totalSeat = update.nextInt();
+        if(choice == 1){
+            //Input Details 
+            System.out.println("Update Flight Details");
+            System.out.println("=====================");
+            System.out.print("Enter Airline Name: ");
+            String airlineName = update.nextLine();
+            System.out.print("Enter Airline Code: ");
+            String airlineCode = update.next();
+            System.out.print("Enter Total Seats: ");
+            int totalSeat = update.nextInt();
 
-        //Create object 
-        Airline airline = new Airline(airlineName, airlineCode);
-        Flight flight = new Flight(airline, totalSeat);
-        flightList.set(updateIndex, flight);
+            //Create object 
+            Airline airline = new Airline(airlineName, airlineCode);
+            Flight flight = new Flight(airline, totalSeat);
+            flightList.set(updateIndex, flight);
+        }else{
+            flightList.remove(updateIndex);
+        }
 
         update.close();
     }
-    //update airline
-    public void updateAirline(){
+    //update or delete airline
+    public void updateDeleteAirline(int choice){
         Scanner update = new Scanner(System.in);
         List<Airline> airlineList = Main.getAirlineList();
 
@@ -149,28 +159,152 @@ public class Staff extends Account{
             System.out.println(airline.toString());
         }
 
-        //Input details 
-        System.out.println("Add Airline");
-        System.out.println("===========");
-        System.out.print("Enter Airline Name: ");
-        String airlineName = update.nextLine();
-        System.out.print("Enter Airline Code: ");
-        String airlineCode = update.next();
+        if(choice == 1){
+            System.out.println("Update Airline");
+        }else{
+            System.out.println("Delete Airline");
+        }
 
-        //Create object 
-        Airline airline = new Airline(airlineName, airlineCode);
-        airlineList.add(airline);
+        //Input airline code to update 
+        System.out.println("--------------");
+        System.out.print("Airline Code: ");
+        String updateAirlineCode = update.nextLine();
+
+        //get index 
+        int updateIndex = 0;
+        for(int i=0; i<airlineList.size(); i++){
+            if(airlineList.get(i).getAirlineCode() == updateAirlineCode)
+                updateIndex = i;
+            i++;
+        }
+
+        if(choice == 1){
+            //Input details 
+            System.out.println("Update Airline");
+            System.out.println("==============");
+            System.out.print("Enter Airline Name: ");
+            String airlineName = update.nextLine();
+            System.out.print("Enter Airline Code: ");
+            String airlineCode = update.next();
+
+            //Create object 
+            Airline airline = new Airline(airlineName, airlineCode);
+            airlineList.set(updateIndex, airline); 
+        }else{
+            airlineList.remove(updateIndex); 
+        }
+        
+        update.close();
+    }
+    //update or delete airport 
+    public void updateDeleteAirport(int choice){
+        Scanner update = new Scanner(System.in);
+        List<Airport> airportList = Main.getAirportList();
+        
+        //Display details 
+        for (Airport airport : airportList) {
+            System.out.println(airport.toString());
+        }
+
+        if(choice == 1){
+            System.out.println("Update Airport");
+        }else{
+            System.out.println("Delete Airport");
+        }
+        //Input airport name to update 
+        System.out.println("--------------");
+        System.out.print("Airport Name: ");
+        String updateAirportName = update.nextLine();
+
+        //get index 
+        int updateIndex = 0;
+        for(int i=0; i<airportList.size(); i++){
+            if(airportList.get(i).getAirportName() == updateAirportName)
+                updateIndex = i;
+            i++;
+        }
+
+        if(choice == 1){
+            //Input details 
+            System.out.println("Update Airport");
+            System.out.println("==============");
+            System.out.print("Airport Name: ");
+            String airportName = update.nextLine();
+            System.out.print("Location: ");
+            String location = update.nextLine();
+
+            //Create object 
+            Airport airport = new Airport(airportName, location);
+            airportList.set(updateIndex, airport);
+        }else{
+            airportList.remove(updateIndex);
+        }
+        
+        update.close();
+    }
+    //update or delete flightschedule
+    public void updateDeleteFlightSchedule(int choice){
+        Scanner update = new Scanner(System.in);
+        List<FlightSchedule> flightScheduleList = Main.getFlightSchedules();
+
+        //Display Details 
+        for (FlightSchedule flightSchedule : flightScheduleList) {
+            System.out.println(flightSchedule.toString());
+        }
+
+        if(choice == 1){
+            System.out.println("Update Flight Schedule");
+        }else{
+            System.out.println("Delete Flight Schedule");
+        }
+        //Input 
+        //dk wat to enter for update 
+
+        //get index 
+        // int updateIndex = 0;
+        // for(int i=0; i<flightScheduleList.size(); i++){
+        //     if()
+        //         updateIndex = i;
+        //     i++;
+        // }
+
+        if(choice == 1){
+            //Input Details 
+            System.out.println("Update Flight Schedule");
+            System.out.println("======================");
+            System.out.print("Departure Time: ");
+            String departureTime = update.nextLine();
+            System.out.print("Flight Date: ");
+            String flightDate = update.nextLine();
+            System.out.print("Location - Airport Name: ");
+            String airportName = update.nextLine();
+            System.out.print("         - Location: ");
+            String locationAirport = update.nextLine();
+            System.out.print("Destination - Airport Name: ");
+            String destinationAirport = update.nextLine();
+            System.out.print("            - Location: ");
+            String destinationLocation = update.nextLine();
+            System.out.print("Estimated Arrival Time: ");
+            String estimatedArrivalTime = update.nextLine();
+            System.out.print("Airline - Name: ");
+            String airlineName = update.nextLine();
+            System.out.print("        - Code: ");
+            String airlineCode = update.nextLine();
+            System.out.print("Total Seat: ");
+            int totalSeat = update.nextInt();
+
+            //Create object 
+            Airport location = new Airport(airportName, locationAirport);
+            Airport destination = new Airport(destinationAirport, destinationLocation);
+            Airline airline = new Airline(airlineName, airlineCode);
+            Flight flight = new Flight(airline, totalSeat);
+            FlightSchedule flightSchedule = new FlightSchedule(departureTime, flightDate, location, destination, estimatedArrivalTime, flight);
+        }
 
         update.close();
     }
-    //update airport 
-    //update flightschedule
-    //update seats 
+    //update or delete seats 
 
-    //delete flights 
-    //delete airline 
-    //delete airport 
-    //delete flightschedule 
     //delete seats 
 
     //create staff if staffID == S001 
@@ -253,5 +387,5 @@ public class Staff extends Account{
         request.setRequestStatus(rqStatus.REJECTED);
     }
 
-    //TODO: change password 
+    //change password 
 }

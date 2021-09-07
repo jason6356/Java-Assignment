@@ -111,18 +111,23 @@ public class Account {
 
 
     public void searchAvailableFlights(Scanner searchFlight) {
-        
+        Scanner search = new Scanner(System.in);
         List<Flight> flightList = Main.getFlightList(); 
+
+        //Input Flight Details
         System.out.print("Search flight code: ");
         String flightCode = searchFlight.nextLine();
-        for (Flight flight : flightList) {
-            if(flight.getFlightCode() == flightCode){
-                System.out.println(flight);
-            }
-        } //dk y cannot check 
-        for (Flight flight : flightList) {
-            System.out.println(flight);
+
+        //get index 
+        int flightIndex = 0;
+        for(int i=0; i<flightList.size(); i++){
+            if(flightList.get(i).getFlightCode() == flightCode)
+                flightIndex = i;
+            i++;
         }
+
+        System.out.println(flightList.get(flightIndex));
+        search.close();
     }
 
     public boolean validateName(String name){
