@@ -140,8 +140,8 @@ public class Main {
 
             } while (selection < 1 && selection > 7);
         } else if (guestAcc instanceof Staff) {
-            // TODO : Nicole -> add flight,airport,airline
-            // TODO : Nicole -> Check, accept, reject requests
+            // TODO : Nicole -> add flight,airport,airline (done)
+            // TODO : Nicole -> Check(done), accept, reject requests
             // TODO : Generate Report (Summary of profit, Ranking of most frequent flights
             // made)
             System.out.println("This is a staff account instance");
@@ -400,6 +400,9 @@ public class Main {
         }
         
         // if there no staff id and password then display error message and return null
+        if(valid == false){
+            return null;
+        }
 
         if (valid == true) {
             System.out.println("Login Successful.");
@@ -412,57 +415,138 @@ public class Main {
                 System.out.println("1. Add Records");
                 System.out.println("2. Update Records");
                 System.out.println("3. Delete Records");
-                System.out.println("2. Create staff account");
-                System.out.println("3. Check Request List");
-                System.out.println("4. Change Password");
+                System.out.println("4. Create staff account");
+                System.out.println("5. Check Request List");
+                System.out.println("6. Change Password");
+                System.out.println("7. Back to Main Menu");
                 System.out.print("Enter Selection: ");
                 selection = staffScanner.nextInt();
 
+                int choice;
                 switch (selection) {
                     case 1:
-                        int choice;
+                        
                         do {
                             // modify records menu
-                            System.out.println("Modify Records");
+                            System.out.println("Add Records");
+                            System.out.println("===========");
                             System.out.println("1. Flights");
                             System.out.println("2. Airline");
                             System.out.println("3. Airport");
-                            System.out.println("4. Flight Schedule");
-                            System.out.println("5. Seats");
+                            System.out.println("4. Back to Staff Menu");
                             System.out.print("Enter Choice: ");
                             choice = staffScanner.nextInt();
 
                             switch (choice) {
                                 case 1:
-                                    // call modify flights
+                                    // call add flights from staff 
                                     break;
                                 case 2:
-                                    // call modify airline
+                                    // call add airline from staff 
                                     break;
                                 case 3:
-                                    // call modify airport
+                                    // call madd airport from staff 
                                     break;
-                                case 4:
-                                    // call modify flight schedule
-                                    break;
-                                case 5:
-                                    // call modify seats
+                                case 4: 
+                                    //back to staff menu 
                                     break;
                                 default:
                                     System.out.println("Invalid Input.");
                                     break;
                             }
-                        } while (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5);
+                        } while (choice != 1 && choice != 2 && choice != 3 && choice != 4);
                         break;
-                    case 2:
-                        // create staff account if staffid == S001
-                        break;
-                    case 3:
-                        // check request list
+                    case 2: 
+                        //update records 
+                        do{
+                            // modify records menu
+                            System.out.println("Update Records");
+                            System.out.println("==============");
+                            System.out.println("1. Flights");
+                            System.out.println("2. Airline");
+                            System.out.println("3. Airport");
+                            System.out.println("4. Flight Schedule");
+                            System.out.println("5. Seats");
+                            System.out.println("6. Back to Staff Menu");
+                            System.out.print("Enter Choice: ");
+                            choice = staffScanner.nextInt();
 
+                            switch(choice){
+                                case 1:
+                                    //update flights 
+                                    break;
+                                case 2: 
+                                    //update airline 
+                                    break;
+                                case 3:
+                                    //update airport 
+                                    break;
+                                case 4:
+                                    //update flight schedule 
+                                    break;
+                                case 5:
+                                    //update seats 
+                                    break;
+                                case 6:
+                                    //back to staff menu
+                                    break;
+                                default:
+                                System.out.println("Invalid Input.");
+                                break;
+                            }
+                        }while(choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5 && choice != 6);
+                        break;
+                    case 3: 
+                        //delete records 
+                        do{
+                            // modify records menu
+                            System.out.println("Delete Records");
+                            System.out.println("==============");
+                            System.out.println("1. Flights");
+                            System.out.println("2. Airline");
+                            System.out.println("3. Airport");
+                            System.out.println("4. Flight Schedule");
+                            System.out.println("5. Seats");
+                            System.out.println("6. Back to Staff Menu");
+                            System.out.print("Enter Choice: ");
+                            choice = staffScanner.nextInt();
+
+                            switch(choice){
+                                case 1:
+                                    //delete flights 
+                                    break;
+                                case 2: 
+                                    //delete airline 
+                                    break;
+                                case 3:
+                                    //delete airport 
+                                    break;
+                                case 4:
+                                    //delete flight schedule 
+                                    break;
+                                case 5:
+                                    //delete seats 
+                                    break;
+                                case 6:
+                                    //back to staff menu
+                                    break;
+                                default:
+                                System.out.println("Invalid Input.");
+                                break;
+                            }
+                        }while(choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5 && choice != 6);
                         break;
                     case 4:
+                        // create staff account if staffid == S001
+                        break;
+                    case 5:
+                        // check request list
+                        break;
+                    case 6:
                         // change password
+                        break;
+                    case 7:
+                        //back to main menu 
                         break;
                     default:
                         System.out.println("Invalid Input.");

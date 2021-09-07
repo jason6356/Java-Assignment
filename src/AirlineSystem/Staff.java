@@ -101,8 +101,82 @@ public class Staff extends Account{
         add.close();
     }
 
+    //update flights
+    public void updateFlights(){
+        Scanner update = new Scanner(System.in);
+        List<Flight> flightList = Main.getFlightList();
+
+        //Display flight details 
+        for (Flight flight : flightList) {
+            System.out.println(flight.toString());
+        }
+
+        //Enter Flight code to update 
+        System.out.print("Flight Code to update: ");
+        String flightCode = update.nextLine();
+
+        //get index 
+        int updateIndex = 0;
+        for(int i=0; i<flightList.size(); i++){
+            if(flightList.get(i).getFlightCode()== flightCode)
+                updateIndex = i;
+        }
+
+        //Input Details 
+        System.out.println("Update Flight");
+        System.out.println("=============");
+        System.out.print("Enter Airline Name: ");
+        String airlineName = update.nextLine();
+        System.out.print("Enter Airline Code: ");
+        String airlineCode = update.next();
+        System.out.print("Enter Total Seats: ");
+        int totalSeat = update.nextInt();
+
+        //Create object 
+        Airline airline = new Airline(airlineName, airlineCode);
+        Flight flight = new Flight(airline, totalSeat);
+        flightList.set(updateIndex, flight);
+
+        update.close();
+    }
+    //update airline
+    public void updateAirline(){
+        Scanner update = new Scanner(System.in);
+        List<Airline> airlineList = Main.getAirlineList();
+
+        //Display airline details 
+        for (Airline airline : airlineList) {
+            System.out.println(airline.toString());
+        }
+
+        //Input details 
+        System.out.println("Add Airline");
+        System.out.println("===========");
+        System.out.print("Enter Airline Name: ");
+        String airlineName = update.nextLine();
+        System.out.print("Enter Airline Code: ");
+        String airlineCode = update.next();
+
+        //Create object 
+        Airline airline = new Airline(airlineName, airlineCode);
+        airlineList.add(airline);
+
+        update.close();
+    }
+    //update airport 
+    //update flightschedule
+    //update seats 
+
+    //delete flights 
+    //delete airline 
+    //delete airport 
+    //delete flightschedule 
+    //delete seats 
+
+    //create staff if staffID == S001 
+
     public void checkRequest(){
-        Scanner s = new Scanner(System.in);
+        Scanner check = new Scanner(System.in);
         char continueToModify;
         boolean valid = true;
         do{
@@ -116,7 +190,7 @@ public class Staff extends Account{
 
             //input requestID 
             System.out.print("Enter Request ID: ");
-            String requestID = s.nextLine();
+            String requestID = check.nextLine();
 
             //go to specific index of the list
             Request requestToModify = null;
@@ -131,7 +205,7 @@ public class Staff extends Account{
 
             //approve or reject
             System.out.print("Approve (Y/y) or Reject (N/n): ");
-            char choice = s.next().charAt(0);
+            char choice = check.next().charAt(0);
 
             //validate choice 
             if(!super.validateOption(choice)){
@@ -151,7 +225,7 @@ public class Staff extends Account{
             
             //continue to modify request? 
             System.out.print("Continue to modify request? (Y/N) ");
-            continueToModify = s.next().charAt(0);
+            continueToModify = check.next().charAt(0);
 
             //validate continueToModify
             if(!super.validateOption(continueToModify)){
@@ -160,7 +234,7 @@ public class Staff extends Account{
             }
         }while((Character.toUpperCase(continueToModify) == 'Y') || valid == false); 
 
-        s.close();
+        check.close();
     }
 
     // public void acceptRequest(Request request){
@@ -178,4 +252,6 @@ public class Staff extends Account{
         //change request status 
         request.setRequestStatus(rqStatus.REJECTED);
     }
+
+    //TODO: change password 
 }
