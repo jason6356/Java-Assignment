@@ -1,6 +1,8 @@
 package AirlineSystem;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.List;
 
 enum rStatus {
     PENDING, BOOKED, PAID
@@ -14,24 +16,24 @@ public class Reservation {
     private int noOfSeatBooked;
     private double totalAmount;
     private FlightSchedule flight;
-    // TODO: Do Specific Booked Seat!
-
+    private static HashMap<Reservation, List<fSeat>> seatMap = new HashMap<Reservation,List<fSeat>>();
 
     // Parameterized
-    public Reservation(int noOfSeatBooked, double totalAmount, FlightSchedule flight) {
+    public Reservation(int noOfSeatBooked,FlightSchedule flight,List<fSeat> bookedSeats) {
         this.reservationNo = makeReservationID();
         this.reservationTime = LocalDateTime.now(); // get the current time
         this.reservationStatus = rStatus.PENDING; // default value
         this.noOfSeatBooked = noOfSeatBooked;
-        this.totalAmount = totalAmount;
+        this.totalAmount = calculateTotalAmount(bookedSeats);
         this.flight = flight;
+        seatMap.put(this, bookedSeats);
         // sum of all the seat book in price
         reservationCount++;
     }
 
     // Default
     public Reservation() {
-        this(0, 0.0, null);
+        this(0, null, null);
     }
 
     /**
@@ -90,6 +92,9 @@ public class Reservation {
         this.flight = flight;
     }
 
+    public static HashMap<Reservation, List<fSeat>> getSeatMap() {
+        return seatMap;
+    }
     public String toString() {
         return String.format(
                 "\nReservation No: %s \nReservation Time: %s \nReservation Status: %s \nNumber of seat booked: %d \nTotal Amount: %.2f "
@@ -102,4 +107,13 @@ public class Reservation {
     public boolean equals(Object reservation) {
         return reservation == ((Reservation) reservation).getReservationNo();
     }
+
+    private double calculateTotalAmount(List<fSeat> seats){
+        double totalAmount = 0;
+        for (fSeat seat : seats) {
+            totalAmount+=seat.getSeatPrice(); 
+        }
+        return totalAmount;
+    }
+
 }

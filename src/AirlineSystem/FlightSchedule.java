@@ -2,6 +2,7 @@ package AirlineSystem;
 import java.util.List;
 import java.time.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class FlightSchedule {
     private LocalTime departureTime;
@@ -25,7 +26,7 @@ public class FlightSchedule {
     }
 
     private String convertDateToString(){
-        return flightDate.getYear() + "-" + flightDate.getMonth() + "-" + flightDate.getDayOfMonth();
+        return flightDate.getYear() + "-" + flightDate.getMonthValue() + "-" + flightDate.getDayOfMonth();
     }
 
     private String convertTimeToString(){
@@ -109,7 +110,7 @@ public class FlightSchedule {
             if(col > 8){
                 System.out.println();
                 row++;
-                System.out.print(row);
+                System.out.printf("%-2d ", row);
                 col = 1;
             }
             else if(col == 3 || col == 7){
@@ -130,5 +131,58 @@ public class FlightSchedule {
         }
         //Next line
         System.out.println();
+    }
+
+    public List<fSeat> bookSeat(Scanner sc){
+
+        List<fSeat> bookedSeats = new ArrayList<fSeat>();
+
+        System.out.print("Enter Number of Seats to Book - ");
+            int numberOfSeats = sc.nextInt();
+            char bookSeatConfirm;
+            //Loop through n times when buying the seat
+            for(int j = 0; j < numberOfSeats; j++){
+                //Get seat number
+                System.out.print("Enter the seatNo according to the rows and columns (Ex: A1) :");
+                String seatInput = sc.next();
+                fSeat seat = validateSeatID(seatInput);
+                //validate
+                while(seat == null){
+                    System.out.print("Enter the seatNo according to the rows and columns (Ex: A1) :");
+                    seatInput = sc.next();
+                    seat = validateSeatID(seatInput);
+                }
+                //Display the details
+                System.out.println(seat);
+
+                //ask for confirmation
+                System.out.print("Confirm To Book The Seat ? (Y/N)");
+                bookSeatConfirm = sc.next().charAt(0);
+
+                if(Character.toUpperCase(bookSeatConfirm) == 'Y'){
+                    bookedSeats.add(seat);
+                    seat.makeSeatSeated();
+                }
+                else
+                    //force to loop another time 
+                    j--;
+            }   
+        return bookedSeats;
+    }
+
+    private fSeat validateSeatID(String seatID){
+
+        for (fSeat seat : flightSeat) {
+            if(seatID.equals(seat.getSeatNo())){
+                if(seat.getSStatus() == sStatus.SEATED){
+                    System.out.println("The seat is seated");
+                    return null;
+                }
+                else
+                    return seat;
+            }
+        }
+        System.out.println("No Such SeatID found!");
+        return null;
     }
 }
