@@ -272,6 +272,10 @@ public class Main {
         return airlineList;
     }
 
+    public static List<Staff> getStaffAccountList() {
+        return staffAccountList;
+    }
+
     public static RegisteredAccount registerAccount() {
 
         Scanner regScan = new Scanner(System.in);
@@ -293,7 +297,7 @@ public class Main {
         while (!acc.validateName(regLastName)) {
             System.out.println("Invalid Name. Only Alphabets ");
             System.out.print("2. Last Name > ");
-            regFirstName = regScan.nextLine();
+            regLastName = regScan.nextLine();
         }
 
         System.out.print("3. Gender (M/F) > "); // ENTER GENDER
@@ -387,7 +391,7 @@ public class Main {
         System.out.print("Password: ");
         String staffPwd = staffScanner.nextLine();
 
-        // Iterate the staff list from the main progra
+        // Iterate the staff list from the main program
         for (Staff stf : staffAccountList) {
             // perform checking
             if (stf.getStaffID() == staffID)
@@ -499,7 +503,7 @@ public class Main {
                     case 3: 
                         //delete records 
                         do{
-                            // modify records menu
+                            //Delete Record Menu 
                             System.out.println("Delete Records");
                             System.out.println("==============");
                             System.out.println("1. Flights");
