@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Staff extends Account{
+    Scanner staff = new Scanner(System.in);
     private String staffID;
     private static int nthStaff = 0; // default value is 0
 
@@ -39,71 +40,58 @@ public class Staff extends Account{
 
     //method 
     public void addFilght(){
-        Scanner add = new Scanner(System.in);
         List<Flight> flightList = Main.getFlightList();
         
         //Input details 
         System.out.println("Add Flight");
         System.out.println("==========");
         System.out.print("Enter Airline Name: ");
-        String airlineName = add.nextLine();
+        String airlineName = staff.nextLine();
         System.out.print("Enter Airline Code: ");
-        String airlineCode = add.next();
+        String airlineCode = staff.next();
         System.out.print("Enter Total Seats: ");
-        int totalSeat = add.nextInt();
+        int totalSeat = staff.nextInt();
         
         //Create object 
         Airline airline = new Airline(airlineName, airlineCode);
         Flight flight = new Flight(airline, totalSeat);
         flightList.add(flight);
-
-        //close scanner 
-        add.close();
     }
 
     public void addAirport(){
-        Scanner add = new Scanner(System.in);
         List<Airport> airportList = Main.getAirportList();
 
         //Input details 
         System.out.println("Add Airport");
         System.out.println("===========");
         System.out.print("Enter Airport Name: ");
-        String airportName = add.nextLine();
+        String airportName = staff.nextLine();
         System.out.print("Enter Location: ");
-        String location = add.nextLine();
+        String location = staff.nextLine();
 
         //Create object 
         Airport airport = new Airport(airportName, location);
         airportList.add(airport);
-
-        //close scanner 
-        add.close();
     }
 
     public void addAirline(){
-        Scanner add = new Scanner(System.in);
         List<Airline> airlineList = Main.getAirlineList();
 
         //Input details 
         System.out.println("Add Airline");
         System.out.println("===========");
         System.out.print("Enter Airline Name: ");
-        String airlineName = add.nextLine();
+        String airlineName = staff.nextLine();
         System.out.print("Enter Airline Code: ");
-        String airlineCode = add.next();
+        String airlineCode = staff.next();
 
         //Create object 
         Airline airline = new Airline(airlineName, airlineCode);
         airlineList.add(airline);
-
-        //close scanner 
-        add.close();
     }
 
-    //update or delete flights 
+    //Update Delete Flights 
     public void updateDeleteFlights(int choice){
-        Scanner update = new Scanner(System.in);
         List<Flight> flightList = Main.getFlightList();
 
         //Display flight details 
@@ -119,7 +107,7 @@ public class Staff extends Account{
         //Enter Flight code 
         System.out.println("-------------");
         System.out.print("Flight Code: ");
-        String flightCode = update.nextLine();
+        String flightCode = staff.nextLine();
 
         //get index 
         int updateIndex = 0;
@@ -133,11 +121,11 @@ public class Staff extends Account{
             System.out.println("Update Flight Details");
             System.out.println("=====================");
             System.out.print("Enter Airline Name: ");
-            String airlineName = update.nextLine();
+            String airlineName = staff.nextLine();
             System.out.print("Enter Airline Code: ");
-            String airlineCode = update.next();
+            String airlineCode = staff.next();
             System.out.print("Enter Total Seats: ");
-            int totalSeat = update.nextInt();
+            int totalSeat = staff.nextInt();
 
             //Create object 
             Airline airline = new Airline(airlineName, airlineCode);
@@ -146,12 +134,10 @@ public class Staff extends Account{
         }else{
             flightList.remove(updateIndex);
         }
-
-        update.close();
     }
-    //update or delete airline
+
+    //Update Delete Airline
     public void updateDeleteAirline(int choice){
-        Scanner update = new Scanner(System.in);
         List<Airline> airlineList = Main.getAirlineList();
 
         //Display airline details 
@@ -168,7 +154,7 @@ public class Staff extends Account{
         //Input airline code to update 
         System.out.println("--------------");
         System.out.print("Airline Code: ");
-        String updateAirlineCode = update.nextLine();
+        String updateAirlineCode = staff.nextLine();
 
         //get index 
         int updateIndex = 0;
@@ -183,9 +169,9 @@ public class Staff extends Account{
             System.out.println("Update Airline");
             System.out.println("==============");
             System.out.print("Enter Airline Name: ");
-            String airlineName = update.nextLine();
+            String airlineName = staff.nextLine();
             System.out.print("Enter Airline Code: ");
-            String airlineCode = update.next();
+            String airlineCode = staff.next();
 
             //Create object 
             Airline airline = new Airline(airlineName, airlineCode);
@@ -193,12 +179,10 @@ public class Staff extends Account{
         }else{
             airlineList.remove(updateIndex); 
         }
-        
-        update.close();
     }
-    //update or delete airport 
+
+    //Update Delete Airport 
     public void updateDeleteAirport(int choice){
-        Scanner update = new Scanner(System.in);
         List<Airport> airportList = Main.getAirportList();
         
         //Display details 
@@ -214,7 +198,7 @@ public class Staff extends Account{
         //Input airport name to update 
         System.out.println("--------------");
         System.out.print("Airport Name: ");
-        String updateAirportName = update.nextLine();
+        String updateAirportName = staff.nextLine();
 
         //get index 
         int updateIndex = 0;
@@ -229,9 +213,9 @@ public class Staff extends Account{
             System.out.println("Update Airport");
             System.out.println("==============");
             System.out.print("Airport Name: ");
-            String airportName = update.nextLine();
+            String airportName = staff.nextLine();
             System.out.print("Location: ");
-            String location = update.nextLine();
+            String location = staff.nextLine();
 
             //Create object 
             Airport airport = new Airport(airportName, location);
@@ -239,12 +223,10 @@ public class Staff extends Account{
         }else{
             airportList.remove(updateIndex);
         }
-        
-        update.close();
     }
-    //update or delete flightschedule
+
+    //Update Delete Flight Schedule 
     public void updateDeleteFlightSchedule(int choice){
-        Scanner update = new Scanner(System.in);
         List<FlightSchedule> flightScheduleList = Main.getFlightSchedules();
 
         //Display Details 
@@ -272,26 +254,32 @@ public class Staff extends Account{
             //Input Details 
             System.out.println("Update Flight Schedule");
             System.out.println("======================");
+
             System.out.print("Departure Time: ");
-            String departureTime = update.nextLine();
+            String departureTime = staff.nextLine();
+
             System.out.print("Flight Date: ");
-            String flightDate = update.nextLine();
+            String flightDate = staff.nextLine();
+
             System.out.print("Location - Airport Name: ");
-            String airportName = update.nextLine();
+            String airportName = staff.nextLine();
+
             System.out.print("         - Location: ");
-            String locationAirport = update.nextLine();
+            String locationAirport = staff.nextLine();
             System.out.print("Destination - Airport Name: ");
-            String destinationAirport = update.nextLine();
+            String destinationAirport = staff.nextLine();
             System.out.print("            - Location: ");
-            String destinationLocation = update.nextLine();
+            String destinationLocation = staff.nextLine();
             System.out.print("Estimated Arrival Time: ");
-            String estimatedArrivalTime = update.nextLine();
+            String estimatedArrivalTime = staff.nextLine();
+
             System.out.print("Airline - Name: ");
-            String airlineName = update.nextLine();
+            String airlineName = staff.nextLine();
             System.out.print("        - Code: ");
-            String airlineCode = update.nextLine();
+            String airlineCode = staff.nextLine();
+
             System.out.print("Total Seat: ");
-            int totalSeat = update.nextInt();
+            int totalSeat = staff.nextInt();
 
             //Create object 
             Airport location = new Airport(airportName, locationAirport);
@@ -300,17 +288,126 @@ public class Staff extends Account{
             Flight flight = new Flight(airline, totalSeat);
             FlightSchedule flightSchedule = new FlightSchedule(departureTime, flightDate, location, destination, estimatedArrivalTime, flight);
         }
-
-        update.close();
     }
     //update or delete seats 
 
-    //delete seats 
 
-    //create staff if staffID == S001 
+    public void createStaffAcc(){
+        List<Staff> staffList = Main.getStaffAccountList();
+
+        //create staff if staffID == S001 
+        if(staffID == "S001"){
+            Account acc = new Account();
+            String regPassword;
+            Boolean passwordMatch = true;
+
+            //Input Details 
+            System.out.println("Create Staff");
+            System.out.println("============");
+
+            //First Name
+            System.out.print("First Name: "); 
+            String regFirstName = staff.nextLine();
+            while (!acc.validateName(regFirstName)) {
+                System.out.println("Invalid Name. Must contian alphabets only. ");
+                System.out.print("First Name: ");
+                regFirstName = staff.nextLine();
+            }
+
+            //Last Name
+            System.out.print("Last Name: "); 
+            String regLastName = staff.nextLine();
+            while (!acc.validateName(regLastName)) {
+                System.out.println("Invalid Name. Must contian alphabets only. ");
+                System.out.print("Last Name: "); 
+                regLastName = staff.nextLine();
+            }
+
+            //Gender
+            System.out.print("Gender (M/F): "); 
+            char regGender = staff.next().charAt(0);
+            //validate gender (M or F only)
+            while (!acc.validateGender(regGender)) {
+                System.out.println("Male or Female only");
+                System.out.print("Gender (M/F): "); 
+                regGender = staff.next().charAt(0);
+            }
+
+            //Age
+            System.out.print("Age: "); 
+            int regAge = staff.nextInt();
+            //validate age (only contains number)
+            while (!acc.validateNumber(regAge)) {
+                System.out.println("Male or Female only");
+                System.out.print("Age: "); 
+                regAge = staff.nextInt();
+            }
+
+            //PhoneNum
+            System.out.print("Phone Number: "); 
+            String regPhoneNum = staff.nextLine();
+            while (!acc.validatePhoneNum(regPhoneNum)) {
+                System.out.println("Phone Number Should Start With '+' followed by country code and phone number");
+                System.out.println("Eg : +60123456789");
+                System.out.print("Phone Number: "); 
+                regPhoneNum = staff.nextLine();
+            }
+
+            //Email 
+            System.out.print("Email: "); 
+            String regEmail = staff.nextLine();
+            while (!acc.validateEmailFormat(regEmail)) {
+                System.out.println("Invalid Email. Try Again ");
+                System.out.print("Email: ");
+                regEmail = staff.nextLine();
+            }
+
+            //Address 
+            System.out.println("Address - Unit: "); 
+            String regAddUnit = staff.nextLine();
+            System.out.print("          - Road: ");
+            String regAddRoad = staff.nextLine();
+            System.out.print("          - PostCode: ");
+            int regAddPostcode = staff.nextInt();
+            System.out.print("          - City: ");
+            String regAddCity = staff.nextLine();
+            System.out.print("          - State: ");
+            String regAddState = staff.nextLine();
+            System.out.print("          - Country: ");
+            String regAddCountry = staff.nextLine();
+
+            //Password 
+            do {
+                System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
+                System.out.print("Password: "); 
+                regPassword = staff.nextLine();
+    
+                while (!acc.validatePassword(regPassword)) {
+                    System.out.println("Invalid Password. ");
+                    System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
+                    System.out.print("Password: "); 
+                    regPassword = staff.nextLine();
+                }
+    
+                System.out.print("Confirm Password: "); 
+                String confirmPassword = staff.nextLine();
+                if (!regPassword.equals(confirmPassword)) {
+                    passwordMatch = false;
+                    System.out.println("Password Does Not Match! Re-Enter Again! ");
+                }
+    
+            } while (passwordMatch == false);
+
+            //Create object 
+            Address regAddress = new Address(regAddUnit, regAddRoad, regAddPostcode, regAddCity, regAddState, regAddCountry);
+            Staff createStaff = new Staff(regPassword, regFirstName, regLastName, regAddress, regGender, regAge, regEmail, regPhoneNum);
+            staffList.add(createStaff);
+        } else{
+            System.out.println("This staff id cannot access to create staff function.");
+        }
+    }
 
     public void checkRequest(){
-        Scanner check = new Scanner(System.in);
         char continueToModify;
         boolean valid = true;
         do{
@@ -322,24 +419,31 @@ public class Staff extends Account{
                 System.out.println(request.toString());
             }
 
-            //input requestID 
-            System.out.print("Enter Request ID: ");
-            String requestID = check.nextLine();
+            Request requestToModify;
+            do{
+                //input requestID 
+                System.out.print("Enter Request ID: ");
+                String requestID = staff.nextLine();
 
-            //go to specific index of the list
-            Request requestToModify = null;
-            for (Request request : requestList) {
-                if(request.getRequestID() == requestID)
-                    requestToModify = request;
-            }
+                //go to specific index of the list
+                requestToModify = null;
+                for (Request request : requestList) {
+                    if(request.getRequestID() == requestID)
+                        requestToModify = request;
+                }
 
-            //Display details of the request 
-            //TODO : Check validaity of this Nicole!, if not found need to display error msgs
-            System.out.println(requestToModify);
+                //Display details of the request 
+                //TODO : Check validaity of this Nicole!, if not found need to display error msgs
+                if(requestToModify == null){
+                    System.out.println("Request ID not found. Please try it again... ");
+                }
+                System.out.println(requestToModify);
+            }while(requestToModify == null);
+            
 
             //approve or reject
             System.out.print("Approve (Y/y) or Reject (N/n): ");
-            char choice = check.next().charAt(0);
+            char choice = staff.next().charAt(0);
 
             //validate choice 
             if(!super.validateOption(choice)){
@@ -349,7 +453,7 @@ public class Staff extends Account{
             
             //if else for accept or reject request 
             if(Character.toUpperCase(choice) == 'Y'){
-                // acceptRequest(requestToModify);
+                acceptRequest(requestToModify);
             }
             else if (Character.toUpperCase(choice) == 'N'){
                 rejectRequest(requestToModify);
@@ -359,7 +463,7 @@ public class Staff extends Account{
             
             //continue to modify request? 
             System.out.print("Continue to modify request? (Y/N) ");
-            continueToModify = check.next().charAt(0);
+            continueToModify = staff.next().charAt(0);
 
             //validate continueToModify
             if(!super.validateOption(continueToModify)){
@@ -367,25 +471,64 @@ public class Staff extends Account{
                 valid = false;
             }
         }while((Character.toUpperCase(continueToModify) == 'Y') || valid == false); 
-
-        check.close();
     }
 
-    // public void acceptRequest(Request request){
-    //     //Get RequestList
-    //     List<Request> requestList = Main.getRequests();
+    public void acceptRequest(Request request){
+        //change request status 
+        request.setRequestStatus(rqStatus.APPROVED);
 
-    //     //change request status 
-    //     request.setRequestStatus(rqStatus.APPROVED);
-
-    //     //call hui yi methodss
-    //      //reschedule);
-    // }
+        //call updateRequest methods
+        request.updateRequest(request);
+    }
 
     public void rejectRequest(Request request){
         //change request status 
         request.setRequestStatus(rqStatus.REJECTED);
     }
 
-    //change password 
+    public void updatePassword(){
+        List<Staff> staffList = Main.getStaffAccountList();
+        Account acc = new Account();
+
+        //Enter Staff ID 
+        System.out.print("Staff ID: ");
+        String staffId = staff.nextLine();
+
+        //get index 
+        int updateIndex = 0;
+        for(int i=0; i<staffList.size(); i++){
+            if(staffList.get(i).getStaffID()== staffId)
+                updateIndex = i;
+        }
+
+        //Update password 
+        String updPassword;
+        boolean passwordMatch = true;
+        do {
+            System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
+            System.out.print("Password: "); 
+            updPassword = staff.nextLine();
+
+            while (!acc.validatePassword(updPassword)) {
+                System.out.println("Invalid Password. ");
+                System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
+                System.out.print("Password: "); 
+                updPassword = staff.nextLine();
+            }
+
+            System.out.print("Confirm Password: "); 
+            String confirmPassword = staff.nextLine();
+            if (!updPassword.equals(confirmPassword)) {
+                passwordMatch = false;
+                System.out.println("Password Does Not Match! Re-Enter Again! ");
+            }
+
+            if(updPassword == staffList.get(updateIndex).getPassword()){
+                passwordMatch = false;
+                System.out.println("Update password cannot be the same as previous password! Please Re-Enter again.");
+            }
+
+        } while (passwordMatch == false);
+    }
+
 }

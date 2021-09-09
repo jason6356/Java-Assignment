@@ -147,4 +147,8 @@ public class Account {
         return (Character.toUpperCase(option)=='Y' || Character.toUpperCase(option)=='N');
     
     }
+    
+    public boolean validateNumber(int number){
+        return number; //i dk how to use regex 
+    }
 }
