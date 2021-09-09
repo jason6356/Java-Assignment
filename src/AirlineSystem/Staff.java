@@ -286,7 +286,7 @@ public class Staff extends Account{
             Airport destination = new Airport(destinationAirport, destinationLocation);
             Airline airline = new Airline(airlineName, airlineCode);
             Flight flight = new Flight(airline, totalSeat);
-            FlightSchedule flightSchedule = new FlightSchedule(departureTime, flightDate, location, destination, estimatedArrivalTime, flight);
+            //FlightSchedule flightSchedule = new FlightSchedule(departureTime, flightDate, location, destination, estimatedArrivalTime, flight);
         }
     }
     //update or delete seats 

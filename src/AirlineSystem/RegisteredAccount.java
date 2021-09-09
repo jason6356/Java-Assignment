@@ -43,55 +43,65 @@ public void makeReservation(Scanner sc){
 
     //Input, Country from another country ->
     List<FlightSchedule> fsList = Main.getFlightSchedules();
-    FlightSchedule fs;
+    FlightSchedule fs = null;
+    char continueBook = 'N';
+    
+    do{
+        System.out.println("Reservation Form");
+        System.out.print("Enter the country u would like to go - ");
+        String destination = sc.next();
+        System.out.print("Enter the country u are currently at - ");
+        String location = sc.next();
+        boolean found = false;
 
-    System.out.println("Reservation Form");
-    System.out.print("Enter the country u would like to go - ");
-    String destination = sc.next();
-    System.out.print("Enter the country u are currently at - ");
-    String location = sc.next();
-    boolean found = false;
-
-    System.out.println("Available Flight Schedules");
-    System.out.println("Depart Country : " + location);
-    System.out.println("Arrive Country : " + destination);
-    System.out.printf("%10s       |%5s|%20s|%20s|%16s|  Direction |\n","DepartDate","Time","Location","Destination","Estimated Arrival Time");
-    //Print the flightschedules the user wants
-    int i = 1;
-    int lowerLimit = 1;
-    for (FlightSchedule flightSchedule : fsList) {
-        if(flightSchedule.getLocation().getLocation().equals(location) && flightSchedule.getDestination().getLocation().equals(destination)){
-            System.out.print(i + " ");
-            System.out.println(flightSchedule);
-            found = true;
-            i++;
+        System.out.println("Available Flight Schedules");
+        System.out.println("Depart Country : " + location);
+        System.out.println("Arrive Country : " + destination);
+        System.out.printf("%10s       |%5s|%20s|%20s|%16s|  Direction |\n","DepartDate","Time","Location","Destination","Estimated Arrival Time");
+        //Print the flightschedules the user wants
+        int i = 1;
+        for (FlightSchedule flightSchedule : fsList) {
+            if(flightSchedule.getLocation().getLocation().equals(location) && flightSchedule.getDestination().getLocation().equals(destination)){
+                System.out.print(i + " ");
+                System.out.println(flightSchedule);
+                found = true;
+                i++;
+                fs = flightSchedule;
+            }
         }
-    }
-
-    if(found){
-        System.out.println("Found!");
-        System.out.print("Would u like to book it ? (Y/N) - ");
-        char choice = sc.next().charAt(0);
-        //validate choice
-        while(Character.toUpperCase(choice) != 'Y' && Character.toUpperCase(choice) != 'N'){
-            System.out.println("Invalid Input");
+        
+        if(found){
+            System.out.println("Found!");
             System.out.print("Would u like to book it ? (Y/N) - ");
-            choice = sc.next().charAt(0);
+            char choice = sc.next().charAt(0);
+            //validate choice
+            while(Character.toUpperCase(choice) != 'Y' && Character.toUpperCase(choice) != 'N'){
+                System.out.println("Invalid Input");
+                System.out.print("Would u like to book it ? (Y/N) - ");
+                choice = sc.next().charAt(0);
+            }
+
+            if(choice == 'Y'){
+
+                //Display Flight Seats
+                fs.displaySeats();
+
+                //Book Seat
+                List<fSeat> bookedSeat = fs.bookSeat(sc);
+
+                System.out.println("Successfully booked the seat");
+                Reservation reservation = new Reservation(bookedSeat.size(),fs,bookedSeat);
+                List<Reservation> rList = Main.getReservations();
+                rList.add(reservation);
+            }
         }
+        else
+            System.out.println("No Such country found!");
 
-        if(choice == 'Y'){
-            //Display Flight Seats
-
-            //Let user key in number of people
-
-            //Loop through n times when buying the seat
-
-            //
-        }
-    }
-    else
-        System.out.println("No Such country found!");
-
+        System.out.print("Continue to book another reservation ? ");
+        continueBook = sc.next().charAt(0);
+        
+    }while(Character.toUpperCase(continueBook) == 'Y');
 }
 
 public void updateProfile(){
@@ -250,11 +260,14 @@ public void rescheduleTicket(Reservation reservation) {
     int choice=scanner.nextInt();
     newReservation.setFlightSchedule(flightScheduleList.get(choice - 1));
 
+    //choose seats
     System.out.print("Enter number of seat(s): ");
     int noOfSeat = scanner.nextInt();
     newReservation.setNoOfSeatBooked(noOfSeat);
 
     //call kangsheng function for the total amount
+    newReservation.setTotalAmount(calculateTotalAmount(??));
+    
 
     //DO A MENU (LIST OF REASONS)
     int reasonChoice;
