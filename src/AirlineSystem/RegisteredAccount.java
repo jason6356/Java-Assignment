@@ -260,11 +260,14 @@ public void rescheduleTicket(Reservation reservation) {
     int choice=scanner.nextInt();
     newReservation.setFlightSchedule(flightScheduleList.get(choice - 1));
 
+    //choose seats
     System.out.print("Enter number of seat(s): ");
     int noOfSeat = scanner.nextInt();
     newReservation.setNoOfSeatBooked(noOfSeat);
 
     //call kangsheng function for the total amount
+    newReservation.setTotalAmount(calculateTotalAmount(??));
+    
 
     //DO A MENU (LIST OF REASONS)
     int reasonChoice;
