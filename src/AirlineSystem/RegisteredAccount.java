@@ -236,8 +236,8 @@ public void updateProfile(){
    }
 
 //Reschedule Ticket
-public void rescheduleTicket(Reservation reservation) {
-    Scanner scanner = new Scanner (System.in);
+public void rescheduleTicket(Reservation reservation, Scanner scanner) {
+    
     List<FlightSchedule> flightScheduleList = Main.getFlightSchedules();
     Reservation newReservation = new Reservation();
 
@@ -250,24 +250,28 @@ public void rescheduleTicket(Reservation reservation) {
 
     System.out.println("\nAVAILABLE FLIGHT SCHEDULE");
 
-        for (FlightSchedule schedule : flightScheduleList ) {
-            System.out.println(schedule.toString());
-        }
+    for (FlightSchedule schedule : flightScheduleList ) {
+        System.out.println(schedule.toString());
+    }
 
     System.out.println(flightScheduleList.toString());
 
+    // Menu
+    //1
+    //2 
     System.out.print("Enter new schedule choice: ");
     int choice=scanner.nextInt();
-    newReservation.setFlightSchedule(flightScheduleList.get(choice - 1));
+    FlightSchedule targetSchedule = flightScheduleList.get(choice-1);
 
-    //choose seats
-    System.out.print("Enter number of seat(s): ");
-    int noOfSeat = scanner.nextInt();
-    newReservation.setNoOfSeatBooked(noOfSeat);
+    //Display Seats
+    targetSchedule.displaySeats();
 
-    //call kangsheng function for the total amount
-    newReservation.setTotalAmount(calculateTotalAmount(??));
-    
+    //Get seats
+    List<fSeat> bookedSeats = targetSchedule.bookSeat(scanner);
+
+    //Set the new reservation with this schedule
+    newReservation.setFlightSchedule(targetSchedule);
+
 
     //DO A MENU (LIST OF REASONS)
     int reasonChoice;
@@ -321,13 +325,11 @@ public void rescheduleTicket(Reservation reservation) {
         //can put in staff module
     
     }
-
-        scanner.close();
 }
 
 //Cancel Ticket
-public void cancelTicket(Reservation reservation) {
-    Scanner scanner = new Scanner (System.in);
+public void cancelTicket(Reservation reservation, Scanner scanner) {
+
     //Customer Request 
     Request request = new Request();
     request.setRequestDescription("Cancel Ticket Request");
@@ -383,7 +385,6 @@ public void cancelTicket(Reservation reservation) {
     
     }
 
-    scanner.close();
 }
 
 

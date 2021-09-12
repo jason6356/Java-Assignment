@@ -110,24 +110,13 @@ public class Account {
     }//Minimum 7 characters, at least one letter and one number
 
 
-    public void searchAvailableFlights(Scanner searchFlight) {
-        Scanner search = new Scanner(System.in);
-        List<Flight> flightList = Main.getFlightList(); 
+    public void availableFlights() {
+        List<FlightSchedule> flightScheduleList = Main.getFlightSchedules(); 
 
-        //Input Flight Details
-        System.out.print("Search flight code: ");
-        String flightCode = searchFlight.nextLine();
-
-        //get index 
-        int flightIndex = 0;
-        for(int i=0; i<flightList.size(); i++){
-            if(flightList.get(i).getFlightCode() == flightCode)
-                flightIndex = i;
-            i++;
+        //display all
+        for (FlightSchedule flightSchedule : flightScheduleList) {
+            System.out.println(flightSchedule.toString());
         }
-
-        System.out.println(flightList.get(flightIndex));
-        search.close();
     }
 
     public boolean validateName(String name){

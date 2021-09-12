@@ -28,7 +28,7 @@ public class Main {
                 case 1:
                     // TODO: Nicole -> Search Available Flights Feature
                     // dk y cannot display the details of flights (after search)
-                    guestAcc.searchAvailableFlights(s);
+                    guestAcc.availableFlights();
                     break;
                 case 2:
                     // Register Account
@@ -99,7 +99,7 @@ public class Main {
                         System.out.print("Select Reservation to Reshedule > ");
                         int choiceReschedule = s.nextInt();
 
-                        ((RegisteredAccount) guestAcc).rescheduleTicket(reservation.get(choiceReschedule - 1));
+                        ((RegisteredAccount) guestAcc).rescheduleTicket(reservation.get(choiceReschedule - 1), s);
                         break;
                     case 5:
                         // TODO : Huiyi -> Cancel Ticket
@@ -115,7 +115,7 @@ public class Main {
                         System.out.print("Select Reservation to Cancel > ");
                         int choiceCancel = s.nextInt();
 
-                        ((RegisteredAccount) guestAcc).cancelTicket(resToCancel.get(choiceCancel - 1));
+                        ((RegisteredAccount) guestAcc).cancelTicket(resToCancel.get(choiceCancel - 1), s);
                         break;
                     case 6:
                         // TODO : Huiyi -> Check Request Status
