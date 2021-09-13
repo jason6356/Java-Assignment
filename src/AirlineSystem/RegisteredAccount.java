@@ -104,8 +104,8 @@ public void makeReservation(Scanner sc){
     }while(Character.toUpperCase(continueBook) == 'Y');
 }
 
-public void updateProfile(){
-        Scanner scan = new Scanner (System.in);
+public void updateProfile(Scanner scan){
+        
         char another;
     do{
         System.out.println("\n\n\t\tUpdate Profile\n============================================"); //header
@@ -232,7 +232,7 @@ public void updateProfile(){
         another = scan.next().charAt(0);
     }
 } while (Character.toUpperCase(another) == 'Y');
-    scan.close();
+    
    }
 
 //Reschedule Ticket
@@ -245,10 +245,10 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
     customerRequest.setRequestDescription("Reschedule Ticket Request");
     customerRequest.setOldReservation(reservation);
 
-    System.out.println("\nCURRENT RESERVATION DETAILS\n"+ reservation.toString());
+    System.out.println("\nCURRENT RESERVATION DETAILS: \n"+ reservation.toString());
 
     //display available flight schedule
-    System.out.println("\n\nAVAILABLE FLIGHT SCHEDULE");
+    System.out.println("\n\nAVAILABLE FLIGHT SCHEDULE: \n");
     int n = 1;
      for (FlightSchedule flightSchedule : flightScheduleList) {
             System.out.print(n + ". ");
@@ -256,7 +256,7 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
             n++;
         }
 
-    System.out.print("Enter new schedule choice: ");
+    System.out.print("\nEnter new schedule choice: ");
     int choice=scanner.nextInt();
     FlightSchedule targetSchedule = flightScheduleList.get(choice-1);
 
