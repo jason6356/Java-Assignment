@@ -2,7 +2,6 @@ package AirlineSystem;
 
 import java.util.List;
 import java.util.Scanner;
-import java.util.List;
 import java.util.ArrayList;
 
 public class RegisteredAccount extends Account {
@@ -296,12 +295,12 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
     //DO A MENU (LIST OF REASONS)
     int reasonChoice;
     do{
-        System.out.println("\nReason of reschedule: ");
+        System.out.println("\nREASON OF RESCHEDULE: ");
         System.out.println("1. Wrong Date Reserved");
         System.out.println("2. Wrong Flight Time Reserved");
         System.out.println("3. Wrong Location Reserved");
         System.out.println("4. Other Reasons");
-        System.out.print("Select Reason >");
+        System.out.print("SELECT REASON >");
         reasonChoice = scanner.nextInt();
    
         if(reasonChoice == 1){
@@ -314,7 +313,7 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
             customerRequest.setReason("Wrong Location Reserved");
         }
         else if(reasonChoice == 4){
-            System.out.println("Kindly State the Reason: ");
+            System.out.print("Kindly State the Reason: ");
             customerRequest.setReason(scanner.nextLine());
         }
         else{
@@ -340,6 +339,7 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
         //add the request to the request list
         requestList.add(customerRequest);
 
+        System.out.println(customerRequest.toString());
   
         System.out.println("Requested for Rescheduling Ticket.");
         //can put in staff module
@@ -361,12 +361,12 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
     //DO A MENU (LIST OF REASONS)
     int reasonChoice;
     do{
-        System.out.println("\nReason of cancelling: ");
+        System.out.println("\nREASON OF CANCELLING: ");
         System.out.println("1. Wrong Date Reserved");
         System.out.println("2. Wrong Flight Time Reserved");
         System.out.println("3. Wrong Seats Reserved");
         System.out.println("4. Other Reasons");
-        System.out.print("Select Reason >");
+        System.out.print("SELECT REASON >");
         reasonChoice = scanner.nextInt();
 
         if(reasonChoice == 1){
@@ -379,7 +379,7 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
             request.setReason("Wrong Seats Reserved");
         }
         else if(reasonChoice == 4){
-            System.out.println("Kindly State the Reason: ");
+            System.out.print("Kindly State the Reason: ");
             request.setReason(scanner.nextLine());
         }
         else{
@@ -427,7 +427,7 @@ public void checkRequestStatus(Reservation reservation){
 
     for (Request request : requestList) {
 
-        if (request.getOldReservation().equals(reservation)){
+        if (request.getOldReservation()==reservation){
 
             if(request.getRequestStatus()==rqStatus.APPROVED){
                 if(request.getRequestDescription() == "Reschedule Ticket Request"){

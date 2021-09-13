@@ -97,7 +97,7 @@ public class Reservation {
     }
     public String toString() {
         return String.format(
-                "\nReservation No: %s \nReservation Time: %s \nReservation Status: %s \nNumber of seat booked: %d \nTotal Amount: %.2f "
+                "\nReservation No: %s \nReservation Time: %s \nReservation Status: %s \nNumber of seat booked: %d \nTotal Amount: %.2f \n"
                         + flight.toString(),
                 reservationNo, reservationTime, reservationStatus, noOfSeatBooked, totalAmount);
 
