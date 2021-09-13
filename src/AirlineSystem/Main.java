@@ -89,6 +89,8 @@ public class Main {
                         // TODO : Huiyi -> Reschedule Ticket
                         List<Reservation> reservation = ((RegisteredAccount) guestAcc).getReservations();
 
+                        System.out.println("-----RESCHEDULE TICKET-----");
+
                         int n = 1;
                         System.out.println("Your Reservations:");
                         for (Reservation res : reservation) {
@@ -105,6 +107,8 @@ public class Main {
                         // TODO : Huiyi -> Cancel Ticket
                         List<Reservation> resToCancel = ((RegisteredAccount) guestAcc).getReservations();
 
+                        System.out.println("-----CANCEL TICKET-----");
+
                         int o = 1;
                         System.out.println("Your Reservations:");
                         for (Reservation res : resToCancel) {
@@ -120,6 +124,8 @@ public class Main {
                     case 6:
                         // TODO : Huiyi -> Check Request Status
                         List<Reservation> requestReservation = ((RegisteredAccount) guestAcc).getReservations();
+
+                        System.out.println("-----CHECK REQUEST STATUS-----");
 
                         int r = 1;
                         System.out.println("Your Reservations:");
@@ -382,7 +388,6 @@ public class Main {
     }
 
     public static Staff staffLogin() {
-        Scanner staffScanner = new Scanner(System.in);
         Staff staff = new Staff();
         Boolean valid = true;
 
@@ -573,7 +578,6 @@ public class Main {
         } else {
             System.out.println("Login Failed.");
         }
-        staffScanner.close();
         return null;
     }
 }

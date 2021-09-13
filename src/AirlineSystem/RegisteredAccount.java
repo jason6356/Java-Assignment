@@ -239,7 +239,6 @@ public void updateProfile(){
 public void rescheduleTicket(Reservation reservation, Scanner scanner) {
     
     List<FlightSchedule> flightScheduleList = Main.getFlightSchedules();
-    Reservation newReservation = new Reservation();
 
     //customer request
     Request customerRequest = new Request();
@@ -248,17 +247,15 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
 
     System.out.println("\nCURRENT RESERVATION DETAILS\n"+ reservation.toString());
 
-    System.out.println("\nAVAILABLE FLIGHT SCHEDULE");
+    //display available flight schedule
+    System.out.println("\n\nAVAILABLE FLIGHT SCHEDULE");
+    int n = 1;
+     for (FlightSchedule flightSchedule : flightScheduleList) {
+            System.out.print(n + ". ");
+            System.out.println(flightSchedule.toString());
+            n++;
+        }
 
-    for (FlightSchedule schedule : flightScheduleList ) {
-        System.out.println(schedule.toString());
-    }
-
-    System.out.println(flightScheduleList.toString());
-
-    // Menu
-    //1
-    //2 
     System.out.print("Enter new schedule choice: ");
     int choice=scanner.nextInt();
     FlightSchedule targetSchedule = flightScheduleList.get(choice-1);
@@ -269,9 +266,8 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
     //Get seats
     List<fSeat> bookedSeats = targetSchedule.bookSeat(scanner);
 
-    //Set the new reservation with this schedule
-    newReservation.setFlightSchedule(targetSchedule);
-
+    //Set the new reservation
+    Reservation newReservation = new Reservation(bookedSeats.size(),targetSchedule,bookedSeats);
 
     //DO A MENU (LIST OF REASONS)
     int reasonChoice;
