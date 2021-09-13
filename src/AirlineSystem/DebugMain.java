@@ -1,5 +1,7 @@
 package AirlineSystem;
-import java.util.*;
+
+import java.util.List;
+
 /**
  * Debug Your Classes Here!, if you don't want to mess up the main program!
  * Put your test code here and just click the run button. it wont bump with the Main.java
@@ -18,6 +20,15 @@ import java.util.*;
 class DebugMain{
     
     public static void main(String[] args) {
+
+        Main.insertDataToList();
+        List<Reservation> reservationList = Main.getReservations();
         
+        reservationList.add(new Reservation());
+
+        for(Reservation rs : Main.getReservations()){
+            System.out.println(rs.toString());
+        }
+
     }
 }

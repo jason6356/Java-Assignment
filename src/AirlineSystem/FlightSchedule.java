@@ -1,6 +1,7 @@
 package AirlineSystem;
 import java.util.List;
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -24,24 +25,14 @@ public class FlightSchedule {
         
         flightSeat = makefSeatList(flight.getTotalSeat());
     }
-
-    private String convertDateToString(){
-        return flightDate.getYear() + "-" + flightDate.getMonthValue() + "-" + flightDate.getDayOfMonth();
-    }
-
-    private String convertTimeToString(){
-        return departureTime.getHour() + ":" + departureTime.getMinute();
-    }
-
-    private String convertLocalDateTimeToString(){
-        return estimatedArrivalTime.getYear() + "-" + estimatedArrivalTime.getMonthValue() + "-" + estimatedArrivalTime.getDayOfMonth() + " " + estimatedArrivalTime.getHour() + ":" + estimatedArrivalTime.getMinute();
-    }
-
     //TODO: Refactor this toString method
     //ToString
     public String toString() {
+        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("HH:mm");
+        DateTimeFormatter formatBoth = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
         //| DepartDate | DepartTime | Depart Airport | Destination Airport | Estimated Time | Direction |
-        return String.format("%10s|%5s|%-20s|%-20s|%10s|%10s -> %10s|", convertDateToString(),convertTimeToString(),location.getAirportName(),destination.getAirportName(),convertLocalDateTimeToString(),location.getLocation(),destination.getLocation());
+        return String.format("%10s|%5s|%-37s|%-37s|%13s|%-10s -> %-10s|", flightDate.format(formatDate),departureTime.format(formatTime),location.getAirportName(),destination.getAirportName(),estimatedArrivalTime.format(formatBoth),location.getLocation(),destination.getLocation());
     }
 
     public LocalTime getDepartureTime() {
@@ -142,6 +133,10 @@ public class FlightSchedule {
             char bookSeatConfirm;
             //Loop through n times when buying the seat
             for(int j = 0; j < numberOfSeats; j++){
+                //Clear Screen
+                Main.clearConsole();
+                //Display Seats
+                displaySeats();
                 //Get seat number
                 System.out.print("Enter the seatNo according to the rows and columns (Ex: A1) :");
                 String seatInput = sc.next();

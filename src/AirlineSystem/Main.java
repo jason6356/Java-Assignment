@@ -17,6 +17,7 @@ public class Main {
     private static List<Reservation> reservations = new ArrayList<Reservation>();
 
     public static void main(String[] args) {
+        clearConsole();
         Account guestAcc = new Account();
         insertDataToList();
         Scanner s = new Scanner(System.in);
@@ -63,6 +64,7 @@ public class Main {
 
             int selection;
             do {
+                clearConsole();
                 System.out.println("\n\nREGISTERED ACCOUNT MENU");
                 System.out.println("1. Update Profile");
                 System.out.println("2. Make Reservation");
@@ -209,7 +211,7 @@ public class Main {
         return keyboard.nextInt();
     }
 
-    private static void insertDataToList() {
+    public static void insertDataToList() {
         // Create 6 airports
         airportList.add(new Airport("Changi Airport", "Singapore"));
         airportList.add(new Airport("Kuala Lumpur International Airport", "Malaysia"));
@@ -570,5 +572,21 @@ public class Main {
         }
         staffScanner.close();
         return null;
+    }
+
+    public final static void clearConsole(){
+
+        try{
+            new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public static void printLine(int n){
+        for(int i = 0; i < n; i++){
+        System.out.print("-");
+        }
     }
 }

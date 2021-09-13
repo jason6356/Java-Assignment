@@ -43,6 +43,7 @@ public void makeReservation(Scanner sc){
 
     //Input, Country from another country ->
     List<FlightSchedule> fsList = Main.getFlightSchedules();
+    List<FlightSchedule> queryFsList = new ArrayList<FlightSchedule>();
     FlightSchedule fs = null;
     char continueBook = 'N';
     
@@ -57,21 +58,33 @@ public void makeReservation(Scanner sc){
         System.out.println("Available Flight Schedules");
         System.out.println("Depart Country : " + location);
         System.out.println("Arrive Country : " + destination);
-        System.out.printf("%10s       |%5s|%20s|%20s|%16s|  Direction |\n","DepartDate","Time","Location","Destination","Estimated Arrival Time");
+        System.out.printf("%-2s|%10s|%5s|%-37s|%-37s|%-16s|%-24s|","NO","DepartDate","Time","Location","Destination","Arrival Time","Direction");
+        Main.printLine(138);
         //Print the flightschedules the user wants
         int i = 1;
         for (FlightSchedule flightSchedule : fsList) {
             if(flightSchedule.getLocation().getLocation().equals(location) && flightSchedule.getDestination().getLocation().equals(destination)){
-                System.out.print(i + " ");
+                System.out.printf("%-2d|",i);
                 System.out.println(flightSchedule);
+                queryFsList.add(flightSchedule);
                 found = true;
                 i++;
-                fs = flightSchedule;
             }
         }
         
         if(found){
             System.out.println("Found!");
+            System.out.print("Enter the No to book the flight - ");
+            int flightNo = sc.nextInt();
+
+            while(flightNo < 0 || flightNo > i){
+                System.out.println("Invalid Input");
+                System.out.print("Enter the No to book the flight - ");
+                flightNo = sc.nextInt();
+            }
+
+            fs = queryFsList.get(flightNo-1);
+
             System.out.print("Would u like to book it ? (Y/N) - ");
             char choice = sc.next().charAt(0);
             //validate choice
@@ -81,8 +94,10 @@ public void makeReservation(Scanner sc){
                 choice = sc.next().charAt(0);
             }
 
-            if(choice == 'Y'){
-
+            if(Character.toUpperCase(choice) == 'Y'){
+                
+                //Clear Screen
+                Main.clearConsole();
                 //Display Flight Seats
                 fs.displaySeats();
 
@@ -103,12 +118,14 @@ public void makeReservation(Scanner sc){
 
         System.out.print("Continue to book another reservation ? ");
         continueBook = sc.next().charAt(0);
+        while(Character.toUpperCase(continueBook)!='Y' && Character.toUpperCase(continueBook)!='N'){
+            System.out.println("Invalid Input!");
+            System.out.print("Continue to book another reservation ? ");
+            continueBook = sc.next().charAt(0);
+        }
+        
         
     }while(Character.toUpperCase(continueBook) == 'Y');
-
-    for(Reservation r: reservations){
-        System.out.println(r.getReservationNo());
-    }
 }
 
 public void updateProfile(Scanner scan){
@@ -462,6 +479,5 @@ public void checkRequestStatus(Reservation reservation){
 
 
 }
-
 
 }
