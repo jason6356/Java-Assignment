@@ -9,7 +9,7 @@ enum rStatus {
 }
 
 public class Reservation {
-    private static int reservationCount = 0;
+    private static int reservationCount = 1;
     private String reservationNo;
     private LocalDateTime reservationTime;
     private rStatus reservationStatus;

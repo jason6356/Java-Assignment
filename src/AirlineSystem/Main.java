@@ -63,7 +63,7 @@ public class Main {
 
             int selection;
             do {
-                System.out.println("REGISTERED ACCOUNT MENU");
+                System.out.println("\n\nREGISTERED ACCOUNT MENU");
                 System.out.println("1. Update Profile");
                 System.out.println("2. Make Reservation");
                 System.out.println("3. Confirm Ticket");
@@ -87,13 +87,16 @@ public class Main {
                         break;
                     case 4:
                         // TODO : Huiyi -> Reschedule Ticket
-                        List<Reservation> reservation = ((RegisteredAccount) guestAcc).getReservations();
+                        List<Reservation> reservation = Main.getReservations();
+
+                        System.out.println("\n\n-----RESCHEDULE TICKET-----");
 
                         int n = 1;
                         System.out.println("Your Reservations:");
                         for (Reservation res : reservation) {
                             System.out.print(n + ". ");
                             System.out.println(res.toString());
+                            System.out.println("\n");
                             n++;
                         }
                         System.out.print("Select Reservation to Reshedule > ");
@@ -103,7 +106,9 @@ public class Main {
                         break;
                     case 5:
                         // TODO : Huiyi -> Cancel Ticket
-                        List<Reservation> resToCancel = ((RegisteredAccount) guestAcc).getReservations();
+                        List<Reservation> resToCancel = Main.getReservations();
+
+                        System.out.println("\n\n-----CANCEL TICKET-----");
 
                         int o = 1;
                         System.out.println("Your Reservations:");
@@ -119,7 +124,9 @@ public class Main {
                         break;
                     case 6:
                         // TODO : Huiyi -> Check Request Status
-                        List<Reservation> requestReservation = ((RegisteredAccount) guestAcc).getReservations();
+                        List<Reservation> requestReservation = Main.getReservations();
+
+                        System.out.println("\n\n-----CHECK REQUEST STATUS-----");
 
                         int r = 1;
                         System.out.println("Your Reservations:");
@@ -138,7 +145,7 @@ public class Main {
                         break;
                 }
 
-            } while (selection < 1 && selection > 7);
+            } while (selection > 1 && selection < 7);
         } else if (guestAcc instanceof Staff) {
             // TODO : Nicole -> add flight,airport,airline (done)
             // TODO : Nicole -> Check(done), accept, reject requests

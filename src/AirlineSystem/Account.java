@@ -110,7 +110,7 @@ public class Account {
     }//Minimum 7 characters, at least one letter and one number
 
 
-    public void availableFlights() {
+    public void availableFlights(Scanner s) {
         List<FlightSchedule> flightScheduleList = Main.getFlightSchedules(); 
 
         //display all
@@ -137,7 +137,7 @@ public class Account {
     
     }
     
-    public boolean validateNumber(int number){
-        return number; //i dk how to use regex 
-    }
+    // public boolean validateNumber(int number){
+    //     return number; //i dk how to use regex 
+    // }
 }

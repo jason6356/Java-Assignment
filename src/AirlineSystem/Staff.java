@@ -333,7 +333,7 @@ public class Staff extends Account{
         System.out.print("Age: "); 
         int regAge = staff.nextInt();
         //validate age (only contains number)
-        while (!acc.validateNumber(regAge)) {
+        while (regAge < 0 || regAge > 100) {
             System.out.println("Male or Female only");
             System.out.print("Age: "); 
             regAge = staff.nextInt();
