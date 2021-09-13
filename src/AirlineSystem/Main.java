@@ -28,8 +28,7 @@ public class Main {
             switch (choice) {
                 case 1:
                     // TODO: Nicole -> Search Available Flights Feature
-                    // dk y cannot display the details of flights (after search)
-                    guestAcc.availableFlights(s);
+                    guestAcc.availableFlights();
                     break;
                 case 2:
                     // Register Account
@@ -388,10 +387,9 @@ public class Main {
     }
 
     public static Staff staffLogin() {
-        Scanner staffScanner = new Scanner(System.in);
-
-        String[][] staffAcc = { { "S001", "aBC002" }, { "S002", "pWd001" } };
         Boolean valid = true;
+
+        Staff staff = new Staff();
 
         System.out.println("Staff Login");
         System.out.println("===========");
@@ -438,139 +436,35 @@ public class Main {
                 int choice;
                 switch (selection) {
                     case 1:
-                        
-                        do {
-                            // modify records menu
-                            System.out.println("Add Records");
-                            System.out.println("===========");
-                            System.out.println("1. Flights");
-                            System.out.println("2. Airline");
-                            System.out.println("3. Airport");
-                            System.out.println("4. Back to Staff Menu");
-                            System.out.print("Enter Choice: ");
-                            choice = staffScanner.nextInt();
-
-                            switch (choice) {
-                                case 1:
-                                    // call add flights from staff 
-                                    break;
-                                case 2:
-                                    // call add airline from staff 
-                                    break;
-                                case 3:
-                                    // call madd airport from staff 
-                                    break;
-                                case 4: 
-                                    //back to staff menu 
-                                    break;
-                                default:
-                                    System.out.println("Invalid Input.");
-                                    break;
-                            }
-                        } while (choice != 1 && choice != 2 && choice != 3 && choice != 4);
+                        staff.addRecordsMenu();
                         break;
                     case 2: 
-                        //update records 
-                        do{
-                            // modify records menu
-                            System.out.println("Update Records");
-                            System.out.println("==============");
-                            System.out.println("1. Flights");
-                            System.out.println("2. Airline");
-                            System.out.println("3. Airport");
-                            System.out.println("4. Flight Schedule");
-                            System.out.println("5. Seats");
-                            System.out.println("6. Back to Staff Menu");
-                            System.out.print("Enter Choice: ");
-                            choice = staffScanner.nextInt();
-
-                            switch(choice){
-                                case 1:
-                                    //update flights 
-                                    break;
-                                case 2: 
-                                    //update airline 
-                                    break;
-                                case 3:
-                                    //update airport 
-                                    break;
-                                case 4:
-                                    //update flight schedule 
-                                    break;
-                                case 5:
-                                    //update seats 
-                                    break;
-                                case 6:
-                                    //back to staff menu
-                                    break;
-                                default:
-                                System.out.println("Invalid Input.");
-                                break;
-                            }
-                        }while(choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5 && choice != 6);
+                        staff.updateRecordsMenu();
                         break;
                     case 3: 
-                        //delete records 
-                        do{
-                            // modify records menu
-                            System.out.println("Delete Records");
-                            System.out.println("==============");
-                            System.out.println("1. Flights");
-                            System.out.println("2. Airline");
-                            System.out.println("3. Airport");
-                            System.out.println("4. Flight Schedule");
-                            System.out.println("5. Seats");
-                            System.out.println("6. Back to Staff Menu");
-                            System.out.print("Enter Choice: ");
-                            choice = staffScanner.nextInt();
-
-                            switch(choice){
-                                case 1:
-                                    //delete flights 
-                                    break;
-                                case 2: 
-                                    //delete airline 
-                                    break;
-                                case 3:
-                                    //delete airport 
-                                    break;
-                                case 4:
-                                    //delete flight schedule 
-                                    break;
-                                case 5:
-                                    //delete seats 
-                                    break;
-                                case 6:
-                                    //back to staff menu
-                                    break;
-                                default:
-                                System.out.println("Invalid Input.");
-                                break;
-                            }
-                        }while(choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5 && choice != 6);
+                        staff.deleteRecordsMenu();
                         break;
                     case 4:
-                        // create staff account if staffid == S001
+                        staff.createStaffAcc();
                         break;
                     case 5:
-                        // check request list
+                        staff.checkRequest();
                         break;
                     case 6:
-                        // change password
+                        staff.changePassword();
                         break;
                     case 7:
                         //back to main menu 
                         break;
                     default:
-                        System.out.println("Invalid Input.");
+                        System.out.println("Invalid Input. Please enter again... ");
                         break;
                 }
-            } while (selection != 1 && selection != 2 && selection != 3);
+            } while (selection!=1 && selection!=2 && selection!=3 && selection!=4 && selection!=5 && selection!=6 selection!=7);
 
         } else {
             System.out.println("Login Failed.");
         }
-        staffScanner.close();
         return null;
     }
 

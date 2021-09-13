@@ -110,7 +110,7 @@ public class Account {
     }//Minimum 7 characters, at least one letter and one number
 
 
-    public void availableFlights(Scanner s) {
+    public void availableFlights() {
         List<FlightSchedule> flightScheduleList = Main.getFlightSchedules(); 
 
         //display all
