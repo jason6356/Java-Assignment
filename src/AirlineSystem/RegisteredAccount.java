@@ -93,6 +93,9 @@ public void makeReservation(Scanner sc){
                 Reservation reservation = new Reservation(bookedSeat.size(),fs,bookedSeat);
                 List<Reservation> rList = Main.getReservations();
                 rList.add(reservation);
+                
+                //This Instance add the reservation to the object
+                reservations.add(reservation);
             }
         }
         else
@@ -102,6 +105,10 @@ public void makeReservation(Scanner sc){
         continueBook = sc.next().charAt(0);
         
     }while(Character.toUpperCase(continueBook) == 'Y');
+
+    for(Reservation r: reservations){
+        System.out.println(r.getReservationNo());
+    }
 }
 
 public void updateProfile(){

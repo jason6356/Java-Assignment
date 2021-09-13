@@ -28,7 +28,7 @@ public class Main {
                 case 1:
                     // TODO: Nicole -> Search Available Flights Feature
                     // dk y cannot display the details of flights (after search)
-                    guestAcc.availableFlights();
+                    guestAcc.availableFlights(s);
                     break;
                 case 2:
                     // Register Account
@@ -89,8 +89,6 @@ public class Main {
                         // TODO : Huiyi -> Reschedule Ticket
                         List<Reservation> reservation = ((RegisteredAccount) guestAcc).getReservations();
 
-                        System.out.println("-----RESCHEDULE TICKET-----");
-
                         int n = 1;
                         System.out.println("Your Reservations:");
                         for (Reservation res : reservation) {
@@ -101,13 +99,11 @@ public class Main {
                         System.out.print("Select Reservation to Reshedule > ");
                         int choiceReschedule = s.nextInt();
 
-                        ((RegisteredAccount) guestAcc).rescheduleTicket(reservation.get(choiceReschedule - 1), s);
+                        ((RegisteredAccount) guestAcc).rescheduleTicket(reservation.get(choiceReschedule - 1),s);
                         break;
                     case 5:
                         // TODO : Huiyi -> Cancel Ticket
                         List<Reservation> resToCancel = ((RegisteredAccount) guestAcc).getReservations();
-
-                        System.out.println("-----CANCEL TICKET-----");
 
                         int o = 1;
                         System.out.println("Your Reservations:");
@@ -119,13 +115,11 @@ public class Main {
                         System.out.print("Select Reservation to Cancel > ");
                         int choiceCancel = s.nextInt();
 
-                        ((RegisteredAccount) guestAcc).cancelTicket(resToCancel.get(choiceCancel - 1), s);
+                        ((RegisteredAccount) guestAcc).cancelTicket(resToCancel.get(choiceCancel - 1),s);
                         break;
                     case 6:
                         // TODO : Huiyi -> Check Request Status
                         List<Reservation> requestReservation = ((RegisteredAccount) guestAcc).getReservations();
-
-                        System.out.println("-----CHECK REQUEST STATUS-----");
 
                         int r = 1;
                         System.out.println("Your Reservations:");
@@ -151,9 +145,6 @@ public class Main {
             // TODO : Generate Report (Summary of profit, Ranking of most frequent flights
             // made)
             System.out.println("This is a staff account instance");
-
-            
-            
         } else {
             // TODO : Nicole -> Prompt for either the user want to book a reservation
 
@@ -281,7 +272,7 @@ public class Main {
         return airlineList;
     }
 
-    public static List<Staff> getStaffAccountList() {
+    public static List<Staff> getStaffAccountList(){
         return staffAccountList;
     }
 
@@ -306,7 +297,7 @@ public class Main {
         while (!acc.validateName(regLastName)) {
             System.out.println("Invalid Name. Only Alphabets ");
             System.out.print("2. Last Name > ");
-            regLastName = regScan.nextLine();
+            regFirstName = regScan.nextLine();
         }
 
         System.out.print("3. Gender (M/F) > "); // ENTER GENDER
@@ -388,7 +379,9 @@ public class Main {
     }
 
     public static Staff staffLogin() {
-        Staff staff = new Staff();
+        Scanner staffScanner = new Scanner(System.in);
+
+        String[][] staffAcc = { { "S001", "aBC002" }, { "S002", "pWd001" } };
         Boolean valid = true;
 
         System.out.println("Staff Login");
@@ -398,7 +391,7 @@ public class Main {
         System.out.print("Password: ");
         String staffPwd = staffScanner.nextLine();
 
-        // Iterate the staff list from the main program
+        // Iterate the staff list from the main progra
         for (Staff stf : staffAccountList) {
             // perform checking
             if (stf.getStaffID() == staffID)
@@ -451,15 +444,12 @@ public class Main {
                             switch (choice) {
                                 case 1:
                                     // call add flights from staff 
-                                    staff.addFlight();
                                     break;
                                 case 2:
                                     // call add airline from staff 
-                                    staff.addAirline();
                                     break;
                                 case 3:
                                     // call madd airport from staff 
-                                    staff.addAirport();
                                     break;
                                 case 4: 
                                     //back to staff menu 
@@ -480,91 +470,84 @@ public class Main {
                             System.out.println("2. Airline");
                             System.out.println("3. Airport");
                             System.out.println("4. Flight Schedule");
-                            System.out.println("5. Back to Staff Menu");
+                            System.out.println("5. Seats");
+                            System.out.println("6. Back to Staff Menu");
                             System.out.print("Enter Choice: ");
                             choice = staffScanner.nextInt();
 
                             switch(choice){
                                 case 1:
                                     //update flights 
-                                    staff.updateDeleteFlights(selection);
                                     break;
                                 case 2: 
                                     //update airline 
-                                    staff.updateDeleteAirline(selection);
                                     break;
                                 case 3:
                                     //update airport 
-                                    staff.updateDeleteAirport(selection);
                                     break;
                                 case 4:
                                     //update flight schedule 
-                                    staff.updateDeleteFlightSchedule(selection);
                                     break;
                                 case 5:
+                                    //update seats 
+                                    break;
+                                case 6:
                                     //back to staff menu
                                     break;
                                 default:
                                 System.out.println("Invalid Input.");
                                 break;
                             }
-                        }while(choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5);
+                        }while(choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5 && choice != 6);
                         break;
                     case 3: 
                         //delete records 
                         do{
-                            //Delete Record Menu 
+                            // modify records menu
                             System.out.println("Delete Records");
                             System.out.println("==============");
                             System.out.println("1. Flights");
                             System.out.println("2. Airline");
                             System.out.println("3. Airport");
                             System.out.println("4. Flight Schedule");
-                            System.out.println("5. Back to Staff Menu");
+                            System.out.println("5. Seats");
+                            System.out.println("6. Back to Staff Menu");
                             System.out.print("Enter Choice: ");
                             choice = staffScanner.nextInt();
 
                             switch(choice){
                                 case 1:
                                     //delete flights 
-                                    staff.updateDeleteFlights(selection);
                                     break;
                                 case 2: 
                                     //delete airline 
-                                    staff.updateDeleteAirline(selection);
                                     break;
                                 case 3:
                                     //delete airport 
-                                    staff.updateDeleteAirport(selection);
                                     break;
                                 case 4:
                                     //delete flight schedule 
-                                    staff.updateDeleteFlightSchedule(selection);
                                     break;
                                 case 5:
+                                    //delete seats 
+                                    break;
+                                case 6:
                                     //back to staff menu
                                     break;
                                 default:
                                 System.out.println("Invalid Input.");
                                 break;
                             }
-                        }while(choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5);
+                        }while(choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5 && choice != 6);
                         break;
                     case 4:
                         // create staff account if staffid == S001
-                        if(staffID == "S001"){
-                            staff.createStaffAcc();
-                        }else{
-                            System.out.println("This staff id cannot access to create staff function.");
-                        }
                         break;
                     case 5:
                         // check request list
-                        staff.checkRequest();
                         break;
                     case 6:
                         // change password
-                        staff.changePassword();
                         break;
                     case 7:
                         //back to main menu 
@@ -578,6 +561,7 @@ public class Main {
         } else {
             System.out.println("Login Failed.");
         }
+        staffScanner.close();
         return null;
     }
 }
