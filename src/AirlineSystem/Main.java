@@ -393,9 +393,8 @@ public class Main {
 
     //UserLogin
     public static RegisteredAccount userLogin(){
-        Boolean valid = true;
 
-        RegisteredAccount cust = new RegisteredAccount();
+        //RegisteredAccount user = new RegisteredAccount();
         Scanner userScanner = new Scanner(System.in);
 
         System.out.println("User Login");
@@ -404,28 +403,19 @@ public class Main {
         String userID = userScanner.nextLine();
         System.out.print("Password: ");
         String userPwd = userScanner.nextLine();
+        userScanner.close();
 
-        for (RegisteredAccount user : accountList){
+        for ( RegisteredAccount user : accountList){
             if (user.getAccID() == userID){
                 if(user.getPassword()==userPwd){
-                    valid = true;
+                    System.out.println("Login Successful.");
                     return user;
                 }
             }
-            valid = false;
         }
-
         // account doesnt exist, return null
-        if(valid == false){
             System.out.println("Wrong ID or Password.");
             return null;
-        }
-
-        if (valid == true) {
-            System.out.println("Login Successful.");
-        }
-        return cust;
-        
     }
     public static Staff staffLogin() {
         Boolean valid = true;
