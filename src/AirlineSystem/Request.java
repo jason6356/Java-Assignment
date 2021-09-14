@@ -103,8 +103,8 @@ public class Request {
     public String displayRequest() {
         if (requestDescription == "Cancel Ticket Request") {
             return String
-                    .format("Request ID: %s      Request Description: %s      Reason of Request: %s   Status: %s\n\nOld Reservation: "
-                            + oldReservation.displayReservation(), requestID, requestDescription, reason,requestStatus);
+                    .format("Request ID: %s      Request Description: %s      Reason of Request: %s   \n\nOld Reservation: "
+                            + oldReservation.displayReservation(), requestID, requestDescription, reason);
         } else
             return String.format(
                     "Request ID: %s      Request Description: %s      Reason of Request: %s \n\nOld Reservation: "
