@@ -89,6 +89,7 @@ public class Main {
                         break;
                     case 4:
                         // TODO : Huiyi -> Reschedule Ticket
+                        clearConsole();
                         List<Reservation> reservation = Main.getReservations();
 
                         System.out.println("\n\n-----RESCHEDULE TICKET-----");
@@ -108,6 +109,7 @@ public class Main {
                         break;
                     case 5:
                         // TODO : Huiyi -> Cancel Ticket
+                        clearConsole();
                         List<Reservation> resToCancel = Main.getReservations();
 
                         System.out.println("\n\n-----CANCEL TICKET-----");
@@ -126,6 +128,7 @@ public class Main {
                         break;
                     case 6:
                         // TODO : Huiyi -> Check Request Status
+                        clearConsole();
                         List<Reservation> requestReservation = Main.getReservations();
 
                         System.out.println("\n\n-----CHECK REQUEST STATUS-----");
