@@ -329,19 +329,24 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
     customerRequest.setRequestDescription("Reschedule Ticket Request");
     customerRequest.setOldReservation(reservation);
 
-    System.out.println("\nCURRENT RESERVATION DETAILS: \n"+ reservation.displayReservation());
+    System.out.println("\nCURRENT RESERVATION DETAILS:\n============================"+ reservation.displayReservation());
+    System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
 
     //display available flight schedule
-    System.out.println("\n\nAVAILABLE FLIGHT SCHEDULE: \n");
+    System.out.println("\n\nAVAILABLE FLIGHT SCHEDULE:");
+    System.out.println("==========================");
+
     int n = 1;
      for (FlightSchedule flightSchedule : flightScheduleList) {
          if(flightSchedule != reservation.getFlightSchedule()){
             System.out.print(n + ". ");
             System.out.println(flightSchedule.toString());
+            System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
             availableSchedules.add(flightSchedule);
             n++;
             }
         }
+
 
     System.out.print("\nEnter new schedule choice: ");
     int choice=scanner.nextInt();
@@ -407,7 +412,7 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
         //add the request to the request list
         requestList.add(customerRequest);
 
-        System.out.println("----------YOUR REQUEST-----------------------------------------------------------------------------------------------------------------");
+        System.out.println("\n----------YOUR REQUEST-----------------------------------------------------------------------------------------------------------------");
         System.out.println(customerRequest.displayRequest());
         System.out.println("---------------------------------------------------------------------------------------------------------------------------------------");
 

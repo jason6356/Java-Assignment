@@ -7,7 +7,7 @@ enum rqStatus {
 }
 
 public class Request {
-    private static int requestCount = 0;
+    private static int requestCount = 1;
     private String requestID;
     private String requestDescription;
     private String reason;
@@ -16,7 +16,7 @@ public class Request {
     private Reservation newReservation; // cancel, oldReservation, new Reservation == null
 
     Request() {
-
+        this.requestID = makeRequestID();
     }
 
     Request(String requestDescription, String reason, Reservation oldReservation, Reservation newReservation) {
@@ -68,10 +68,6 @@ public class Request {
     }
 
     // setter
-    public void setRequestID(String requestID) {
-        this.requestID = requestID;
-    }
-
     public void setRequestDescription(String requestDescription) {
         this.requestDescription = requestDescription;
     }
