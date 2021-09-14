@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FlightSchedule {
-    private String flightScheduleCode;
     private static int nthFlightSchedule = 0; 
     private LocalTime departureTime;
     private LocalDate flightDate;
@@ -24,18 +23,10 @@ public class FlightSchedule {
         this.destination = destination;
         this.estimatedArrivalTime = estimatedArrivalTime;
         this.flight = flight;
+        this.flightScheduleCode = makeflightScheduleCode();
         nthFlightSchedule++;
         
         flightSeat = makefSeatList(flight.getTotalSeat());
-    }
-
-    private static String makeflightScheduleCode(){
-        if(nthFlightSchedule < 10)
-            return "F00" + nthFlightSchedule;
-        else if(nthFlightSchedule < 100)
-            return "F0" + nthFlightSchedule;
-
-        return "F" + nthFlightSchedule;
     }
 
     //TODO: Refactor this toString method
@@ -45,7 +36,7 @@ public class FlightSchedule {
         DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("HH:mm");
         DateTimeFormatter formatBoth = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
         //| DepartDate | DepartTime | Depart Airport | Destination Airport | Estimated Time | Direction |
-        return String.format("%5%10s|%5s|%-37s|%-37s|%13s|%-10s -> %-10s|",makeflightScheduleCode(), flightDate.format(formatDate),departureTime.format(formatTime),location.getAirportName(),destination.getAirportName(),estimatedArrivalTime.format(formatBoth),location.getLocation(),destination.getLocation());
+        return String.format("%10s|%5s|%-37s|%-37s|%13s|%-10s -> %-10s|",flightDate.format(formatDate),departureTime.format(formatTime),location.getAirportName(),destination.getAirportName(),estimatedArrivalTime.format(formatBoth),location.getLocation(),destination.getLocation());
     }
 
     public LocalTime getDepartureTime() {
@@ -68,10 +59,6 @@ public class FlightSchedule {
     }
     public LocalDateTime getEstimatedArrivalTime() {
         return estimatedArrivalTime;
-    }
-    public String getFlightScheduleCode() {
-        makeflightScheduleCode();
-        return flightScheduleCode;
     }
 
     //Method

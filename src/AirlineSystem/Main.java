@@ -41,7 +41,7 @@ public class Main {
                     break;
                 case 4:
                     // TODO: Nicole -> Staff Login
-                    guestAcc = staffLogin();
+                    guestAcc = staffLogin(s);
                     break;
                 default:
                     System.out.println("Invalid choice!!!");
@@ -156,7 +156,69 @@ public class Main {
             // TODO : Nicole -> Check(done), accept, reject requests
             // TODO : Generate Report (Summary of profit, Ranking of most frequent flights
             // made)
+            Staff staff = new Staff();
+
             System.out.println("This is a staff account instance");
+
+            int selection;
+            do {
+                // Staff Menu
+                System.out.println("Staff Menu");
+                System.out.println("==========");
+                System.out.println("1. Add Records");
+                System.out.println("2. Update Records");
+                System.out.println("3. Delete Records");
+                System.out.println("4. Create staff account");
+                System.out.println("5. Check Request List");
+                System.out.println("6. Change Password");
+                System.out.println("7. Back to Main Menu");
+                System.out.print("Enter Selection: ");
+                selection = s.nextInt();
+
+                //validation
+                while(selection<1 || selection>7){
+                    System.out.println("Invalid Input! Please enter again... ");
+                    System.out.println("Staff Menu");
+                    System.out.println("==========");
+                    System.out.println("1. Add Records");
+                    System.out.println("2. Update Records");
+                    System.out.println("3. Delete Records");
+                    System.out.println("4. Create staff account");
+                    System.out.println("5. Check Request List");
+                    System.out.println("6. Change Password");
+                    System.out.println("7. Back to Main Menu");
+                    System.out.print("Enter Selection: ");
+                    selection = s.nextInt();
+                }
+
+                switch (selection) {
+                    case 1:
+                        staff.addRecordsMenu();
+                        break;
+                    case 2: 
+                        staff.updateRecordsMenu();
+                        break;
+                    case 3: 
+                        staff.deleteRecordsMenu();
+                        break;
+                    case 4:
+                        staff.createStaffAcc();
+                        break;
+                    case 5:
+                        staff.checkRequest();
+                        break;
+                    case 6:
+                        staff.changePassword();
+                        break;
+                    case 7:
+                        //back to main menu 
+                        break;
+                    default:
+                        System.out.println("Invalid Input. Please enter again... ");
+                        break;
+                }
+            } while (selection!=7);
+
         } else {
             // TODO : Nicole -> Prompt for either the user want to book a reservation
 
@@ -172,7 +234,7 @@ public class Main {
                 yesNo = s.next().charAt(0);
 
                 if (Character.toUpperCase(yesNo) == 'Y') {
-                    System.out.println("Register or Login (R/L)? ");
+                    System.out.print("Register or Login (R/L)? ");
                     char registerOrLogin = s.next().charAt(0);
                     // Register account
                     if (Character.toUpperCase(registerOrLogin) == 'R') {
@@ -207,7 +269,7 @@ public class Main {
 
     private static int displayMenu(Scanner keyboard) {
         System.out.println("Menu");
-        System.out.println("1. Search Available Flights");
+        System.out.println("1. Display Available Flights");
         System.out.println("2. Register an account");
         System.out.println("3. Login");
         System.out.println("4. Staff Login");
@@ -420,85 +482,28 @@ public class Main {
             System.out.println("Wrong ID or Password.");
             return null;
     }
-    public static Staff staffLogin() {
-        Boolean valid = true;
 
-        Staff staff = new Staff();
-
-        System.out.println("Staff Login");
+    //staff login 
+    public static Staff staffLogin(Scanner staffScanner) {
+        System.out.println("\nStaff Login");
         System.out.println("===========");
         System.out.print("Staff ID: ");
-        String staffID = staffScanner.nextLine();
+        String staffID = staffScanner.next();
         System.out.print("Password: ");
-        String staffPwd = staffScanner.nextLine();
+        String staffPwd = staffScanner.next();
 
-        // Iterate the staff list from the main progra
+        // Iterate the staff list from the main program
         for (Staff stf : staffAccountList) {
             // perform checking
-            if (stf.getStaffID() == staffID)
-                if (stf.getPassword() == staffPwd) {
-                    valid = true;
+            if (stf.getStaffID().equals(staffID)){
+                if (stf.getPassword().equals(staffPwd)) {
+                    System.out.println("Login successful.");
                     return stf;
                 }
-
-            valid = false;
+            }
         }
         
-        // if there no staff id and password then display error message and return null
-        if(valid == false){
-            return null;
-        }
-
-        if (valid == true) {
-            System.out.println("Login Successful.");
-
-            int selection;
-            do {
-                // Staff Menu
-                System.out.println("Staff Menu");
-                System.out.println("==========");
-                System.out.println("1. Add Records");
-                System.out.println("2. Update Records");
-                System.out.println("3. Delete Records");
-                System.out.println("4. Create staff account");
-                System.out.println("5. Check Request List");
-                System.out.println("6. Change Password");
-                System.out.println("7. Back to Main Menu");
-                System.out.print("Enter Selection: ");
-                selection = staffScanner.nextInt();
-
-                int choice;
-                switch (selection) {
-                    case 1:
-                        staff.addRecordsMenu();
-                        break;
-                    case 2: 
-                        staff.updateRecordsMenu();
-                        break;
-                    case 3: 
-                        staff.deleteRecordsMenu();
-                        break;
-                    case 4:
-                        staff.createStaffAcc();
-                        break;
-                    case 5:
-                        staff.checkRequest();
-                        break;
-                    case 6:
-                        staff.changePassword();
-                        break;
-                    case 7:
-                        //back to main menu 
-                        break;
-                    default:
-                        System.out.println("Invalid Input. Please enter again... ");
-                        break;
-                }
-            } while (selection!=1 && selection!=2 && selection!=3 && selection!=4 && selection!=5 && selection!=6 selection!=7);
-
-        } else {
-            System.out.println("Login Failed.");
-        }
+        System.out.println("Wrong ID or Password.");
         return null;
     }
 

@@ -8,7 +8,8 @@ import java.util.Scanner;
 public class Staff extends Account{
     Scanner staff = new Scanner(System.in);
     private String staffID;
-    private static int nthStaff = 0; // default value is 0
+    private static int nthStaff = 1; // default value is 0
+    Account acc = new Account();
 
     //constructor 
     public Staff(){
@@ -45,7 +46,19 @@ public class Staff extends Account{
     //add records 
     public void addRecordsMenu(){
         int choice; 
-        do{
+
+        System.out.println("Add Records");
+        System.out.println("===========");
+        System.out.println("1. Flights");
+        System.out.println("2. Airline");
+        System.out.println("3. Airport");
+        System.out.println("4. Back to Staff Menu");
+        System.out.print("Enter Choice: ");
+        choice = staff.nextInt();
+
+        //validation
+        while(choice<1 || choice>4){
+            System.out.println("Invalid Input! Please enter again... ");
             System.out.println("Add Records");
             System.out.println("===========");
             System.out.println("1. Flights");
@@ -54,67 +67,87 @@ public class Staff extends Account{
             System.out.println("4. Back to Staff Menu");
             System.out.print("Enter Choice: ");
             choice = staff.nextInt();
+        }
 
-            switch(choice){
-                case 1:
-                    addFlight();
-                    break;
-                case 2:
-                    addAirline();
-                    break;
-                case 3:
-                    addAirport();
-                    break;
-                case 4:
-                    return;
-                default:
-                    System.out.println("Invalid Input! Please enter again... ");
-                    break;
-            }
-        }while(choice!= 1 && choice!=2 && choice!=3 && choice!=4);
+        switch(choice){
+            case 1:
+                addFlight();
+                break;
+            case 2:
+                addAirline();
+                break;
+            case 3:
+                addAirport();
+                break;
+            case 4:
+                return;
+            default:
+                System.out.println("Invalid Input! Please enter again... ");
+                break;
+        }
     }
 
     public void addFlight(){
         List<Flight> flightList = Main.getFlightList();
-        
-        //Input details 
-        System.out.println("Add Flight");
-        System.out.println("==========");
-        System.out.print("Enter Airline Name: ");
-        String airlineName = staff.nextLine();
-        System.out.print("Enter Airline Code: ");
-        String airlineCode = staff.next();
-        System.out.print("Enter Total Seats: ");
-        int totalSeat = staff.nextInt();
-        
-        //Create object 
-        Airline airline = new Airline(airlineName, airlineCode);
-        Flight flight = new Flight(airline, totalSeat);
-        flightList.add(flight);
-    }
+        char cont;
 
-    public void addAirport(){
-        List<Airport> airportList = Main.getAirportList();
+        do{
+            //Input details 
+            System.out.println("Add Flight");
+            System.out.println("==========");
+            staff.nextLine();
+            System.out.print("Enter Airline Name: ");
+            String airlineName = staff.nextLine();
+            System.out.print("Enter Airline Code: ");
+            String airlineCode = staff.next();
+            System.out.print("Enter Total Seats: ");
+            int totalSeat = staff.nextInt();
+            
+            //Create object 
+            Airline airline = new Airline(airlineName, airlineCode);
+            Flight flight = new Flight(airline, totalSeat);
+            flightList.add(flight);
 
-        //Input details 
-        System.out.println("Add Airport");
-        System.out.println("===========");
-        System.out.print("Enter Airport Name: ");
-        String airportName = staff.nextLine();
-        System.out.print("Enter Location: ");
-        String location = staff.nextLine();
+            //Display to double check?
+            System.out.print("Display Flight List (Y=Yes, N=No)? ");
+            char yesNo = staff.next().charAt(0);
 
-        //Create object 
-        Airport airport = new Airport(airportName, location);
-        airportList.add(airport);
+            while(!acc.validateOption(yesNo)){
+                System.out.println("Invalid Input. Please enter again... ");
+                System.out.print("Display Flight (Y/y=Yes, N/n=No)? ");
+                yesNo = staff.next().charAt(0);
+            }
+
+            if(Character.toUpperCase(yesNo) == 'Y'){
+                for (Flight flight2 : flightList) {
+                    System.out.println(flight2.toString());
+                }
+            }
+
+            //Continue? 
+            System.out.print("Continue add flight (Y/y=Yes, N/n=No)? ");
+            cont = staff.next().charAt(0);
+
+            while(!acc.validateOption(cont)){
+                System.out.println("Continue add flight? ");
+                cont = staff.next().charAt(0);
+            }
+
+        }while(Character.toUpperCase(cont) == 'Y');
+
     }
 
     public void addAirline(){
         List<Airline> airlineList = Main.getAirlineList();
 
+        for (Airline airline3 : airlineList) {
+            System.out.println(airline3.toString());
+        }
+
         //Input details 
         System.out.println("Add Airline");
         System.out.println("===========");
+        staff.nextLine();
         System.out.print("Enter Airline Name: ");
         String airlineName = staff.nextLine();
         System.out.print("Enter Airline Code: ");
@@ -123,6 +156,57 @@ public class Staff extends Account{
         //Create object 
         Airline airline = new Airline(airlineName, airlineCode);
         airlineList.add(airline);
+
+        System.out.print("Display Flight List (Y=Yes, N=No)? ");
+        char yesNo = staff.next().charAt(0);
+
+        while(!acc.validateOption(yesNo)){
+            System.out.println("Invalid Input. Please enter again... ");
+            System.out.print("Display Flight (Y=Yes, N=No)? ");
+            yesNo = staff.next().charAt(0);
+        }
+
+        if(Character.toUpperCase(yesNo) == 'Y'){
+            for (Airline airline2 : airlineList) {
+                System.out.println(airline2.toString());
+            }
+        }
+    }
+
+    public void addAirport(){
+        List<Airport> airportList = Main.getAirportList();
+
+        for (Airport airport3 : airportList) {
+            System.out.println(airport3.toString());
+        }
+
+        //Input details 
+        System.out.println("Add Airport");
+        System.out.println("===========");
+        staff.nextLine();
+        System.out.print("Enter Airport Name: ");
+        String airportName = staff.nextLine();
+        System.out.print("Enter Location: ");
+        String location = staff.nextLine();
+
+        //Create object 
+        Airport airport = new Airport(airportName, location);
+        airportList.add(airport);
+
+        System.out.print("Display Airport (Y=Yes, N=No)? ");
+        char yesNo = staff.next().charAt(0);
+
+        while(!acc.validateOption(yesNo)){
+            System.out.println("Invalid Input. Please enter again... ");
+            System.out.print("Display Flight List (Y=Yes, N=No)? ");
+            yesNo = staff.next().charAt(0);
+        }
+
+        if(Character.toUpperCase(yesNo) == 'Y'){
+            for (Airport airport2 : airportList) {
+                System.out.println(airport2.toString());
+            }
+        }
     }
 
     //update records 
