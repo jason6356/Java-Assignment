@@ -510,7 +510,7 @@ public class Main {
             // perform checking
             if (stf.getStaffID().equals(staffID)){
                 if (stf.getPassword().equals(staffPwd)) {
-                    System.out.println("Login successful.");
+                    System.out.println("Welcome " + stf.getFirstName() + " " + stf.getLastName() + ".");
                     return stf;
                 }
             }

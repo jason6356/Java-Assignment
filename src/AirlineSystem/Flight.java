@@ -61,7 +61,8 @@ class Flight {
     //ToString
     @Override
     public String toString() {
-        return String.format("FlightCode : %s \nTotalSeat : %d\n Airline : %s \n",flightCode,totalSeat,airline.getAirlineName());
+        // return String.format("FlightCode : %s \nTotalSeat : %d\n Airline : %s \n",flightCode,totalSeat,airline.getAirlineName());
+        return String.format("%-15s %-20s %-20s\n", flightCode, airline.getAirlineName(), totalSeat);
     }
 
     //Methods

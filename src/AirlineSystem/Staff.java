@@ -46,7 +46,7 @@ public class Staff extends Account{
     //add records 
     public void addRecordsMenu(){
         int choice; 
-
+        Main.clearConsole();
         System.out.println("Add Records");
         System.out.println("===========");
         System.out.println("1. Flights");
@@ -93,14 +93,13 @@ public class Staff extends Account{
 
         do{
             //Input details 
-            System.out.println("Add Flight");
-            System.out.println("==========");
+            System.out.println("\n---Add Flight---");
             staff.nextLine();
-            System.out.print("Enter Airline Name: ");
+            System.out.print("Airline Name: ");
             String airlineName = staff.nextLine();
-            System.out.print("Enter Airline Code: ");
+            System.out.print("Airline Code: ");
             String airlineCode = staff.next();
-            System.out.print("Enter Total Seats: ");
+            System.out.print("Total Seats: ");
             int totalSeat = staff.nextInt();
             
             //Create object 
@@ -108,20 +107,12 @@ public class Staff extends Account{
             Flight flight = new Flight(airline, totalSeat);
             flightList.add(flight);
 
-            //Display to double check?
-            System.out.print("Display Flight List (Y=Yes, N=No)? ");
-            char yesNo = staff.next().charAt(0);
-
-            while(!acc.validateOption(yesNo)){
-                System.out.println("Invalid Input. Please enter again... ");
-                System.out.print("Display Flight (Y/y=Yes, N/n=No)? ");
-                yesNo = staff.next().charAt(0);
-            }
-
-            if(Character.toUpperCase(yesNo) == 'Y'){
-                for (Flight flight2 : flightList) {
-                    System.out.println(flight2.toString());
-                }
+            System.out.println("\n                 ---Flight---");
+            System.out.println("====================================================");
+            System.out.printf("%-15s %-20s %-20s \n", "Flight Code", "Airline Name", "Total Seats");
+            System.out.println("====================================================");
+            for (Flight flight2 : flightList) {
+                System.out.println(flight2.toString());
             }
 
             //Continue? 
@@ -142,31 +133,23 @@ public class Staff extends Account{
 
         do{
             //Input details 
-            System.out.println("Add Airline");
-            System.out.println("===========");
+            System.out.println("---Add Airline---");
             staff.nextLine();
-            System.out.print("Enter Airline Name: ");
+            System.out.print("Airline Name: ");
             String airlineName = staff.nextLine();
-            System.out.print("Enter Airline Code: ");
+            System.out.print("Airline Code: ");
             String airlineCode = staff.next();
     
             //Create object 
             Airline airline = new Airline(airlineName, airlineCode);
             airlineList.add(airline);
     
-            System.out.print("Display Flight List (Y=Yes, N=No)? ");
-            char yesNo = staff.next().charAt(0);
-    
-            while(!acc.validateOption(yesNo)){
-                System.out.println("Invalid Input. Please enter again... ");
-                System.out.print("Display Flight (Y=Yes, N=No)? ");
-                yesNo = staff.next().charAt(0);
-            }
-    
-            if(Character.toUpperCase(yesNo) == 'Y'){
-                for (Airline airline2 : airlineList) {
-                    System.out.println(airline2.toString());
-                }
+            System.out.println("\n                 ---Airline---");
+            System.out.println("======================================================");
+            System.out.printf("%-20s %-20s %-20s \n", "Airline Name", "Airline Code", "Flight List");
+            System.out.println("======================================================");
+            for (Airline airline2 : airlineList) {
+                System.out.println(airline2.toString() + "\n");
             }
 
             //Continue?
@@ -184,38 +167,27 @@ public class Staff extends Account{
         List<Airport> airportList = Main.getAirportList();
         char cont;
 
-        for (Airport airport3 : airportList) {
-            System.out.println(airport3.toString());
-        }
-
         do{
             //Input details 
-            System.out.println("Add Airport");
-            System.out.println("===========");
+            System.out.println("---Add Airport---");
             staff.nextLine();
-            System.out.print("Enter Airport Name: ");
+            System.out.print("Airport Name: ");
             String airportName = staff.nextLine();
-            System.out.print("Enter Location: ");
+            System.out.print("Location: ");
             String location = staff.nextLine();
 
             //Create object 
             Airport airport = new Airport(airportName, location);
             airportList.add(airport);
 
-            System.out.print("Display Airport (Y=Yes, N=No)? ");
-            char yesNo = staff.next().charAt(0);
-
-            while(!acc.validateOption(yesNo)){
-                System.out.println("Invalid Input. Please enter again... ");
-                System.out.print("Display Flight List (Y=Yes, N=No)? ");
-                yesNo = staff.next().charAt(0);
+            System.out.println("\n                                ---Airport---");
+            System.out.println("==============================================================================");
+            System.out.printf("%-40s %-20s %-20s \n", "Airport Name", "Location", "Flight List");
+            System.out.println("==============================================================================");
+            for (Airport airport2 : airportList) {
+                System.out.println(airport2.toString() + "\n");
             }
 
-            if(Character.toUpperCase(yesNo) == 'Y'){
-                for (Airport airport2 : airportList) {
-                    System.out.println(airport2.toString());
-                }
-            }
             //Continue?
             System.out.print("Continue add airport (Y/y=Yes, N/n=No)? ");
             cont = staff.next().charAt(0);
@@ -266,124 +238,208 @@ public class Staff extends Account{
     public void updateFlights(){
         List<Flight> flightList = Main.getFlightList();
         List<Airline> airlineList = Main.getAirlineList();
+        char cont;
 
-        //Display flight details 
-        for (Flight flight : flightList) {
-            System.out.println(flight.toString());
-        }
-
-        //Enter Flight code 
-        System.out.println("----Update----");
-        staff.nextLine();
-        System.out.print("Flight Code: ");
-        String flightCode = staff.nextLine();
-
-        //get index 
-        int updateIndex = 0;
-        for(int i=0; i<flightList.size(); i++){
-            if(flightList.get(i).getFlightCode().equals(flightCode))
-                updateIndex = i;
-        }
-
-        System.out.println("Update Flight Details");
-        System.out.println("=====================");
-        System.out.println("Choose Types of Airline");
-        System.out.println("=======================");
-        System.out.println("Airline Name            Airline Code");
-        int num = 1;
-        for (Airline airline : airlineList) {
-            System.out.printf("%d. %10s%5s\n",num++, airline.getAirlineName(), airline.getAirlineCode());
-        }
-        int typeAirline = staff.nextInt();
-        typeAirline--;
-        int airlineIndex = 0;
-        for(int i=0; i<airlineList.size(); i++){
-            if(airlineList.get(i).getAirlineName().equals(airlineList.get(typeAirline).getAirlineName())){
-                airlineIndex = i;
+        do
+        {
+            //Display flight details 
+            System.out.println("\n                 ---Flight---");
+            System.out.println("====================================================");
+            System.out.printf("%-15s %-20s %-20s \n", "Flight Code", "Airline Name", "Total Seats");
+            System.out.println("====================================================");
+            for (Flight flight : flightList) {
+                System.out.println(flight.toString());
             }
-        }
-        System.out.print("Total Seats: ");
-        int totalSeat = staff.nextInt();
 
-        //Create object 
-        Airline airline = new Airline(airlineList.get(airlineIndex).getAirlineName(), airlineList.get(airlineIndex).getAirlineCode());
-        Flight flight = new Flight(airline, totalSeat);
-        flightList.set(updateIndex, flight);
+            //Enter Flight code 
+            System.out.println("----Update----");
+            staff.nextLine();
+            System.out.print("Flight Code: ");
+            String flightCode = staff.nextLine();
 
-        for (Flight flight2 : flightList) {
-            System.out.println(flight2.toString());
-        }
+            //get index 
+            int updateIndex = 0;
+            for(int i=0; i<flightList.size(); i++){
+                if(flightList.get(i).getFlightCode().equals(flightCode))
+                    updateIndex = i;
+            }
+
+            System.out.printf("\n%-15s %-20s %-20s \n", "Flight Code", "Airline Name", "Total Seats");
+            System.out.println("================================================");
+            System.out.println(flightList.get(updateIndex).toString());
+
+            System.out.println("\n        Choose Types of Airline");
+            System.out.println("=========================================");
+            System.out.println("   Airline Name            Airline Code");
+            System.out.println("=========================================");
+
+            int num = 1;
+            for (Airline airline : airlineList) {
+                System.out.printf("%d. %-23s %-12s\n\n",num++, airline.getAirlineName(), airline.getAirlineCode());
+            }
+            System.out.print("> ");
+            int typeAirline = staff.nextInt();
+            typeAirline--;
+            int airlineIndex = 0;
+            for(int i=0; i<airlineList.size(); i++){
+                if(airlineList.get(i).getAirlineName().equals(airlineList.get(typeAirline).getAirlineName())){
+                    airlineIndex = i;
+                }
+            }
+            System.out.print("Total Seats: ");
+            int totalSeat = staff.nextInt();
+
+            //Create object 
+            Airline airline = new Airline(airlineList.get(airlineIndex).getAirlineName(), airlineList.get(airlineIndex).getAirlineCode());
+            Flight flight = new Flight(airline, totalSeat);
+            flightList.set(updateIndex, flight);
+
+            //Display Changes 
+            System.out.println("\n                 ---Flight---");
+            System.out.println("======================================================");
+            System.out.printf("%-15s %-20s %-20s \n", "Flight Code", "Airline Name", "Total Seats");
+            System.out.println("======================================================");
+            System.out.println(flightList.get(updateIndex).toString());
+
+            //Continue?
+            System.out.print("Continue update flight (Y/y=Yes, N/n=No)? ");
+            cont = staff.next().charAt(0);
+
+            while(!acc.validateOption(cont)){
+                System.out.println("Invalid Input! Please enter again... ");
+                System.out.print("Continue add airline (Y/y=Yes, N/n=No)? ");
+                cont = staff.next().charAt(0);
+            }
+        }while(Character.toUpperCase(cont) == 'Y');
+
     }
 
     public void updateAirline(){
         List<Airline> airlineList = Main.getAirlineList();
+        char cont;
 
-        //Display airline details 
-        for (Airline airline : airlineList) {
-            System.out.println(airline.toString());
-        }
+        do{
+            //Display airline details 
+            System.out.println("\n                 ---Airline---");
+            System.out.println("======================================================");
+            System.out.printf("%-20s %-20s %-20s \n", "Airline Name", "Airline Code", "Flight List");
+            System.out.println("======================================================");
+            for (Airline airline : airlineList) {
+                System.out.println(airline.toString() + "\n");
+            }
 
-        //Input airline code to update 
-        System.out.println("--------------");
-        staff.nextLine();
-        System.out.print("Airline Code: ");
-        String updateAirlineCode = staff.nextLine();
+            //Input airline code to update 
+            System.out.println("\n---Update---");
+            staff.nextLine();
+            System.out.print("Airline Code: ");
+            String updateAirlineCode = staff.nextLine();
 
-        //get index 
-        int updateIndex = 0;
-        for(int i=0; i<airlineList.size(); i++){
-            if(airlineList.get(i).getAirlineCode().equals(updateAirlineCode))
-                updateIndex = i;
-            i++;
-        }
+            //get index 
+            int updateIndex = 0;
+            for(int i=0; i<airlineList.size(); i++){
+                if(airlineList.get(i).getAirlineCode().equals(updateAirlineCode))
+                    updateIndex = i;
+                i++;
+            }
 
-        //Input details 
-        System.out.println("Update Airline");
-        System.out.println("==============");
-        staff.nextLine();
-        System.out.print("Enter Airline Name: ");
-        String airlineName = staff.nextLine();
-        System.out.print("Enter Airline Code: ");
-        String airlineCode = staff.next();
+            //Display specific records 
+            System.out.printf("%-20s %-20s %-20s \n", "Airline Name", "Airline Code", "Flight List");
+            System.out.println("================================================");
+            System.out.println(airlineList.get(updateIndex).toString());
 
-        //Create object 
-        Airline airline = new Airline(airlineName, airlineCode);
-        airlineList.set(updateIndex, airline); 
+            //Input details 
+            staff.nextLine();
+            System.out.print("Airline Name: ");
+            String airlineName = staff.nextLine();
+            System.out.print("Airline Code: ");
+            String airlineCode = staff.next();
+
+            //Create object 
+            Airline airline = new Airline(airlineName, airlineCode);
+            airlineList.set(updateIndex, airline); 
+
+            //Display Changes 
+            System.out.println("\n                 ---Airline---");
+            System.out.println("======================================================");
+            System.out.printf("%-20s %-20s %-20s \n", "Airline Name", "Airline Code", "Flight List");
+            System.out.println("======================================================");
+            System.out.println(airlineList.get(updateIndex).toString() + "\n");
+
+            //Continue?
+            System.out.print("Continue update airport (Y/y=Yes, N/n=No)? ");
+            cont = staff.next().charAt(0);
+
+            while(!acc.validateOption(cont)){
+                System.out.println("Invalid Input! Please enter again... ");
+                System.out.print("Continue update airport (Y/y=Yes, N/n=No)? ");
+                cont = staff.next().charAt(0);
+            }
+        }while(Character.toUpperCase(cont) == 'Y');
+
     }
 
     public void updateAirport(){
         List<Airport> airportList = Main.getAirportList();
+        char cont;
         
-        //Display details 
-        for (Airport airport : airportList) {
-            System.out.println(airport.toString());
-        }
+        do{
+            //Display details 
+            System.out.println("                                   ---Airport---");
+            System.out.println("==============================================================================");
+            System.out.printf("%-40s %-20s %-20s \n", "Airport Name", "Location", "Flight List");
+            System.out.println("==============================================================================");
+            for (Airport airport : airportList) {
+                System.out.println(airport.toString());
+            }
 
-        //Input airport name to update 
-        System.out.println("--------------");
-        System.out.print("Airport Name: ");
-        String updateAirportName = staff.nextLine();
+            //Input airport name to update 
+            System.out.println("\n---Update---");
+            staff.nextLine();
+            System.out.print("Airport Name: ");
+            String updateAirportName = staff.nextLine();
 
-        //get index 
-        int updateIndex = 0;
-        for(int i=0; i<airportList.size(); i++){
-            if(airportList.get(i).getAirportName().equals(updateAirportName))
-                updateIndex = i;
-            i++;
-        }
+            //get index 
+            int updateIndex = 0;
+            for(int i=0; i<airportList.size(); i++){
+                if(airportList.get(i).getAirportName().equals(updateAirportName))
+                    updateIndex = i;
+                i++;
+            }
 
-        //Input details 
-        System.out.println("Update Airport");
-        System.out.println("==============");
-        staff.nextLine();
-        System.out.print("Airport Name: ");
-        String airportName = staff.nextLine();
-        System.out.print("Location: ");
-        String location = staff.nextLine();
+            //get specific record 
+            System.out.printf("\n%-40s %-20s %-20s \n", "Airport Name", "Location", "Flight List");
+            System.out.println("==============================================================================");
+            System.out.println(airportList.get(updateIndex).toString());
 
-        //Create object 
-        Airport airport = new Airport(airportName, location);
-        airportList.set(updateIndex, airport);
+            //Input details 
+            staff.nextLine();
+            System.out.print("Airport Name: ");
+            String airportName = staff.nextLine();
+            System.out.print("Location: ");
+            String location = staff.nextLine();
+
+            //Create object 
+            Airport airport = new Airport(airportName, location);
+            airportList.set(updateIndex, airport);
+
+            //Display Changes 
+            System.out.println("\n                                   ---Airport---");
+            System.out.println("==============================================================================");
+            System.out.printf("%-40s %-20s %-20s \n", "Airport Name", "Location", "Flight List");
+            System.out.println("==============================================================================");
+            System.out.println(airportList.get(updateIndex).toString() + "\n");
+
+            //Continue?
+            System.out.print("Continue update airline (Y/y=Yes, N/n=No)? ");
+            cont = staff.next().charAt(0);
+
+            while(!acc.validateOption(cont)){
+                System.out.println("Invalid Input! Please enter again... ");
+                System.out.print("Continue add airline (Y/y=Yes, N/n=No)? ");
+                cont = staff.next().charAt(0);
+            }
+        }while(Character.toUpperCase(cont) == 'Y');
+
     }
 
     public void updateFlightSchedule(){
@@ -395,7 +451,7 @@ public class Staff extends Account{
         }
 
         //Input 
-        System.out.println("--------------");
+        System.out.println("---Update---");
         System.out.print("Flight Schedule Code: ");
         String flightScheduleCode = staff.nextLine();
 
@@ -489,75 +545,206 @@ public class Staff extends Account{
 
     public void deleteFlights(){
         List<Flight> flightList = Main.getFlightList();
+        char cont;
 
-        //Display flight details 
-        for (Flight flight : flightList) {
-            System.out.println(flight.toString());
-        }
+        do{
+            //Display flight details 
+            System.out.println("\n                 ---Flight---");
+            System.out.println("====================================================");
+            System.out.printf("%-15s %-20s %-20s \n", "Flight Code", "Airline Name", "Total Seats");
+            System.out.println("====================================================");
+            for (Flight flight : flightList) {
+                System.out.println(flight.toString());
+            }
 
-        //Enter Flight code 
-        System.out.println("-------------");
-        staff.nextLine();
-        System.out.print("Flight Code: ");
-        String flightCode = staff.nextLine();
+            //Enter Flight code 
+            System.out.println("---Delete---");
+            staff.nextLine();
+            System.out.print("Flight Code: ");
+            String flightCode = staff.nextLine();
 
-        //get index 
-        int updateIndex = 0;
-        for(int i=0; i<flightList.size(); i++){
-            if(flightList.get(i).getFlightCode().equals(flightCode))
-                updateIndex = i;
-        }
+            //get index 
+            int deleteIndex = 0;
+            for(int i=0; i<flightList.size(); i++){
+                if(flightList.get(i).getFlightCode().equals(flightCode))
+                    deleteIndex = i;
+            }
 
-        flightList.remove(updateIndex);
+            //Get specific records 
+            System.out.printf("\n%-15s %-20s %-20s \n", "Flight Code", "Airline Name", "Total Seats");
+            System.out.println("================================================");
+            System.out.println(flightList.get(deleteIndex).toString());
+
+            System.out.print("Confirm Delete? ");
+            char confirmation = staff.next().charAt(0);
+
+            while(!acc.validateOption(confirmation)){
+                System.out.println("Invalid Input! Please enter again... ");
+                System.out.println("Confirm Delete? ");
+                confirmation = staff.next().charAt(0);
+            }
+
+            if(Character.toUpperCase(confirmation) == 'Y'){
+                //Remove Records 
+                flightList.remove(deleteIndex);
+            }
+
+            //Display all Records 
+            System.out.println("\n                 ---Flight---");
+            System.out.println("====================================================");
+            System.out.printf("%-15s %-20s %-20s \n", "Flight Code", "Airline Name", "Total Seats");
+            System.out.println("====================================================");
+            for (Flight flight : flightList) {
+                System.out.println(flight.toString());
+            }
+
+            //Continue?
+            System.out.print("Continue delete flight (Y/y=Yes, N/n=No)? ");
+            cont = staff.next().charAt(0);
+
+            while(!acc.validateOption(cont)){
+                System.out.println("Invalid Input! Please enter again... ");
+                System.out.print("Continue delete airline (Y/y=Yes, N/n=No)? ");
+                cont = staff.next().charAt(0);
+            }
+        }while(Character.toUpperCase(cont) == 'Y');
+
     }
 
     public void deleteAirline(){
         List<Airline> airlineList = Main.getAirlineList();
+        char cont;
 
-        //Display airline details 
-        for (Airline airline : airlineList) {
-            System.out.println(airline.toString());
-        }
+        do{
+            //Display airline details 
+            System.out.println("\n                 ---Airline---");
+            System.out.println("======================================================");
+            System.out.printf("%-20s %-20s %-20s \n", "Airline Name", "Airline Code", "Flight List");
+            System.out.println("======================================================");
+            for (Airline airline : airlineList) {
+                System.out.println(airline.toString() + "\n");
+            }
 
-        //Input airline code to update 
-        System.out.println("--------------");
-        staff.nextLine();
-        System.out.print("Airline Code: ");
-        String updateAirlineCode = staff.nextLine();
+            //Input airline code 
+            System.out.println("---Delete---");
+            staff.nextLine();
+            System.out.print("Airline Code: ");
+            String updateAirlineCode = staff.nextLine();
 
-        //get index 
-        int updateIndex = 0;
-        for(int i=0; i<airlineList.size(); i++){
-            if(airlineList.get(i).getAirlineCode().equals(updateAirlineCode))
-                updateIndex = i;
-        }
+            //get index 
+            int updateIndex = 0;
+            for(int i=0; i<airlineList.size(); i++){
+                if(airlineList.get(i).getAirlineCode().equals(updateAirlineCode))
+                    updateIndex = i;
+            }
 
-        airlineList.remove(updateIndex); 
+            //Display specific records 
+            System.out.printf("\n%-20s %-20s %-20s \n", "Airline Name", "Airline Code", "Flight List");
+            System.out.println("================================================");
+            System.out.println(airlineList.get(updateIndex).toString() + "\n");
+
+            System.out.print("Confirm Delete? ");
+            char confirmation = staff.next().charAt(0);
+
+            while(!acc.validateOption(confirmation)){
+                System.out.println("Invalid Input! Please enter again... ");
+                System.out.println("Confirm Delete? ");
+                confirmation = staff.next().charAt(0);
+            }
+
+            if(Character.toUpperCase(confirmation) == 'Y'){
+                //Remove Records 
+                airlineList.remove(updateIndex); 
+            }
+
+            //Display airline details 
+            System.out.println("\n                 ---Airline---");
+            System.out.println("======================================================");
+            System.out.printf("%-20s %-20s %-20s \n", "Airline Name", "Airline Code", "Flight List");
+            System.out.println("======================================================");
+            for (Airline airline : airlineList) {
+                System.out.println(airline.toString() + "\n");
+            }
+
+            //Continue?
+            System.out.print("Continue update airport (Y/y=Yes, N/n=No)? ");
+            cont = staff.next().charAt(0);
+
+            while(!acc.validateOption(cont)){
+                System.out.println("Invalid Input! Please enter again... ");
+                System.out.print("Continue update airport (Y/y=Yes, N/n=No)? ");
+                cont = staff.next().charAt(0);
+            }
+        }while(Character.toUpperCase(cont) == 'Y');
+        
     }
 
     public void deleteAirport(){
         List<Airport> airportList = Main.getAirportList();
+        char cont;
         
-        //Display details 
-        for (Airport airport : airportList) {
-            System.out.println(airport.toString());
-        }
+        do{
+            //Display details 
+            System.out.println("                                   ---Airport---");
+            System.out.println("==============================================================================");
+            System.out.printf("%-40s %-20s %-20s \n", "Airport Name", "Location", "Flight List");
+            System.out.println("==============================================================================");
+            for (Airport airport : airportList) {
+                System.out.println(airport.toString() + "\n");
+            }
 
-        //Input airport name to update 
-        System.out.println("--------------");
-        staff.nextLine();
-        System.out.print("Airport Name: ");
-        String updateAirportName = staff.nextLine();
+            //Input airport name 
+            System.out.println("---Delete---");
+            staff.nextLine();
+            System.out.print("Airport Name: ");
+            String updateAirportName = staff.nextLine();
 
-        //get index 
-        int updateIndex = 0;
-        for(int i=0; i<airportList.size(); i++){
-            if(airportList.get(i).getAirportName().equals(updateAirportName))
-                updateIndex = i;
-            i++;
-        }
+            //get index 
+            int updateIndex = 0;
+            for(int i=0; i<airportList.size(); i++){
+                if(airportList.get(i).getAirportName().equals(updateAirportName))
+                    updateIndex = i;
+                i++;
+            }
 
-        airportList.remove(updateIndex);
+            //get specific record 
+            System.out.printf("\n%-40s %-20s %-20s \n", "Airport Name", "Location", "Flight List");
+            System.out.println("==============================================================================");
+            System.out.println(airportList.get(updateIndex).toString() + "\n");
+
+            System.out.print("Confirm Delete? ");
+            char confirmation = staff.next().charAt(0);
+
+            while(!acc.validateOption(confirmation)){
+                System.out.println("Invalid Input! Please enter again... ");
+                System.out.println("Confirm Delete? ");
+                confirmation = staff.next().charAt(0);
+            }
+
+            if(Character.toUpperCase(confirmation) == 'Y'){
+                //Remove Records 
+                airportList.remove(updateIndex);
+            }
+
+            //Display details 
+            System.out.println("\n                                   ---Airport---");
+            System.out.println("==============================================================================");
+            System.out.printf("%-40s %-20s %-20s \n", "Airport Name", "Location", "Flight List");
+            System.out.println("==============================================================================");
+            for (Airport airport : airportList) {
+                System.out.println(airport.toString() + "\n");
+            }
+
+            //Continue?
+            System.out.print("Continue delete airline (Y/y=Yes, N/n=No)? ");
+            cont = staff.next().charAt(0);
+
+            while(!acc.validateOption(cont)){
+                System.out.println("Invalid Input! Please enter again... ");
+                System.out.print("Continue delete airline (Y/y=Yes, N/n=No)? ");
+                cont = staff.next().charAt(0);
+            }
+        }while(Character.toUpperCase(cont) == 'Y');
     }
 
     public void deleteFlightSchedule(){
