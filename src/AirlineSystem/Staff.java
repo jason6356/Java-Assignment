@@ -20,7 +20,7 @@ public class Staff extends Account{
                  String phoneNum){
         super(password, firstName, lastName, address, gender, age, email, phoneNum);
         this.staffID = makeStaffID();
-        //Increment Once a staff has been created
+        //Increment Once  staff has been created
         nthStaff++;
     }
 

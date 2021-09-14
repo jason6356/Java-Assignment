@@ -45,7 +45,7 @@ class Airport {
         // String str = String.format("AirportName : %s \n Location : %s \n FlightList : ", airportName,location);
         String str = String.format("%-40s %-20s ", airportName, location);
         for (Flight flight : flightList) {
-            str += flight.getFlightCode();
+            str += flight.getFlightCode() + " ";
         }
         return str;
     }

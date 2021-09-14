@@ -15,10 +15,12 @@ public class Request {
     private Reservation oldReservation; // if reschedule then we will have oldReservation and new reservation
     private Reservation newReservation; // cancel, oldReservation, new Reservation == null
 
+    //Default invoke with this();
     Request() {
         this.requestID = makeRequestID();
     }
 
+    //Remember to increase the requestCount once a request has been done
     Request(String requestDescription, String reason, Reservation oldReservation, Reservation newReservation) {
         this.requestID = makeRequestID();
         this.requestDescription = requestDescription;
@@ -88,13 +90,20 @@ public class Request {
         this.newReservation = newReservation;
     }
 
-    // method
+    /**
+     * Method to display Object in String
+     */
     public String toString() {
         return String.format(
                 "Request ID: %s      Request Description: %s      Reason of Request: %s \nOld Reservation: "
                         + oldReservation.toString() + "\n\nNew Reservation: " + newReservation.toString(),
                 requestID, requestDescription, reason);
     }
+
+    /**
+     * Method to display Request Details In Formatted Way
+     * @return formatted request String
+     */
 
     public String displayRequest() {
         if (requestDescription == "Cancel Ticket Request") {
@@ -113,6 +122,11 @@ public class Request {
                     requestID, requestDescription, reason);
     }
 
+    /**
+     * Method that update the request once the staff has approve a request
+     * @param request
+     */
+
     public void updateRequest(Request request) {
         List<Reservation> reservationList = Main.getReservations();
 
@@ -121,8 +135,12 @@ public class Request {
             if (request.getRequestDescription() == "Cancel Ticket Request") {
 
                 for (Reservation reservation : reservationList) {
-                    if (request.getOldReservation().equals(reservation))
+                    if (request.getOldReservation().equals(reservation)){
+                        //Make all the seats booked by the cancelled reservation into available again
+                        Reservation.getSeatMap().get(reservation).forEach((seat) -> seat.makeSeatEmpty());
+                        //Reset the reservation
                         reservation = null;
+                    }
                 }
 
             } else if (request.getRequestDescription() == "Reschedule Ticket Request") {

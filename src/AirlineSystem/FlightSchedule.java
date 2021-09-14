@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FlightSchedule {
+    private String flightScheduleCode;
     private static int nthFlightSchedule = 0; 
     private LocalTime departureTime;
     private LocalDate flightDate;
@@ -27,6 +28,7 @@ public class FlightSchedule {
         nthFlightSchedule++;
         
         flightSeat = makefSeatList(flight.getTotalSeat());
+        flightScheduleCode = makeflightScheduleCode();
     }
 
     private String makeflightScheduleCode(){
@@ -66,7 +68,9 @@ public class FlightSchedule {
     public LocalDateTime getEstimatedArrivalTime() {
         return estimatedArrivalTime;
     }
-
+    public String getFlightScheduleCode() {
+        return flightScheduleCode;
+    }
     //Method
     /**
      * Create a list of flight seats to the flight schedule

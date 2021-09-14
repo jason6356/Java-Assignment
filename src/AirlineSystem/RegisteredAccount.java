@@ -153,7 +153,7 @@ public void confirmTicket(Scanner s){
     List<Reservation> queryList = new ArrayList<Reservation>();
     int i = 1;
     for (Reservation reservation : reservations) {
-        if(reservation.getReservationStatus() == rStatus.BOOKED){
+        if(reservation.getReservationStatus() == rStatus.PENDING){
             queryList.add(reservation);
             System.out.printf("%2d", i++);
             System.out.println(reservation);
@@ -191,8 +191,11 @@ public void confirmTicket(Scanner s){
         if(payChoice == 'Y'){
             System.out.println("Calling junwei method");
         }
-        else
+        else{
             System.out.println("For your reminder, the reservation that is not confirmed yet after 14 days will be removed!");
+            s.nextLine();
+            s.nextLine();
+        }
     }
 }
 

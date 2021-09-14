@@ -96,6 +96,9 @@ public class Reservation {
         return seatMap;
     }
 
+    /**
+     * Method to display Reservation Details
+     */
     public String toString() {
         return String.format(
                 "\nReservation No: %s \nReservation Time: %s \nReservation Status: %s \nNumber of seat booked: %d \nTotal Amount: %.2f \n"
@@ -103,7 +106,10 @@ public class Reservation {
                 reservationNo, reservationTime, reservationStatus, noOfSeatBooked, totalAmount);
 
     }
-
+    /**
+     * Method to Display Reservation in Formatted 
+     * @return
+     */
     public String displayReservation() {
         return String.format(
                 "\n| [%s]                                                                                                                                |\n| Reservation Time: %-29s       | Status: %-50s                    |\n| Seat booked: %-30d           | Total Amount: %-50.2f              |\n| "
@@ -111,11 +117,19 @@ public class Reservation {
                 reservationNo, reservationTime, reservationStatus, noOfSeatBooked, totalAmount);
     }
 
+    /**
+     * Method to Override equals by comparing ReservationNo
+     */
     @Override
     public boolean equals(Object reservation) {
         return reservation == ((Reservation) reservation).getReservationNo();
     }
 
+    /**
+     * Method to calculate TotalAmount
+     * @param seats
+     * @return
+     */    
     private double calculateTotalAmount(List<fSeat> seats) {
         double totalAmount = 0;
         for (fSeat seat : seats) {
@@ -123,5 +137,4 @@ public class Reservation {
         }
         return totalAmount;
     }
-
 }

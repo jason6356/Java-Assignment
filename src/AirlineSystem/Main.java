@@ -16,47 +16,44 @@ public class Main {
     private static List<Request> requests = new ArrayList<Request>();
     private static List<Reservation> reservations = new ArrayList<Reservation>();
     
-
     public static void main(String[] args) {
+
         clearConsole();
         Account guestAcc = new Account();
         insertDataToList();
         Scanner s = new Scanner(System.in);
-        boolean leave = true;
-        do {
-            int choice = displayMenu(s);
-            leave = true;
-            switch (choice) {
-                case 1:
-                    // TODO: Nicole -> Search Available Flights Feature
-                    guestAcc.availableFlights();
-                    break;
-                case 2:
-                    // Register Account
-                    guestAcc = registerAccount();
-                    break;
-                case 3:
-                    // TODO: JunWei -> User Login
-                    guestAcc = userLogin(s);
-                    //guestAcc = new RegisteredAccount();
-                    break;
-                case 4:
-                    // TODO: Nicole -> Staff Login
-                    guestAcc = staffLogin(s);
-                    break;
-                default:
-                    System.out.println("Invalid choice!!!");
-                    leave = false;
-                    break;
-            }
-        } while (!leave);
+        boolean end = false;
+
+    do{
+        int choice = displayMenu(s);
+        switch (choice) {
+            case 1:
+                guestAcc.availableFlights();
+                break;
+            case 2:
+                guestAcc = registerAccount();
+                break;
+            case 3:
+                guestAcc = userLogin(s);
+                break;
+            case 4:
+                guestAcc = staffLogin(s);
+                break;
+            case 5:
+                guestAcc = null;
+                end = true;
+                break;
+            default:
+                System.out.println("Invalid choice!!!");
+                break;
+        }
 
         // check whether the user is a guest or a registered account or staff
         if (guestAcc instanceof RegisteredAccount) {
-            System.out.println("This is a registered account instance\n");
+            
+            //Cast the guestAcc to RegisteredAccount type
+            RegisteredAccount userAccount = ((RegisteredAccount)guestAcc);
 
-            // TODO : KangSheng -> Make Reservation
-            // TODO : KangSheng -> Confirm Ticket
             // TODO : Junwei -> Payment
             // TODO : Huiyi -> Check Request Status
             // TODO : Huiyi -> Cancel Ticket
@@ -73,25 +70,29 @@ public class Main {
                 System.out.println("4. Reschedule Ticket");
                 System.out.println("5. Cancel Ticket");
                 System.out.println("6. Check Request Status");
+                System.out.println("7. Logout");
                 System.out.print("Enter Selection > ");
                 selection = s.nextInt();
 
                 switch (selection) {
                     case 1:
                         // Update Profile (Done)
+                        userAccount.updateProfile(s);
                         break;
                     case 2:
-                        ((RegisteredAccount)guestAcc).makeReservation(s);
+                        userAccount.makeReservation(s);
                         break;
                     case 3:
                         // TODO : KangSheng -> Confirm Ticket
-                        ((RegisteredAccount)guestAcc).confirmTicket(s);
+                        userAccount.confirmTicket(s);
                         // TODO : Junwei -> Payment
                         break;
                     case 4:
                         // TODO : Huiyi -> Reschedule Ticket
+
+                        //Modified , get reservations from the user who login , not all 
                         
-                        List<Reservation> reservation = Main.getReservations();
+                        List<Reservation> reservation = userAccount.getReservations();
 
                         System.out.println("\n\n-----RESCHEDULE TICKET-----");
 
@@ -106,7 +107,7 @@ public class Main {
                         System.out.print("Select Reservation to Reshedule > ");
                         int choiceReschedule = s.nextInt();
 
-                        ((RegisteredAccount) guestAcc).rescheduleTicket(reservation.get(choiceReschedule - 1),s);
+                        userAccount.rescheduleTicket(reservation.get(choiceReschedule - 1),s);
                         break;
                     case 5:
                         // TODO : Huiyi -> Cancel Ticket
@@ -125,7 +126,7 @@ public class Main {
                         System.out.print("Select Reservation to Cancel > ");
                         int choiceCancel = s.nextInt();
 
-                        ((RegisteredAccount) guestAcc).cancelTicket(resToCancel.get(choiceCancel - 1),s);
+                        userAccount.cancelTicket(resToCancel.get(choiceCancel - 1),s);
                         break;
                     case 6:
                         // TODO : Huiyi -> Check Request Status
@@ -144,23 +145,20 @@ public class Main {
                         System.out.print("Select Reservation to Check Request Status > ");
                         int requestCheck = s.nextInt();
 
-                        ((RegisteredAccount) guestAcc).checkRequestStatus(requestReservation.get(requestCheck - 1),s);
+                        userAccount.checkRequestStatus(requestReservation.get(requestCheck - 1),s);
                         break;
                     default:
                         System.out.println("Invalid Selection.");
                         break;
                 }
-
-            } while (selection > 1 && selection < 7);
+            } while (selection != 7);
         } else if (guestAcc instanceof Staff) {
             // TODO : Nicole -> add flight,airport,airline (done)
             // TODO : Nicole -> Check(done), accept, reject requests
             // TODO : Generate Report (Summary of profit, Ranking of most frequent flights
             // made)
-            Staff staff = new Staff();
-
-            System.out.println("This is a staff account instance");
-
+            //cast the guestAcc to Staff
+            Staff stfAccount = ((Staff)guestAcc);
             int selection;
             do {
                 // Staff Menu
@@ -191,28 +189,27 @@ public class Main {
                     System.out.print("Enter Selection: ");
                     selection = s.nextInt();
                 }
-
                 switch (selection) {
                     case 1:
-                        staff.addRecordsMenu();
+                        stfAccount.addRecordsMenu();
                         break;
                     case 2: 
-                        staff.updateRecordsMenu();
+                        stfAccount.updateRecordsMenu();
                         break;
                     case 3: 
-                        staff.deleteRecordsMenu();
+                        stfAccount.deleteRecordsMenu();
                         break;
                     case 4:
-                        if(staff.getStaffID() == "S001")
-                            staff.createStaffAcc();
+                        if(stfAccount.getStaffID() == "S001")
+                            stfAccount.createStaffAcc();
                         else
                             System.out.println("This Staff ID does not have the access to create a new staff account.");
                         break;
                     case 5:
-                        staff.checkRequest();
+                        stfAccount.checkRequest();
                         break;
                     case 6:
-                        staff.changePassword();
+                        stfAccount.changePassword();
                         break;
                     case 7:
                         //back to main menu 
@@ -223,7 +220,8 @@ public class Main {
                 }
             } while (selection!=7);
 
-        } else {
+        } else if(guestAcc instanceof Account){
+
             // TODO : Nicole -> Prompt for either the user want to book a reservation
 
             // if yes -> ask to register or login
@@ -266,19 +264,30 @@ public class Main {
 
             } while (valid == false);
 
-            System.out.println("This is a guest account instance");
         }
-
+    }while(!end);
     }
 
-    private static int displayMenu(Scanner keyboard) {
+    /**
+     * Method to Display Menu
+     * @param input
+     * @return an int choice
+     */
+
+    private static int displayMenu(Scanner input) {
+        clearConsole();
         System.out.println("Menu");
         System.out.println("1. Display Available Flights");
         System.out.println("2. Register an account");
         System.out.println("3. Login");
         System.out.println("4. Staff Login");
-        return keyboard.nextInt();
+        System.out.println("5. Exit Program");
+        return input.nextInt();
     }
+
+    /** 
+     * Method to Insert Data
+    */
 
     public static void insertDataToList() {
         // Create 6 airports
@@ -304,6 +313,15 @@ public class Main {
         flightList.add(new Flight(airlineList.get(4), 100));
         flightList.add(new Flight(airlineList.get(5), 150));
         flightList.add(new Flight(airlineList.get(0), 100));
+
+        //Linking the airport with the flights
+        airportList.get(0).addFlight(flightList.get(0));
+        airportList.get(1).addFlight(flightList.get(1));
+        airportList.get(0).addFlight(flightList.get(4));
+        airportList.get(3).addFlight(flightList.get(3));
+        airportList.get(2).addFlight(flightList.get(2));
+        airportList.get(1).addFlight(flightList.get(5));
+        airportList.get(4).addFlight(flightList.get(6));
 
         // Create FlightSchedules
         // SG -> MY
@@ -371,6 +389,10 @@ public class Main {
         return staffAccountList;
     }
 
+    /**
+     * Method to create an registered account
+     * @return a new Registered Account instance
+     */
     public static RegisteredAccount registerAccount() {
 
         Scanner userScanner = new Scanner(System.in);
@@ -473,7 +495,11 @@ public class Main {
         return register;
     }
 
-    //UserLogin
+    /**
+     * Method to perform User Login
+     * @param userScanner
+     * @return Exisiting RegisteredAccount Instance when found
+     */
     public static RegisteredAccount userLogin(Scanner userScanner){
 
         //RegisteredAccount user = new RegisteredAccount();
@@ -498,7 +524,12 @@ public class Main {
             return null;
     }
 
-    //staff login 
+    /**
+     * Method to Do Staff Login
+     * @param staffScanner
+     * @return Existing Staff Instance when Success
+     * @return null when no such Staff is found
+     */
     public static Staff staffLogin(Scanner staffScanner) {
         System.out.println("\nStaff Login");
         System.out.println("===========");
@@ -521,7 +552,9 @@ public class Main {
         System.out.println("Wrong ID or Password.");
         return null;
     }
-
+    /**  
+     * Method to clear console output
+     */
     public final static void clearConsole(){
 
         try{
@@ -531,7 +564,10 @@ public class Main {
             System.out.println(e);
         }
     }
-
+    /**
+     * Method to display a line
+     * @param n
+     */
     public static void printLine(int n){
         for(int i = 0; i < n; i++){
         System.out.print("-");
