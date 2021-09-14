@@ -127,6 +127,66 @@ public void makeReservation(Scanner sc){
     }while(Character.toUpperCase(continueBook) == 'Y');
 }
 
+public void confirmTicket(Scanner s){
+
+    /**
+     * Confirm Ticket
+     * 1. Get all reservations that are still pending
+     * 2. Let user choose which reservations to confirm
+     * 3. Confirm them whether they want to purchase the ticket
+     * 4. if yes then call the payment module 
+     * 5. else loop ask whether they still want to continue to confirm ticket?
+     * 
+     */
+    Main.clearConsole();
+    System.out.println("Your reservations that are not confirmed");
+    Main.printLine(148);
+    List<Reservation> queryList = new ArrayList<Reservation>();
+    int i = 1;
+    for (Reservation reservation : reservations) {
+        if(reservation.getReservationStatus() == rStatus.BOOKED){
+            queryList.add(reservation);
+            System.out.printf("%2d", i++);
+            System.out.println(reservation);
+        }
+    }
+
+    System.out.print("Enter the No to confirm reservation - ");
+    int choice = s.nextInt();
+    while(choice < 0 || choice > i){
+        System.out.println("Invalid Input");
+        System.out.print("Enter the No to confirm reservation - ");
+        choice = s.nextInt();
+    }
+
+    System.out.print("Are you sure to confirm? (Y/N) - ");
+    char confirm = s.next().charAt(0);
+
+    while(Character.toUpperCase(confirm) != 'Y' && Character.toUpperCase(confirm) != 'N'){
+        System.out.println("Invalid Input");
+        System.out.print("Are you sure to confirm? (Y/N) - ");
+        confirm = s.next().charAt(0);
+    }
+
+    if(confirm == 'Y'){
+        queryList.get(choice - 1).setReservationStatus(rStatus.BOOKED);
+
+        System.out.print("Do u want to pay for this reservation ? (Y/N) - ");
+        char payChoice = s.next().charAt(0);
+        while(Character.toUpperCase(payChoice) != 'Y' && Character.toUpperCase(payChoice) != 'N'){
+            System.out.println("Invalid Input");
+            System.out.print("Do u want to pay for this reservation ? (Y/N) - ");
+            payChoice = s.next().charAt(0);
+        }
+
+        if(payChoice == 'Y'){
+            System.out.println("Calling junwei method");
+        }
+        else
+            System.out.println("For your reminder, the reservation that is not confirmed yet after 14 days will be removed!");
+    }
+}
+
 public void updateProfile(Scanner scan){
         
         char another;
