@@ -23,7 +23,7 @@ public class FlightSchedule {
         this.destination = destination;
         this.estimatedArrivalTime = estimatedArrivalTime;
         this.flight = flight;
-        this.flightScheduleCode = makeflightScheduleCode();
+      //  this.flightScheduleCode = makeflightScheduleCode();
         nthFlightSchedule++;
         
         flightSeat = makefSeatList(flight.getTotalSeat());

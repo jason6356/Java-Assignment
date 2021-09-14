@@ -99,7 +99,7 @@ public class Main {
                         System.out.println("\nYour Reservations:");
                         for (Reservation res : reservation) {
                             System.out.print(n + ". ");
-                            System.out.println(res.toString());
+                            System.out.println(res.displayReservation());
                             System.out.println("\n");
                             n++;
                         }
@@ -119,7 +119,7 @@ public class Main {
                         System.out.println("\nYour Reservations:");
                         for (Reservation res : resToCancel) {
                             System.out.print(o + ". ");
-                            System.out.println(res.toString());
+                            System.out.println(res.displayReservation());
                             o++;
                         }
                         System.out.print("Select Reservation to Cancel > ");
@@ -144,7 +144,7 @@ public class Main {
                         System.out.print("Select Reservation to Check Request Status > ");
                         int requestCheck = s.nextInt();
 
-                        ((RegisteredAccount) guestAcc).checkRequestStatus(requestReservation.get(requestCheck - 1));
+                        ((RegisteredAccount) guestAcc).checkRequestStatus(requestReservation.get(requestCheck - 1),s);
                         break;
                     default:
                         System.out.println("Invalid Selection.");
