@@ -37,8 +37,8 @@ public class Main {
                     break;
                 case 3:
                     // TODO: JunWei -> User Login
-                    //guestAcc = userLogin(s);
-                    guestAcc = new RegisteredAccount();
+                    guestAcc = userLogin(s);
+                    //guestAcc = new RegisteredAccount();
                     break;
                 case 4:
                     // TODO: Nicole -> Staff Login
@@ -330,7 +330,7 @@ public class Main {
 
         // Add a customer account 
         Address sampleAddress = new Address("No 1", "Jalan Satu",40400, "Shah Alam", "Selangor", "Malaysia");
-        accountList.add(new RegisteredAccount("abcd1234", "Victor", "Wong", sampleAddress, 'M', 19, "wong@gmail.com", "+6012345678"));
+        accountList.add(new RegisteredAccount("abc123", "Victor", "Wong", sampleAddress, 'M', 19, "wong@gmail.com", "+6012345678"));
 
         //Request List 
 
@@ -473,9 +473,7 @@ public class Main {
     public static RegisteredAccount userLogin(Scanner userScanner){
 
         //RegisteredAccount user = new RegisteredAccount();
-        
-
-        System.out.println("User Login");
+        System.out.println("\nUser Login");
         System.out.println("===========");
         System.out.print("User ID: ");
         String userID = userScanner.next();
@@ -484,8 +482,8 @@ public class Main {
         
 
         for ( RegisteredAccount user : accountList){
-            if (user.getAccID() == userID){
-                if(user.getPassword()==userPwd){
+            if (user.getAccID().equals(userID)){
+                if(user.getPassword().equals(userPwd)){
                     System.out.println("Login Successful.");
                     return user;
                 }

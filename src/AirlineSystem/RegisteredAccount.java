@@ -22,6 +22,15 @@ public class RegisteredAccount extends Account {
         nthAcc++;
     }
 
+    private static String makeAccID(){
+        if(nthAcc < 10)
+            return "A00" + nthAcc;
+        else if(nthAcc < 100)
+            return "A0" + nthAcc;
+    
+        return "A" + nthAcc;
+    }
+
     //getter
     public String getAccID() {
         return accID;
@@ -500,14 +509,7 @@ public void welcome(){ // can remove if dw, main line 149
     System.out.println("\n\n\n\n\n\n\n\n\nWelcome To SaiLou Airline !");
 }
 
-private static String makeAccID(){
-    if(nthAcc < 10)
-        return "A00" + nthAcc;
-    else if(nthAcc < 100)
-        return "A0" + nthAcc;
 
-    return "A" + nthAcc;
-}
 
 //Check Reservation
 public void checkRequestStatus(Reservation reservation, Scanner scanner){
