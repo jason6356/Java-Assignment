@@ -106,7 +106,8 @@ public class Reservation {
 
     public String displayReservation() {
         return String.format(
-                "\n[%s] \n| Reservation Time: %-29s      | Status: %-15s             |\n| Seat booked: %-30d          | Total Amount: %.2f               |\n|" + flight.toString(),
+                "\n| [%s]                                                                                                                                |\n| Reservation Time: %-29s       | Status: %-50s                    |\n| Seat booked: %-30d           | Total Amount: %-50.2f              |\n| "
+                        + flight.toString(),
                 reservationNo, reservationTime, reservationStatus, noOfSeatBooked, totalAmount);
     }
 

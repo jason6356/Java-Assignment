@@ -98,13 +98,18 @@ public class Request {
 
     public String displayRequest() {
         if (requestDescription == "Cancel Ticket Request") {
-            return String
-                    .format("Request ID: %s      Request Description: %s      Reason of Request: %s   \n\nOld Reservation: "
-                            + oldReservation.displayReservation(), requestID, requestDescription, reason);
+            return String.format(
+                    "Request ID: %s      Request Description: %s      Reason of Request: %s   \n\nOld Reservation: \n+---------------------------------------------------------------------------------------------------------------------------------------+"
+                            + oldReservation.displayReservation()
+                            + "\n+---------------------------------------------------------------------------------------------------------------------------------------+",
+                    requestID, requestDescription, reason);
         } else
             return String.format(
-                    "Request ID: %s      Request Description: %s      Reason of Request: %s \n\nOld Reservation: "
-                            + oldReservation.displayReservation() + "\n\nNew Reservation: " + newReservation.displayReservation(),
+                    "Request ID: %s      Request Description: %s      Reason of Request: %s \n\nOld Reservation: \n+---------------------------------------------------------------------------------------------------------------------------------------+"
+                            + oldReservation.displayReservation()
+                            + "\n+---------------------------------------------------------------------------------------------------------------------------------------+\n\nNew Reservation: \n+---------------------------------------------------------------------------------------------------------------------------------------+"
+                            + newReservation.displayReservation()
+                            + "\n+---------------------------------------------------------------------------------------------------------------------------------------+",
                     requestID, requestDescription, reason);
     }
 
