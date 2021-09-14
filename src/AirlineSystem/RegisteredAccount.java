@@ -329,8 +329,8 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
     customerRequest.setRequestDescription("Reschedule Ticket Request");
     customerRequest.setOldReservation(reservation);
 
-    System.out.println("\nCURRENT RESERVATION DETAILS:\n============================"+ reservation.displayReservation());
-    System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
+    System.out.println("\nCURRENT RESERVATION DETAILS:\n============================\n+---------------------------------------------------------------------------------------------------------------------------------------+"+ reservation.displayReservation());
+    System.out.println("+---------------------------------------------------------------------------------------------------------------------------------------+");
 
     //display available flight schedule
     System.out.println("\n\nAVAILABLE FLIGHT SCHEDULE:");
@@ -412,9 +412,9 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
         //add the request to the request list
         requestList.add(customerRequest);
 
-        System.out.println("\n----------YOUR REQUEST-----------------------------------------------------------------------------------------------------------------");
+        System.out.println("\n----------YOUR REQUEST------------------------------------------------------------------------------------------------------------------");
         System.out.println(customerRequest.displayRequest());
-        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");
 
   
         System.out.println("\nRequested for Rescheduling Ticket.");
@@ -434,7 +434,9 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
     request.setOldReservation(reservation);
     request.setNewReservation(null);
 
-    System.out.println("\nRESERVATION DETAILS\n"+reservation.displayReservation());
+    System.out.println("\nRESERVATION DETAILS\n====================\n+---------------------------------------------------------------------------------------------------------------------------------------+"+reservation.displayReservation());
+    System.out.println("+---------------------------------------------------------------------------------------------------------------------------------------+");
+
     
     //DO A MENU (LIST OF REASONS)
     int reasonChoice;
@@ -483,9 +485,9 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
         //add the request to the request list
         requestList.add(request);
 
-        System.out.println("\n----------YOUR REQUEST-----------------------------------------------------------------------------------------------------------------");
+        System.out.println("\n----------YOUR REQUEST------------------------------------------------------------------------------------------------------------------");
         System.out.println(request.displayRequest());
-        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");
 
         System.out.println("\nRequested for Cancelling Ticket.");
         System.out.println("ENTER ANY KEY TO CONTINUE >");
