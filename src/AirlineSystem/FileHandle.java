@@ -14,17 +14,22 @@ public class FileHandle {
     //Airline
     public static void main(String[] args) {
 
+        //Scraping from the element from website for all the airlines
+        //written in 3 am :)
     ArrayList<String>airlines = new ArrayList<String>();
 try{
     File myobj = new File("src\\AirlineSystem\\itemToScrap.txt");
     Scanner myReader = new Scanner(myobj);
     while(myReader.hasNext()){
         String data = myReader.nextLine();
-        if(data.contains("_top")){
-            String airline = data.substring(data.indexOf("_top"));
-            airline = airline.substring(0,airline.indexOf('<'));
-            airline = airline.substring(6,airline.length());
-            airlines.add(airline);
+        if(data.contains("a href")){
+            String airline = data.substring(data.indexOf("a href"));
+            airline = airline.substring(airline.indexOf('>'));
+            if(airline.length() < 50 && airline.contains("Airport")){
+                airline = airline.substring(1, airline.indexOf("</a>"));
+                System.out.println(airline);
+                airlines.add(airline);
+            }
         }
 
     }
@@ -33,7 +38,7 @@ try{
 }
 
 try {
-    FileWriter myWriter = new FileWriter("src\\AirlineSystem\\Airlines.txt");
+    FileWriter myWriter = new FileWriter("src\\AirlineSystem\\Airports.txt");
     for (String string : airlines) {
         myWriter.write(string + "\n");
     }
@@ -43,10 +48,6 @@ try {
     System.out.println("An error occurred.");
     e.printStackTrace();
   }
-
-
-
-
     }
 
 }
