@@ -117,13 +117,21 @@ public class Account {
         //     System.out.println(flightSchedule.toString());
         // }
 
-        List<Flight> flightList = Main.getFlightList();
+        // List<Flight> flightList = Main.getFlightList();
 
-        System.out.println("---Flight---");
-        System.out.println("================================================================");
-        System.out.println("Flight Code         Total Seat      Airline         ");
-        for (Flight flight : flightList) {
-            System.out.println(flight.toString());
+        // for (Flight flight : flightList) {
+        //     System.out.println(flight.toString());
+        // }
+
+        // List<Airline> airlineList = Main.getAirlineList();
+
+        // for (Airline airline : airlineList) {
+        //     System.out.println(airline.toString());
+        // }
+    
+        List<Airport> airportList = Main.getAirportList();
+        for (Airport airport : airportList) {
+            System.out.println(airport.toString());
         }
     }
 

@@ -265,6 +265,7 @@ public class Staff extends Account{
 
     public void updateFlights(){
         List<Flight> flightList = Main.getFlightList();
+        List<Airline> airlineList = Main.getAirlineList();
 
         //Display flight details 
         for (Flight flight : flightList) {
@@ -286,15 +287,26 @@ public class Staff extends Account{
 
         System.out.println("Update Flight Details");
         System.out.println("=====================");
-        System.out.print("Enter Airline Name: ");
-        String airlineName = staff.nextLine();
-        System.out.print("Enter Airline Code: ");
-        String airlineCode = staff.next();
-        System.out.print("Enter Total Seats: ");
+        System.out.println("Choose Types of Airline");
+        System.out.println("=======================");
+        System.out.println("Airline Name            Airline Code");
+        int num = 1;
+        for (Airline airline : airlineList) {
+            System.out.printf("%d. %10s%5s\n",num++, airline.getAirlineName(), airline.getAirlineCode());
+        }
+        int typeAirline = staff.nextInt();
+        typeAirline--;
+        int airlineIndex = 0;
+        for(int i=0; i<airlineList.size(); i++){
+            if(airlineList.get(i).getAirlineName().equals(airlineList.get(typeAirline).getAirlineName())){
+                airlineIndex = i;
+            }
+        }
+        System.out.print("Total Seats: ");
         int totalSeat = staff.nextInt();
 
         //Create object 
-        Airline airline = new Airline(airlineName, airlineCode);
+        Airline airline = new Airline(airlineList.get(airlineIndex).getAirlineName(), airlineList.get(airlineIndex).getAirlineCode());
         Flight flight = new Flight(airline, totalSeat);
         flightList.set(updateIndex, flight);
 
@@ -313,13 +325,14 @@ public class Staff extends Account{
 
         //Input airline code to update 
         System.out.println("--------------");
+        staff.nextLine();
         System.out.print("Airline Code: ");
         String updateAirlineCode = staff.nextLine();
 
         //get index 
         int updateIndex = 0;
         for(int i=0; i<airlineList.size(); i++){
-            if(airlineList.get(i).getAirlineCode() == updateAirlineCode)
+            if(airlineList.get(i).getAirlineCode().equals(updateAirlineCode))
                 updateIndex = i;
             i++;
         }
@@ -327,6 +340,7 @@ public class Staff extends Account{
         //Input details 
         System.out.println("Update Airline");
         System.out.println("==============");
+        staff.nextLine();
         System.out.print("Enter Airline Name: ");
         String airlineName = staff.nextLine();
         System.out.print("Enter Airline Code: ");
@@ -353,7 +367,7 @@ public class Staff extends Account{
         //get index 
         int updateIndex = 0;
         for(int i=0; i<airportList.size(); i++){
-            if(airportList.get(i).getAirportName() == updateAirportName)
+            if(airportList.get(i).getAirportName().equals(updateAirportName))
                 updateIndex = i;
             i++;
         }
@@ -361,6 +375,7 @@ public class Staff extends Account{
         //Input details 
         System.out.println("Update Airport");
         System.out.println("==============");
+        staff.nextLine();
         System.out.print("Airport Name: ");
         String airportName = staff.nextLine();
         System.out.print("Location: ");
@@ -489,7 +504,7 @@ public class Staff extends Account{
         //get index 
         int updateIndex = 0;
         for(int i=0; i<flightList.size(); i++){
-            if(flightList.get(i).getFlightCode()== flightCode)
+            if(flightList.get(i).getFlightCode().equals(flightCode))
                 updateIndex = i;
         }
 
@@ -506,15 +521,15 @@ public class Staff extends Account{
 
         //Input airline code to update 
         System.out.println("--------------");
+        staff.nextLine();
         System.out.print("Airline Code: ");
         String updateAirlineCode = staff.nextLine();
 
         //get index 
         int updateIndex = 0;
         for(int i=0; i<airlineList.size(); i++){
-            if(airlineList.get(i).getAirlineCode() == updateAirlineCode)
+            if(airlineList.get(i).getAirlineCode().equals(updateAirlineCode))
                 updateIndex = i;
-            i++;
         }
 
         airlineList.remove(updateIndex); 
@@ -530,13 +545,14 @@ public class Staff extends Account{
 
         //Input airport name to update 
         System.out.println("--------------");
+        staff.nextLine();
         System.out.print("Airport Name: ");
         String updateAirportName = staff.nextLine();
 
         //get index 
         int updateIndex = 0;
         for(int i=0; i<airportList.size(); i++){
-            if(airportList.get(i).getAirportName() == updateAirportName)
+            if(airportList.get(i).getAirportName().equals(updateAirportName))
                 updateIndex = i;
             i++;
         }
@@ -554,13 +570,14 @@ public class Staff extends Account{
 
         //Input 
         System.out.println("--------------");
+        staff.nextLine();
         System.out.print("Flight Schedule Code: ");
         String flightScheduleCode = staff.nextLine();
 
         // get index 
         int updateIndex = 0;
         for(int i=0; i<flightScheduleList.size(); i++){
-            if(flightScheduleList.get(i).getFlightScheduleCode() == flightScheduleCode)
+            if(flightScheduleList.get(i).getFlightScheduleCode().equals(flightScheduleCode))
                 updateIndex = i;
             i++;
         }
