@@ -367,6 +367,7 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
         System.out.println("4. Other Reasons");
         System.out.print("SELECT REASON >");
         reasonChoice = scanner.nextInt();
+        scanner.nextLine();
    
         if(reasonChoice == 1){
             customerRequest.setReason("Wrong Date Reserved");
@@ -379,7 +380,8 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
         }
         else if(reasonChoice == 4){
             System.out.print("Kindly State the Reason: ");
-            customerRequest.setReason(scanner.next());
+            String reason = scanner.nextLine();
+            customerRequest.setReason(reason);
         }
         else{
             System.out.println("Invalid Selection, please try again.");
@@ -387,8 +389,8 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
  }while(reasonChoice != 1 && reasonChoice != 2 && reasonChoice != 3 && reasonChoice != 4 );
 
     System.out.print("\nConfirm to reschedule? (Y/N) > ");
-    scanner.nextLine();
     char next = scanner.next().charAt(0);
+    
     while(!super.validateOption(next)){
         System.out.println("Invalid Input.");
         System.out.print("Confirm to reschedule? (Y/N) >");
@@ -440,6 +442,8 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
         System.out.println("4. Other Reasons");
         System.out.print("SELECT REASON >");
         reasonChoice = scanner.nextInt();
+        scanner.nextLine();
+
 
         if(reasonChoice == 1){
             request.setReason("Wrong Date Reserved");
@@ -452,7 +456,8 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
         }
         else if(reasonChoice == 4){
             System.out.print("Kindly State the Reason: ");
-            request.setReason(scanner.next());
+            String reason = scanner.nextLine();
+            request.setReason(reason);
         }
         else{
             System.out.println("Invalid Selection, please try again.");
@@ -473,7 +478,7 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
         //add the request to the request list
         requestList.add(request);
 
-        System.out.println("----------YOUR REQUEST-----------------------------------------------------------------------------------------------------------------");
+        System.out.println("\n----------YOUR REQUEST-----------------------------------------------------------------------------------------------------------------");
         System.out.println(request.displayRequest());
         System.out.println("---------------------------------------------------------------------------------------------------------------------------------------");
 
