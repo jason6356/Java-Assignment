@@ -80,11 +80,11 @@ public class Main {
                         // Update Profile (Done)
                         break;
                     case 2:
-                        // TODO : KangSheng -> Make Reservation
                         ((RegisteredAccount)guestAcc).makeReservation(s);
                         break;
                     case 3:
                         // TODO : KangSheng -> Confirm Ticket
+                        ((RegisteredAccount)guestAcc).confirmTicket(s);
                         // TODO : Junwei -> Payment
                         break;
                     case 4:
