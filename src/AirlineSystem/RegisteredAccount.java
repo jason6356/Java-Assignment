@@ -268,7 +268,7 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
     customerRequest.setRequestDescription("Reschedule Ticket Request");
     customerRequest.setOldReservation(reservation);
 
-    System.out.println("\nCURRENT RESERVATION DETAILS: \n"+ reservation.toString());
+    System.out.println("\nCURRENT RESERVATION DETAILS: \n"+ reservation.displayReservation());
 
     //display available flight schedule
     System.out.println("\n\nAVAILABLE FLIGHT SCHEDULE: \n");
@@ -296,6 +296,7 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
     int reasonChoice;
     do{
         System.out.println("\nREASON OF RESCHEDULE: ");
+        System.out.println("--------------------- ");
         System.out.println("1. Wrong Date Reserved");
         System.out.println("2. Wrong Flight Time Reserved");
         System.out.println("3. Wrong Location Reserved");
@@ -314,7 +315,7 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
         }
         else if(reasonChoice == 4){
             System.out.print("Kindly State the Reason: ");
-            customerRequest.setReason(scanner.nextLine());
+            customerRequest.setReason(scanner.next());
         }
         else{
             System.out.println("Invalid Selection, please try again.");
@@ -339,10 +340,15 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
         //add the request to the request list
         requestList.add(customerRequest);
 
-        System.out.println(customerRequest.toString());
+        System.out.println("----------YOUR REQUEST----------");
+        System.out.println(customerRequest.displayRequest());
+        System.out.println("--------------------------------");
+
   
-        System.out.println("Requested for Rescheduling Ticket.");
-        //can put in staff module
+        System.out.println("\nRequested for Rescheduling Ticket.");
+        System.out.println("ENTER ANY KEY TO CONTINUE >");
+        scanner.nextLine();
+        scanner.nextLine();
     
     }
 }
@@ -356,12 +362,13 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
     request.setOldReservation(reservation);
     request.setNewReservation(null);
 
-    System.out.println("\nRESERVATION DETAILS\n"+reservation.toString());
+    System.out.println("\nRESERVATION DETAILS\n"+reservation.displayReservation());
     
     //DO A MENU (LIST OF REASONS)
     int reasonChoice;
     do{
         System.out.println("\nREASON OF CANCELLING: ");
+        System.out.println("--------------------- ");
         System.out.println("1. Wrong Date Reserved");
         System.out.println("2. Wrong Flight Time Reserved");
         System.out.println("3. Wrong Seats Reserved");
@@ -380,7 +387,7 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
         }
         else if(reasonChoice == 4){
             System.out.print("Kindly State the Reason: ");
-            request.setReason(scanner.nextLine());
+            request.setReason(scanner.next());
         }
         else{
             System.out.println("Invalid Selection, please try again.");
@@ -401,8 +408,14 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
         //add the request to the request list
         requestList.add(request);
 
-        System.out.println("Requested for Cancelling Ticket.");
-    
+        System.out.println("----------YOUR REQUEST----------");
+        System.out.println(request.displayRequest());
+        System.out.println("--------------------------------");
+
+        System.out.println("\nRequested for Cancelling Ticket.");
+        System.out.println("ENTER ANY KEY TO CONTINUE >");
+        scanner.nextLine();
+        scanner.nextLine();
     }
 
 }

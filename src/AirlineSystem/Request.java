@@ -42,7 +42,7 @@ public class Request {
         return "RQ" + requestCount;
     }
 
-    //getter 
+    // getter
     public String getRequestID() {
         return requestID;
     }
@@ -67,7 +67,7 @@ public class Request {
         return newReservation;
     }
 
-    //setter 
+    // setter
     public void setRequestID(String requestID) {
         this.requestID = requestID;
     }
@@ -92,10 +92,24 @@ public class Request {
         this.newReservation = newReservation;
     }
 
-
-    //method 
+    // method
     public String toString() {
-        return String.format("%s %s %s %s\n", requestID, requestDescription, reason, oldReservation, newReservation);
+        return String.format(
+                "Request ID: %s      Request Description: %s      Reason of Request: %s \nOld Reservation: "
+                        + oldReservation.toString() + "\nNew Reservation: " + newReservation.toString(),
+                requestID, requestDescription, reason);
+    }
+
+    public String displayRequest() {
+        if (requestDescription == "Cancel Ticket Request") {
+            return String
+                    .format("Request ID: %s      Request Description: %s      Reason of Request: %s \nOld Reservation: "
+                            + oldReservation.displayReservation(), requestID, requestDescription, reason);
+        } else
+            return String.format(
+                    "Request ID: %s      Request Description: %s      Reason of Request: %s \nOld Reservation: "
+                            + oldReservation.displayReservation() + "\nNew Reservation: " + newReservation.toString(),
+                    requestID, requestDescription, reason);
     }
 
     public void updateRequest(Request request) {
@@ -111,7 +125,7 @@ public class Request {
                 }
 
             } else if (request.getRequestDescription() == "Reschedule Ticket Request") {
-                
+
                 for (Reservation reservation : reservationList) {
                     if (request.getOldReservation().equals(reservation))
                         reservation = request.newReservation;

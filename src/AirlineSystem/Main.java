@@ -37,7 +37,8 @@ public class Main {
                     break;
                 case 3:
                     // TODO: JunWei -> User Login
-                    guestAcc = userLogin();
+                    //guestAcc = userLogin(s);
+                    guestAcc = new RegisteredAccount();
                     break;
                 case 4:
                     // TODO: Nicole -> Staff Login
@@ -89,13 +90,13 @@ public class Main {
                         break;
                     case 4:
                         // TODO : Huiyi -> Reschedule Ticket
-                        clearConsole();
+                        
                         List<Reservation> reservation = Main.getReservations();
 
                         System.out.println("\n\n-----RESCHEDULE TICKET-----");
 
                         int n = 1;
-                        System.out.println("Your Reservations:");
+                        System.out.println("\nYour Reservations:");
                         for (Reservation res : reservation) {
                             System.out.print(n + ". ");
                             System.out.println(res.toString());
@@ -109,13 +110,13 @@ public class Main {
                         break;
                     case 5:
                         // TODO : Huiyi -> Cancel Ticket
-                        clearConsole();
+                        
                         List<Reservation> resToCancel = Main.getReservations();
 
                         System.out.println("\n\n-----CANCEL TICKET-----");
 
                         int o = 1;
-                        System.out.println("Your Reservations:");
+                        System.out.println("\nYour Reservations:");
                         for (Reservation res : resToCancel) {
                             System.out.print(o + ". ");
                             System.out.println(res.toString());
@@ -128,16 +129,16 @@ public class Main {
                         break;
                     case 6:
                         // TODO : Huiyi -> Check Request Status
-                        clearConsole();
+                        
                         List<Reservation> requestReservation = Main.getReservations();
 
                         System.out.println("\n\n-----CHECK REQUEST STATUS-----");
 
                         int r = 1;
-                        System.out.println("Your Reservations:");
+                        System.out.println("\nYour Reservations:");
                         for (Reservation res : requestReservation) {
                             System.out.print(r + ". ");
-                            System.out.println(res.toString());
+                            System.out.println(res.displayReservation());
                             r++;
                         }
                         System.out.print("Select Reservation to Check Request Status > ");
@@ -395,18 +396,18 @@ public class Main {
     }
 
     //UserLogin
-    public static RegisteredAccount userLogin(){
+    public static RegisteredAccount userLogin(Scanner userScanner){
 
         //RegisteredAccount user = new RegisteredAccount();
-        Scanner userScanner = new Scanner(System.in);
+        
 
         System.out.println("User Login");
         System.out.println("===========");
         System.out.print("User ID: ");
-        String userID = userScanner.nextLine();
+        String userID = userScanner.next();
         System.out.print("Password: ");
-        String userPwd = userScanner.nextLine();
-        userScanner.close();
+        String userPwd = userScanner.next();
+        
 
         for ( RegisteredAccount user : accountList){
             if (user.getAccID() == userID){

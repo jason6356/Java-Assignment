@@ -16,10 +16,10 @@ public class Reservation {
     private int noOfSeatBooked;
     private double totalAmount;
     private FlightSchedule flight;
-    private static HashMap<Reservation, List<fSeat>> seatMap = new HashMap<Reservation,List<fSeat>>();
+    private static HashMap<Reservation, List<fSeat>> seatMap = new HashMap<Reservation, List<fSeat>>();
 
     // Parameterized
-    public Reservation(int noOfSeatBooked,FlightSchedule flight,List<fSeat> bookedSeats) {
+    public Reservation(int noOfSeatBooked, FlightSchedule flight, List<fSeat> bookedSeats) {
         this.reservationNo = makeReservationID();
         this.reservationTime = LocalDateTime.now(); // get the current time
         this.reservationStatus = rStatus.PENDING; // default value
@@ -95,6 +95,7 @@ public class Reservation {
     public static HashMap<Reservation, List<fSeat>> getSeatMap() {
         return seatMap;
     }
+
     public String toString() {
         return String.format(
                 "\nReservation No: %s \nReservation Time: %s \nReservation Status: %s \nNumber of seat booked: %d \nTotal Amount: %.2f \n"
@@ -103,15 +104,21 @@ public class Reservation {
 
     }
 
+    public String displayReservation() {
+        return String.format(
+                "\n[%s] \n| Reservation Time: %-20s | Status: %s   \n| Seat booked: %-30d  | Total Amount: %.2f |\n" + flight.toString(),
+                reservationNo, reservationTime, reservationStatus, noOfSeatBooked, totalAmount);
+    }
+
     @Override
     public boolean equals(Object reservation) {
         return reservation == ((Reservation) reservation).getReservationNo();
     }
 
-    private double calculateTotalAmount(List<fSeat> seats){
+    private double calculateTotalAmount(List<fSeat> seats) {
         double totalAmount = 0;
         for (fSeat seat : seats) {
-            totalAmount+=seat.getSeatPrice(); 
+            totalAmount += seat.getSeatPrice();
         }
         return totalAmount;
     }
