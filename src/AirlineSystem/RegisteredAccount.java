@@ -322,6 +322,7 @@ public void updateProfile(Scanner scan){
 public void rescheduleTicket(Reservation reservation, Scanner scanner) {
     
     List<FlightSchedule> flightScheduleList = Main.getFlightSchedules();
+    List<FlightSchedule> availableSchedules = new ArrayList<FlightSchedule>(); 
 
     //customer request
     Request customerRequest = new Request();
@@ -334,14 +335,17 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
     System.out.println("\n\nAVAILABLE FLIGHT SCHEDULE: \n");
     int n = 1;
      for (FlightSchedule flightSchedule : flightScheduleList) {
+         if(flightSchedule != reservation.getFlightSchedule()){
             System.out.print(n + ". ");
             System.out.println(flightSchedule.toString());
+            availableSchedules.add(flightSchedule);
             n++;
+            }
         }
 
     System.out.print("\nEnter new schedule choice: ");
     int choice=scanner.nextInt();
-    FlightSchedule targetSchedule = flightScheduleList.get(choice-1);
+    FlightSchedule targetSchedule = availableSchedules.get(choice-1);
 
     //Display Seats
     targetSchedule.displaySeats();
@@ -400,9 +404,9 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
         //add the request to the request list
         requestList.add(customerRequest);
 
-        System.out.println("----------YOUR REQUEST----------");
+        System.out.println("----------YOUR REQUEST-----------------------------------------------------------------------------------------------------------------");
         System.out.println(customerRequest.displayRequest());
-        System.out.println("--------------------------------");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------");
 
   
         System.out.println("\nRequested for Rescheduling Ticket.");
@@ -468,9 +472,9 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
         //add the request to the request list
         requestList.add(request);
 
-        System.out.println("----------YOUR REQUEST----------");
+        System.out.println("----------YOUR REQUEST-----------------------------------------------------------------------------------------------------------------");
         System.out.println(request.displayRequest());
-        System.out.println("--------------------------------");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------");
 
         System.out.println("\nRequested for Cancelling Ticket.");
         System.out.println("ENTER ANY KEY TO CONTINUE >");
@@ -495,7 +499,7 @@ private static String makeAccID(){
 }
 
 //Check Reservation
-public void checkRequestStatus(Reservation reservation){
+public void checkRequestStatus(Reservation reservation, Scanner scanner){
     List<Request> requestList = Main.getRequests();
 
     for (Request request : requestList) {
@@ -505,28 +509,28 @@ public void checkRequestStatus(Reservation reservation){
             if(request.getRequestStatus()==rqStatus.APPROVED){
                 if(request.getRequestDescription() == "Reschedule Ticket Request"){
 
-                    System.out.println("Request Approved.\n");
+                    System.out.println("\nREQUEST APPROVED.\n");
 
                     System.out.println("-------------------");
                     System.out.println("\n| OLD RESERVATION |");
                     System.out.println("-------------------");
-                    System.out.println((request.getOldReservation()).toString());
+                    System.out.println((request.getOldReservation()).displayReservation());
 
                     System.out.println("-------------------");
                     System.out.println("\n| NEW RESERVATION |");
                     System.out.println("-------------------");
-                    System.out.println((request.getNewReservation()).toString());
+                    System.out.println((request.getNewReservation()).displayReservation());
 
                     System.out.println("\nOld Reservation have been updated to New Reservation.");
                 }
                 else if(request.getRequestDescription() == "Cancel Ticket Request"){
 
-                    System.out.println("Request Approved.\n");
+                    System.out.println("\nREQUEST APPROVED.\n");
 
                     System.out.println("---------------");
                     System.out.println("\n| RESERVATION |");
                     System.out.println("---------------");
-                    System.out.println((request.getOldReservation()).toString());
+                    System.out.println((request.getOldReservation()).displayReservation());
 
                     System.out.println("\nReservation have been cancellation.");
                 }
@@ -536,20 +540,27 @@ public void checkRequestStatus(Reservation reservation){
                 System.out.println("-------------------");
                 System.out.println("\n| OLD RESERVATION |");
                 System.out.println("-------------------");
-                System.out.println((request.getOldReservation()).toString());
+                System.out.println((request.getOldReservation()).displayReservation());
 
-                System.out.println("Request Rejected.\n");
+                System.out.println("\nREQUEST REJECTED.\n");
 
             }
-            else
-                System.out.println("Request Pending.\n");
+            else{
+                System.out.println("\nREQUEST PENDING.\n\n");
+                System.out.println("----------YOUR REQUEST-----------------------------------------------------------------------------------------------------------------");
+                System.out.println(request.displayRequest());
+                System.out.println("---------------------------------------------------------------------------------------------------------------------------------------");
+
+            }
+                
 
         }
         else
-            System.out.println("Reservation has no request.\n");
-            
+            System.out.println("\nRESERVATION HAVE NO REQUEST.\n");
     }
-
+    System.out.println("ENTER ANY KEY TO CONTINUE >");
+        scanner.nextLine();
+        scanner.nextLine();
 
 }
 
