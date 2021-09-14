@@ -29,6 +29,10 @@ public class FlightSchedule {
         flightSeat = makefSeatList(flight.getTotalSeat());
     }
 
+    private String makeflightScheduleCode(){
+        return nthFlightSchedule < 10 ? "FS00" + nthFlightSchedule : nthFlightSchedule < 100 ? "FS0" + nthFlightSchedule : "FS" + nthFlightSchedule;
+    }
+
     //TODO: Refactor this toString method
     //ToString
     public String toString() {
