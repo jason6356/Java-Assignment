@@ -203,7 +203,10 @@ public class Main {
                         staff.deleteRecordsMenu();
                         break;
                     case 4:
-                        staff.createStaffAcc();
+                        if(staff.getStaffID() == "S001")
+                            staff.createStaffAcc();
+                        else
+                            System.out.println("This Staff ID does not have the access to create a new staff account.");
                         break;
                     case 5:
                         staff.checkRequest();
@@ -320,11 +323,20 @@ public class Main {
                 airportList.get(5), LocalDateTime.of(2021, 8, 23, 18, 0), flightList.get(5)));
 
         // Add a staff account
-        staffAccountList.add(new Staff("abc123", "Nicole", "Lai", null, 'f', 13, "abcasdeawdsa", "+08238123123"));
+        Address address1 = new Address("No 6", "Jalan SP123", 52100, "Kepong", "Selangor", "Malaysia");
+        staffAccountList.add(new Staff("abc123", "Nicole", "Lai", address1, 'F', 13, "nlai@gmail.com", "+60186538749"));
+        Address address2 = new Address("No 11", "Jalan 3432", 40150, "Petaling Jaya", "Selangor", "Malaysia");
+        staffAccountList.add(new Staff("1234", "John", "Lee", address2, 'M', 20, "johnl@gmail.com", "+60134889342"));
 
         // Add a customer account 
         Address sampleAddress = new Address("No 1", "Jalan Satu",40400, "Shah Alam", "Selangor", "Malaysia");
         accountList.add(new RegisteredAccount("abcd1234", "Victor", "Wong", sampleAddress, 'M', 19, "wong@gmail.com", "+6012345678"));
+
+        //Request List 
+
+        // reservations.add(new Reservation(3, flightList.get(0), bookedSeats));
+        // requests.add(new Request("Cancel Ticket Request", "Wrong Date Reserved", oldReservation, newReservation));
+        // requests.add(new Request("Reschedule Ticket Request", "Wrong Flight Time Reserved", oldReservation, newReservation));
     }
 
     public static List<Request> getRequests() {

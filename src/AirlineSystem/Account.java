@@ -1,6 +1,5 @@
 package AirlineSystem;
 
-import java.util.Scanner;
 import java.util.List;
 
 public class Account {
@@ -111,11 +110,20 @@ public class Account {
 
 
     public void availableFlights() {
-        List<FlightSchedule> flightScheduleList = Main.getFlightSchedules(); 
+        // List<FlightSchedule> flightScheduleList = Main.getFlightSchedules(); 
 
-        //display all
-        for (FlightSchedule flightSchedule : flightScheduleList) {
-            System.out.println(flightSchedule.toString());
+        // //display all
+        // for (FlightSchedule flightSchedule : flightScheduleList) {
+        //     System.out.println(flightSchedule.toString());
+        // }
+
+        List<Flight> flightList = Main.getFlightList();
+
+        System.out.println("---Flight---");
+        System.out.println("================================================================");
+        System.out.println("Flight Code         Total Seat      Airline         ");
+        for (Flight flight : flightList) {
+            System.out.println(flight.toString());
         }
     }
 

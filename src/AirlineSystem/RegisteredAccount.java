@@ -387,6 +387,7 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
  }while(reasonChoice != 1 && reasonChoice != 2 && reasonChoice != 3 && reasonChoice != 4 );
 
     System.out.print("\nConfirm to reschedule? (Y/N) > ");
+    scanner.nextLine();
     char next = scanner.next().charAt(0);
     while(!super.validateOption(next)){
         System.out.println("Invalid Input.");
