@@ -421,9 +421,9 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
         //add the request to the request list
         requestList.add(customerRequest);
 
-        System.out.println("\n----------YOUR REQUEST------------------------------------------------------------------------------------------------------------------");
+        System.out.println("\n----------YOUR REQUEST-------------------------------------------------------------------------------------------------------------------");
         System.out.println(customerRequest.displayRequest());
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
 
   
         System.out.println("\nRequested for Rescheduling Ticket.");
@@ -494,9 +494,9 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
         //add the request to the request list
         requestList.add(request);
 
-        System.out.println("\n----------YOUR REQUEST------------------------------------------------------------------------------------------------------------------");
+        System.out.println("\n----------YOUR REQUEST-------------------------------------------------------------------------------------------------------------------");
         System.out.println(request.displayRequest());
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
 
         System.out.println("\nRequested for Cancelling Ticket.");
         System.out.println("ENTER ANY KEY TO CONTINUE >");
@@ -562,13 +562,11 @@ public void checkRequestStatus(Reservation reservation, Scanner scanner){
             }
             else{
                 System.out.println("\nREQUEST PENDING.\n\n");
-                System.out.println("----------YOUR REQUEST-----------------------------------------------------------------------------------------------------------------");
+                System.out.println("----------YOUR REQUEST------------------------------------------------------------------------------------------------------------------");
                 System.out.println(request.displayRequest());
-                System.out.println("---------------------------------------------------------------------------------------------------------------------------------------");
-
+                System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");
             }
-                
-
+        
         }
         else
             System.out.println("\nRESERVATION HAVE NO REQUEST.\n");
