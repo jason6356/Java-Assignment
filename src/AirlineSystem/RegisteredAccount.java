@@ -75,14 +75,14 @@ public void makeReservation(Scanner s){
         System.out.println("Available Flight Schedules");
         System.out.println("Depart Country : " + location);
         System.out.println("Arrive Country : " + destination);
-        System.out.printf("%-2s|%10s|%5s|%-37s|%-37s|%-16s|%-24s|","NO","DepartDate","Time","Location","Destination","Arrival Time","Direction");
-        Main.printLine(138);
+        System.out.printf("%-2s|%10s|%5s|%-37s|%-37s|%-16s|%-24s|\n","NO","DepartDate","Time","Location","Destination","Arrival Time","Direction");
+        Main.printLine(143);
         //Print the flightschedules the user wants
         int i = 1;
         for (FlightSchedule flightSchedule : fsList) {
             if(flightSchedule.getLocation().getLocation().equals(location) && flightSchedule.getDestination().getLocation().equals(destination)){
                 System.out.printf("%-2d|",i);
-                System.out.println(flightSchedule);
+                System.out.println(flightSchedule.displayInfo());
                 queryFsList.add(flightSchedule);
                 found = true;
                 i++;
@@ -169,14 +169,14 @@ public void twoWayReserve(Scanner s,Reservation from){
     System.out.println("Depart Country");
     System.out.println("Depart Country : " + newLocation);
     System.out.println("Arrive Country : " + newDestination);
-    System.out.printf("%-2s|%10s|%5s|%-37s|%-37s|%-16s|%-24s|","NO","DepartDate","Time","Location","Destination","Arrival Time","Direction");
-    Main.printLine(138);
+    System.out.printf("%-2s|%10s|%5s|%-37s|%-37s|%-16s|%-24s|\n","NO","DepartDate","Time","Location","Destination","Arrival Time","Direction");
+    Main.printLine(143);
     //Print the flightschedules the user wants
     int i = 1;
     for (FlightSchedule flightSchedule : fsList) {
         if(flightSchedule.getLocation().getLocation().equals(newLocation) && flightSchedule.getDestination().getLocation().equals(newDestination)){
             System.out.printf("%-2d|",i);
-            System.out.println(flightSchedule);
+            System.out.println(flightSchedule.displayInfo());
             queryFsList.add(flightSchedule);
             found = true;
             i++;
@@ -429,7 +429,7 @@ public void updateProfile(Scanner s){
    }
 
 //Reschedule Ticket
-public void rescheduleTicket(Reservation reservation, Scanner s) {
+public void rescheduleTicket(Reservation reservation, Scanner s, RegisteredAccount user) {
     
     List<FlightSchedule> flightScheduleList = Main.getFlightSchedules();
     List<FlightSchedule> availableSchedules = new ArrayList<FlightSchedule>(); 
@@ -438,6 +438,7 @@ public void rescheduleTicket(Reservation reservation, Scanner s) {
     Request customerRequest = new Request();
     customerRequest.setRequestDescription("Reschedule Ticket Request");
     customerRequest.setOldReservation(reservation);
+    customerRequest.setRequestBy(user);
 
     Main.clearConsole();
     System.out.println("\nCURRENT RESERVATION DETAILS:\n============================\n"+ reservation.displayReservation());
@@ -454,7 +455,7 @@ public void rescheduleTicket(Reservation reservation, Scanner s) {
             if(flightSchedule != reservation.getFlightSchedule()){
                 System.out.print(n + ". ");
                 System.out.println(flightSchedule.toString());
-                System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+                System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------");
                 availableSchedules.add(flightSchedule);
                 n++;
                 }
@@ -520,13 +521,14 @@ public void rescheduleTicket(Reservation reservation, Scanner s) {
 }
 
 //Cancel Ticket
-public void cancelTicket(Reservation reservation, Scanner s) {
+public void cancelTicket(Reservation reservation, Scanner s, RegisteredAccount user) {
 
     //Customer Request 
     Request request = new Request();
     request.setRequestDescription("Cancel Ticket Request");
     request.setOldReservation(reservation);
     request.setNewReservation(null);
+    request.setRequestBy(user);
 
     Main.clearConsole();
     System.out.println("\nRESERVATION DETAILS\n====================\n"+reservation.displayReservation());
@@ -625,34 +627,117 @@ public void checkRequestStatus(Request reservationRequest, Scanner s) {
         FPX fpx1 = new FPX("maybank", "vic123", "apple", "abcd1234", 1000.0, 1234);
         DebitCardAccount debit1 = new DebitCardAccount("maybank", 123456789, 111, "09/25", "Wong Jun Wei", 1000.0, 123);
         int option;
-        boolean error;
+        boolean error = false;
+
+        int inputCardNumber;
+        int inputCVS;
+        String inputValidDate;
 
     do{
         System.out.println("Enter 0 to exit");
         System.out.println("Which payment method would you like to choose? ");
-        System.out.println("1. FPX\n2.Debit Card");
+        System.out.println("1. FPX\n2. Debit Card");
         option = s.nextInt();
-
+        s.nextLine();
         if (option == 1)
         {
-            error = fpx1.validateFPX(s);
-            if ( error == false)
+            String inputBank;
+            String inputUserName;
+            String inputPassword;
+            System.out.println("\n\tFPX");
+            System.out.println("================");
+            do{ //	✓ bank name, ✓user name , X password or terbalik - loop here
+            do{ //  X bank name                  - loop here
+            System.out.println("*NOTE* \nKindly Enter 0 to exit\n");
+            System.out.println("eg: maybank");
+            System.out.print("Input preferred bank name > ");                 //input bank name
+            inputBank = s.nextLine();
+            if ( inputBank.equals("0"))                     // if user input 0 will exit
             {
-                fpx1.pay(amount);
-                System.out.println("Payment Successful!");
+                return; 
+            }
+            if (!inputBank.equalsIgnoreCase(fpx1.getBank()))                // if bank name not exsist 
+            {                                                      // print error message 
+                System.out.println("Incorrect Bank Name!");
+                error = true;
+            }
+            } while(error == true);                             //loop to the beginning
+    
+            System.out.print("UserName > ");              // input user name
+            inputUserName = s.next();
+            s.nextLine();
+            if ( inputUserName.equals("0"))                 //as long as not 0, will proceed to input password
+            {
+                return; 
+            }
+            System.out.print("Password > ");
+            inputPassword = s.nextLine();
+            if ( inputUserName.equals("0"))
+            {
+                return; 
+            }                                               // if either username or password wrong, will loop back to the top
+            if(!inputPassword.equals(fpx1.getPassword()) || !inputPassword.equals(fpx1.getPassword())){
+                System.out.println("Incorrect User Name or Password!");
+                error = true;
+            }
+        
+            }while(error == true);
+    
+            System.out.print("TAC (check your phone) > ");        // input tac
+            int inputTac = s.nextInt();
+            s.nextLine();
+            if(inputTac != fpx1.getTac())
+            {
+                System.out.println("Incorrect TAC\nPayment Terminated\nPlease Try Again!");
                 return;
             }
+            fpx1.pay(amount);
+            s.nextLine();
+            s.nextLine();
+            return;
         }
+               
+            
         else if ( option == 2)
         {
-            error = debit1.validateDC(s);
-            if(error == false)
+            System.out.println("\n\tCard Payment");
+            System.out.println("================");
+            do{ //	either 1 wrong will loop here at the end
+            System.out.println("*NOTE* \nKindly Enter 0 to exit");
+            System.out.print("Card Number > ");                 //input card 
+            inputCardNumber = s.nextInt();
+            s.nextLine();
+            if ( inputCardNumber == 0)                     // if user input 0 will exit
             {
-                debit1.pay(amount);
-                System.out.println("Payment Successful!");
-                return;
+                return; 
             }
+            System.out.print("CVS > ");              // input CVS
+            inputCVS = s.nextInt();
+            s.nextLine();
+            if ( inputCVS == 0 )             
+            {
+                return; 
+            }
+
+            System.out.print("Valid Date (MM/YY) > ");
+            inputValidDate = s.nextLine();
+            if ( inputValidDate.equals("0"))
+            {
+                return; 
+            }                 
+            if((inputCardNumber!=debit1.getCardNo())|| (inputCVS != debit1.getCvsNo()) || (!inputValidDate.equals(debit1.getValidDate()))){
+                System.out.println("Incorrect Card Details!");
+                error = true;
+            }
+            }while(error == true);
+
+                debit1.pay(amount);
+                s.nextLine();
+                s.nextLine();
+                return;
+
         }
+     
         else if (option == 0)
         {
             return;
@@ -661,9 +746,12 @@ public void checkRequestStatus(Request reservationRequest, Scanner s) {
         {
             System.out.println("Incorrect Input! Please Try Again");
         }
-    }while(option!=0);
+            
+
+}while(option!=0);
 
     System.out.println("Payment Cancelled!");
+    
     }
 
 }

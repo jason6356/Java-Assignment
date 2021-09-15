@@ -1178,7 +1178,6 @@ public class Staff extends Account{
 
     public void checkRequest(Scanner s){
         char continueToModify = 'N';
-          boolean valid = true;
         
         //Get RequestList
         List<Request> requestList = Main.getRequests();
@@ -1193,7 +1192,8 @@ public class Staff extends Account{
         }
         else{
             do{
-
+                System.out.println(" REQUESTS:");
+                System.out.println("===========");
                 int requestCount = 1;
                 do{
                     //Display all list

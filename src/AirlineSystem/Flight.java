@@ -28,7 +28,6 @@ class Flight {
             return "F0" + nthFlight;
         else
             return "F"+nthFlight;
-
     }
 
     //No-args Constructor

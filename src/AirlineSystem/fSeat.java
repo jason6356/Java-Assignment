@@ -11,8 +11,8 @@ class fSeat extends Seat {
 
     private double seatPrice;
     private sStatus seatStatus;
-    private final double BUSSINESS_SEAT_PRICE = 1500.00;
-    private final double ECONOMY_SEAT_PRICE = 750.00;
+    private final double BUSSINESS_SEAT_PRICE = 600.00;
+    private final double ECONOMY_SEAT_PRICE = 250.00;
 
     //no-args constructor
     public fSeat(String seatNo){
