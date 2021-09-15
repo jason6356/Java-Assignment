@@ -342,8 +342,7 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
     customerRequest.setOldReservation(reservation);
 
     Main.clearConsole();
-    System.out.println("\nCURRENT RESERVATION DETAILS:\n============================\n+---------------------------------------------------------------------------------------------------------------------------------------+"+ reservation.displayReservation());
-    System.out.println("+---------------------------------------------------------------------------------------------------------------------------------------+");
+    System.out.println("\nCURRENT RESERVATION DETAILS:\n============================\n"+ reservation.displayReservation());
 
     //display available flight schedule
     System.out.println("\n\nAVAILABLE FLIGHT SCHEDULE:");
@@ -387,36 +386,7 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
     Reservation newReservation = new Reservation(bookedSeats.size(),targetSchedule,bookedSeats);
     
     //DO A MENU (LIST OF REASONS)
-    int reasonChoice;
-    do{
-        System.out.println("\nREASON OF RESCHEDULE: ");
-        System.out.println("--------------------- ");
-        System.out.println("1. Wrong Date Reserved");
-        System.out.println("2. Wrong Flight Time Reserved");
-        System.out.println("3. Wrong Location Reserved");
-        System.out.println("4. Other Reasons");
-        System.out.print("SELECT REASON >");
-        reasonChoice = scanner.nextInt();
-        scanner.nextLine();
-   
-        if(reasonChoice == 1){
-            customerRequest.setReason("Wrong Date Reserved");
-        }
-        else if(reasonChoice == 2){
-            customerRequest.setReason("Wrong Flight Time Reserved");
-        }
-        else if(reasonChoice == 3){
-            customerRequest.setReason("Wrong Location Reserved");
-        }
-        else if(reasonChoice == 4){
-            System.out.print("Kindly State the Reason: ");
-            String reason = scanner.nextLine();
-            customerRequest.setReason(reason);
-        }
-        else{
-            System.out.println("Invalid Selection, please try again.");
-        }
- }while(reasonChoice != 1 && reasonChoice != 2 && reasonChoice != 3 && reasonChoice != 4 );
+    customerRequest.requestReason(scanner);
 
     System.out.print("\nConfirm to reschedule? (Y/N) > ");
     char next = scanner.next().charAt(0);
@@ -438,10 +408,8 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
         requestList.add(customerRequest);
 
         Main.clearConsole();
-        System.out.println("\n----------YOUR REQUEST-------------------------------------------------------------------------------------------------------------------");
+       
         System.out.println(customerRequest.displayRequest());
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
-
   
         System.out.println("\nRequested for Rescheduling Ticket.");
         System.out.println("ENTER ANY KEY TO CONTINUE >");
@@ -461,42 +429,11 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
     request.setNewReservation(null);
 
     Main.clearConsole();
-    System.out.println("\nRESERVATION DETAILS\n====================\n+---------------------------------------------------------------------------------------------------------------------------------------+"+reservation.displayReservation());
-    System.out.println("+---------------------------------------------------------------------------------------------------------------------------------------+");
+    System.out.println("\nRESERVATION DETAILS\n====================\n"+reservation.displayReservation());
 
     
     //DO A MENU (LIST OF REASONS)
-    int reasonChoice;
-    do{
-        System.out.println("\nREASON OF CANCELLING: ");
-        System.out.println("--------------------- ");
-        System.out.println("1. Wrong Date Reserved");
-        System.out.println("2. Wrong Flight Time Reserved");
-        System.out.println("3. Wrong Seats Reserved");
-        System.out.println("4. Other Reasons");
-        System.out.print("SELECT REASON >");
-        reasonChoice = scanner.nextInt();
-        scanner.nextLine();
-
-
-        if(reasonChoice == 1){
-            request.setReason("Wrong Date Reserved");
-        }
-        else if(reasonChoice == 2){
-            request.setReason("Wrong Flight Time Reserved");
-        }
-        else if(reasonChoice == 3){
-            request.setReason("Wrong Seats Reserved");
-        }
-        else if(reasonChoice == 4){
-            System.out.print("Kindly State the Reason: ");
-            String reason = scanner.nextLine();
-            request.setReason(reason);
-        }
-        else{
-            System.out.println("Invalid Selection, please try again.");
-        }
-    }while(reasonChoice != 1 && reasonChoice != 2 && reasonChoice != 3 && reasonChoice != 4 );
+    request.requestReason(scanner);
 
     System.out.print("\nConfirm to cancel? (Y/N) > ");
     char next = scanner.next().charAt(0);
@@ -513,9 +450,8 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
         requestList.add(request);
 
         Main.clearConsole();
-        System.out.println("\n----------YOUR REQUEST-------------------------------------------------------------------------------------------------------------------");
+       
         System.out.println(request.displayRequest());
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
 
         System.out.println("\nRequested for Cancelling Ticket.");
         System.out.println("ENTER ANY KEY TO CONTINUE >");
@@ -539,13 +475,10 @@ public void checkRequestStatus(Reservation reservation, Scanner scanner){
 
     for (Request request : requestList) {
 
-        if (request.getOldReservation()==reservation && found==false){
+        if (request.getOldReservation()==reservation){
             found = true;
-            Main.clearConsole();
-            
-            System.out.println("\n\n----------YOUR REQUEST-------------------------------------------------------------------------------------------------------------------");
+                        
             System.out.println(request.displayRequest());
-            System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
 
             if(request.getRequestStatus()==rqStatus.APPROVED){
     
@@ -569,11 +502,11 @@ public void checkRequestStatus(Reservation reservation, Scanner scanner){
 
                 System.out.println("\nREQUEST PENDING.\n\n");
             }
-        
         }
-        if(found = false)
-            System.out.println("\nRESERVATION HAVE NO REQUEST.\n");
     }
+    if(found == false)
+        System.out.println("\nRESERVATION HAVE NO REQUEST.\n");
+
     System.out.println("ENTER ANY KEY TO CONTINUE >");
         scanner.nextLine();
         scanner.nextLine();

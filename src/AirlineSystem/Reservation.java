@@ -106,14 +106,16 @@ public class Reservation {
                 reservationNo, reservationTime, reservationStatus, noOfSeatBooked, totalAmount);
 
     }
+
     /**
-     * Method to Display Reservation in Formatted 
+     * Method to Display Reservation in Formatted
+     * 
      * @return
      */
     public String displayReservation() {
         return String.format(
-                "\n| [%s]                                                                                                                                |\n| Reservation Time: %-29s       | Status: %-50s                    |\n| Seat booked: %-30d           | Total Amount: %-50.2f              |\n| "
-                        + flight.toString(),
+                "+---------------------------------------------------------------------------------------------------------------------------------------+\n| [%s]                                                                                                                                |\n| Reservation Time: %-29s       | Status: %-50s                    |\n| Seat booked: %-30d           | Total Amount: %-50.2f              |\n| "
+                        + flight.toString() + "\n+---------------------------------------------------------------------------------------------------------------------------------------+\n",
                 reservationNo, reservationTime, reservationStatus, noOfSeatBooked, totalAmount);
     }
 
@@ -127,9 +129,10 @@ public class Reservation {
 
     /**
      * Method to calculate TotalAmount
+     * 
      * @param seats
      * @return
-     */    
+     */
     private double calculateTotalAmount(List<fSeat> seats) {
         double totalAmount = 0;
         for (fSeat seat : seats) {

@@ -34,7 +34,8 @@ public class Main {
                 guestAcc = registerAccount();
                 break;
             case 3:
-                guestAcc = userLogin(s);
+               // guestAcc = userLogin(s);
+                guestAcc = new RegisteredAccount();
                 break;
             case 4:
                 guestAcc = staffLogin(s);
@@ -94,90 +95,109 @@ public class Main {
                         clearConsole();
                         List<Reservation> reservation = userAccount.getReservations();
 
-                        int choiceReschedule;
-                        int reservationCount;
-                        do{
-                            System.out.println("\n\n-----RESCHEDULE TICKET-----");
+                        if(reservation.isEmpty()){
+                            System.out.println("\nYou have no reservation.");
+                            System.out.println("ENTER ANY KEY TO CONTINUE >");
+                            s.nextLine();
+                            s.nextLine();
+                        }
+                        else {
+                            int choiceReschedule;
+                            int reservationCount;
+                            do{
+                                System.out.println("\n\n-----RESCHEDULE TICKET-----");
 
-                            reservationCount = 1;
-                            System.out.println("\nYour Reservations:");
-                            for (Reservation res : reservation) {
-                                System.out.println(reservationCount + ". ");
-                                System.out.print("+---------------------------------------------------------------------------------------------------------------------------------------+");
-                                System.out.println(res.displayReservation());
-                                System.out.println("+---------------------------------------------------------------------------------------------------------------------------------------+\n");
-                                reservationCount++;
-                            }
-                            System.out.printf("Select Reservation to Reshedule[1...%d] > ",reservationCount - 1);
-                            choiceReschedule = s.nextInt();
+                                reservationCount = 1;
+                                System.out.println("\nYour Reservations:");
+                                for (Reservation res : reservation) {
+                                    System.out.println(reservationCount + ". ");
+                                    System.out.println(res.displayReservation());
+                                    reservationCount++;
+                                }
+                                System.out.printf("Select Reservation to Reshedule[1...%d] > ",reservationCount - 1);
+                                choiceReschedule = s.nextInt();
 
-                            if(choiceReschedule < 1 || choiceReschedule > reservationCount - 1){
-                                System.out.println("\nInvalid Choice, Please Enter Again!");
-                            }
+                                if(choiceReschedule < 1 || choiceReschedule > reservationCount - 1){
+                                    System.out.println("\nInvalid Choice, Please Enter Again!");
+                                }
 
-                        } while(choiceReschedule < 1 || choiceReschedule > reservationCount - 1);
+                            } while(choiceReschedule < 1 || choiceReschedule > reservationCount - 1);
 
-                        userAccount.rescheduleTicket(reservation.get(choiceReschedule - 1),s);
+                            userAccount.rescheduleTicket(reservation.get(choiceReschedule - 1),s);
+                    }
+
                         break;
                     case 5:
                         // TODO : Huiyi -> Cancel Ticket
                         clearConsole();
                         List<Reservation> resToCancel = userAccount.getReservations();
 
-                        int choiceCancel;
-                        int reservationsCount;
-                        do{
-                            System.out.println("\n\n-----CANCEL TICKET-----");
+                        if(resToCancel.isEmpty()){
+                            System.out.println("\nYou have no reservation.");
+                            System.out.println("ENTER ANY KEY TO CONTINUE >");
+                            s.nextLine();
+                            s.nextLine();
+                        }
+                        else {
+                            int choiceCancel;
+                            int reservationsCount;
+                            do{
+                                System.out.println("\n\n-----CANCEL TICKET-----");
 
-                            reservationsCount = 1;
-                            System.out.println("\nYour Reservations:");
-                            for (Reservation res : resToCancel) {
-                                System.out.println(reservationsCount + ". ");
-                                System.out.print("+---------------------------------------------------------------------------------------------------------------------------------------+");
-                                System.out.println(res.displayReservation());
-                                System.out.println("+---------------------------------------------------------------------------------------------------------------------------------------+\n");
-                                reservationsCount++;
-                            }
-                            System.out.printf("Select Reservation to Cancel [1...%d]> ",reservationsCount - 1);
-                            choiceCancel = s.nextInt();
+                                reservationsCount = 1;
+                                System.out.println("\nYour Reservations:");
+                                for (Reservation res : resToCancel) {
+                                    System.out.println(reservationsCount + ". ");
+                                    System.out.println(res.displayReservation());
+                                    reservationsCount++;
+                                }
+                                System.out.printf("Select Reservation to Cancel [1...%d]> ",reservationsCount - 1);
+                                choiceCancel = s.nextInt();
 
-                            if(choiceCancel < 1 || choiceCancel > reservationsCount - 1){
-                                System.out.println("\nInvalid Choice, Please Enter Again!");
-                            }
+                                if(choiceCancel < 1 || choiceCancel > reservationsCount - 1){
+                                    System.out.println("\nInvalid Choice, Please Enter Again!");
+                                }
 
-                        } while(choiceCancel < 1 || choiceCancel > reservationsCount - 1);
-
-                        userAccount.cancelTicket(resToCancel.get(choiceCancel - 1),s);
+                            } while(choiceCancel < 1 || choiceCancel > reservationsCount - 1);
+                            
+                            userAccount.cancelTicket(resToCancel.get(choiceCancel - 1),s);
+                        }
                         break;
                     case 6:
                         // TODO : Huiyi -> Check Request Status
                         clearConsole();
                         List<Reservation> requestReservation = userAccount.getReservations();
+                        
+                        if(requestReservation.isEmpty()){
+                            System.out.println("\nYou have no reservation.");
+                            System.out.println("ENTER ANY KEY TO CONTINUE >");
+                            s.nextLine();
+                            s.nextLine();
+                        }
+                        else {
+                            int requestCheck;
+                            int requestCount;
+                            do{
+                                System.out.println("\n\n-----CHECK REQUEST STATUS-----");
 
-                        int requestCheck;
-                        int requestCount;
-                        do{
-                            System.out.println("\n\n-----CHECK REQUEST STATUS-----");
+                                requestCount = 1;
+                                System.out.println("\nYour Reservations:");
+                                for (Reservation res : requestReservation) {
+                                    System.out.println(requestCount + ". ");
+                                    System.out.println(res.displayReservation());
+                                    requestCount++;
+                                }
+                                System.out.printf("Select Reservation to Check Request Status [1...%d]> ",requestCount - 1);
+                                requestCheck = s.nextInt();
 
-                            requestCount = 1;
-                            System.out.println("\nYour Reservations:");
-                            for (Reservation res : requestReservation) {
-                                System.out.println(requestCount + ". ");
-                                System.out.print("+---------------------------------------------------------------------------------------------------------------------------------------+");
-                                System.out.println(res.displayReservation());
-                                System.out.println("+---------------------------------------------------------------------------------------------------------------------------------------+\n");
-                                requestCount++;
-                            }
-                            System.out.printf("Select Reservation to Check Request Status [1...%d]> ",requestCount - 1);
-                            requestCheck = s.nextInt();
+                                if(requestCheck < 1 || requestCheck > requestCount - 1){
+                                    System.out.println("\nInvalid Choice, Please Enter Again!");
+                                }
 
-                            if(requestCheck < 1 || requestCheck > requestCount - 1){
-                                System.out.println("\nInvalid Choice, Please Enter Again!");
-                            }
+                        }while(requestCheck < 1 || requestCheck > requestCount - 1);
 
-                    }while(requestCheck < 1 || requestCheck > requestCount - 1);
-
-                        userAccount.checkRequestStatus(requestReservation.get(requestCheck - 1),s);
+                            userAccount.checkRequestStatus(requestReservation.get(requestCheck - 1),s);
+                    }
                         break;
                     default:
                         System.out.println("Invalid Selection.");
