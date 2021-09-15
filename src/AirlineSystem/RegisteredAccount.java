@@ -59,7 +59,11 @@ public void makeReservation(Scanner s){
     List<FlightSchedule> queryFsList = new ArrayList<FlightSchedule>();
     FlightSchedule fs = null;
     char continueBook = 'N';
+
+    System.out.print("One Way Flight or Two Way Flight (1 - One, 2 - Two) : ");
+    int wayChoice = s.nextInt();
     
+
     do{
         System.out.println("Reservation Form");
         System.out.print("Enter the country u would like to go - ");
@@ -124,6 +128,9 @@ public void makeReservation(Scanner s){
                 
                 //This Instance add the reservation to the object
                 reservations.add(reservation);
+
+                if(wayChoice == 2)
+                    twoWayReserve(s,reservation);
             }
         }
         else
@@ -135,7 +142,7 @@ public void makeReservation(Scanner s){
         System.out.println(continueBook);
         s.nextLine();  
         s.nextLine();
-        
+
         while(Character.toUpperCase(continueBook)!='Y' && Character.toUpperCase(continueBook)!='N'){
             System.out.println("Invalid Input!");
             System.out.print("Continue to book another reservation ? ");
@@ -143,9 +150,88 @@ public void makeReservation(Scanner s){
         }
 
 
-        
+
     }while(Character.toUpperCase(continueBook) == 'Y');
 }
+
+//Split into 2 methods, 1 way reservation , 2 way reservations
+
+public void twoWayReserve(Scanner s,Reservation from){
+
+    List<FlightSchedule> fsList = Main.getFlightSchedules();
+    List<FlightSchedule> queryFsList = new ArrayList<FlightSchedule>();
+    FlightSchedule fs = null;
+    boolean found = false;
+    String newLocation = from.getFlightSchedule().getDestination().getLocation();
+    String newDestination = from.getFlightSchedule().getLocation().getLocation();
+
+    System.out.println("Available Flight Schedules");
+    System.out.println("Depart Country");
+    System.out.println("Depart Country : " + newLocation);
+    System.out.println("Arrive Country : " + newDestination);
+    System.out.printf("%-2s|%10s|%5s|%-37s|%-37s|%-16s|%-24s|","NO","DepartDate","Time","Location","Destination","Arrival Time","Direction");
+    Main.printLine(138);
+    //Print the flightschedules the user wants
+    int i = 1;
+    for (FlightSchedule flightSchedule : fsList) {
+        if(flightSchedule.getLocation().getLocation().equals(newLocation) && flightSchedule.getDestination().getLocation().equals(newDestination)){
+            System.out.printf("%-2d|",i);
+            System.out.println(flightSchedule);
+            queryFsList.add(flightSchedule);
+            found = true;
+            i++;
+        }
+    }
+
+    if(found){
+        System.out.println("Found!");
+        System.out.print("Enter the No to book the flight - ");
+        int flightNo = s.nextInt();
+
+        while(flightNo < 0 || flightNo > i){
+            System.out.println("Invalid Input");
+            System.out.print("Enter the No to book the flight - ");
+            flightNo = s.nextInt();
+        }
+
+        fs = queryFsList.get(flightNo-1);
+
+        System.out.print("Would u like to book it ? (Y/N) - ");
+        char choice = s.next().charAt(0);
+        //validate choice
+        while(Character.toUpperCase(choice) != 'Y' && Character.toUpperCase(choice) != 'N'){
+            System.out.println("Invalid Input");
+            System.out.print("Would u like to book it ? (Y/N) - ");
+            choice = s.next().charAt(0);
+        }
+
+        if(Character.toUpperCase(choice) == 'Y'){
+            
+            //Clear Screen
+            Main.clearConsole();
+            //Display Flight Seats
+            fs.displaySeats();
+
+            //Book Seat
+            List<fSeat> bookedSeat = fs.bookSeat(s);
+
+            System.out.println("Successfully booked the seat");
+            Reservation reservation = new Reservation(bookedSeat.size(),fs,bookedSeat);
+            List<Reservation> rList = Main.getReservations();
+            rList.add(reservation);
+            
+            //This Instance add the reservation to the object
+            reservations.add(reservation);
+        }
+    }
+    else
+        System.out.println("No FlightSchedules found for Return Trip!");
+
+}
+
+
+
+
 
 public void confirmTicket(Scanner s){
 
