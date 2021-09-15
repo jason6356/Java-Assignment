@@ -189,7 +189,6 @@ public void confirmTicket(Scanner s){
         }
 
         if(payChoice == 'Y'){
-            Reservation r = new Reservation();
             payment(s, queryList.get(choice - 1).getTotalAmount());
             System.out.println("Calling junwei method");
         }
