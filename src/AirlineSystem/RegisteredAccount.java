@@ -124,14 +124,20 @@ public void makeReservation(Scanner s){
         else
             System.out.println("No Such country found!");
 
-        System.out.print("Continue to book another reservation ? ");
+        System.out.print("Continue to book another reservation ? (Y/N)");
         continueBook = s.next().charAt(0);
+
+        System.out.println(continueBook);
+        s.nextLine();  
+        s.nextLine();
+        
         while(Character.toUpperCase(continueBook)!='Y' && Character.toUpperCase(continueBook)!='N'){
             System.out.println("Invalid Input!");
             System.out.print("Continue to book another reservation ? ");
             continueBook = s.next().charAt(0);
         }
-        
+
+
         
     }while(Character.toUpperCase(continueBook) == 'Y');
 }

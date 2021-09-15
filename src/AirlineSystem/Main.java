@@ -60,16 +60,15 @@ public class Main {
             // TODO : Huiyi -> Reschedule Ticket
             // Update Profile (Done)
             int selection;
-            selection = displayRegisteredAccountMenu(s);
-
-            while(selection < 1 || selection > 7){
-                System.out.println("Invalid input");
-                selection = displayRegisteredAccountMenu(s);
-            }
-
             do {
                 clearConsole();
 
+                selection = displayRegisteredAccountMenu(s);
+
+                while(selection < 1 || selection > 7){
+                    System.out.println("Invalid input");
+                    selection = displayRegisteredAccountMenu(s);
+                }
 
                 switch (selection) {
                     case 1:
