@@ -75,7 +75,7 @@ public void makeReservation(Scanner s){
         System.out.println("Available Flight Schedules");
         System.out.println("Depart Country : " + location);
         System.out.println("Arrive Country : " + destination);
-        System.out.printf("%-2s|%10s|%5s|%-37s|%-37s|%-16s|%-24s|","NO","DepartDate","Time","Location","Destination","Arrival Time","Direction");
+        System.out.printf("%-2s|%10s|%5s|%-37s|%-37s|%-16s|%-24s|\n","NO","DepartDate","Time","Location","Destination","Arrival Time","Direction");
         Main.printLine(143);
         //Print the flightschedules the user wants
         int i = 1;
@@ -169,7 +169,7 @@ public void twoWayReserve(Scanner s,Reservation from){
     System.out.println("Depart Country");
     System.out.println("Depart Country : " + newLocation);
     System.out.println("Arrive Country : " + newDestination);
-    System.out.printf("%-2s|%10s|%5s|%-37s|%-37s|%-16s|%-24s|","NO","DepartDate","Time","Location","Destination","Arrival Time","Direction");
+    System.out.printf("%-2s|%10s|%5s|%-37s|%-37s|%-16s|%-24s|\n","NO","DepartDate","Time","Location","Destination","Arrival Time","Direction");
     Main.printLine(143);
     //Print the flightschedules the user wants
     int i = 1;

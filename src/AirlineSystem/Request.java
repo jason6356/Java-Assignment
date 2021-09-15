@@ -15,6 +15,7 @@ public class Request {
     private rqStatus requestStatus;
     private Reservation oldReservation; // if reschedule then we will have oldReservation and new reservation
     private Reservation newReservation; // cancel, oldReservation, new Reservation == null
+    private RegisteredAccount requestedBy;
 
     // Default invoke with this();
     Request() {
@@ -132,18 +133,21 @@ public class Request {
      */
 
     public void updateRequest(Request request) {
+        List<Reservation> customerReservations = requestedBy.getReservations();
         List<Reservation> reservationList = Main.getReservations();
 
         // if status is approved, update the reservation
         if (request.getRequestStatus() == rqStatus.APPROVED) {
             if (request.getRequestDescription() == "Cancel Ticket Request") {
-
-                for (Reservation reservation : reservationList) {
-                    if (request.getOldReservation().equals(reservation)) {
+                
+                for(int i = 0; i < reservationList.size();i++){
+                    
+                    if (request.getOldReservation().equals(reservationList.get(i))) {
                         // Make all the seats booked by the cancelled reservation into available again
-                        Reservation.getSeatMap().get(reservation).forEach((seat) -> seat.makeSeatEmpty());
+                        Reservation.getSeatMap().get(reservationList.get(i).forEach((seat) -> seat.makeSeatEmpty());
                         // Reset the reservation
-                        reservation = null;
+                        reservationList.remove(i);
+
                     }
                 }
 

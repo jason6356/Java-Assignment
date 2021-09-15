@@ -125,7 +125,7 @@ public class FlightSchedule {
     // //back cabinet
 
     public void displaySeats(){
-        System.out.println("  A  B   C  D  E  F   G  H ");
+        System.out.print("    A  B   C  D  E  F   G  H ");
         int row = 0;
         int col = 9;
         for (fSeat seat : flightSeat) 
