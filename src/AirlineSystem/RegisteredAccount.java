@@ -331,7 +331,7 @@ public void updateProfile(Scanner s){
             System.out.print("Enter your Last Name > ");
             newLastName = s.nextLine();
         }
-        super.setFirstName(newLastName);                    //UPDATE LAST NAME
+        super.setLastName(newLastName);                    //UPDATE LAST NAME
         System.out.println("\n\nLast Name updated successfully !");
 
         case 3:
@@ -643,7 +643,7 @@ public void checkRequestStatus(Reservation reservation, Scanner s){
                 return;
             }
         }
-        else if (option ==0)
+        else if (option == 0)
         {
             return;
         }
