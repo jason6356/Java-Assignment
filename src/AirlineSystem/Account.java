@@ -109,6 +109,9 @@ public class Account {
     }//Minimum 7 characters, at least one letter and one number
 
 
+    /**
+     * Method to display Available Flights
+     */
     public void availableFlights() {
         System.out.println("\n                                                               ---Flight Schedule---");
         System.out.println("=============================================================================================================================================================");
@@ -122,18 +125,42 @@ public class Account {
         }
     }
 
+    /**
+     * Method to validate Name
+     * @param name
+     * @return
+     */
+
     public boolean validateName(String name){
         return name.matches("[A-Za-z]+"); // only alphabet
     }
+
+    /**
+     * Method to validate Gender
+     * @param gender
+     * @return
+     */
 
     public boolean validateGender(char gender){
         return (Character.toUpperCase(gender)=='F' || Character.toUpperCase(gender)=='M');
     }
 
+    /**
+     * Method to validate Phone Number
+     * @param phoneNumber
+     * @return
+     */
+
     public boolean validatePhoneNum(String phoneNumber)
     {
         return phoneNumber.matches("(\\+[1-9]{1})[0-9]{9,14}"); //+X123456 ; Xis country code(can more than 1 digit)
     }
+
+    /**
+     * Method to validate Options
+     * @param option
+     * @return
+     */
 
     public boolean validateOption(char option){ 
         return (Character.toUpperCase(option)=='Y' || Character.toUpperCase(option)=='N');
@@ -142,5 +169,5 @@ public class Account {
     
     // public boolean validateNumber(int number){
     //     return number; //i dk how to use regex 
-    // }
+    //}
 }
