@@ -482,7 +482,9 @@ public class Main {
 
         System.out.println("Fill in the details below to sign up: ");
         System.out.print("1. First Name > "); // ENTER FIRST NAME
+        s.nextLine();
         String regFirstName = s.nextLine();
+ 
         while (!acc.validateName(regFirstName)) // VALIDATE IF IT ONLY CONTAIN CHARACTERS
         {
             System.out.println("Invalid Name. Only Alphabets ");
@@ -543,6 +545,7 @@ public class Main {
         String regAddCountry = s.nextLine();
 
         do {
+            System.out.println("\n\n\n");
             System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
             System.out.print("8. Password > "); // ENTER PASSWORD
             regPassword = s.nextLine();
@@ -550,7 +553,7 @@ public class Main {
             while (!acc.validatePassword(regPassword)) // VALIDATE PASSWORD REQUIREMENT
             {
                 System.out.println("Invalid Password. ");
-                System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
+                System.out.println("\t*NOTE*\n- At Least 7 Characters\n- At Least 1 Letter\n- At Least 1 Number\n");
                 System.out.print("8. Password > ");
                 regPassword = s.nextLine();
             }
@@ -572,6 +575,8 @@ public class Main {
                 regGender, regAge, regEmail, regPhoneNum);
         accountList.add(register); // ADD TO ACCOUNTLIST
         register.welcome(); // can remove if dont want line 210
+        s.nextLine();
+        s.nextLine();
         return register;
     }
 
