@@ -48,6 +48,17 @@ public class FlightSchedule {
 
     }
 
+    public String displayInfo(){
+        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("HH:mm");
+        DateTimeFormatter formatBoth = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        //| DepartDate | DepartTime | Depart Airport | Destination Airport | Estimated Time | Direction |
+
+        // return String.format("%4s|%10s|%5s|%-37s|%-37s|%13s|%-10s -> %-10s|", flightScheduleCode,flightDate.format(formatDate),departureTime.format(formatTime),location.getAirportName(),destination.getAirportName(),estimatedArrivalTime.format(formatBoth),location.getLocation(),destination.getLocation());
+        return String.format("%-10s|%5s|%-37s|%-37s|%-13s|%-10s -> %-10s|",flightDate.format(formatDate),departureTime.format(formatTime),location.getAirportName(),destination.getAirportName(),estimatedArrivalTime.format(formatBoth),location.getLocation(),destination.getLocation());
+
+    }
+
     public LocalTime getDepartureTime() {
         return departureTime;
     }

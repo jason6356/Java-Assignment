@@ -71,13 +71,13 @@ public void makeReservation(Scanner s){
         System.out.println("Depart Country : " + location);
         System.out.println("Arrive Country : " + destination);
         System.out.printf("%-2s|%10s|%5s|%-37s|%-37s|%-16s|%-24s|","NO","DepartDate","Time","Location","Destination","Arrival Time","Direction");
-        Main.printLine(138);
+        Main.printLine(143);
         //Print the flightschedules the user wants
         int i = 1;
         for (FlightSchedule flightSchedule : fsList) {
             if(flightSchedule.getLocation().getLocation().equals(location) && flightSchedule.getDestination().getLocation().equals(destination)){
                 System.out.printf("%-2d|",i);
-                System.out.println(flightSchedule);
+                System.out.println(flightSchedule.displayInfo());
                 queryFsList.add(flightSchedule);
                 found = true;
                 i++;
@@ -165,13 +165,13 @@ public void twoWayReserve(Scanner s,Reservation from){
     System.out.println("Depart Country : " + newLocation);
     System.out.println("Arrive Country : " + newDestination);
     System.out.printf("%-2s|%10s|%5s|%-37s|%-37s|%-16s|%-24s|","NO","DepartDate","Time","Location","Destination","Arrival Time","Direction");
-    Main.printLine(138);
+    Main.printLine(143);
     //Print the flightschedules the user wants
     int i = 1;
     for (FlightSchedule flightSchedule : fsList) {
         if(flightSchedule.getLocation().getLocation().equals(newLocation) && flightSchedule.getDestination().getLocation().equals(newDestination)){
             System.out.printf("%-2d|",i);
-            System.out.println(flightSchedule);
+            System.out.println(flightSchedule.displayInfo());
             queryFsList.add(flightSchedule);
             found = true;
             i++;
