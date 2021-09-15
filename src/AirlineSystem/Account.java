@@ -156,16 +156,6 @@ public class Account {
         return phoneNumber.matches("(\\+[1-9]{1})[0-9]{9,14}"); //+X123456 ; Xis country code(can more than 1 digit)
     }
 
-    /**
-     * Method to validate Options
-     * @param option
-     * @return
-     */
-
-    public boolean validateOption(char option){ 
-        return (Character.toUpperCase(option)=='Y' || Character.toUpperCase(option)=='N');
-    
-    }
     
     // public boolean validateNumber(String num){
     //     return num.matches("[0-9]+"); 

@@ -112,17 +112,17 @@ public class Request {
     public String displayRequest() {
         if (requestDescription == "Cancel Ticket Request") {
             return String.format(
-                    "\n\n----------YOUR REQUEST-------------------------------------------------------------------------------------------------------------------\nRequest ID: %s      Request Description: %s      Reason of Request: %s   \n\nReservation: \n"
+                    "\n\n---------------REQUEST-------------------------------------------------------------------------------------------------------------------\nRequest ID: %s     Description: %s     Reason of Request: %s     Status: %s \n\nReservation: \n"
                             + oldReservation.displayReservation()
                             + "-----------------------------------------------------------------------------------------------------------------------------------------",
-                    requestID, requestDescription, reason);
+                    requestID, requestDescription, reason, requestStatus);
         } else
             return String.format(
-                    "\n\n----------YOUR REQUEST-------------------------------------------------------------------------------------------------------------------\nRequest ID: %s      Request Description: %s      Reason of Request: %s \n\nOld Reservation: \n"
+                    "\n\n---------------REQUEST-------------------------------------------------------------------------------------------------------------------\nRequest ID: %s     Description: %s     Reason of Request: %s     Status: %s \n\nReservation: \n"
                             + oldReservation.displayReservation() + "\nNew Reservation: \n"
                             + newReservation.displayReservation()
                             + "-----------------------------------------------------------------------------------------------------------------------------------------",
-                    requestID, requestDescription, reason);
+                    requestID, requestDescription, reason, requestStatus);
     }
 
     /**
@@ -151,14 +151,14 @@ public class Request {
 
                 for (Reservation reservation : reservationList) {
                     if (request.getOldReservation().equals(reservation))
-                        reservation = request.newReservation;
+                        reservation = request.getNewReservation();
                 }
 
             }
         }
     }
 
-    public void requestReason(Scanner scanner) {
+    public void requestReason(Scanner s) {
         int reasonChoice;
         do {
             System.out.println("\nREASON OF RESCHEDULE: ");
@@ -168,8 +168,8 @@ public class Request {
             System.out.println("3. Wrong Location Reserved");
             System.out.println("4. Other Reasons");
             System.out.print("SELECT REASON >");
-            reasonChoice = scanner.nextInt();
-            scanner.nextLine();
+            reasonChoice = s.nextInt();
+            s.nextLine();
 
             if (reasonChoice == 1) {
                 this.reason = "Wrong Date Reserved";
@@ -179,7 +179,7 @@ public class Request {
                 this.reason = "Wrong Location Reserved";
             } else if (reasonChoice == 4) {
                 System.out.print("Kindly State the Reason: ");
-                String reason = scanner.nextLine();
+                String reason = s.nextLine();
                 this.reason = reason;
             } else {
                 System.out.println("Invalid Selection, please try again.");

@@ -59,9 +59,8 @@ public class DebitCardAccount implements PaymentMethod{
         
     }
 
-    public Boolean validateDC(){
+    public Boolean validateDC(Scanner s){
         Boolean error = false; 
-        Scanner dc = new Scanner(System.in);
         int inputCardNumber;
         int inputCVS;
         String inputValidDate;
@@ -69,21 +68,21 @@ public class DebitCardAccount implements PaymentMethod{
         System.out.println("================");
         do{ //	either 1 wrong will loop here at the end
         System.out.println("*NOTE* \nKindly Enter 0 to exit");
-        System.out.println("Card Number > ");                 //input card 
-        inputCardNumber = dc.nextInt();
+        System.out.print("Card Number > ");                 //input card 
+        inputCardNumber = s.nextInt();
         if ( inputCardNumber == 0)                     // if user input 0 will exit
         {
             return true; 
         }
-        System.out.println("CVS > ");              // input CVS
-        inputCVS = dc.nextInt();
+        System.out.print("CVS > ");              // input CVS
+        inputCVS = s.nextInt();
         if ( inputCVS == 0 )             
         {
             return true; 
         }
 
-        System.out.println("Valid Date (MM/YY) > ");
-        inputValidDate = dc.nextLine();
+        System.out.print("Valid Date (MM/YY) > ");
+        inputValidDate = s.nextLine();
         if ( inputValidDate.equals("0"))
         {
             return true; 
