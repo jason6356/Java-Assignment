@@ -429,7 +429,7 @@ public void updateProfile(Scanner s){
    }
 
 //Reschedule Ticket
-public void rescheduleTicket(Reservation reservation, Scanner s) {
+public void rescheduleTicket(Reservation reservation, Scanner s, RegisteredAccount user) {
     
     List<FlightSchedule> flightScheduleList = Main.getFlightSchedules();
     List<FlightSchedule> availableSchedules = new ArrayList<FlightSchedule>(); 
@@ -438,6 +438,7 @@ public void rescheduleTicket(Reservation reservation, Scanner s) {
     Request customerRequest = new Request();
     customerRequest.setRequestDescription("Reschedule Ticket Request");
     customerRequest.setOldReservation(reservation);
+    customerRequest.setRequestBy(user);
 
     Main.clearConsole();
     System.out.println("\nCURRENT RESERVATION DETAILS:\n============================\n"+ reservation.displayReservation());
@@ -454,7 +455,7 @@ public void rescheduleTicket(Reservation reservation, Scanner s) {
             if(flightSchedule != reservation.getFlightSchedule()){
                 System.out.print(n + ". ");
                 System.out.println(flightSchedule.toString());
-                System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+                System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------");
                 availableSchedules.add(flightSchedule);
                 n++;
                 }
@@ -520,13 +521,14 @@ public void rescheduleTicket(Reservation reservation, Scanner s) {
 }
 
 //Cancel Ticket
-public void cancelTicket(Reservation reservation, Scanner s) {
+public void cancelTicket(Reservation reservation, Scanner s, RegisteredAccount user) {
 
     //Customer Request 
     Request request = new Request();
     request.setRequestDescription("Cancel Ticket Request");
     request.setOldReservation(reservation);
     request.setNewReservation(null);
+    request.setRequestBy(user);
 
     Main.clearConsole();
     System.out.println("\nRESERVATION DETAILS\n====================\n"+reservation.displayReservation());
