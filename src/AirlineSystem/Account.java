@@ -121,7 +121,7 @@ public class Account {
         List<FlightSchedule> flightScheduleList = Main.getFlightSchedules(); 
         //display all
         for (FlightSchedule flightSchedule : flightScheduleList) {
-            System.out.println(flightSchedule.toString());
+            System.out.println(flightSchedule.displayFlightSchedule());
         }
     }
 
@@ -157,7 +157,7 @@ public class Account {
     }
 
     
-    // public boolean validateNumber(int number){
-    //     return number; //i dk how to use regex 
-    //}
+    // public boolean validateNumber(String num){
+    //     return num.matches("[0-9]+"); 
+    // }
 }

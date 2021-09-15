@@ -107,7 +107,7 @@ public class Staff extends Account{
             Airline airline = new Airline(airlineName, airlineCode);
             Flight flight = new Flight(airline, totalSeat);
             flightList.add(flight);
-            System.out.println("Flight added successfully!");
+            System.out.println("\nFlight added successfully!");
 
             System.out.println("\n                 ---Flight---");
             System.out.println("====================================================");
@@ -513,7 +513,7 @@ public class Staff extends Account{
             System.out.printf("%-5s|%11s|%5s|%-37s|%-37s|%13s|%-24s|\n", "Code", "Flight Date", "Departure Time", "Location", "Destination", "Estimated Arrival Time", "Location -> Destination");
             System.out.println("=============================================================================================================================================================");
             for (FlightSchedule flightSchedule : flightScheduleList) {
-                System.out.println(flightSchedule.toString());
+                System.out.println(flightSchedule.displayFlightSchedule());
             }
 
             //Input 
@@ -550,7 +550,7 @@ public class Staff extends Account{
             System.out.println("\n=============================================================================================================================================================");
             System.out.printf("%-5s|%11s|%5s|%-37s|%-37s|%13s|%-24s|\n", "Code", "Flight Date", "Departure Time", "Location", "Destination", "Estimated Arrival Time", "Location -> Destination");
             System.out.println("=============================================================================================================================================================");
-            System.out.println(flightScheduleList.get(updateIndex).toString());
+            System.out.println(flightScheduleList.get(updateIndex).displayFlightSchedule());
 
             //Input Details 
             System.out.print("\nDeparture Time (HH:MM): ");
@@ -630,7 +630,7 @@ public class Staff extends Account{
             System.out.println("\n=============================================================================================================================================================");
             System.out.printf("%-5s|%11s|%5s|%-37s|%-37s|%13s|%-24s|\n", "Code", "Flight Date", "Departure Time", "Location", "Destination", "Estimated Arrival Time", "Location -> Destination");
             System.out.println("=============================================================================================================================================================");
-            System.out.println(flightScheduleList.get(updateIndex).toString() + "\n");
+            System.out.println(flightScheduleList.get(updateIndex).displayFlightSchedule() + "\n");
 
             //Continue?
             System.out.print("Continue update flight schedule (Y/y=Yes, N/n=No)? ");
@@ -1035,8 +1035,7 @@ public class Staff extends Account{
         Boolean passwordMatch = true;
 
         //Input Details 
-        System.out.println("Create Staff");
-        System.out.println("============");
+        System.out.println("\n---Create Staff---");
 
         //First Name
         System.out.print("First Name: "); 
@@ -1048,7 +1047,7 @@ public class Staff extends Account{
         }
 
         //Last Name
-        System.out.print("Last Name: "); 
+        System.out.print("\nLast Name: "); 
         String regLastName = s.nextLine();
         while (!acc.validateName(regLastName)) {
             System.out.println("Invalid Name. Must contian alphabets only. ");
@@ -1057,8 +1056,9 @@ public class Staff extends Account{
         }
 
         //Gender
-        System.out.print("Gender (M/F): "); 
+        System.out.print("\nGender (M/F): "); 
         char regGender = s.next().charAt(0);
+
         //validate gender (M or F only)
         while (!acc.validateGender(regGender)) {
             System.out.println("Male or Female only");
@@ -1067,8 +1067,9 @@ public class Staff extends Account{
         }
 
         //Age
-        System.out.print("Age: "); 
+        System.out.print("\nAge: "); 
         int regAge = s.nextInt();
+
         //validate age (only contains number)
         while (regAge < 0 || regAge > 100) {
             System.out.println("Male or Female only");
@@ -1077,7 +1078,7 @@ public class Staff extends Account{
         }
 
         //PhoneNum
-        System.out.print("Phone Number: "); 
+        System.out.print("\nPhone Number: "); 
         String regPhoneNum = s.nextLine();
         while (!acc.validatePhoneNum(regPhoneNum)) {
             System.out.println("Phone Number Should Start With '+' followed by country code and phone number");
@@ -1087,7 +1088,7 @@ public class Staff extends Account{
         }
 
         //Email 
-        System.out.print("Email: "); 
+        System.out.print("\nEmail: "); 
         String regEmail = s.nextLine();
         while (!acc.validateEmailFormat(regEmail)) {
             System.out.println("Invalid Email. Try Again ");
@@ -1111,13 +1112,13 @@ public class Staff extends Account{
 
         //Password 
         do {
-            System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
+            System.out.println("\n+-----------------------+\n|\t*NOTE*\t\t|\n|1.At Least 7 Characters|\n|2.At Least 1 Letter    |\n|3.At Least 1 Number    |\n+-----------------------+\n");
             System.out.print("Password: "); 
             regPassword = s.nextLine();
 
             while (!acc.validatePassword(regPassword)) {
                 System.out.println("Invalid Password. ");
-                System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
+                System.out.println("\n+-----------------------+\n|\t*NOTE*\t\t|\n|1.At Least 7 Characters|\n|2.At Least 1 Letter    |\n|3.At Least 1 Number    |\n+-----------------------+\n");
                 System.out.print("Password: "); 
                 regPassword = s.nextLine();
             }
@@ -1135,73 +1136,82 @@ public class Staff extends Account{
         Address regAddress = new Address(regAddUnit, regAddRoad, regAddPostcode, regAddCity, regAddState, regAddCountry);
         Staff createStaff = new Staff(regPassword, regFirstName, regLastName, regAddress, regGender, regAge, regEmail, regPhoneNum);
         staffList.add(createStaff);
+
+        s.nextLine();
     }
+
 
     public void checkRequest(Scanner s){
-        char continueToModify;
-        boolean valid = true;
-        do{
-            //Get RequestList
-            List<Request> requestList = Main.getRequests();
+        char continueToModify = 'N';
+          boolean valid = true;
+        
+        //Get RequestList
+        List<Request> requestList = Main.getRequests();
 
-            //Display all list
-            for (Request request : requestList) {
-                System.out.println(request.toString());
-            }
-
-            Request requestToModify;
+        int requestChoice;
+    
+        if(requestList.isEmpty()){
+            System.out.println("\nTHERE IS NO REQUESTS.");
+            System.out.println("ENTER ANY KEY TO CONTINUE >");
+            s.nextLine();
+            s.nextLine();
+        }
+        else{
             do{
-                //input requestID 
-                System.out.print("Enter Request ID: ");
-                String requestID = s.nextLine();
 
-                //go to specific index of the list
-                requestToModify = null;
-                for (Request request : requestList) {
-                    if(request.getRequestID() == requestID)
-                        requestToModify = request;
+                int requestCount = 1;
+                do{
+                    //Display all list
+                    for (Request request : requestList) {
+                        System.out.print("\n\n" + requestCount + ".");
+                        System.out.println(request.displayRequest());
+                        requestCount++;
+                    }
+
+                    //input request choice
+                    System.out.printf("Enter Request to approve or reject request [1...%d] > ",requestCount - 1);
+                    requestChoice = s.nextInt();
+
+
+                    if(requestChoice < 1 || requestChoice > requestCount - 1){
+                        System.out.println("\nInvalid Choice, Please Enter Again!");
+                    }
+                    //Display details of the request 
+                    System.out.println(requestList.get(requestChoice - 1).displayRequest());
+
+                } while(requestChoice < 1 || requestChoice > requestCount - 1);
+            
+                //approve or reject and validate
+                System.out.print("Approve (Y/y) or Reject (N/n): ");
+                char choice = s.next().charAt(0);
+                while(!Main.validateOption(choice)){
+                    System.out.println("Invalid Input.");
+                    System.out.print("Approve (Y/y) or Reject (N/n): ");
+                    choice = s.next().charAt(0);
                 }
 
-                //Display details of the request 
-                //TODO : Check validaity of this Nicole!, if not found need to display error msgs
-                if(requestToModify == null){
-                    System.out.println("Request ID not found. Please try it again... ");
+                //if else for accept or reject request 
+                if(Character.toUpperCase(choice) == 'Y'){
+                    acceptRequest(requestList.get(requestChoice - 1));
                 }
-                System.out.println(requestToModify);
-            }while(requestToModify == null);
-            
-
-            //approve or reject
-            System.out.print("Approve (Y/y) or Reject (N/n): ");
-            char choice = s.next().charAt(0);
-
-            //validate choice 
-            if(!Main.validateOption(choice)){
-                System.out.println("Invalid input.");
-                valid = false;
-            }
-            
-            //if else for accept or reject request 
-            if(Character.toUpperCase(choice) == 'Y'){
-                acceptRequest(requestToModify);
-            }
-            else if (Character.toUpperCase(choice) == 'N'){
-                rejectRequest(requestToModify);
-            }
-            else //return back to menu
-                return;
-            
-            //continue to modify request? 
-            System.out.print("Continue to modify request? (Y/N) ");
-            continueToModify = s.next().charAt(0);
-
-            //validate continueToModify
-            if(!Main.validateOption(continueToModify)){
-                System.out.println("Invalid input.");
-                valid = false;
-            }
-        }while((Character.toUpperCase(continueToModify) == 'Y') || valid == false); 
-    }
+                else if (Character.toUpperCase(choice) == 'N'){
+                    rejectRequest(requestList.get(requestChoice - 1));
+                }
+                else //return back to menu
+                    return;
+                
+                //continue to modify request? 
+                System.out.print("Continue to modify request? (Y/N) ");
+                continueToModify = s.next().charAt(0);
+                while(!Main.validateOption(continueToModify)){
+                    System.out.println("Invalid Input.");
+                    System.out.print("Continue to modify request? (Y/N) ");
+                    continueToModify = s.next().charAt(0);
+                }
+            }while(Character.toUpperCase(continueToModify) =='Y');
+        }
+   }
+    
 
     public void acceptRequest(Request request){
         //change request status 
@@ -1220,32 +1230,59 @@ public class Staff extends Account{
         List<Staff> staffList = Main.getStaffAccountList();
         Account acc = new Account();
 
+        System.out.println("\n---Change Password---");
+
         //Enter Staff ID 
         System.out.print("Staff ID: ");
         String staffId = s.nextLine();
 
         //get index 
+        boolean search = false;
         int updateIndex = 0;
         for(int i=0; i<staffList.size(); i++){
-            if(staffList.get(i).getStaffID()== staffId)
+            if(staffList.get(i).getStaffID().equals(staffId)){
                 updateIndex = i;
+                search = true;
+            }
+        }
+
+        while(search == false){
+            System.out.println("Staff ID NOT FOUND! Please enter again... \n");
+            System.out.print("Staff ID: ");
+            staffId = s.nextLine();
+
+            updateIndex = 0;
+            for(int i=0; i<staffList.size(); i++){
+                if(staffList.get(i).getStaffID().equals(staffId)){
+                    updateIndex = i;
+                    search = true;
+                }
+            }
         }
 
         //Update password 
         String updPassword;
         boolean passwordMatch = true;
         do {
-            System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
+            System.out.println("\n+-----------------------+\n|\t*NOTE*\t\t|\n|1.At Least 7 Characters|\n|2.At Least 1 Letter    |\n|3.At Least 1 Number    |\n+-----------------------+\n");
             System.out.print("Password: "); 
             updPassword = s.nextLine();
 
+            //cannot have the same password as previous 
+            if(updPassword.equals(staffList.get(updateIndex).getPassword())){
+                passwordMatch = false;
+                System.out.println("Update password cannot be the same as previous password! Please Re-Enter again.");
+            }
+
+            //validate password 
             while (!acc.validatePassword(updPassword)) {
                 System.out.println("Invalid Password. ");
-                System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
+                System.out.println("\n+-----------------------+\n|\t*NOTE*\t\t|\n|1.At Least 7 Characters|\n|2.At Least 1 Letter    |\n|3.At Least 1 Number    |\n+-----------------------+\n");
                 System.out.print("Password: "); 
                 updPassword = s.nextLine();
             }
 
+            //confirm password 
             System.out.print("Confirm Password: "); 
             String confirmPassword = s.nextLine();
             if (!updPassword.equals(confirmPassword)) {
@@ -1253,12 +1290,20 @@ public class Staff extends Account{
                 System.out.println("Password Does Not Match! Re-Enter Again! ");
             }
 
-            if(updPassword == staffList.get(updateIndex).getPassword()){
-                passwordMatch = false;
-                System.out.println("Update password cannot be the same as previous password! Please Re-Enter again.");
+            System.out.print("Confirm change password? ");
+            char confirm = s.next().charAt(0);
+
+            while(!Main.validateOption(confirm)){
+                System.out.println("Invalid Input! Please enter again... \n");
+                System.out.print("Confirm change password? ");
+                confirm = s.next().charAt(0);
             }
 
+            if(Character.toUpperCase(confirm) == 'Y'){
+                super.setPassword(updPassword);
+            }
+
+            s.nextLine();
         } while (passwordMatch == false);
     }
-
 }
