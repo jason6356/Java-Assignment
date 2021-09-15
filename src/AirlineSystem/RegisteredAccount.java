@@ -625,34 +625,116 @@ public void checkRequestStatus(Request reservationRequest, Scanner s) {
         FPX fpx1 = new FPX("maybank", "vic123", "apple", "abcd1234", 1000.0, 1234);
         DebitCardAccount debit1 = new DebitCardAccount("maybank", 123456789, 111, "09/25", "Wong Jun Wei", 1000.0, 123);
         int option;
-        boolean error;
+        boolean error = false;
+
+        int inputCardNumber;
+        int inputCVS;
+        String inputValidDate;
 
     do{
         System.out.println("Enter 0 to exit");
         System.out.println("Which payment method would you like to choose? ");
-        System.out.println("1. FPX\n2.Debit Card");
+        System.out.println("1. FPX\n2. Debit Card");
         option = s.nextInt();
 
         if (option == 1)
         {
-            error = fpx1.validateFPX(s);
-            if ( error == false)
+            String inputBank;
+            String inputUserName;
+            String inputPassword;
+            System.out.println("\n\tFPX");
+            System.out.println("================");
+            do{ //	✓ bank name, ✓user name , X password or terbalik - loop here
+            do{ //  X bank name                  - loop here
+            System.out.println("*NOTE* \nKindly Enter 0 to exit\n");
+            System.out.println("eg: maybank");
+            System.out.print("Input preferred bank name > ");                 //input bank name
+            inputBank = s.nextLine();
+            if ( inputBank.equals("0"))                     // if user input 0 will exit
             {
-                fpx1.pay(amount);
-                System.out.println("Payment Successful!");
+                return; 
+            }
+            if (!inputBank.equalsIgnoreCase(fpx1.getBank()))                // if bank name not exsist 
+            {                                                      // print error message 
+                System.out.println("Incorrect Bank Name!");
+                error = true;
+            }
+            } while(error == true);                             //loop to the beginning
+    
+            System.out.print("UserName > ");              // input user name
+            inputUserName = s.next();
+            s.nextLine();
+            if ( inputUserName.equals("0"))                 //as long as not 0, will proceed to input password
+            {
+                return; 
+            }
+            System.out.print("Password > ");
+            inputPassword = s.nextLine();
+            if ( inputUserName.equals("0"))
+            {
+                return; 
+            }                                               // if either username or password wrong, will loop back to the top
+            if(!inputPassword.equals(fpx1.getPassword()) || !inputPassword.equals(fpx1.getPassword())){
+                System.out.println("Incorrect User Name or Password!");
+                error = true;
+            }
+        
+            }while(error == true);
+    
+            System.out.print("TAC (check your phone) > ");        // input tac
+            int inputTac = s.nextInt();
+            if(inputTac != fpx1.getTac())
+            {
+                System.out.println("Incorrect TAC\nPayment Terminated\nPlease Try Again!");
                 return;
             }
+            fpx1.pay(amount);
+            s.nextLine();
+            s.nextLine();
+            return;
         }
+               
+            
         else if ( option == 2)
         {
-            error = debit1.validateDC(s);
-            if(error == false)
+            System.out.println("\n\tCard Payment");
+            System.out.println("================");
+            do{ //	either 1 wrong will loop here at the end
+            System.out.println("*NOTE* \nKindly Enter 0 to exit");
+            System.out.print("Card Number > ");                 //input card 
+            inputCardNumber = s.nextInt();
+            s.nextLine();
+            if ( inputCardNumber == 0)                     // if user input 0 will exit
             {
-                debit1.pay(amount);
-                System.out.println("Payment Successful!");
-                return;
+                return; 
             }
+            System.out.print("CVS > ");              // input CVS
+            inputCVS = s.nextInt();
+            s.nextLine();
+            if ( inputCVS == 0 )             
+            {
+                return; 
+            }
+
+            System.out.print("Valid Date (MM/YY) > ");
+            inputValidDate = s.nextLine();
+            if ( inputValidDate.equals("0"))
+            {
+                return; 
+            }                 
+            if((inputCardNumber!=debit1.getCardNo())|| (inputCVS != debit1.getCvsNo()) || (!inputValidDate.equals(debit1.getValidDate()))){
+                System.out.println("Incorrect Card Details!");
+                error = true;
+            }
+            }while(error == true);
+
+                debit1.pay(amount);
+                s.nextLine();
+                s.nextLine();
+                return;
+
         }
+     
         else if (option == 0)
         {
             return;
@@ -661,7 +743,9 @@ public void checkRequestStatus(Request reservationRequest, Scanner s) {
         {
             System.out.println("Incorrect Input! Please Try Again");
         }
-    }while(option!=0);
+            
+
+}while(option!=0);
 
     System.out.println("Payment Cancelled!");
     }
