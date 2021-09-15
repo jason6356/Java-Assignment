@@ -1,5 +1,6 @@
 package AirlineSystem;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,33 +23,13 @@ import java.util.Scanner;
 class DebugMain {
 
     public static void main(String[] args) {
-
-        Main.insertDataToList();
-        Scanner sc = new Scanner(System.in);
-       
-        RegisteredAccount acc = new RegisteredAccount();
-
-        acc.makeReservation(sc);
-
-        List<Reservation> reservation = Main.getReservations();
-
-        System.out.println("\n\n-----RESCHEDULE TICKET-----");
-
-        int n = 1;
-        System.out.println("\nYour Reservations:");
-        for (Reservation res : reservation) {
-            System.out.print(n + ". ");
-            System.out.println(res.toString());
-            System.out.println("\n");
-            n++;
-        }
-        System.out.print("Select Reservation to Reshedule > ");
-        int choiceReschedule = sc.nextInt();
-
-        ((RegisteredAccount) acc).rescheduleTicket(reservation.get(choiceReschedule - 1), sc);
-
         
+        LocalDate date;
 
-        sc.close();
+        Scanner s = new Scanner(System.in);
+
+        String datestr = s.next();
+        date = LocalDate.parse(datestr);
+        System.out.println(date);
     }
 }

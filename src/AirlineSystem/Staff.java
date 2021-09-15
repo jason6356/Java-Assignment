@@ -107,6 +107,7 @@ public class Staff extends Account{
             Airline airline = new Airline(airlineName, airlineCode);
             Flight flight = new Flight(airline, totalSeat);
             flightList.add(flight);
+            System.out.println("Flight added successfully!");
 
             System.out.println("\n                 ---Flight---");
             System.out.println("====================================================");
@@ -144,6 +145,7 @@ public class Staff extends Account{
             //Create object 
             Airline airline = new Airline(airlineName, airlineCode);
             airlineList.add(airline);
+            System.out.println("Airline added successfully!");
     
             System.out.println("\n                 ---Airline---");
             System.out.println("======================================================");
@@ -180,6 +182,7 @@ public class Staff extends Account{
             //Create object 
             Airport airport = new Airport(airportName, location);
             airportList.add(airport);
+            System.out.println("Airport added successfully!");
 
             System.out.println("\n                                ---Airport---");
             System.out.println("==============================================================================");
@@ -311,6 +314,7 @@ public class Staff extends Account{
             Airline airline = new Airline(airlineList.get(airlineIndex).getAirlineName(), airlineList.get(airlineIndex).getAirlineCode());
             Flight flight = new Flight(airline, totalSeat);
             flightList.set(updateIndex, flight);
+            System.out.println("Flight updated successfully!");
 
             //Display Changes 
             System.out.println("\n                 ---Flight---");
@@ -390,6 +394,7 @@ public class Staff extends Account{
             //Create object 
             Airline airline = new Airline(airlineName, airlineCode);
             airlineList.set(updateIndex, airline); 
+            System.out.println("Airline updated successfully!");
 
             //Display Changes 
             System.out.println("\n                 ---Airline---");
@@ -472,6 +477,7 @@ public class Staff extends Account{
             //Create object 
             Airport airport = new Airport(airportName, location);
             airportList.set(airportIndex, airport);
+            System.out.println("Airport updated successfully!");
 
             //Display Changes 
             System.out.println("\n                                   ---Airport---");
@@ -618,6 +624,7 @@ public class Staff extends Account{
             Flight flight = new Flight(airline, flightList.get(airlineIndex).getTotalSeat());
             FlightSchedule flightSchedule = new FlightSchedule(departureTime, flightDate, location, destination, estimatedArrivalTime, flight);
             flightScheduleList.set(updateIndex, flightSchedule);
+            System.out.println("Flight Schedule updated successfully!");
 
             //Display changes 
             System.out.println("\n=============================================================================================================================================================");
@@ -735,6 +742,7 @@ public class Staff extends Account{
             if(Character.toUpperCase(confirmation) == 'Y'){
                 //Remove Records 
                 flightList.remove(deleteIndex);
+                System.out.println("Flight deleted successfully!");
             }
 
             //Display all Records 
@@ -820,6 +828,7 @@ public class Staff extends Account{
             if(Character.toUpperCase(confirmation) == 'Y'){
                 //Remove Records 
                 airlineList.remove(deleteIndex); 
+                System.out.println("Airline deleted successfully!");
             }
 
             //Display airline details 
@@ -907,6 +916,7 @@ public class Staff extends Account{
             if(Character.toUpperCase(confirmation) == 'Y'){
                 //Remove Records 
                 airportList.remove(airportIndex);
+                System.out.println("Airport deleted successfully!");
             }
 
             //Display details 
@@ -992,6 +1002,7 @@ public class Staff extends Account{
             if(Character.toUpperCase(confirmation) == 'Y'){
                 //Remove Records 
                 flightScheduleList.remove(deleteIndex);
+                System.out.println("Flight Schedule deleted successfully!");
             }
 
             //Display Details 
