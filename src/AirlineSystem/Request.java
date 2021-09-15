@@ -138,9 +138,12 @@ public class Request {
      */
 
     public void updateRequest(Request request) {
-        List<Reservation> customerReservations = requestedBy.getReservations();
-        List<Reservation> reservationList = Main.getReservations();
         List<Reservation> customerReservationList = requestedBy.getReservations();
+        boolean found = false;
+
+        System.out.println("Before Update");
+        //Display all the contents
+        customerReservationList.forEach((e) -> System.out.println(e.displayReservation()));
 
         // if status is approved, update the reservation
         if (request.getRequestStatus() == rqStatus.APPROVED) {
@@ -154,6 +157,9 @@ public class Request {
                         Reservation.getSeatMap().get(reservation).forEach((seat) -> seat.makeSeatEmpty());
                         // Remove the reservation
                         reservation.setReservationStatus(rStatus.CANCELLED);
+
+                        System.out.println("Found the item to cancel!");
+
                     }
                 }
             }
@@ -161,25 +167,28 @@ public class Request {
 
            
                 for (Reservation reservation : customerReservationList) {
-               
+                    
                     if (request.getOldReservation().equals(reservation)){
+                        found = true;
                          // Make all the seats booked by the cancelled reservation into available again
                          Reservation.getSeatMap().get(reservation).forEach((seat) -> seat.makeSeatEmpty());
                          // Remove the reservation
                          reservation.setReservationStatus(rStatus.CANCELLED);
-                         // add new reservation
-                         customerReservationList.add(request.getNewReservation());
+                      
+                         System.out.println("Found the item to reschedule!");
                         }
                 }
 
             }
         }
-    
+
+        if(found)
+            customerReservationList.add(request.getNewReservation());
+
+        System.out.println("After update");
         for (Reservation customerReservation : customerReservationList) {
             System.out.println(customerReservation.displayReservation());
         }
-        System.out.println(request.getOldReservation().displayReservation());
-
     }
 
     public void requestReason(Scanner s) {

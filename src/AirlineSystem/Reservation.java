@@ -16,6 +16,8 @@ public class Reservation {
     private int noOfSeatBooked;
     private double totalAmount;
     private FlightSchedule flight;
+    //                       index        value
+    //                       
     private static HashMap<Reservation, List<fSeat>> seatMap = new HashMap<Reservation, List<fSeat>>();
 
     // Parameterized
@@ -128,7 +130,7 @@ public class Reservation {
      */
     @Override
     public boolean equals(Object reservation) {
-        return reservation == ((Reservation) reservation).getReservationNo();
+        return reservationNo == ((Reservation) reservation).getReservationNo();
     }
 
     /**
@@ -144,4 +146,5 @@ public class Reservation {
         }
         return totalAmount;
     }
+
 }
