@@ -283,38 +283,57 @@ public class Main {
             // else do nothing
             char yesNo;
             boolean valid = true;
-            do {
-                System.out.print("Wish to make a reservation(Y/N)? ");
+
+            System.out.print("\nWish to make a reservation(Y/N)? ");
+            yesNo = s.next().charAt(0);
+
+            // validate yesNo
+            if (!guestAcc.validateOption(yesNo)) {
+                valid = false;
+            }
+
+            while(valid == false){
+                System.out.println("Invalid Input. Please enter again...");
+                System.out.print("\nWish to make a reservation(Y/N)? ");
                 yesNo = s.next().charAt(0);
 
-                if (Character.toUpperCase(yesNo) == 'Y') {
-                    System.out.print("Register or Login (R/L)? ");
-                    char registerOrLogin = s.next().charAt(0);
-                    // Register account
-                    if (Character.toUpperCase(registerOrLogin) == 'R') {
-                        guestAcc = registerAccount();
-                    }
+                if (guestAcc.validateOption(yesNo)) {
+                    valid = true;
+                }
+            }
 
-                    // Login account
-                    if (Character.toUpperCase(registerOrLogin) == 'L') {
-                        // guestAcc = customerLogin();
-                    }
+            if (Character.toUpperCase(yesNo) == 'Y') {
+                System.out.print("Register or Login (R/L)? ");
+                char registerOrLogin = s.next().charAt(0);
 
-                    // validate registerOrLogin
-                    if (!guestAcc.validateOption(registerOrLogin)) {
-                        System.out.println("Invalid Input. Please enter again...");
-                        valid = false;
-                    }
-
+                // Register account
+                if (Character.toUpperCase(registerOrLogin) == 'R') {
+                    guestAcc = registerAccount();
                 }
 
-                // validate yesNo
-                if (!guestAcc.validateOption(yesNo)) {
-                    System.out.println("Invalid Input. Please enter again...");
+                // Login account
+                if (Character.toUpperCase(registerOrLogin) == 'L') {
+                    guestAcc = userLogin(s);
+                }
+
+                // validate registerOrLogin
+                if (!guestAcc.validateOption(registerOrLogin)) {
                     valid = false;
                 }
 
-            } while (valid == false);
+                while(valid == false){
+                    System.out.println("Invalid Input. Please enter again...");
+                    System.out.print("Register or Login (R/L)? ");
+                    registerOrLogin = s.next().charAt(0);
+
+                    if (!guestAcc.validateOption(registerOrLogin)) {
+                        valid = true;
+                    }
+                }
+
+            }else{
+                System.exit(-1);
+            }
 
         }
     }while(!end);
