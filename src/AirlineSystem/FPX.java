@@ -1,7 +1,5 @@
 package AirlineSystem;
 
-import java.util.Scanner;
-
 public class FPX implements PaymentMethod{
 
     private String bank;

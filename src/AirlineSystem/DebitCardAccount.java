@@ -1,5 +1,4 @@
 package AirlineSystem;
-import java.util.Scanner;
 public class DebitCardAccount implements PaymentMethod{
 
     private String bank;
