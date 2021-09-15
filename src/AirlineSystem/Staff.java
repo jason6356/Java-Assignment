@@ -1138,70 +1138,74 @@ public class Staff extends Account{
     }
 
     public void checkRequest(){
-        char continueToModify;
+        char continueToModify = 'N';
         boolean valid = true;
-        do{
-            //Get RequestList
-            List<Request> requestList = Main.getRequests();
+        
+        //Get RequestList
+        List<Request> requestList = Main.getRequests();
 
-            //Display all list
-            for (Request request : requestList) {
-                System.out.println(request.toString());
-            }
-
-            Request requestToModify;
+        int requestChoice;
+    
+        if(requestList.isEmpty()){
+            System.out.println("\nTHERE IS NO REQUESTS.");
+            System.out.println("ENTER ANY KEY TO CONTINUE >");
+            staff.nextLine();
+            staff.nextLine();
+        }
+        else{
             do{
-                //input requestID 
-                System.out.print("Enter Request ID: ");
-                String requestID = staff.nextLine();
+                int requestCount = 1;
+                do{
+                    //Display all list
+                    for (Request request : requestList) {
+                        System.out.print("\n\n" + requestCount + ".");
+                        System.out.println(request.displayRequest());
+                        requestCount++;
+                    }
 
-                //go to specific index of the list
-                requestToModify = null;
-                for (Request request : requestList) {
-                    if(request.getRequestID() == requestID)
-                        requestToModify = request;
+                    //input request choice
+                    System.out.printf("Enter Request to approve or reject request [1...%d] > ",requestCount - 1);
+                    requestChoice = staff.nextInt();
+
+                    if(requestChoice < 1 || requestChoice > requestCount - 1){
+                        System.out.println("\nInvalid Choice, Please Enter Again!");
+                    }
+                    //Display details of the request 
+                    System.out.println(requestList.get(requestChoice - 1).displayRequest());
+
+                } while(requestChoice < 1 || requestChoice > requestCount - 1);
+            
+                //approve or reject and validate
+                System.out.print("Approve (Y/y) or Reject (N/n): ");
+                char choice = staff.next().charAt(0);
+                while(!super.validateOption(choice)){
+                    System.out.println("Invalid Input.");
+                    System.out.print("Approve (Y/y) or Reject (N/n): ");
+                    choice = staff.next().charAt(0);
                 }
 
-                //Display details of the request 
-                //TODO : Check validaity of this Nicole!, if not found need to display error msgs
-                if(requestToModify == null){
-                    System.out.println("Request ID not found. Please try it again... ");
+                //if else for accept or reject request 
+                if(Character.toUpperCase(choice) == 'Y'){
+                    acceptRequest(requestList.get(requestChoice - 1));
                 }
-                System.out.println(requestToModify);
-            }while(requestToModify == null);
-            
-
-            //approve or reject
-            System.out.print("Approve (Y/y) or Reject (N/n): ");
-            char choice = staff.next().charAt(0);
-
-            //validate choice 
-            if(!super.validateOption(choice)){
-                System.out.println("Invalid input.");
-                valid = false;
-            }
-            
-            //if else for accept or reject request 
-            if(Character.toUpperCase(choice) == 'Y'){
-                acceptRequest(requestToModify);
-            }
-            else if (Character.toUpperCase(choice) == 'N'){
-                rejectRequest(requestToModify);
-            }
-            else //return back to menu
-                return;
-            
-            //continue to modify request? 
-            System.out.print("Continue to modify request? (Y/N) ");
-            continueToModify = staff.next().charAt(0);
-
-            //validate continueToModify
-            if(!super.validateOption(continueToModify)){
-                System.out.println("Invalid input.");
-                valid = false;
-            }
-        }while((Character.toUpperCase(continueToModify) == 'Y') || valid == false); 
+                else if (Character.toUpperCase(choice) == 'N'){
+                    rejectRequest(requestList.get(requestChoice - 1));
+                }
+                else //return back to menu
+                    return;
+                
+                //continue to modify request? 
+                System.out.print("Continue to modify request? (Y/N) ");
+                continueToModify = staff.next().charAt(0);
+                while(!super.validateOption(continueToModify)){
+                    System.out.println("Invalid Input.");
+                    System.out.print("Continue to modify request? (Y/N) ");
+                    continueToModify = staff.next().charAt(0);
+                }
+            }while(Character.toUpperCase(continueToModify) =='Y');
+        }
     }
+    
 
     public void acceptRequest(Request request){
         //change request status 

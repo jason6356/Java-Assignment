@@ -166,10 +166,10 @@ public class Main {
                     case 6:
                         // TODO : Huiyi -> Check Request Status
                         clearConsole();
-                        List<Reservation> requestReservation = userAccount.getReservations();
+                        List<Request> requestToCheck = userAccount.getRequests();
                         
-                        if(requestReservation.isEmpty()){
-                            System.out.println("\nYou have no reservation.");
+                        if(requestToCheck.isEmpty()){
+                            System.out.println("\nYou have no request.");
                             System.out.println("ENTER ANY KEY TO CONTINUE >");
                             s.nextLine();
                             s.nextLine();
@@ -181,13 +181,13 @@ public class Main {
                                 System.out.println("\n\n-----CHECK REQUEST STATUS-----");
 
                                 requestCount = 1;
-                                System.out.println("\nYour Reservations:");
-                                for (Reservation res : requestReservation) {
+                                System.out.println("\nYour Requests:");
+                                for (Request res : requestToCheck) {
                                     System.out.println(requestCount + ". ");
-                                    System.out.println(res.displayReservation());
+                                    System.out.println(res.displayRequest());
                                     requestCount++;
                                 }
-                                System.out.printf("Select Reservation to Check Request Status [1...%d]> ",requestCount - 1);
+                                System.out.printf("Select Request to Check Request Status [1...%d]> ",requestCount - 1);
                                 requestCheck = s.nextInt();
 
                                 if(requestCheck < 1 || requestCheck > requestCount - 1){
@@ -196,7 +196,7 @@ public class Main {
 
                         }while(requestCheck < 1 || requestCheck > requestCount - 1);
 
-                            userAccount.checkRequestStatus(requestReservation.get(requestCheck - 1),s);
+                            userAccount.checkRequestStatus(requestToCheck.get(requestCheck - 1), s);
                     }
                         break;
                     default:

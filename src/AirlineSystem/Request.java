@@ -112,17 +112,17 @@ public class Request {
     public String displayRequest() {
         if (requestDescription == "Cancel Ticket Request") {
             return String.format(
-                    "\n\n----------YOUR REQUEST-------------------------------------------------------------------------------------------------------------------\nRequest ID: %s      Request Description: %s      Reason of Request: %s   \n\nReservation: \n"
+                    "\n\n---------------REQUEST-------------------------------------------------------------------------------------------------------------------\nRequest ID: %s     Description: %s     Reason of Request: %s     Status: %s \n\nReservation: \n"
                             + oldReservation.displayReservation()
                             + "-----------------------------------------------------------------------------------------------------------------------------------------",
-                    requestID, requestDescription, reason);
+                    requestID, requestDescription, reason, requestStatus);
         } else
             return String.format(
-                    "\n\n----------YOUR REQUEST-------------------------------------------------------------------------------------------------------------------\nRequest ID: %s      Request Description: %s      Reason of Request: %s \n\nOld Reservation: \n"
+                    "\n\n---------------REQUEST-------------------------------------------------------------------------------------------------------------------\nRequest ID: %s     Description: %s     Reason of Request: %s     Status: %s \n\nReservation: \n"
                             + oldReservation.displayReservation() + "\nNew Reservation: \n"
                             + newReservation.displayReservation()
                             + "-----------------------------------------------------------------------------------------------------------------------------------------",
-                    requestID, requestDescription, reason);
+                    requestID, requestDescription, reason, requestStatus);
     }
 
     /**
@@ -151,7 +151,7 @@ public class Request {
 
                 for (Reservation reservation : reservationList) {
                     if (request.getOldReservation().equals(reservation))
-                        reservation = request.newReservation;
+                        reservation = request.getNewReservation();
                 }
 
             }

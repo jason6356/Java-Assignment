@@ -9,6 +9,7 @@ public class RegisteredAccount extends Account {
     private static int nthAcc = 0;
     private String accID;
     private List<Reservation> reservations = new ArrayList<Reservation>();
+    private List<Request> requests = new ArrayList<Request>();
 
     public RegisteredAccount() {
         this("","","",null,'\0',0,"","");
@@ -41,6 +42,10 @@ public class RegisteredAccount extends Account {
 
     public List<Reservation> getReservations() {
         return reservations;
+    }
+
+    public List<Request> getRequests() {
+        return requests;
     }
     
     //setter
@@ -399,14 +404,16 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
     }
 
     if(Character.toUpperCase(next) == 'Y'){
-        //get request list from the data storage
-        List<Request> requestList = Main.getRequests(); //data storage
-
+        
         //set new reservation
         customerRequest.setNewReservation(newReservation);
 
         //add the request to the request list
-        requestList.add(customerRequest);
+        requests.add(customerRequest);
+
+        //add request to main request list
+        List<Request> mainRequests = Main.getRequests();
+        mainRequests.add(customerRequest);
 
         Main.clearConsole();
        
@@ -445,10 +452,13 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
     }
 
     if(Character.toUpperCase(next) == 'Y'){
-        List<Request> requestList = Main.getRequests();
         
-        //add the request to the request list
-        requestList.add(request);
+        //add the request to the customer request list
+        requests.add(request);
+
+        //add request to main request list
+        List<Request> mainRequests = Main.getRequests();
+        mainRequests.add(request);
 
         Main.clearConsole();
        
@@ -468,15 +478,13 @@ public void welcome(){ // can remove if dw, main line 149
 }
 
 
-
 //Check Reservation
-public void checkRequestStatus(Reservation reservation, Scanner scanner){
-    List<Request> requestList = Main.getRequests();
+public void checkRequestStatus(Request reservationRequest, Scanner scanner){
     boolean found = false;
 
-    for (Request request : requestList) {
+    for (Request request : requests) {
 
-        if (request.getOldReservation()==reservation){
+        if (request == reservationRequest){
             found = true;
                         
             System.out.println(request.displayRequest());
