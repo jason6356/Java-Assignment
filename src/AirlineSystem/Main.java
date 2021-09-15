@@ -34,8 +34,7 @@ public class Main {
                 guestAcc = registerAccount();
                 break;
             case 3:
-                //guestAcc = userLogin(s);
-                guestAcc = new RegisteredAccount();
+                guestAcc = userLogin(s);
                 break;
             case 4:
                 guestAcc = staffLogin(s);
