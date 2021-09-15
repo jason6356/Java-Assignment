@@ -35,7 +35,6 @@ public class Main {
                 break;
             case 3:
                 guestAcc = userLogin(s);
-                //guestAcc = new RegisteredAccount();
                 break;
             case 4:
                 guestAcc = staffLogin(s);
@@ -556,7 +555,6 @@ public class Main {
                 regAddCountry);
         RegisteredAccount register = new RegisteredAccount(regPassword, regFirstName, regLastName, regAddress,
                 regGender, regAge, regEmail, regPhoneNum);
-        s.close();
         accountList.add(register); // ADD TO ACCOUNTLIST
         register.welcome(); // can remove if dont want line 210
         return register;
@@ -568,8 +566,6 @@ public class Main {
      * @return Exisiting RegisteredAccount Instance when found
      */
     public static RegisteredAccount userLogin(Scanner s){
-
-        //RegisteredAccount user = new RegisteredAccount();
         System.out.println("\nUser Login");
         System.out.println("===========");
         System.out.print("User ID: ");
@@ -579,9 +575,11 @@ public class Main {
         
 
         for ( RegisteredAccount user : accountList){
-            if (user.getAccID().equals(userID)){
+            if (user.getUserID().equals(userID)){
                 if(user.getPassword().equals(userPwd)){
                     System.out.println("Login Successful.");
+                    System.out.printf("Welcome %s %s\n",user.getFirstName(),user.getLastName());
+                    System.out.printf("User ID: %s\n",user.getUserID());
                     return user;
                 }
             }

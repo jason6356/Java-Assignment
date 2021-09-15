@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class RegisteredAccount extends Account {
 
     private static int nthAcc = 1;
-    private String accID;
+    private String userID;
     private List<Reservation> reservations = new ArrayList<Reservation>();
 
     public RegisteredAccount() {
@@ -17,12 +17,12 @@ public class RegisteredAccount extends Account {
     public RegisteredAccount(String password, String firstName, String lastName, Address address,
             char gender, int age, String email, String phoneNum) {
         super(password, firstName, lastName, address, gender, age, email, phoneNum);
-        this.accID = makeAccID();
+        this.userID = makeUserID();
         //Increment Once a staff has been created
         nthAcc++;
     }
 
-    private static String makeAccID(){
+    private static String makeUserID(){
         if(nthAcc < 10)
             return "A00" + nthAcc;
         else if(nthAcc < 100)
@@ -32,8 +32,8 @@ public class RegisteredAccount extends Account {
     }
 
     //getter
-    public String getAccID() {
-        return accID;
+    public String getUserID() {
+        return userID;
     }
     public static int getNthAcc() {
         return nthAcc;
@@ -465,6 +465,7 @@ public void cancelTicket(Reservation reservation, Scanner s) {
 
 public void welcome(){ // can remove if dw, main line 149
     System.out.println("\n\n\n\n\n\n\n\n\nWelcome To SaiLou Airline !");
+    System.out.printf("User ID: %s", userID);
 }
 
 
