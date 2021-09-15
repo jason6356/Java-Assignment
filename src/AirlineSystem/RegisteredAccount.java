@@ -636,7 +636,7 @@ public void checkRequestStatus(Request reservationRequest, Scanner s) {
         System.out.println("Which payment method would you like to choose? ");
         System.out.println("1. FPX\n2. Debit Card");
         option = s.nextInt();
-
+        s.nextLine();
         if (option == 1)
         {
             String inputBank;
@@ -683,6 +683,7 @@ public void checkRequestStatus(Request reservationRequest, Scanner s) {
     
             System.out.print("TAC (check your phone) > ");        // input tac
             int inputTac = s.nextInt();
+            s.nextLine();
             if(inputTac != fpx1.getTac())
             {
                 System.out.println("Incorrect TAC\nPayment Terminated\nPlease Try Again!");
