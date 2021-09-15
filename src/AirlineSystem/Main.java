@@ -34,8 +34,8 @@ public class Main {
                 guestAcc = registerAccount();
                 break;
             case 3:
-               // guestAcc = userLogin(s);
-                guestAcc = new RegisteredAccount();
+                guestAcc = userLogin(s);
+                //guestAcc = new RegisteredAccount();
                 break;
             case 4:
                 guestAcc = staffLogin(s);
@@ -60,20 +60,17 @@ public class Main {
             // TODO : Huiyi -> Cancel Ticket
             // TODO : Huiyi -> Reschedule Ticket
             // Update Profile (Done)
-
             int selection;
+            selection = displayRegisteredAccountMenu(s);
+
+            while(selection < 1 || selection > 7){
+                System.out.println("Invalid input");
+                selection = displayRegisteredAccountMenu(s);
+            }
+
             do {
                 clearConsole();
-                System.out.println("\n\nREGISTERED ACCOUNT MENU");
-                System.out.println("1. Update Profile");
-                System.out.println("2. Make Reservation");
-                System.out.println("3. Confirm Ticket");
-                System.out.println("4. Reschedule Ticket");
-                System.out.println("5. Cancel Ticket");
-                System.out.println("6. Check Request Status");
-                System.out.println("7. Logout");
-                System.out.print("Enter Selection > ");
-                selection = s.nextInt();
+
 
                 switch (selection) {
                     case 1:
@@ -205,41 +202,15 @@ public class Main {
                 }
             } while (selection != 7);
         } else if (guestAcc instanceof Staff) {
-            // TODO : Nicole -> add flight,airport,airline (done)
-            // TODO : Nicole -> Check(done), accept, reject requests
-            // TODO : Generate Report (Summary of profit, Ranking of most frequent flights
-            // made)
-            //cast the guestAcc to Staff
+
             Staff stfAccount = ((Staff)guestAcc);
             int selection;
             do {
-                // Staff Menu
-                System.out.println("Staff Menu");
-                System.out.println("==========");
-                System.out.println("1. Add Records");
-                System.out.println("2. Update Records");
-                System.out.println("3. Delete Records");
-                System.out.println("4. Create staff account");
-                System.out.println("5. Check Request List");
-                System.out.println("6. Change Password");
-                System.out.println("7. Back to Main Menu");
-                System.out.print("Enter Selection: ");
-                selection = s.nextInt();
-
+                
+                selection = displayMenu(s);
                 //validation
                 while(selection<1 || selection>7){
-                    System.out.println("Invalid Input! Please enter again... ");
-                    System.out.println("Staff Menu");
-                    System.out.println("==========");
-                    System.out.println("1. Add Records");
-                    System.out.println("2. Update Records");
-                    System.out.println("3. Delete Records");
-                    System.out.println("4. Create staff account");
-                    System.out.println("5. Check Request List");
-                    System.out.println("6. Change Password");
-                    System.out.println("7. Back to Main Menu");
-                    System.out.print("Enter Selection: ");
-                    selection = s.nextInt();
+                    selection = displayMenu(s);
                 }
                 switch (selection) {
                     case 1:
@@ -353,6 +324,33 @@ public class Main {
         System.out.println("3. Login");
         System.out.println("4. Staff Login");
         System.out.println("5. Exit Program");
+        return input.nextInt();
+    }
+
+    private static int displayStaffMenu(Scanner input){
+        System.out.println("Staff Menu");
+        System.out.println("==========");
+        System.out.println("1. Add Records");
+        System.out.println("2. Update Records");
+        System.out.println("3. Delete Records");
+        System.out.println("4. Create staff account");
+        System.out.println("5. Check Request List");
+        System.out.println("6. Change Password");
+        System.out.println("7. Back to Main Menu");
+        System.out.print("Enter Selection: ");
+        return input.nextInt();
+    }
+
+    private static int displayRegisteredAccountMenu(Scanner input){
+        System.out.println("\n\nREGISTERED ACCOUNT MENU");
+        System.out.println("1. Update Profile");
+        System.out.println("2. Make Reservation");
+        System.out.println("3. Confirm Ticket");
+        System.out.println("4. Reschedule Ticket");
+        System.out.println("5. Cancel Ticket");
+        System.out.println("6. Check Request Status");
+        System.out.println("7. Logout");
+        System.out.print("Enter Selection > ");
         return input.nextInt();
     }
 
@@ -587,8 +585,8 @@ public class Main {
                     return user;
                 }
             }
-        }
-        // account doesnt exist, return null
+        }   
+            // account doesnt exist, return null
             System.out.println("Wrong ID or Password.");
             return null;
     }
