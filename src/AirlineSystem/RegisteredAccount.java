@@ -573,8 +573,7 @@ public void welcome(){ // can remove if dw, main line 149
 
 //Check Reservation
 
-public void checkRequestStatus(Reservation reservation, Scanner s){
-    List<Request> requestList = Main.getRequests();
+public void checkRequestStatus(Request reservationRequest, Scanner s) {
 
     boolean found = false;
 

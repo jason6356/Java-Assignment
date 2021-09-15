@@ -1138,7 +1138,7 @@ public class Staff extends Account{
     }
 
 
-    public void checkRequest(){
+    public void checkRequest(Scanner s){
         char continueToModify = 'N';
           boolean valid = true;
         
@@ -1150,8 +1150,8 @@ public class Staff extends Account{
         if(requestList.isEmpty()){
             System.out.println("\nTHERE IS NO REQUESTS.");
             System.out.println("ENTER ANY KEY TO CONTINUE >");
-            staff.nextLine();
-            staff.nextLine();
+            s.nextLine();
+            s.nextLine();
         }
         else{
             do{
@@ -1167,7 +1167,7 @@ public class Staff extends Account{
 
                     //input request choice
                     System.out.printf("Enter Request to approve or reject request [1...%d] > ",requestCount - 1);
-                    requestChoice = staff.nextInt();
+                    requestChoice = s.nextInt();
 
 
                     if(requestChoice < 1 || requestChoice > requestCount - 1){
@@ -1180,11 +1180,11 @@ public class Staff extends Account{
             
                 //approve or reject and validate
                 System.out.print("Approve (Y/y) or Reject (N/n): ");
-                char choice = staff.next().charAt(0);
-                while(!super.validateOption(choice)){
+                char choice = s.next().charAt(0);
+                while(!Main.validateOption(choice)){
                     System.out.println("Invalid Input.");
                     System.out.print("Approve (Y/y) or Reject (N/n): ");
-                    choice = staff.next().charAt(0);
+                    choice = s.next().charAt(0);
                 }
 
                 //if else for accept or reject request 
@@ -1199,11 +1199,11 @@ public class Staff extends Account{
                 
                 //continue to modify request? 
                 System.out.print("Continue to modify request? (Y/N) ");
-                continueToModify = staff.next().charAt(0);
-                while(!super.validateOption(continueToModify)){
+                continueToModify = s.next().charAt(0);
+                while(!Main.validateOption(continueToModify)){
                     System.out.println("Invalid Input.");
                     System.out.print("Continue to modify request? (Y/N) ");
-                    continueToModify = staff.next().charAt(0);
+                    continueToModify = s.next().charAt(0);
                 }
             }while(Character.toUpperCase(continueToModify) =='Y');
         }
