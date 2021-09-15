@@ -34,7 +34,8 @@ public class Main {
                 guestAcc = registerAccount();
                 break;
             case 3:
-                guestAcc = userLogin(s);
+                //guestAcc = userLogin(s);
+                guestAcc = new RegisteredAccount();
                 break;
             case 4:
                 guestAcc = staffLogin(s);
@@ -91,59 +92,91 @@ public class Main {
                         // TODO : Huiyi -> Reschedule Ticket
 
                         //Modified , get reservations from the user who login , not all 
-                        
+                        clearConsole();
                         List<Reservation> reservation = userAccount.getReservations();
 
-                        System.out.println("\n\n-----RESCHEDULE TICKET-----");
+                        int choiceReschedule;
+                        int reservationCount;
+                        do{
+                            System.out.println("\n\n-----RESCHEDULE TICKET-----");
 
-                        int n = 1;
-                        System.out.println("\nYour Reservations:");
-                        for (Reservation res : reservation) {
-                            System.out.print(n + ". ");
-                            System.out.println(res.displayReservation());
-                            System.out.println("\n");
-                            n++;
-                        }
-                        System.out.print("Select Reservation to Reshedule > ");
-                        int choiceReschedule = s.nextInt();
+                            reservationCount = 1;
+                            System.out.println("\nYour Reservations:");
+                            for (Reservation res : reservation) {
+                                System.out.println(reservationCount + ". ");
+                                System.out.print("+---------------------------------------------------------------------------------------------------------------------------------------+");
+                                System.out.println(res.displayReservation());
+                                System.out.println("+---------------------------------------------------------------------------------------------------------------------------------------+\n");
+                                reservationCount++;
+                            }
+                            System.out.printf("Select Reservation to Reshedule[1...%d] > ",reservationCount - 1);
+                            choiceReschedule = s.nextInt();
+
+                            if(choiceReschedule < 1 || choiceReschedule > reservationCount - 1){
+                                System.out.println("\nInvalid Choice, Please Enter Again!");
+                            }
+
+                        } while(choiceReschedule < 1 || choiceReschedule > reservationCount - 1);
 
                         userAccount.rescheduleTicket(reservation.get(choiceReschedule - 1),s);
                         break;
                     case 5:
                         // TODO : Huiyi -> Cancel Ticket
-                        
-                        List<Reservation> resToCancel = Main.getReservations();
+                        clearConsole();
+                        List<Reservation> resToCancel = userAccount.getReservations();
 
-                        System.out.println("\n\n-----CANCEL TICKET-----");
+                        int choiceCancel;
+                        int reservationsCount;
+                        do{
+                            System.out.println("\n\n-----CANCEL TICKET-----");
 
-                        int o = 1;
-                        System.out.println("\nYour Reservations:");
-                        for (Reservation res : resToCancel) {
-                            System.out.print(o + ". ");
-                            System.out.println(res.displayReservation());
-                            o++;
-                        }
-                        System.out.print("Select Reservation to Cancel > ");
-                        int choiceCancel = s.nextInt();
+                            reservationsCount = 1;
+                            System.out.println("\nYour Reservations:");
+                            for (Reservation res : resToCancel) {
+                                System.out.println(reservationsCount + ". ");
+                                System.out.print("+---------------------------------------------------------------------------------------------------------------------------------------+");
+                                System.out.println(res.displayReservation());
+                                System.out.println("+---------------------------------------------------------------------------------------------------------------------------------------+\n");
+                                reservationsCount++;
+                            }
+                            System.out.printf("Select Reservation to Cancel [1...%d]> ",reservationsCount - 1);
+                            choiceCancel = s.nextInt();
+
+                            if(choiceCancel < 1 || choiceCancel > reservationsCount - 1){
+                                System.out.println("\nInvalid Choice, Please Enter Again!");
+                            }
+
+                        } while(choiceCancel < 1 || choiceCancel > reservationsCount - 1);
 
                         userAccount.cancelTicket(resToCancel.get(choiceCancel - 1),s);
                         break;
                     case 6:
                         // TODO : Huiyi -> Check Request Status
-                        
-                        List<Reservation> requestReservation = Main.getReservations();
+                        clearConsole();
+                        List<Reservation> requestReservation = userAccount.getReservations();
 
-                        System.out.println("\n\n-----CHECK REQUEST STATUS-----");
+                        int requestCheck;
+                        int requestCount;
+                        do{
+                            System.out.println("\n\n-----CHECK REQUEST STATUS-----");
 
-                        int r = 1;
-                        System.out.println("\nYour Reservations:");
-                        for (Reservation res : requestReservation) {
-                            System.out.print(r + ". ");
-                            System.out.println(res.displayReservation());
-                            r++;
-                        }
-                        System.out.print("Select Reservation to Check Request Status > ");
-                        int requestCheck = s.nextInt();
+                            requestCount = 1;
+                            System.out.println("\nYour Reservations:");
+                            for (Reservation res : requestReservation) {
+                                System.out.println(requestCount + ". ");
+                                System.out.print("+---------------------------------------------------------------------------------------------------------------------------------------+");
+                                System.out.println(res.displayReservation());
+                                System.out.println("+---------------------------------------------------------------------------------------------------------------------------------------+\n");
+                                requestCount++;
+                            }
+                            System.out.printf("Select Reservation to Check Request Status [1...%d]> ",requestCount - 1);
+                            requestCheck = s.nextInt();
+
+                            if(requestCheck < 1 || requestCheck > requestCount - 1){
+                                System.out.println("\nInvalid Choice, Please Enter Again!");
+                            }
+
+                    }while(requestCheck < 1 || requestCheck > requestCount - 1);
 
                         userAccount.checkRequestStatus(requestReservation.get(requestCheck - 1),s);
                         break;
