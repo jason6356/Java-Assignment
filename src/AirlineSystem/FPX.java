@@ -55,9 +55,8 @@ public class FPX implements PaymentMethod{
         
     }
 
-    public boolean validateFPX(){
+    public boolean validateFPX(Scanner s){
         Boolean error = false; 
-        Scanner fpx = new Scanner(System.in);
         String inputBank;
         String inputUserName;
         String inputPassword;
@@ -68,7 +67,7 @@ public class FPX implements PaymentMethod{
         System.out.println("*NOTE* \nKindly Enter 0 to exit");
         System.out.println("eg: maybank");
         System.out.println("Input preferred bank name > ");                 //input bank name
-        inputBank = fpx.nextLine();
+        inputBank = s.nextLine();
         if ( inputBank.equals("0"))                     // if user input 0 will exit
         {
             return true; 
@@ -81,13 +80,13 @@ public class FPX implements PaymentMethod{
         } while(error == true);                             //loop to the beginning
 
         System.out.println("UserName > ");              // input user name
-        inputUserName = fpx.nextLine();
+        inputUserName = s.nextLine();
         if ( inputUserName.equals("0"))                 //as long as not 0, will proceed to input password
         {
             return true; 
         }
         System.out.println("Password > ");
-        inputPassword = fpx.nextLine();
+        inputPassword = s.nextLine();
         if ( inputUserName.equals("0"))
         {
             return true; 
@@ -99,7 +98,7 @@ public class FPX implements PaymentMethod{
         }while(error == true);
 
         System.out.println("TAC (check your phone) > ");        // input tac
-        int inputTac = fpx.nextInt();
+        int inputTac = s.nextInt();
         if(inputTac != tac)
         {
             System.out.println("Incorrect TAC\nPayment Terminated\nPlease Try Again!");

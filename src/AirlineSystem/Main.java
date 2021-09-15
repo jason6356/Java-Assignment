@@ -31,7 +31,7 @@ public class Main {
                 guestAcc.availableFlights();
                 break;
             case 2:
-                guestAcc = registerAccount();
+                guestAcc = registerAccount(s);
                 break;
             case 3:
                // guestAcc = userLogin(s);
@@ -243,25 +243,25 @@ public class Main {
                 }
                 switch (selection) {
                     case 1:
-                        stfAccount.addRecordsMenu();
+                        stfAccount.addRecordsMenu(s);
                         break;
                     case 2: 
-                        stfAccount.updateRecordsMenu();
+                        stfAccount.updateRecordsMenu(s);
                         break;
                     case 3: 
-                        stfAccount.deleteRecordsMenu();
+                        stfAccount.deleteRecordsMenu(s);
                         break;
                     case 4:
                         if(stfAccount.getStaffID() == "S001")
-                            stfAccount.createStaffAcc();
+                            stfAccount.createStaffAcc(s);
                         else
                             System.out.println("This Staff ID does not have the access to create a new staff account.");
                         break;
                     case 5:
-                        stfAccount.checkRequest();
+                        stfAccount.checkRequest(s);
                         break;
                     case 6:
-                        stfAccount.changePassword();
+                        stfAccount.changePassword(s);
                         break;
                     case 7:
                         //back to main menu 
@@ -308,7 +308,7 @@ public class Main {
 
                 // Register account
                 if (Character.toUpperCase(registerOrLogin) == 'R') {
-                    guestAcc = registerAccount();
+                    guestAcc = registerAccount(s);
                 }
 
                 // Login account
@@ -341,11 +341,11 @@ public class Main {
 
     /**
      * Method to Display Menu
-     * @param input
+     * @param s
      * @return an int choice
      */
 
-    private static int displayMenu(Scanner input) {
+    private static int displayMenu(Scanner s) {
         clearConsole();
         System.out.println("Menu");
         System.out.println("1. Display Available Flights");
@@ -353,7 +353,7 @@ public class Main {
         System.out.println("3. Login");
         System.out.println("4. Staff Login");
         System.out.println("5. Exit Program");
-        return input.nextInt();
+        return s.nextInt();
     }
 
     /** 
@@ -462,90 +462,89 @@ public class Main {
      * Method to create an registered account
      * @return a new Registered Account instance
      */
-    public static RegisteredAccount registerAccount() {
+    public static RegisteredAccount registerAccount(Scanner s) {
 
-        Scanner userScanner = new Scanner(System.in);
         Account acc = new Account();
         String regPassword;
         Boolean passwordMatch = true;
 
         System.out.println("Fill in the details below to sign up: ");
         System.out.print("1. First Name > "); // ENTER FIRST NAME
-        String regFirstName = userScanner.nextLine();
+        String regFirstName = s.nextLine();
         while (!acc.validateName(regFirstName)) // VALIDATE IF IT ONLY CONTAIN CHARACTERS
         {
             System.out.println("Invalid Name. Only Alphabets ");
             System.out.print("1. First Name > ");
-            regFirstName = userScanner.nextLine();
+            regFirstName = s.nextLine();
         }
         System.out.print("2. Last Name > "); // ENTER LAST NAME
-        String regLastName = userScanner.nextLine();
+        String regLastName = s.nextLine();
         while (!acc.validateName(regLastName)) {
             System.out.println("Invalid Name. Only Alphabets ");
             System.out.print("2. Last Name > ");
-            regFirstName = userScanner.nextLine();
+            regFirstName = s.nextLine();
         }
 
         System.out.print("3. Gender (M/F) > "); // ENTER GENDER
-        char regGender = userScanner.next().charAt(0);
+        char regGender = s.next().charAt(0);
         while (!acc.validateGender(regGender)) // VALIDATE ONLY EITHER M OR F
         {
             System.out.println("Male or Female only");
             System.out.print("3. Gender (M/F) > ");
-            regGender = userScanner.next().charAt(0);
+            regGender = s.next().charAt(0);
         }
 
         System.out.print("4. Age > "); // ENTER AGE
-        int regAge = userScanner.nextInt();
+        int regAge = s.nextInt();
 
         System.out.print("5. Phone Number  > "); // ENTER PHONE NUMBER
-        String regPhoneNum = userScanner.nextLine();
+        String regPhoneNum = s.nextLine();
         while (!acc.validatePhoneNum(regPhoneNum)) // VALIDATE ONLY NUMBER WITH +COUNTRY CODE
         {
             System.out.println("Phone Number Should Start With '+' followed by country code and phone number");
             System.out.println("Eg : +60123456789");
             System.out.print("5. Phone Number  > ");
-            regPhoneNum = userScanner.nextLine();
+            regPhoneNum = s.nextLine();
         }
 
         System.out.print("6. Email > "); // ENTER EMAIL
-        String regEmail = userScanner.nextLine();
+        String regEmail = s.nextLine();
         while (!acc.validateEmailFormat(regEmail)) // VALIDATE EMAIL IF IT CONTAIN "@"
         {
             System.out.println("Invalid Email. Try Again ");
             System.out.print("6. Email > ");
-            regEmail = userScanner.nextLine();
+            regEmail = s.nextLine();
         }
         System.out.println("7. Address > "); // ENTER ADDRESS
         System.out.print("7.1 Unit > ");
-        String regAddUnit = userScanner.nextLine();
+        String regAddUnit = s.nextLine();
         System.out.print("7.2 Road > ");
-        String regAddRoad = userScanner.nextLine();
+        String regAddRoad = s.nextLine();
         System.out.print("7.3 PostCode > ");
-        int regAddPostcode = userScanner.nextInt();
-        userScanner.nextLine();
+        int regAddPostcode = s.nextInt();
+        s.nextLine();
         System.out.print("7.4 City > ");
-        String regAddCity = userScanner.nextLine();
+        String regAddCity = s.nextLine();
         System.out.print("7.5 State > ");
-        String regAddState = userScanner.nextLine();
+        String regAddState = s.nextLine();
         System.out.print("7.6 Country > ");
-        String regAddCountry = userScanner.nextLine();
+        String regAddCountry = s.nextLine();
 
         do {
             System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
             System.out.print("8. Password > "); // ENTER PASSWORD
-            regPassword = userScanner.nextLine();
+            regPassword = s.nextLine();
 
             while (!acc.validatePassword(regPassword)) // VALIDATE PASSWORD REQUIREMENT
             {
                 System.out.println("Invalid Password. ");
                 System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
                 System.out.print("8. Password > ");
-                regPassword = userScanner.nextLine();
+                regPassword = s.nextLine();
             }
 
             System.out.print("8.1 Confirm Password > "); // INPUT CONFIRM PASSWORD
-            String confirmPassword = userScanner.nextLine();
+            String confirmPassword = s.nextLine();
             if (!regPassword.equals(confirmPassword)) // COMPARE BOTH PASSWORD
             {
                 passwordMatch = false;
@@ -559,7 +558,7 @@ public class Main {
                 regAddCountry);
         RegisteredAccount register = new RegisteredAccount(regPassword, regFirstName, regLastName, regAddress,
                 regGender, regAge, regEmail, regPhoneNum);
-        userScanner.close();
+        s.close();
         accountList.add(register); // ADD TO ACCOUNTLIST
         register.welcome(); // can remove if dont want line 210
         return register;
@@ -567,18 +566,18 @@ public class Main {
 
     /**
      * Method to perform User Login
-     * @param userScanner
+     * @param s
      * @return Exisiting RegisteredAccount Instance when found
      */
-    public static RegisteredAccount userLogin(Scanner userScanner){
+    public static RegisteredAccount userLogin(Scanner s){
 
         //RegisteredAccount user = new RegisteredAccount();
         System.out.println("\nUser Login");
         System.out.println("===========");
         System.out.print("User ID: ");
-        String userID = userScanner.next();
+        String userID = s.next();
         System.out.print("Password: ");
-        String userPwd = userScanner.next();
+        String userPwd = s.next();
         
 
         for ( RegisteredAccount user : accountList){
@@ -600,13 +599,13 @@ public class Main {
      * @return Existing Staff Instance when Success
      * @return null when no such Staff is found
      */
-    public static Staff staffLogin(Scanner staffScanner) {
+    public static Staff staffLogin(Scanner s) {
         System.out.println("\nStaff Login");
         System.out.println("===========");
         System.out.print("Staff ID: ");
-        String staffID = staffScanner.next();
+        String staffID = s.next();
         System.out.print("Password: ");
-        String staffPwd = staffScanner.next();
+        String staffPwd = s.next();
 
         // Iterate the staff list from the main program
         for (Staff stf : staffAccountList) {

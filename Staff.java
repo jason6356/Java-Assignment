@@ -69,7 +69,7 @@ class Staff {
 
 
 
-            case 4: return;
+           // case 4: return;
 
         }while(leave == false);
 

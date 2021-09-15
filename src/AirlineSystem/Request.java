@@ -158,7 +158,7 @@ public class Request {
         }
     }
 
-    public void requestReason(Scanner scanner) {
+    public void requestReason(Scanner s) {
         int reasonChoice;
         do {
             System.out.println("\nREASON OF RESCHEDULE: ");
@@ -168,8 +168,8 @@ public class Request {
             System.out.println("3. Wrong Location Reserved");
             System.out.println("4. Other Reasons");
             System.out.print("SELECT REASON >");
-            reasonChoice = scanner.nextInt();
-            scanner.nextLine();
+            reasonChoice = s.nextInt();
+            s.nextLine();
 
             if (reasonChoice == 1) {
                 this.reason = "Wrong Date Reserved";
@@ -179,7 +179,7 @@ public class Request {
                 this.reason = "Wrong Location Reserved";
             } else if (reasonChoice == 4) {
                 System.out.print("Kindly State the Reason: ");
-                String reason = scanner.nextLine();
+                String reason = s.nextLine();
                 this.reason = reason;
             } else {
                 System.out.println("Invalid Selection, please try again.");
