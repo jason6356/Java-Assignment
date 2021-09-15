@@ -751,6 +751,7 @@ public void checkRequestStatus(Request reservationRequest, Scanner s) {
 }while(option!=0);
 
     System.out.println("Payment Cancelled!");
+    
     }
 
 }
