@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class RegisteredAccount extends Account {
 
-    private static int nthAcc = 0;
+    private static int nthAcc = 1;
     private String accID;
     private List<Reservation> reservations = new ArrayList<Reservation>();
 

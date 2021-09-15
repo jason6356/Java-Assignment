@@ -83,7 +83,7 @@ public class Main {
                     case 3:
                         // TODO : KangSheng -> Confirm Ticket
                         userAccount.confirmTicket(s);
-                        // TODO : Junwei -> Payment
+                        // TODO : Junwei -> Payment ( done )
                         break;
                     case 4:
                         // TODO : Huiyi -> Reschedule Ticket
@@ -259,7 +259,7 @@ public class Main {
             yesNo = s.next().charAt(0);
 
             // validate yesNo
-            if (!guestAcc.validateOption(yesNo)) {
+            if (!validateOption(yesNo)) {
                 valid = false;
             }
 
@@ -268,7 +268,7 @@ public class Main {
                 System.out.print("\nWish to make a reservation(Y/N)? ");
                 yesNo = s.next().charAt(0);
 
-                if (guestAcc.validateOption(yesNo)) {
+                if (validateOption(yesNo)) {
                     valid = true;
                 }
             }
@@ -288,7 +288,7 @@ public class Main {
                 }
 
                 // validate registerOrLogin
-                if (!guestAcc.validateOption(registerOrLogin)) {
+                if (!validateOption(registerOrLogin)) {
                     valid = false;
                 }
 
@@ -297,7 +297,7 @@ public class Main {
                     System.out.print("Register or Login (R/L)? ");
                     registerOrLogin = s.next().charAt(0);
 
-                    if (!guestAcc.validateOption(registerOrLogin)) {
+                    if (!validateOption(registerOrLogin)) {
                         valid = true;
                     }
                 }
@@ -521,6 +521,7 @@ public class Main {
         String regAddRoad = userScanner.nextLine();
         System.out.print("7.3 PostCode > ");
         int regAddPostcode = userScanner.nextInt();
+        userScanner.nextLine();
         System.out.print("7.4 City > ");
         String regAddCity = userScanner.nextLine();
         System.out.print("7.5 State > ");
@@ -639,6 +640,18 @@ public class Main {
         for(int i = 0; i < n; i++){
         System.out.print("-");
         }
+    }
+
+    
+    /**
+     * Method to validate Options
+     * @param option
+     * @return
+     */
+
+    public static boolean validateOption(char option){ 
+        return (Character.toUpperCase(option)=='Y' || Character.toUpperCase(option)=='N');
+    
     }
 
 }
