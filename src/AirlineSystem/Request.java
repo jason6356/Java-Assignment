@@ -141,10 +141,6 @@ public class Request {
         List<Reservation> customerReservationList = requestedBy.getReservations();
         boolean found = false;
 
-        System.out.println("Before Update");
-        //Display all the contents
-        customerReservationList.forEach((e) -> System.out.println(e.displayReservation()));
-
         // if status is approved, update the reservation
         if (request.getRequestStatus() == rqStatus.APPROVED) {
             if (request.getRequestDescription() == "Cancel Ticket Request") {
@@ -157,8 +153,6 @@ public class Request {
                         Reservation.getSeatMap().get(reservation).forEach((seat) -> seat.makeSeatEmpty());
                         // Remove the reservation
                         reservation.setReservationStatus(rStatus.CANCELLED);
-
-                        System.out.println("Found the item to cancel!");
 
                     }
                 }
@@ -174,8 +168,6 @@ public class Request {
                          Reservation.getSeatMap().get(reservation).forEach((seat) -> seat.makeSeatEmpty());
                          // Remove the reservation
                          reservation.setReservationStatus(rStatus.CANCELLED);
-                      
-                         System.out.println("Found the item to reschedule!");
                         }
                 }
 
@@ -185,10 +177,6 @@ public class Request {
         if(found)
             customerReservationList.add(request.getNewReservation());
 
-        System.out.println("After update");
-        for (Reservation customerReservation : customerReservationList) {
-            System.out.println(customerReservation.displayReservation());
-        }
     }
 
     public void requestReason(Scanner s) {
