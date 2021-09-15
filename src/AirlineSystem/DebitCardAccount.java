@@ -1,5 +1,4 @@
 package AirlineSystem;
-import java.util.Scanner;
 public class DebitCardAccount implements PaymentMethod{
 
     private String bank;
@@ -53,9 +52,14 @@ public class DebitCardAccount implements PaymentMethod{
     @Override
     public void pay(double amount) {
         if(balance<amount)
-        System.out.println("Payment failed!");
+        {
+            System.out.println("Payment failed!");
+        }
+ 
     else 
+    {
         balance -=amount;
         System.out.println("Payment Successful!");
+    }
     }
 }
