@@ -336,10 +336,7 @@ public class Main {
             }
 
         }
-<<<<<<< HEAD
-=======
     }while(!end);
->>>>>>> 8113d3638aef769ddd98e03cfe1283491e33ea4a
     }
 
     /**
