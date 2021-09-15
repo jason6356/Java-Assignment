@@ -327,7 +327,7 @@ public class Main {
         return s.nextInt();
     }
 
-    private static int displayStaffMenu(Scanner input){
+    private static int displayStaffMenu(Scanner s){
         System.out.println("Staff Menu");
         System.out.println("==========");
         System.out.println("1. Add Records");
@@ -338,10 +338,10 @@ public class Main {
         System.out.println("6. Change Password");
         System.out.println("7. Back to Main Menu");
         System.out.print("Enter Selection: ");
-        return input.nextInt();
+        return s.nextInt();
     }
 
-    private static int displayRegisteredAccountMenu(Scanner input){
+    private static int displayRegisteredAccountMenu(Scanner s){
         System.out.println("\n\nREGISTERED ACCOUNT MENU");
         System.out.println("1. Update Profile");
         System.out.println("2. Make Reservation");
@@ -351,7 +351,7 @@ public class Main {
         System.out.println("6. Check Request Status");
         System.out.println("7. Logout");
         System.out.print("Enter Selection > ");
-        return input.nextInt();
+        return s.nextInt();
     }
 
     /** 
