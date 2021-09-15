@@ -101,13 +101,13 @@ public class Staff extends Account{
             System.out.print("Airline Code: ");
             String airlineCode = staff.next();
             System.out.print("Total Seats: ");
-            int totalSeat = staff.nextInt();
+            int totalSeat = staff.nextInt();          
             
             //Create object 
             Airline airline = new Airline(airlineName, airlineCode);
             Flight flight = new Flight(airline, totalSeat);
             flightList.add(flight);
-            System.out.println("Flight added successfully!");
+            System.out.println("\nFlight added successfully!");
 
             System.out.println("\n                 ---Flight---");
             System.out.println("====================================================");
@@ -513,7 +513,7 @@ public class Staff extends Account{
             System.out.printf("%-5s|%11s|%5s|%-37s|%-37s|%13s|%-24s|\n", "Code", "Flight Date", "Departure Time", "Location", "Destination", "Estimated Arrival Time", "Location -> Destination");
             System.out.println("=============================================================================================================================================================");
             for (FlightSchedule flightSchedule : flightScheduleList) {
-                System.out.println(flightSchedule.toString());
+                System.out.println(flightSchedule.displayFlightSchedule());
             }
 
             //Input 
@@ -550,7 +550,7 @@ public class Staff extends Account{
             System.out.println("\n=============================================================================================================================================================");
             System.out.printf("%-5s|%11s|%5s|%-37s|%-37s|%13s|%-24s|\n", "Code", "Flight Date", "Departure Time", "Location", "Destination", "Estimated Arrival Time", "Location -> Destination");
             System.out.println("=============================================================================================================================================================");
-            System.out.println(flightScheduleList.get(updateIndex).toString());
+            System.out.println(flightScheduleList.get(updateIndex).displayFlightSchedule());
 
             //Input Details 
             System.out.print("\nDeparture Time (HH:MM): ");
@@ -630,7 +630,7 @@ public class Staff extends Account{
             System.out.println("\n=============================================================================================================================================================");
             System.out.printf("%-5s|%11s|%5s|%-37s|%-37s|%13s|%-24s|\n", "Code", "Flight Date", "Departure Time", "Location", "Destination", "Estimated Arrival Time", "Location -> Destination");
             System.out.println("=============================================================================================================================================================");
-            System.out.println(flightScheduleList.get(updateIndex).toString() + "\n");
+            System.out.println(flightScheduleList.get(updateIndex).displayFlightSchedule() + "\n");
 
             //Continue?
             System.out.print("Continue update flight schedule (Y/y=Yes, N/n=No)? ");
@@ -1035,8 +1035,7 @@ public class Staff extends Account{
         Boolean passwordMatch = true;
 
         //Input Details 
-        System.out.println("Create Staff");
-        System.out.println("============");
+        System.out.println("\n---Create Staff---");
 
         //First Name
         System.out.print("First Name: "); 
@@ -1048,7 +1047,7 @@ public class Staff extends Account{
         }
 
         //Last Name
-        System.out.print("Last Name: "); 
+        System.out.print("\nLast Name: "); 
         String regLastName = staff.nextLine();
         while (!acc.validateName(regLastName)) {
             System.out.println("Invalid Name. Must contian alphabets only. ");
@@ -1057,7 +1056,7 @@ public class Staff extends Account{
         }
 
         //Gender
-        System.out.print("Gender (M/F): "); 
+        System.out.print("\nGender (M/F): "); 
         char regGender = staff.next().charAt(0);
         //validate gender (M or F only)
         while (!acc.validateGender(regGender)) {
@@ -1067,7 +1066,7 @@ public class Staff extends Account{
         }
 
         //Age
-        System.out.print("Age: "); 
+        System.out.print("\nAge: "); 
         int regAge = staff.nextInt();
         //validate age (only contains number)
         while (regAge < 0 || regAge > 100) {
@@ -1077,7 +1076,7 @@ public class Staff extends Account{
         }
 
         //PhoneNum
-        System.out.print("Phone Number: "); 
+        System.out.print("\nPhone Number: "); 
         String regPhoneNum = staff.nextLine();
         while (!acc.validatePhoneNum(regPhoneNum)) {
             System.out.println("Phone Number Should Start With '+' followed by country code and phone number");
@@ -1087,7 +1086,7 @@ public class Staff extends Account{
         }
 
         //Email 
-        System.out.print("Email: "); 
+        System.out.print("\nEmail: "); 
         String regEmail = staff.nextLine();
         while (!acc.validateEmailFormat(regEmail)) {
             System.out.println("Invalid Email. Try Again ");
@@ -1096,28 +1095,29 @@ public class Staff extends Account{
         }
 
         //Address 
-        System.out.println("Address - Unit: "); 
+        System.out.print("\nAddress - Unit: "); 
         String regAddUnit = staff.nextLine();
-        System.out.print("          - Road: ");
+        System.out.print("        - Road: ");
         String regAddRoad = staff.nextLine();
-        System.out.print("          - PostCode: ");
+        System.out.print("        - PostCode: ");
         int regAddPostcode = staff.nextInt();
-        System.out.print("          - City: ");
+        System.out.print("        - City: ");
+        staff.nextLine();
         String regAddCity = staff.nextLine();
-        System.out.print("          - State: ");
+        System.out.print("        - State: ");
         String regAddState = staff.nextLine();
-        System.out.print("          - Country: ");
+        System.out.print("        - Country: ");
         String regAddCountry = staff.nextLine();
 
         //Password 
         do {
-            System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
+            System.out.println("\n+-----------------------+\n|\t*NOTE*\t\t|\n|1.At Least 7 Characters|\n|2.At Least 1 Letter    |\n|3.At Least 1 Number    |\n+-----------------------+\n");
             System.out.print("Password: "); 
             regPassword = staff.nextLine();
 
             while (!acc.validatePassword(regPassword)) {
                 System.out.println("Invalid Password. ");
-                System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
+                System.out.println("\n+-----------------------+\n|\t*NOTE*\t\t|\n|1.At Least 7 Characters|\n|2.At Least 1 Letter    |\n|3.At Least 1 Number    |\n+-----------------------+\n");
                 System.out.print("Password: "); 
                 regPassword = staff.nextLine();
             }
@@ -1135,6 +1135,8 @@ public class Staff extends Account{
         Address regAddress = new Address(regAddUnit, regAddRoad, regAddPostcode, regAddCity, regAddState, regAddCountry);
         Staff createStaff = new Staff(regPassword, regFirstName, regLastName, regAddress, regGender, regAge, regEmail, regPhoneNum);
         staffList.add(createStaff);
+
+        staff.nextLine();
     }
 
     public void checkRequest(){
@@ -1220,32 +1222,59 @@ public class Staff extends Account{
         List<Staff> staffList = Main.getStaffAccountList();
         Account acc = new Account();
 
+        System.out.println("\n---Change Password---");
+
         //Enter Staff ID 
         System.out.print("Staff ID: ");
         String staffId = staff.nextLine();
 
         //get index 
+        boolean search = false;
         int updateIndex = 0;
         for(int i=0; i<staffList.size(); i++){
-            if(staffList.get(i).getStaffID()== staffId)
+            if(staffList.get(i).getStaffID().equals(staffId)){
                 updateIndex = i;
+                search = true;
+            }
+        }
+
+        while(search == false){
+            System.out.println("Staff ID NOT FOUND! Please enter again... \n");
+            System.out.print("Staff ID: ");
+            staffId = staff.nextLine();
+
+            updateIndex = 0;
+            for(int i=0; i<staffList.size(); i++){
+                if(staffList.get(i).getStaffID().equals(staffId)){
+                    updateIndex = i;
+                    search = true;
+                }
+            }
         }
 
         //Update password 
         String updPassword;
         boolean passwordMatch = true;
         do {
-            System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
+            System.out.println("\n+-----------------------+\n|\t*NOTE*\t\t|\n|1.At Least 7 Characters|\n|2.At Least 1 Letter    |\n|3.At Least 1 Number    |\n+-----------------------+\n");
             System.out.print("Password: "); 
             updPassword = staff.nextLine();
 
+            //cannot have the same password as previous 
+            if(updPassword.equals(staffList.get(updateIndex).getPassword())){
+                passwordMatch = false;
+                System.out.println("Update password cannot be the same as previous password! Please Re-Enter again.");
+            }
+
+            //validate password 
             while (!acc.validatePassword(updPassword)) {
                 System.out.println("Invalid Password. ");
-                System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
+                System.out.println("\n+-----------------------+\n|\t*NOTE*\t\t|\n|1.At Least 7 Characters|\n|2.At Least 1 Letter    |\n|3.At Least 1 Number    |\n+-----------------------+\n");
                 System.out.print("Password: "); 
                 updPassword = staff.nextLine();
             }
 
+            //confirm password 
             System.out.print("Confirm Password: "); 
             String confirmPassword = staff.nextLine();
             if (!updPassword.equals(confirmPassword)) {
@@ -1253,12 +1282,20 @@ public class Staff extends Account{
                 System.out.println("Password Does Not Match! Re-Enter Again! ");
             }
 
-            if(updPassword == staffList.get(updateIndex).getPassword()){
-                passwordMatch = false;
-                System.out.println("Update password cannot be the same as previous password! Please Re-Enter again.");
+            System.out.print("Confirm change password? ");
+            char confirm = staff.next().charAt(0);
+
+            while(!acc.validateOption(confirm)){
+                System.out.println("Invalid Input! Please enter again... \n");
+                System.out.print("Confirm change password? ");
+                confirm = staff.next().charAt(0);
             }
 
+            if(Character.toUpperCase(confirm) == 'Y'){
+                super.setPassword(updPassword);
+            }
+
+            staff.nextLine();
         } while (passwordMatch == false);
     }
-
 }

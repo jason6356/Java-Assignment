@@ -25,6 +25,7 @@ public class Main {
         boolean end = false;
 
     do{
+        guestAcc = new Account();
         int choice = displayMenu(s);
         switch (choice) {
             case 1:
@@ -214,31 +215,35 @@ public class Main {
             int selection;
             do {
                 // Staff Menu
-                System.out.println("Staff Menu");
-                System.out.println("==========");
-                System.out.println("1. Add Records");
-                System.out.println("2. Update Records");
-                System.out.println("3. Delete Records");
-                System.out.println("4. Create staff account");
-                System.out.println("5. Check Request List");
-                System.out.println("6. Change Password");
-                System.out.println("7. Back to Main Menu");
+                System.out.println("\n+========================+");
+                System.out.println("|\tStaff Menu       |");
+                System.out.println("+========================+");
+                System.out.println("|1. Add Records          |");
+                System.out.println("|2. Update Records       |");
+                System.out.println("|3. Delete Records       |");
+                System.out.println("|4. Create staff account |");
+                System.out.println("|5. Check Request List   |");
+                System.out.println("|6. Change Password      |");
+                System.out.println("|7. Logout               |");
+                System.out.println("+------------------------+");
+
                 System.out.print("Enter Selection: ");
                 selection = s.nextInt();
 
                 //validation
                 while(selection<1 || selection>7){
-                    System.out.println("Invalid Input! Please enter again... ");
-                    System.out.println("Staff Menu");
-                    System.out.println("==========");
-                    System.out.println("1. Add Records");
-                    System.out.println("2. Update Records");
-                    System.out.println("3. Delete Records");
-                    System.out.println("4. Create staff account");
-                    System.out.println("5. Check Request List");
-                    System.out.println("6. Change Password");
-                    System.out.println("7. Back to Main Menu");
-                    System.out.print("Enter Selection: ");
+                    System.out.println("Invalid Input! Please enter again... \n");
+                    System.out.println("\n+========================+");
+                    System.out.println("|\tStaff Menu       |");
+                    System.out.println("+========================+");
+                    System.out.println("|1. Add Records          |");
+                    System.out.println("|2. Update Records       |");
+                    System.out.println("|3. Delete Records       |");
+                    System.out.println("|4. Create staff account |");
+                    System.out.println("|5. Check Request List   |");
+                    System.out.println("|6. Change Password      |");
+                    System.out.println("|7. Logout               |");
+                    System.out.println("+------------------------+");
                     selection = s.nextInt();
                 }
                 switch (selection) {
@@ -252,19 +257,16 @@ public class Main {
                         stfAccount.deleteRecordsMenu();
                         break;
                     case 4:
-                        if(stfAccount.getStaffID() == "S001")
+                        if(stfAccount.getStaffID().equals("S001"))
                             stfAccount.createStaffAcc();
                         else
-                            System.out.println("This Staff ID does not have the access to create a new staff account.");
+                            System.out.println("\nThis Staff ID does not have the access to create a new staff account.");
                         break;
                     case 5:
                         stfAccount.checkRequest();
                         break;
                     case 6:
                         stfAccount.changePassword();
-                        break;
-                    case 7:
-                        //back to main menu 
                         break;
                     default:
                         System.out.println("Invalid Input. Please enter again... ");
@@ -413,21 +415,13 @@ public class Main {
 
         // Add a staff account
         Address address1 = new Address("No 6", "Jalan SP123", 52100, "Kepong", "Selangor", "Malaysia");
-        staffAccountList.add(new Staff("abc123", "Nicole", "Lai", address1, 'F', 13, "nlai@gmail.com", "+60186538749"));
+        staffAccountList.add(new Staff("abc1234", "Nicole", "Lai", address1, 'F', 13, "nlai@gmail.com", "+60186538749"));
         Address address2 = new Address("No 11", "Jalan 3432", 40150, "Petaling Jaya", "Selangor", "Malaysia");
-        staffAccountList.add(new Staff("1234", "John", "Lee", address2, 'M', 20, "johnl@gmail.com", "+60134889342"));
+        staffAccountList.add(new Staff("1234abc", "John", "Lee", address2, 'M', 20, "johnl@gmail.com", "+60134889342"));
 
         // Add a customer account 
         Address sampleAddress = new Address("No 1", "Jalan Satu",40400, "Shah Alam", "Selangor", "Malaysia");
         accountList.add(new RegisteredAccount("abc123", "Victor", "Wong", sampleAddress, 'M', 19, "wong@gmail.com", "+6012345678"));
-
-       
-        
-        //Request List 
-
-        // reservations.add(new Reservation(3, flightList.get(0), bookedSeats));
-        // requests.add(new Request("Cancel Ticket Request", "Wrong Date Reserved", oldReservation, newReservation));
-        // requests.add(new Request("Reschedule Ticket Request", "Wrong Flight Time Reserved", oldReservation, newReservation));
     }
 
     public static List<Request> getRequests() {
