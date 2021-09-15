@@ -66,7 +66,7 @@ public class FPX implements PaymentMethod{
         do{ //  X bank name                  - loop here
         System.out.println("*NOTE* \nKindly Enter 0 to exit");
         System.out.println("eg: maybank");
-        System.out.println("Input preferred bank name > ");                 //input bank name
+        System.out.print("Input preferred bank name > ");                 //input bank name
         inputBank = s.nextLine();
         if ( inputBank.equals("0"))                     // if user input 0 will exit
         {
@@ -79,13 +79,13 @@ public class FPX implements PaymentMethod{
         }
         } while(error == true);                             //loop to the beginning
 
-        System.out.println("UserName > ");              // input user name
-        inputUserName = s.nextLine();
+        System.out.print("UserName > ");              // input user name
+        inputUserName = s.next();
         if ( inputUserName.equals("0"))                 //as long as not 0, will proceed to input password
         {
             return true; 
         }
-        System.out.println("Password > ");
+        System.out.print("Password > ");
         inputPassword = s.nextLine();
         if ( inputUserName.equals("0"))
         {
@@ -97,7 +97,7 @@ public class FPX implements PaymentMethod{
         }
         }while(error == true);
 
-        System.out.println("TAC (check your phone) > ");        // input tac
+        System.out.print("TAC (check your phone) > ");        // input tac
         int inputTac = s.nextInt();
         if(inputTac != tac)
         {

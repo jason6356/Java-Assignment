@@ -557,7 +557,7 @@ public void checkRequestStatus(Reservation reservation, Scanner s){
                 return;
             }
         }
-        else if (option ==0)
+        else if (option == 0)
         {
             return;
         }
