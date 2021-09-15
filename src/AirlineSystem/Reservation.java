@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 enum rStatus {
-    PENDING, BOOKED, PAID
+    PENDING, BOOKED, PAID, CANCELLED
 }
 
 public class Reservation {
@@ -91,6 +91,7 @@ public class Reservation {
     public void setFlightSchedule(FlightSchedule flight) {
         this.flight = flight;
     }
+
 
     public static HashMap<Reservation, List<fSeat>> getSeatMap() {
         return seatMap;

@@ -140,51 +140,45 @@ public class Request {
     public void updateRequest(Request request) {
         List<Reservation> reservationList = Main.getReservations();
         List<Reservation> customerReservationList = requestedBy.getReservations();
-        int reservationFound = 0;
 
         // if status is approved, update the reservation
         if (request.getRequestStatus() == rqStatus.APPROVED) {
             if (request.getRequestDescription() == "Cancel Ticket Request") {
 
-                for (Reservation reservation : reservationList) {
-                    reservationFound++;
+
+                for (Reservation reservation : customerReservationList) {
+                    
                     if (request.getOldReservation().equals(reservation)) {
                         // Make all the seats booked by the cancelled reservation into available again
                         Reservation.getSeatMap().get(reservation).forEach((seat) -> seat.makeSeatEmpty());
                         // Remove the reservation
-                        reservationList.remove(reservationFound);
+                        reservation.setReservationStatus(rStatus.CANCELLED);
                     }
                 }
+            }
+             else if (request.getRequestDescription() == "Reschedule Ticket Request") {
 
-                reservationFound = 0;
-                for (Reservation customerReservation : customerReservationList) {
-                    reservationFound++;
-                    if (request.getOldReservation().equals(customerReservation)) {
-                        // Make all the seats booked by the cancelled reservation into available again
-                        Reservation.getSeatMap().get(customerReservation).forEach((seat) -> seat.makeSeatEmpty());
-                        // Remove the reservation
-                        customerReservationList.remove(reservationFound);
-                    }
-                }
-
-            } else if (request.getRequestDescription() == "Reschedule Ticket Request") {
-
-                for (Reservation reservation : reservationList) {
-                    reservationFound++;
-                    if (request.getOldReservation().equals(reservation))
-                        reservationList.set(reservationFound, request.getNewReservation());
-                }
-
-                reservationFound = 0;
-
-                for (Reservation customerReservation : customerReservationList) {
-                    reservationFound++;
-                    if (request.getOldReservation().equals(customerReservation))
-                    customerReservationList.set(reservationFound, request.getNewReservation());
+           
+                for (Reservation reservation : customerReservationList) {
+               
+                    if (request.getOldReservation().equals(reservation)){
+                         // Make all the seats booked by the cancelled reservation into available again
+                         Reservation.getSeatMap().get(reservation).forEach((seat) -> seat.makeSeatEmpty());
+                         // Remove the reservation
+                         reservation.setReservationStatus(rStatus.CANCELLED);
+                         // add new reservation
+                         customerReservationList.add(request.getNewReservation());
+                        }
                 }
 
             }
         }
+    
+        for (Reservation customerReservation : customerReservationList) {
+            System.out.println(customerReservation.displayReservation());
+        }
+        System.out.println(request.getOldReservation().displayReservation());
+
     }
 
     public void requestReason(Scanner s) {
