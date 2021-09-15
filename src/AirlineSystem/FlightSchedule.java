@@ -54,6 +54,14 @@ public class FlightSchedule {
         return String.format("%5s|%-11s|%-14s|%-37s|%-37s|%-22s|%-10s -> %-10s|", flightScheduleCode,flightDate.format(formatDate),departureTime.format(formatTime),location.getAirportName(),destination.getAirportName(),estimatedArrivalTime.format(formatBoth),location.getLocation(),destination.getLocation());
     }
 
+    public String displayFlightScheduleForReport(){
+        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("HH:mm");
+        DateTimeFormatter formatBoth = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+
+        return String.format("%s|%s|%s|%s|%s|%s|%s -> %s|", flightScheduleCode,flightDate.format(formatDate),departureTime.format(formatTime),location.getAirportName(),destination.getAirportName(),estimatedArrivalTime.format(formatBoth),location.getLocation(),destination.getLocation());
+    }
+
     public LocalTime getDepartureTime() {
         return departureTime;
     }

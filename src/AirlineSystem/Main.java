@@ -215,7 +215,8 @@ public class Main {
                 System.out.println("|4. Create staff account |");
                 System.out.println("|5. Check Request List   |");
                 System.out.println("|6. Change Password      |");
-                System.out.println("|7. Logout               |");
+                System.out.println("|7. History Report       |");
+                System.out.println("|8. Logout               |");
                 System.out.println("+------------------------+");
 
                 System.out.print("Enter Selection: ");
@@ -233,7 +234,8 @@ public class Main {
                     System.out.println("|4. Create staff account |");
                     System.out.println("|5. Check Request List   |");
                     System.out.println("|6. Change Password      |");
-                    System.out.println("|7. Logout               |");
+                    System.out.println("|7. History Report       |");
+                    System.out.println("|8. Logout               |");
                     System.out.println("+------------------------+");
                     selection = s.nextInt();
                 }
@@ -258,6 +260,9 @@ public class Main {
                         break;
                     case 6:
                         stfAccount.changePassword(s);
+                        break;
+                    case 7:
+                        stfAccount.report(s);
                         break;
                     default:
                         System.out.println("Invalid Input. Please enter again... ");
@@ -630,6 +635,8 @@ public class Main {
         }
         
         System.out.println("Wrong ID or Password.");
+        s.nextLine();
+        s.nextLine();
         return null;
     }
     /**  

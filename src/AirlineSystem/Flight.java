@@ -65,6 +65,10 @@ class Flight {
         return String.format("%-15s %-20s %-20s\n", flightCode, airline.getAirlineName(), totalSeat);
     }
 
+    public String displayFlightForReport(){
+        return String.format("%s|%s|%s", flightCode, airline.getAirlineName(), totalSeat);
+    }
+
     //Methods
     /**
      * Method to create a list of seats to the flight

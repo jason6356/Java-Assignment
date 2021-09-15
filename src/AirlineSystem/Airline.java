@@ -44,8 +44,16 @@ public class Airline {
      */
     @Override
     public String toString() {
-        // String str = String.format("AirlineName : %s \n AirlineCode : %s \n FlightList : ", airlineName, airlineCode);
         String str = String.format("%-20s %-20s", airlineName, airlineCode);
+        for (Flight flight : flightList) {
+            str += flight.getFlightCode() + " ";
+        }
+        str+= "\n";
+        return str;
+    }
+
+    public String displayAirlineForReport(){
+        String str = String.format("%s|%s|", airlineName, airlineCode);
         for (Flight flight : flightList) {
             str += flight.getFlightCode() + " ";
         }
