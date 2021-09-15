@@ -189,6 +189,7 @@ public void confirmTicket(Scanner s){
         }
 
         if(payChoice == 'Y'){
+            payment(s, amount);
             System.out.println("Calling junwei method");
         }
         else{
@@ -512,5 +513,54 @@ public void checkRequestStatus(Reservation reservation, Scanner scanner){
         scanner.nextLine();
 
 }
+     /**
+     * Method to choose payment method 
+     * 
+     */
+    public void payment(Scanner s, double amount){
+          //simply create bank details
+        FPX fpx1 = new FPX("maybank", "vic123", "apple", "abcd1234", 1000.0, 1234);
+        DebitCardAccount debit1 = new DebitCardAccount("maybank", 123456789, 111, "09/25", "Wong Jun Wei", 1000.0, 123);
+        int option;
+        boolean error;
+
+    do{
+        System.out.println("Enter 0 to exit");
+        System.out.println("Which payment method would you like to choose? ");
+        System.out.println("1. FPX\n2.Debit Card");
+        option = s.nextInt();
+
+        if (option == 1)
+        {
+            error = fpx1.validateFPX();
+            if ( error == false)
+            {
+                fpx1.pay(amount);
+                System.out.println("Payment Successful!");
+                return;
+            }
+        }
+        else if ( option == 2)
+        {
+            error = debit1.validateDC();
+            if(error == false)
+            {
+                debit1.pay(amount);
+                System.out.println("Payment Successful!");
+                return;
+            }
+        }
+        else if (option ==0)
+        {
+            return;
+        }
+        else 
+        {
+            System.out.println("Incorrect Input! Please Try Again");
+        }
+    }while(option!=0);
+
+    System.out.println("Payment Cancelled!");
+    }
 
 }

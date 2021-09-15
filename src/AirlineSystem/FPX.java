@@ -55,7 +55,7 @@ public class FPX implements PaymentMethod{
         
     }
 
-    public boolean payFPX(){
+    public boolean validateFPX(){
         Boolean error = false; 
         Scanner fpx = new Scanner(System.in);
         String inputBank;

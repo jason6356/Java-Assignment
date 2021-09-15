@@ -17,7 +17,7 @@ public class Main {
     private static List<Reservation> reservations = new ArrayList<Reservation>();
     
     public static void main(String[] args) {
-
+       
         clearConsole();
         Account guestAcc = new Account();
         insertDataToList();
@@ -402,9 +402,7 @@ public class Main {
         Address sampleAddress = new Address("No 1", "Jalan Satu",40400, "Shah Alam", "Selangor", "Malaysia");
         accountList.add(new RegisteredAccount("abc123", "Victor", "Wong", sampleAddress, 'M', 19, "wong@gmail.com", "+6012345678"));
 
-        //simply create bank details
-        FPX fpx1 = new FPX("maybank", "vic123", "apple", "abcd1234", 1000.0, 1234);
-        DebitCardAccount debit1 = new DebitCardAccount("maybank", 123456789, 111, "09/25", "Wong Jun Wei", 1000.0, 123);
+       
         
         //Request List 
 
@@ -625,4 +623,5 @@ public class Main {
         System.out.print("-");
         }
     }
+
 }
