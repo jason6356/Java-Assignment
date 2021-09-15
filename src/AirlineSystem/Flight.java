@@ -23,12 +23,11 @@ class Flight {
 
     private String createFlightCode(){
         if(nthFlight < 10)
-            return "F00" + nthFlight;
+            return "F00" + nthFlight;`
         else if(nthFlight < 100)
             return "F0" + nthFlight;
         else
             return "F"+nthFlight;
-
     }
 
     //No-args Constructor
