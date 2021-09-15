@@ -110,31 +110,15 @@ public class Account {
 
 
     public void availableFlights() {
-        System.out.println("                 ---Airport---");
-        System.out.println("==============================================================================");
-        System.out.printf("%-40s %-20s %-20s \n", "Airport Name", "Location", "Flight List");
-        System.out.println("==============================================================================");
-
-        // List<FlightSchedule> flightScheduleList = Main.getFlightSchedules(); 
-        // //display all
-        // for (FlightSchedule flightSchedule : flightScheduleList) {
-        //     System.out.println(flightSchedule.toString());
-        // }
-
- 
-        // List<Flight> flightList = Main.getFlightList();
-        // for (Flight flight : flightList) {
-        //     System.out.println(flight.toString());
-        // }
-
-        // List<Airline> airlineList = Main.getAirlineList();
-        // for (Airline airline : airlineList) {
-        //     System.out.println(airline.toString() + "\n");
-        // }
-    
-        List<Airport> airportList = Main.getAirportList();
-        for (Airport airport : airportList) {
-            System.out.println(airport.toString());
+        System.out.println("\n                                                               ---Flight Schedule---");
+        System.out.println("=============================================================================================================================================================");
+        System.out.printf("%-5s|%11s|%5s|%-37s|%-37s|%13s|%-24s|\n", "Code", "Flight Date", "Departure Time", "Location", "Destination", "Estimated Arrival Time", "Location -> Destination");
+        System.out.println("=============================================================================================================================================================");
+        
+        List<FlightSchedule> flightScheduleList = Main.getFlightSchedules(); 
+        //display all
+        for (FlightSchedule flightSchedule : flightScheduleList) {
+            System.out.println(flightSchedule.toString());
         }
     }
 

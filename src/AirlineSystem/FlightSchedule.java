@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FlightSchedule {
+    private String flightScheduleCode;
     private static int nthFlightSchedule = 0; 
     private LocalTime departureTime;
     private LocalDate flightDate;
@@ -23,7 +24,7 @@ public class FlightSchedule {
         this.destination = destination;
         this.estimatedArrivalTime = estimatedArrivalTime;
         this.flight = flight;
-      //  this.flightScheduleCode = makeflightScheduleCode();
+        this.flightScheduleCode = makeflightScheduleCode();
         nthFlightSchedule++;
         
         flightSeat = makefSeatList(flight.getTotalSeat());
@@ -41,7 +42,8 @@ public class FlightSchedule {
         DateTimeFormatter formatBoth = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
         //| DepartDate | DepartTime | Depart Airport | Destination Airport | Estimated Time | Direction |
 
-        return String.format("%10s|%5s|%-37s|%-37s|%13s|%-10s -> %-10s|", flightDate.format(formatDate),departureTime.format(formatTime),location.getAirportName(),destination.getAirportName(),estimatedArrivalTime.format(formatBoth),location.getLocation(),destination.getLocation());
+        // return String.format("%4s|%10s|%5s|%-37s|%-37s|%13s|%-10s -> %-10s|", flightScheduleCode,flightDate.format(formatDate),departureTime.format(formatTime),location.getAirportName(),destination.getAirportName(),estimatedArrivalTime.format(formatBoth),location.getLocation(),destination.getLocation());
+        return String.format("%5s|%-11s|%-14s|%-37s|%-37s|%-22s|%-10s -> %-10s|", flightScheduleCode,flightDate.format(formatDate),departureTime.format(formatTime),location.getAirportName(),destination.getAirportName(),estimatedArrivalTime.format(formatBoth),location.getLocation(),destination.getLocation());
 
     }
 
@@ -65,6 +67,9 @@ public class FlightSchedule {
     }
     public LocalDateTime getEstimatedArrivalTime() {
         return estimatedArrivalTime;
+    }
+    public String getFlightScheduleCode() {
+        return flightScheduleCode;
     }
 
     //Method
