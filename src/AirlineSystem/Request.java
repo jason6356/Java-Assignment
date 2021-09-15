@@ -15,6 +15,7 @@ public class Request {
     private rqStatus requestStatus;
     private Reservation oldReservation; // if reschedule then we will have oldReservation and new reservation
     private Reservation newReservation; // cancel, oldReservation, new Reservation == null
+    private RegisteredAccount requestedBy;
 
     // Default invoke with this();
     Request() {
@@ -23,12 +24,13 @@ public class Request {
     }
 
     // Remember to increase the requestCount once a request has been done
-    Request(String requestDescription, String reason, Reservation oldReservation, Reservation newReservation) {
+    Request(String requestDescription, String reason, Reservation oldReservation, Reservation newReservation, RegisteredAccount requestedBy) {
         this.requestID = makeRequestID();
         this.requestDescription = requestDescription;
         this.reason = reason;
         this.oldReservation = oldReservation;
         this.newReservation = newReservation;
+        this.requestedBy = requestedBy;
         Request.requestCount++;
     }
 
@@ -93,6 +95,10 @@ public class Request {
         this.newReservation = newReservation;
     }
 
+    public void setRequestBy(RegisteredAccount requestedBy) {
+        this.requestedBy = requestedBy;
+    }
+
     /**
      * Method to display Object in String
      */
@@ -112,16 +118,16 @@ public class Request {
     public String displayRequest() {
         if (requestDescription == "Cancel Ticket Request") {
             return String.format(
-                    "\n\n---------------REQUEST-------------------------------------------------------------------------------------------------------------------\nRequest ID: %s     Description: %s     Reason of Request: %s     Status: %s \n\nReservation: \n"
+                    "\n---------------REQUEST-------------------------------------------------------------------------------------------------------------------------\nRequest ID: %s     Description: %s     Reason of Request: %s     Status: %s \n\nReservation: \n"
                             + oldReservation.displayReservation()
-                            + "-----------------------------------------------------------------------------------------------------------------------------------------",
+                            + "-----------------------------------------------------------------------------------------------------------------------------------------------",
                     requestID, requestDescription, reason, requestStatus);
         } else
             return String.format(
-                    "\n\n---------------REQUEST-------------------------------------------------------------------------------------------------------------------\nRequest ID: %s     Description: %s     Reason of Request: %s     Status: %s \n\nReservation: \n"
+                    "\n---------------REQUEST-------------------------------------------------------------------------------------------------------------------------\nRequest ID: %s     Description: %s     Reason of Request: %s     Status: %s \n\nReservation: \n"
                             + oldReservation.displayReservation() + "\nNew Reservation: \n"
                             + newReservation.displayReservation()
-                            + "-----------------------------------------------------------------------------------------------------------------------------------------",
+                            + "-----------------------------------------------------------------------------------------------------------------------------------------------",
                     requestID, requestDescription, reason, requestStatus);
     }
 
@@ -133,25 +139,48 @@ public class Request {
 
     public void updateRequest(Request request) {
         List<Reservation> reservationList = Main.getReservations();
+        List<Reservation> customerReservationList = requestedBy.getReservations();
+        int reservationFound = 0;
 
         // if status is approved, update the reservation
         if (request.getRequestStatus() == rqStatus.APPROVED) {
             if (request.getRequestDescription() == "Cancel Ticket Request") {
 
                 for (Reservation reservation : reservationList) {
+                    reservationFound++;
                     if (request.getOldReservation().equals(reservation)) {
                         // Make all the seats booked by the cancelled reservation into available again
                         Reservation.getSeatMap().get(reservation).forEach((seat) -> seat.makeSeatEmpty());
-                        // Reset the reservation
-                        reservation = null;
+                        // Remove the reservation
+                        reservationList.remove(reservationFound);
+                    }
+                }
+
+                reservationFound = 0;
+                for (Reservation customerReservation : customerReservationList) {
+                    reservationFound++;
+                    if (request.getOldReservation().equals(customerReservation)) {
+                        // Make all the seats booked by the cancelled reservation into available again
+                        Reservation.getSeatMap().get(customerReservation).forEach((seat) -> seat.makeSeatEmpty());
+                        // Remove the reservation
+                        customerReservationList.remove(reservationFound);
                     }
                 }
 
             } else if (request.getRequestDescription() == "Reschedule Ticket Request") {
 
                 for (Reservation reservation : reservationList) {
+                    reservationFound++;
                     if (request.getOldReservation().equals(reservation))
-                        reservation = request.getNewReservation();
+                        reservationList.set(reservationFound, request.getNewReservation());
+                }
+
+                reservationFound = 0;
+
+                for (Reservation customerReservation : customerReservationList) {
+                    reservationFound++;
+                    if (request.getOldReservation().equals(customerReservation))
+                    customerReservationList.set(reservationFound, request.getNewReservation());
                 }
 
             }

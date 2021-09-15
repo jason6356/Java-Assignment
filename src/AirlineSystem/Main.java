@@ -119,7 +119,7 @@ public class Main {
 
                             } while(choiceReschedule < 1 || choiceReschedule > reservationCount - 1);
 
-                            userAccount.rescheduleTicket(reservation.get(choiceReschedule - 1),s);
+                            userAccount.rescheduleTicket(reservation.get(choiceReschedule - 1), s, userAccount);
                     }
 
                         break;
@@ -156,7 +156,7 @@ public class Main {
 
                             } while(choiceCancel < 1 || choiceCancel > reservationsCount - 1);
                             
-                            userAccount.cancelTicket(resToCancel.get(choiceCancel - 1),s);
+                            userAccount.cancelTicket(resToCancel.get(choiceCancel - 1), s, userAccount);
                         }
                         break;
                     case 6:
