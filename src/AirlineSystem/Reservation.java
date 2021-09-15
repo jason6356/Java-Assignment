@@ -114,7 +114,7 @@ public class Reservation {
      */
     public String displayReservation() {
         return String.format(
-                "+---------------------------------------------------------------------------------------------------------------------------------------+\n| [%s]                                                                                                                                |\n| Reservation Time: %d-%d-%d %d:%-20d   | Status: %-50s                    |\n| Seat booked: %-30d           | Total Amount: %-50.2f              |\n| "
+                "+---------------------------------------------------------------------------------------------------------------------------------------+\n| [%s]                                                                                                                                |\n| Reservation Time: %02d-%02d-%04d %02d:%-20d  | Status: %-50s                    |\n| Seat booked: %-30d           | Total Amount: %-50.2f              |\n| "
                         + flight.displayInfo()
                         + "\n+---------------------------------------------------------------------------------------------------------------------------------------+\n",
                 reservationNo, reservationTime.getDayOfMonth(), reservationTime.getMonthValue(),
