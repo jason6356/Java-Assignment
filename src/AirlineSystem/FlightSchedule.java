@@ -72,10 +72,6 @@ public class FlightSchedule {
     public String getFlightScheduleCode() {
         return flightScheduleCode;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 8113d3638aef769ddd98e03cfe1283491e33ea4a
     //Method
     /**
      * Create a list of flight seats to the flight schedule
