@@ -53,47 +53,9 @@ public class DebitCardAccount implements PaymentMethod{
     @Override
     public void pay(double amount) {
         if(balance<amount)
-        System.out.println("Payment failed");
+        System.out.println("Payment failed!");
     else 
         balance -=amount;
-        
+        System.out.println("Payment Successful!");
     }
-
-    public Boolean validateDC(Scanner s){
-        Boolean error = false; 
-        int inputCardNumber;
-        int inputCVS;
-        String inputValidDate;
-        System.out.println("\n\tCard Payment");
-        System.out.println("================");
-        do{ //	either 1 wrong will loop here at the end
-        System.out.println("*NOTE* \nKindly Enter 0 to exit");
-        System.out.print("Card Number > ");                 //input card 
-        inputCardNumber = s.nextInt();
-        if ( inputCardNumber == 0)                     // if user input 0 will exit
-        {
-            return true; 
-        }
-        System.out.print("CVS > ");              // input CVS
-        inputCVS = s.nextInt();
-        if ( inputCVS == 0 )             
-        {
-            return true; 
-        }
-
-        System.out.print("Valid Date (MM/YY) > ");
-        inputValidDate = s.nextLine();
-        if ( inputValidDate.equals("0"))
-        {
-            return true; 
-        }                 
-        if((inputCardNumber!=cardNo)|| (inputCVS != cvsNo) || (inputValidDate.equals(validDate))){
-            System.out.println("Incorrect Card Details!");
-            error = true;
-        }
-        }while(error == true);
-
-        return error; // this error is false, means no error
-    }
-    
 }
