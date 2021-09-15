@@ -153,7 +153,7 @@ public void confirmTicket(Scanner s){
     List<Reservation> queryList = new ArrayList<Reservation>();
     int i = 1;
     for (Reservation reservation : reservations) {
-        if(reservation.getReservationStatus() == rStatus.BOOKED){
+        if(reservation.getReservationStatus() == rStatus.PENDING){
             queryList.add(reservation);
             System.out.printf("%2d", i++);
             System.out.println(reservation);
@@ -189,10 +189,15 @@ public void confirmTicket(Scanner s){
         }
 
         if(payChoice == 'Y'){
+            Reservation r = new Reservation();
+            payment(s, queryList.get(choice - 1).getTotalAmount());
             System.out.println("Calling junwei method");
         }
-        else
+        else{
             System.out.println("For your reminder, the reservation that is not confirmed yet after 14 days will be removed!");
+            s.nextLine();
+            s.nextLine();
+        }
     }
 }
 
@@ -338,27 +343,39 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
     customerRequest.setRequestDescription("Reschedule Ticket Request");
     customerRequest.setOldReservation(reservation);
 
-    System.out.println("\nCURRENT RESERVATION DETAILS:\n============================\n+---------------------------------------------------------------------------------------------------------------------------------------+"+ reservation.displayReservation());
-    System.out.println("+---------------------------------------------------------------------------------------------------------------------------------------+");
+    Main.clearConsole();
+    System.out.println("\nCURRENT RESERVATION DETAILS:\n============================\n"+ reservation.displayReservation());
 
     //display available flight schedule
     System.out.println("\n\nAVAILABLE FLIGHT SCHEDULE:");
     System.out.println("==========================");
 
-    int n = 1;
-     for (FlightSchedule flightSchedule : flightScheduleList) {
-         if(flightSchedule != reservation.getFlightSchedule()){
-            System.out.print(n + ". ");
-            System.out.println(flightSchedule.toString());
-            System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
-            availableSchedules.add(flightSchedule);
-            n++;
+    int choice = 0;
+    int n;
+    do {
+        n = 1;
+        for (FlightSchedule flightSchedule : flightScheduleList) {
+            if(flightSchedule != reservation.getFlightSchedule()){
+                System.out.print(n + ". ");
+                System.out.println(flightSchedule.toString());
+                System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+                availableSchedules.add(flightSchedule);
+                n++;
+                }
             }
+        
+        System.out.printf("\nEnter new schedule choice [1...%d]: ",n-1);
+        choice = scanner.nextInt();
+
+        if(choice < 1 || choice > n-1 ){
+            System.out.println("\nInvalid Choice, Please Enter Again!");
+            System.out.println("\n\nAVAILABLE FLIGHT SCHEDULE:");
+            System.out.println("==========================");
         }
 
+    } while(choice < 1 || choice > n-1);
 
-    System.out.print("\nEnter new schedule choice: ");
-    int choice=scanner.nextInt();
+  
     FlightSchedule targetSchedule = availableSchedules.get(choice-1);
 
     //Display Seats
@@ -369,38 +386,9 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
 
     //Set the new reservation
     Reservation newReservation = new Reservation(bookedSeats.size(),targetSchedule,bookedSeats);
-
+    
     //DO A MENU (LIST OF REASONS)
-    int reasonChoice;
-    do{
-        System.out.println("\nREASON OF RESCHEDULE: ");
-        System.out.println("--------------------- ");
-        System.out.println("1. Wrong Date Reserved");
-        System.out.println("2. Wrong Flight Time Reserved");
-        System.out.println("3. Wrong Location Reserved");
-        System.out.println("4. Other Reasons");
-        System.out.print("SELECT REASON >");
-        reasonChoice = scanner.nextInt();
-        scanner.nextLine();
-   
-        if(reasonChoice == 1){
-            customerRequest.setReason("Wrong Date Reserved");
-        }
-        else if(reasonChoice == 2){
-            customerRequest.setReason("Wrong Flight Time Reserved");
-        }
-        else if(reasonChoice == 3){
-            customerRequest.setReason("Wrong Location Reserved");
-        }
-        else if(reasonChoice == 4){
-            System.out.print("Kindly State the Reason: ");
-            String reason = scanner.nextLine();
-            customerRequest.setReason(reason);
-        }
-        else{
-            System.out.println("Invalid Selection, please try again.");
-        }
- }while(reasonChoice != 1 && reasonChoice != 2 && reasonChoice != 3 && reasonChoice != 4 );
+    customerRequest.requestReason(scanner);
 
     System.out.print("\nConfirm to reschedule? (Y/N) > ");
     char next = scanner.next().charAt(0);
@@ -421,10 +409,9 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
         //add the request to the request list
         requestList.add(customerRequest);
 
-        System.out.println("\n----------YOUR REQUEST-------------------------------------------------------------------------------------------------------------------");
+        Main.clearConsole();
+       
         System.out.println(customerRequest.displayRequest());
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
-
   
         System.out.println("\nRequested for Rescheduling Ticket.");
         System.out.println("ENTER ANY KEY TO CONTINUE >");
@@ -443,42 +430,12 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
     request.setOldReservation(reservation);
     request.setNewReservation(null);
 
-    System.out.println("\nRESERVATION DETAILS\n====================\n+---------------------------------------------------------------------------------------------------------------------------------------+"+reservation.displayReservation());
-    System.out.println("+---------------------------------------------------------------------------------------------------------------------------------------+");
+    Main.clearConsole();
+    System.out.println("\nRESERVATION DETAILS\n====================\n"+reservation.displayReservation());
 
     
     //DO A MENU (LIST OF REASONS)
-    int reasonChoice;
-    do{
-        System.out.println("\nREASON OF CANCELLING: ");
-        System.out.println("--------------------- ");
-        System.out.println("1. Wrong Date Reserved");
-        System.out.println("2. Wrong Flight Time Reserved");
-        System.out.println("3. Wrong Seats Reserved");
-        System.out.println("4. Other Reasons");
-        System.out.print("SELECT REASON >");
-        reasonChoice = scanner.nextInt();
-        scanner.nextLine();
-
-
-        if(reasonChoice == 1){
-            request.setReason("Wrong Date Reserved");
-        }
-        else if(reasonChoice == 2){
-            request.setReason("Wrong Flight Time Reserved");
-        }
-        else if(reasonChoice == 3){
-            request.setReason("Wrong Seats Reserved");
-        }
-        else if(reasonChoice == 4){
-            System.out.print("Kindly State the Reason: ");
-            String reason = scanner.nextLine();
-            request.setReason(reason);
-        }
-        else{
-            System.out.println("Invalid Selection, please try again.");
-        }
-    }while(reasonChoice != 1 && reasonChoice != 2 && reasonChoice != 3 && reasonChoice != 4 );
+    request.requestReason(scanner);
 
     System.out.print("\nConfirm to cancel? (Y/N) > ");
     char next = scanner.next().charAt(0);
@@ -494,9 +451,9 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
         //add the request to the request list
         requestList.add(request);
 
-        System.out.println("\n----------YOUR REQUEST-------------------------------------------------------------------------------------------------------------------");
+        Main.clearConsole();
+       
         System.out.println(request.displayRequest());
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
 
         System.out.println("\nRequested for Cancelling Ticket.");
         System.out.println("ENTER ANY KEY TO CONTINUE >");
@@ -516,65 +473,95 @@ public void welcome(){ // can remove if dw, main line 149
 //Check Reservation
 public void checkRequestStatus(Reservation reservation, Scanner scanner){
     List<Request> requestList = Main.getRequests();
+    boolean found = false;
 
     for (Request request : requestList) {
 
         if (request.getOldReservation()==reservation){
+            found = true;
+                        
+            System.out.println(request.displayRequest());
 
             if(request.getRequestStatus()==rqStatus.APPROVED){
+    
                 if(request.getRequestDescription() == "Reschedule Ticket Request"){
 
                     System.out.println("\nREQUEST APPROVED.\n");
-
-                    System.out.println("-------------------");
-                    System.out.println("\n| OLD RESERVATION |");
-                    System.out.println("-------------------");
-                    System.out.println((request.getOldReservation()).displayReservation());
-
-                    System.out.println("-------------------");
-                    System.out.println("\n| NEW RESERVATION |");
-                    System.out.println("-------------------");
-                    System.out.println((request.getNewReservation()).displayReservation());
-
                     System.out.println("\nOld Reservation have been updated to New Reservation.");
                 }
                 else if(request.getRequestDescription() == "Cancel Ticket Request"){
 
                     System.out.println("\nREQUEST APPROVED.\n");
-
-                    System.out.println("---------------");
-                    System.out.println("\n| RESERVATION |");
-                    System.out.println("---------------");
-                    System.out.println((request.getOldReservation()).displayReservation());
-
-                    System.out.println("\nReservation have been cancellation.");
+                    System.out.println("\nReservation have been Cancelled.");
                 }
 
             }
             else if(request.getRequestStatus()==rqStatus.REJECTED){
-                System.out.println("-------------------");
-                System.out.println("\n| OLD RESERVATION |");
-                System.out.println("-------------------");
-                System.out.println((request.getOldReservation()).displayReservation());
-
+               
                 System.out.println("\nREQUEST REJECTED.\n");
-
             }
             else{
+
                 System.out.println("\nREQUEST PENDING.\n\n");
-                System.out.println("----------YOUR REQUEST------------------------------------------------------------------------------------------------------------------");
-                System.out.println(request.displayRequest());
-                System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");
             }
-        
         }
-        else
-            System.out.println("\nRESERVATION HAVE NO REQUEST.\n");
     }
+    if(found == false)
+        System.out.println("\nRESERVATION HAVE NO REQUEST.\n");
+
     System.out.println("ENTER ANY KEY TO CONTINUE >");
         scanner.nextLine();
         scanner.nextLine();
 
 }
+     /**
+     * Method to choose payment method 
+     * 
+     */
+    public void payment(Scanner s, double amount){
+          //simply create bank details
+        FPX fpx1 = new FPX("maybank", "vic123", "apple", "abcd1234", 1000.0, 1234);
+        DebitCardAccount debit1 = new DebitCardAccount("maybank", 123456789, 111, "09/25", "Wong Jun Wei", 1000.0, 123);
+        int option;
+        boolean error;
+
+    do{
+        System.out.println("Enter 0 to exit");
+        System.out.println("Which payment method would you like to choose? ");
+        System.out.println("1. FPX\n2.Debit Card");
+        option = s.nextInt();
+
+        if (option == 1)
+        {
+            error = fpx1.validateFPX();
+            if ( error == false)
+            {
+                fpx1.pay(amount);
+                System.out.println("Payment Successful!");
+                return;
+            }
+        }
+        else if ( option == 2)
+        {
+            error = debit1.validateDC();
+            if(error == false)
+            {
+                debit1.pay(amount);
+                System.out.println("Payment Successful!");
+                return;
+            }
+        }
+        else if (option ==0)
+        {
+            return;
+        }
+        else 
+        {
+            System.out.println("Incorrect Input! Please Try Again");
+        }
+    }while(option!=0);
+
+    System.out.println("Payment Cancelled!");
+    }
 
 }

@@ -1,0 +1,1455 @@
+<tbody><tr style="background-color:#BDCEE7">
+<th style="width:112px" class="sortable-text fd-column-0"><a href="#" class="fdTableSortTrigger" title="Sort on “Airline”">Airline</a><span></span></th><th style="width:2px">&nbsp;</th>
+<th style="width:90px; text-align:center" class="sortable sortable-numeric fd-column-2"><a href="#" class="fdTableSortTrigger" title="Sort on “Passengers (in million) 2009”">Passengers (in million) 2009</a><span></span></th><th style="width:90px; text-align:center" class="sortable sortable-numeric fd-column-3"><a href="#" class="fdTableSortTrigger" title="Sort on “Passengers (in million) 2010”">Passengers (in million) 2010</a><span></span></th>
+<th style="width:2px">&nbsp;</th>
+<th style="width:140px">Main Hub <br></th>
+<th style="width:85px">Headquarter<br>
+City</th>
+<th style="width:20px">&nbsp;</th><th style="width:81px" class="sortable-text fd-column-8"><a href="#" class="fdTableSortTrigger" title="Sort on “Country”">Country</a><span></span></th></tr>
+<tr class="border1">
+<td><strong><br>Africa/Middle East </strong></td><td>&nbsp;</td><td style="text-align:right">&nbsp;</td><td style="text-align:right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></t<div class="continent__section_content rich">
+					<p>
+				<a href="https://airportcodes.io/en/all-airports/?filters[continent]=AS">
+					Find all airports in Asia				</a>
+			</p>
+				<div class="tablescroll text-nowrap" data-module="EnhancedTable" data-config="{&quot;sort&quot;:&quot;all&quot;,&quot;search&quot;:&quot;all&quot;}">
+							<div class="table_search">
+	<label class="sr-only" for="ts_61410191088b6">Search in table below</label>
+	<input placeholder="Search in table" id="ts_61410191088b6" type="search" autocomplete="off">
+</div>
+						<table>
+				<thead>
+					<tr>
+						<th class="sortable">ICAO</th>
+						<th class="sortable">IATA</th>
+						<th class="sortable">Name</th>
+						<!-- <th>Type</th> -->
+						<th class="sortable">Municipality</th>
+						<th class="sortable">Country</th>
+					</tr>
+				</thead>
+				<tbody>
+											<tr>
+															<td>OMAA</td>
+															<td>AUH</td>
+															<td><a href="https://airportcodes.io/en/airport/abu-dhabi-international-airport/">Abu Dhabi International Airport</a></td>
+															<td>Abu Dhabi</td>
+															<td>United Arab Emirates</td>
+													</tr>
+											<tr>
+															<td>LTAF</td>
+															<td>ADA</td>
+															<td><a href="https://airportcodes.io/en/airport/adana-airport/">Adana Airport</a></td>
+															<td>Adana</td>
+															<td>Turkey</td>
+													</tr>
+											<tr>
+															<td>LTBJ</td>
+															<td>ADB</td>
+															<td><a href="https://airportcodes.io/en/airport/adnan-menderes-international-airport/">Adnan Menderes International Airport</a></td>
+															<td>İzmir</td>
+															<td>Turkey</td>
+													</tr>
+											<tr>
+															<td>OMDW</td>
+															<td>DWC</td>
+															<td><a href="https://airportcodes.io/en/airport/al-maktoum-international-airport/">Al Maktoum International Airport</a></td>
+															<td>Jebel Ali</td>
+															<td>United Arab Emirates</td>
+													</tr>
+											<tr>
+															<td>OSAP</td>
+															<td>ALP</td>
+															<td><a href="https://airportcodes.io/en/airport/aleppo-international-airport/">Aleppo International Airport</a></td>
+															<td>Aleppo</td>
+															<td>Syria</td>
+													</tr>
+											<tr>
+															<td>UAAA</td>
+															<td>ALA</td>
+															<td><a href="https://airportcodes.io/en/airport/almaty-airport/">Almaty Airport</a></td>
+															<td>Almaty</td>
+															<td>Kazakhstan</td>
+													</tr>
+											<tr>
+															<td>LTAI</td>
+															<td>AYT</td>
+															<td><a href="https://airportcodes.io/en/airport/antalya-international-airport/">Antalya International Airport</a></td>
+															<td>Antalya</td>
+															<td>Turkey</td>
+													</tr>
+											<tr>
+															<td>UTAA</td>
+															<td>ASB</td>
+															<td><a href="https://airportcodes.io/en/airport/ashgabat-international-airport/">Ashgabat International Airport</a></td>
+															<td>Ashgabat</td>
+															<td>Turkmenistan</td>
+													</tr>
+											<tr>
+															<td>UACC</td>
+															<td>TSE</td>
+															<td><a href="https://airportcodes.io/en/airport/astana-international-airport/">Astana International Airport</a></td>
+															<td>Astana</td>
+															<td>Kazakhstan</td>
+													</tr>
+											<tr>
+															<td>LTBA</td>
+															<td>IST</td>
+															<td><a href="https://airportcodes.io/en/airport/istanbul-ataturk-airport/">Istanbul Ataturk Airport</a></td>
+															<td>Istanbul</td>
+															<td>Turkey</td>
+													</tr>
+											<tr>
+															<td>ORBI</td>
+															<td>BGW</td>
+															<td><a href="https://airportcodes.io/en/airport/baghdad-international-airport/">Baghdad International Airport</a></td>
+															<td>Baghdad</td>
+															<td>Iraq</td>
+													</tr>
+											<tr>
+															<td>OBBI</td>
+															<td>BAH</td>
+															<td><a href="https://airportcodes.io/en/airport/bahrain-international-airport/">Bahrain International Airport</a></td>
+															<td>Manama</td>
+															<td>Bahrain</td>
+													</tr>
+											<tr>
+															<td>ZBHH</td>
+															<td>HET</td>
+															<td><a href="https://airportcodes.io/en/airport/baita-international-airport/">Baita International Airport</a></td>
+															<td>Hohhot</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>VCBI</td>
+															<td>CMB</td>
+															<td><a href="https://airportcodes.io/en/airport/bandaranaike-international-colombo-airport/">Bandaranaike International Colombo Airport</a></td>
+															<td>Colombo</td>
+															<td>Sri Lanka</td>
+													</tr>
+											<tr>
+															<td>ORMM</td>
+															<td>BSR</td>
+															<td><a href="https://airportcodes.io/en/airport/basrah-international-airport/">Basrah International Airport</a></td>
+															<td>Basrah</td>
+															<td>Iraq</td>
+													</tr>
+											<tr>
+															<td>OSLK</td>
+															<td>LTK</td>
+															<td><a href="https://airportcodes.io/en/airport/bassel-al-assad-international-airport/">Bassel Al-Assad International Airport</a></td>
+															<td>Latakia</td>
+															<td>Syria</td>
+													</tr>
+											<tr>
+															<td>ZBAA</td>
+															<td>PEK</td>
+															<td><a href="https://airportcodes.io/en/airport/beijing-capital-international-airport/">Beijing Capital International Airport</a></td>
+															<td>Beijing</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>ZBAD</td>
+															<td>PKX</td>
+															<td><a href="https://airportcodes.io/en/airport/beijing-daxing-international-airport/">Beijing Daxing International Airport</a></td>
+															<td>Beijing</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>ZBNY</td>
+															<td>NAY</td>
+															<td><a href="https://airportcodes.io/en/airport/beijing-nanyuan-airport/">Beijing Nanyuan Airport</a></td>
+															<td>Beijing</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>OLBA</td>
+															<td>BEY</td>
+															<td><a href="https://airportcodes.io/en/airport/beirut-rafic-hariri-international-airport/">Beirut Rafic Hariri International Airport</a></td>
+															<td>Beirut</td>
+															<td>Lebanon</td>
+													</tr>
+											<tr>
+															<td>LLBG</td>
+															<td>TLV</td>
+															<td><a href="https://airportcodes.io/en/airport/ben-gurion-international-airport/">Ben Gurion International Airport</a></td>
+															<td>Tel Aviv</td>
+															<td>Israel</td>
+													</tr>
+											<tr>
+															<td>WBSB</td>
+															<td>BWN</td>
+															<td><a href="https://airportcodes.io/en/airport/brunei-international-airport/">Brunei International Airport</a></td>
+															<td>Bandar Seri Begawan</td>
+															<td>Brunei</td>
+													</tr>
+											<tr>
+															<td>VOCL</td>
+															<td>CCJ</td>
+															<td><a href="https://airportcodes.io/en/airport/calicut-international-airport/">Calicut International Airport</a></td>
+															<td>Calicut</td>
+															<td>India</td>
+													</tr>
+											<tr>
+															<td>ZGHA</td>
+															<td>CSX</td>
+															<td><a href="https://airportcodes.io/en/airport/changsha-huanghua-international-airport/">Changsha Huanghua International Airport</a></td>
+															<td>Changsha</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>ZUUU</td>
+															<td>CTU</td>
+															<td><a href="https://airportcodes.io/en/airport/chengdu-shuangliu-international-airport/">Chengdu Shuangliu International Airport</a></td>
+															<td>Chengdu</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>VOMM</td>
+															<td>MAA</td>
+															<td><a href="https://airportcodes.io/en/airport/chennai-international-airport/">Chennai International Airport</a></td>
+															<td>Chennai</td>
+															<td>India</td>
+													</tr>
+											<tr>
+															<td>VABB</td>
+															<td>BOM</td>
+															<td><a href="https://airportcodes.io/en/airport/mumbai-international-airport/">Mumbai International Airport</a></td>
+															<td>Mumbai</td>
+															<td>India</td>
+													</tr>
+											<tr>
+															<td>VTCC</td>
+															<td>CNX</td>
+															<td><a href="https://airportcodes.io/en/airport/chiang-mai-international-airport/">Chiang Mai International Airport</a></td>
+															<td>Chiang Mai</td>
+															<td>Thailand</td>
+													</tr>
+											<tr>
+															<td>ZMUB</td>
+															<td>ULN</td>
+															<td><a href="https://airportcodes.io/en/airport/chinggis-khaan-international-airport/">Chinggis Khaan International Airport</a></td>
+															<td>Ulan Bator</td>
+															<td>Mongolia</td>
+													</tr>
+											<tr>
+															<td>ZUCK</td>
+															<td>CKG</td>
+															<td><a href="https://airportcodes.io/en/airport/chongqing-jiangbei-international-airport/">Chongqing Jiangbei International Airport</a></td>
+															<td>Chongqing</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>RJGG</td>
+															<td>NGO</td>
+															<td><a href="https://airportcodes.io/en/airport/chubu-centrair-international-airport/">Chubu Centrair International Airport</a></td>
+															<td>Tokoname</td>
+															<td>Japan</td>
+													</tr>
+											<tr>
+															<td>VOCI</td>
+															<td>COK</td>
+															<td><a href="https://airportcodes.io/en/airport/cochin-international-airport/">Cochin International Airport</a></td>
+															<td>Kochi</td>
+															<td>India</td>
+													</tr>
+											<tr>
+															<td>VVDN</td>
+															<td>DAD</td>
+															<td><a href="https://airportcodes.io/en/airport/da-nang-international-airport/">Da Nang International Airport</a></td>
+															<td>Da Nang</td>
+															<td>Vietnam</td>
+													</tr>
+											<tr>
+															<td>VOGO</td>
+															<td>GOI</td>
+															<td><a href="https://airportcodes.io/en/airport/dabolim-airport/">Dabolim Airport</a></td>
+															<td>Vasco da Gama</td>
+															<td>India</td>
+													</tr>
+											<tr>
+															<td>LTBS</td>
+															<td>DLM</td>
+															<td><a href="https://airportcodes.io/en/airport/dalaman-international-airport/">Dalaman International Airport</a></td>
+															<td>Dalaman</td>
+															<td>Turkey</td>
+													</tr>
+											<tr>
+															<td>OSDI</td>
+															<td>DAM</td>
+															<td><a href="https://airportcodes.io/en/airport/damascus-international-airport/">Damascus International Airport</a></td>
+															<td>Damascus</td>
+															<td>Syria</td>
+													</tr>
+											<tr>
+															<td>RPLC</td>
+															<td>CRK</td>
+															<td><a href="https://airportcodes.io/en/airport/diosdado-macapagal-international-airport/">Diosdado Macapagal International Airport</a></td>
+															<td>Angeles/Mabalacat</td>
+															<td>Philippines</td>
+													</tr>
+											<tr>
+															<td>WASS</td>
+															<td>SOQ</td>
+															<td><a href="https://airportcodes.io/en/airport/dominique-edward-osok-airport/">Dominique Edward Osok Airport</a></td>
+															<td>Sorong-Papua Island</td>
+															<td>Indonesia</td>
+													</tr>
+											<tr>
+															<td>VTBD</td>
+															<td>DMK</td>
+															<td><a href="https://airportcodes.io/en/airport/don-mueang-international-airport/">Don Mueang International Airport</a></td>
+															<td>Bangkok</td>
+															<td>Thailand</td>
+													</tr>
+											<tr>
+															<td>OMDB</td>
+															<td>DXB</td>
+															<td><a href="https://airportcodes.io/en/airport/dubai-international-airport/">Dubai International Airport</a></td>
+															<td>Dubai</td>
+															<td>United Arab Emirates</td>
+													</tr>
+											<tr>
+															<td>OODQ</td>
+															<td>DQM</td>
+															<td><a href="https://airportcodes.io/en/airport/duqm-international-airport/">Duqm International Airport</a></td>
+															<td>Duqm</td>
+															<td>Oman</td>
+													</tr>
+											<tr>
+															<td>LTCE</td>
+															<td>ERZ</td>
+															<td><a href="https://airportcodes.io/en/airport/erzurum-international-airport/">Erzurum International Airport</a></td>
+															<td>Erzurum</td>
+															<td>Turkey</td>
+													</tr>
+											<tr>
+															<td>LTAC</td>
+															<td>ESB</td>
+															<td><a href="https://airportcodes.io/en/airport/esenboga-international-airport/">Esenboğa International Airport</a></td>
+															<td>Ankara</td>
+															<td>Turkey</td>
+													</tr>
+											<tr>
+															<td>RPMD</td>
+															<td>DVO</td>
+															<td><a href="https://airportcodes.io/en/airport/francisco-bangoy-international-airport/">Francisco Bangoy International Airport</a></td>
+															<td>Davao City</td>
+															<td>Philippines</td>
+													</tr>
+											<tr>
+															<td>RJFF</td>
+															<td>FUK</td>
+															<td><a href="https://airportcodes.io/en/airport/fukuoka-airport/">Fukuoka Airport</a></td>
+															<td>Fukuoka</td>
+															<td>Japan</td>
+													</tr>
+											<tr>
+															<td>ZSFZ</td>
+															<td>FOC</td>
+															<td><a href="https://airportcodes.io/en/airport/fuzhou-changle-international-airport/">Fuzhou Changle International Airport</a></td>
+															<td>Fuzhou</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>LTAJ</td>
+															<td>GZT</td>
+															<td><a href="https://airportcodes.io/en/airport/gaziantep-international-airport/">Gaziantep International Airport</a></td>
+															<td>Gaziantep</td>
+															<td>Turkey</td>
+													</tr>
+											<tr>
+															<td>RKPK</td>
+															<td>PUS</td>
+															<td><a href="https://airportcodes.io/en/airport/gimhae-international-airport/">Gimhae International Airport</a></td>
+															<td>Busan</td>
+															<td>South Korea</td>
+													</tr>
+											<tr>
+															<td>RKSS</td>
+															<td>GMP</td>
+															<td><a href="https://airportcodes.io/en/airport/gimpo-international-airport/">Gimpo International Airport</a></td>
+															<td>Seoul</td>
+															<td>South Korea</td>
+													</tr>
+											<tr>
+															<td>ZGGG</td>
+															<td>CAN</td>
+															<td><a href="https://airportcodes.io/en/airport/guangzhou-baiyun-international-airport/">Guangzhou Baiyun International Airport</a></td>
+															<td>Guangzhou</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>ZGKL</td>
+															<td>KWL</td>
+															<td><a href="https://airportcodes.io/en/airport/guilin-liangjiang-international-airport/">Guilin Liangjiang International Airport</a></td>
+															<td>Guilin City</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>ZJHK</td>
+															<td>HAK</td>
+															<td><a href="https://airportcodes.io/en/airport/haikou-meilan-international-airport/">Haikou Meilan International Airport</a></td>
+															<td>Haikou</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>OTHH</td>
+															<td>DOH</td>
+															<td><a href="https://airportcodes.io/en/airport/hamad-international-airport/">Hamad International Airport</a></td>
+															<td>Doha</td>
+															<td>Qatar</td>
+													</tr>
+											<tr>
+															<td>ZSHC</td>
+															<td>HGH</td>
+															<td><a href="https://airportcodes.io/en/airport/hangzhou-xiaoshan-international-airport/">Hangzhou Xiaoshan International Airport</a></td>
+															<td>Hangzhou</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>WAAA</td>
+															<td>UPG</td>
+															<td><a href="https://airportcodes.io/en/airport/hasanuddin-international-airport/">Hasanuddin International Airport</a></td>
+															<td>Ujung Pandang-Celebes Island</td>
+															<td>Indonesia</td>
+													</tr>
+											<tr>
+															<td>VGHS</td>
+															<td>DAC</td>
+															<td><a href="https://airportcodes.io/en/airport/hazrat-shahjalal-international-airport/">Hazrat Shahjalal International Airport</a></td>
+															<td>Dhaka</td>
+															<td>Bangladesh</td>
+													</tr>
+											<tr>
+															<td>UBBB</td>
+															<td>GYD</td>
+															<td><a href="https://airportcodes.io/en/airport/heydar-aliyev-international-airport/">Heydar Aliyev International Airport</a></td>
+															<td>Baku</td>
+															<td>Azerbaijan</td>
+													</tr>
+											<tr>
+															<td>VHHH</td>
+															<td>HKG</td>
+															<td><a href="https://airportcodes.io/en/airport/hong-kong-international-airport/">Hong Kong International Airport</a></td>
+															<td>Hong Kong</td>
+															<td>Hong Kong</td>
+													</tr>
+											<tr>
+															<td>OIIE</td>
+															<td>IKA</td>
+															<td><a href="https://airportcodes.io/en/airport/imam-khomeini-international-airport/">Imam Khomeini International Airport</a></td>
+															<td>Tehran</td>
+															<td>Iran</td>
+													</tr>
+											<tr>
+															<td>RKSI</td>
+															<td>ICN</td>
+															<td><a href="https://airportcodes.io/en/airport/seoul-incheon-international-airport/">Seoul Incheon International Airport</a></td>
+															<td>Seoul</td>
+															<td>South Korea</td>
+													</tr>
+											<tr>
+															<td>VIDP</td>
+															<td>DEL</td>
+															<td><a href="https://airportcodes.io/en/airport/indira-gandhi-international-airport/">Indira Gandhi International Airport</a></td>
+															<td>New Delhi</td>
+															<td>India</td>
+													</tr>
+											<tr>
+															<td>LTFM</td>
+															<td>IST</td>
+															<td><a href="https://airportcodes.io/en/airport/istanbul-new-airport/">İstanbul New Airport</a></td>
+															<td>Istanbul</td>
+															<td>Turkey</td>
+													</tr>
+											<tr>
+															<td>RKPC</td>
+															<td>CJU</td>
+															<td><a href="https://airportcodes.io/en/airport/jeju-international-airport/">Jeju International Airport</a></td>
+															<td>Jeju City</td>
+															<td>South Korea</td>
+													</tr>
+											<tr>
+															<td>WARR</td>
+															<td>SUB</td>
+															<td><a href="https://airportcodes.io/en/airport/juanda-international-airport/">Juanda International Airport</a></td>
+															<td>Surabaya</td>
+															<td>Indonesia</td>
+													</tr>
+											<tr>
+															<td>RODN</td>
+															<td>DNA</td>
+															<td><a href="https://airportcodes.io/en/airport/kadena-air-base/">Kadena Air Base</a></td>
+															<td>Nakagami</td>
+															<td>Japan</td>
+													</tr>
+											<tr>
+															<td>RJFK</td>
+															<td>KOJ</td>
+															<td><a href="https://airportcodes.io/en/airport/kagoshima-airport/">Kagoshima Airport</a></td>
+															<td>Kagoshima</td>
+															<td>Japan</td>
+													</tr>
+											<tr>
+															<td>RJBB</td>
+															<td>KIX</td>
+															<td><a href="https://airportcodes.io/en/airport/kansai-international-airport/">Kansai International Airport</a></td>
+															<td>Osaka</td>
+															<td>Japan</td>
+													</tr>
+											<tr>
+															<td>RCKH</td>
+															<td>KHH</td>
+															<td><a href="https://airportcodes.io/en/airport/kaohsiung-international-airport/">Kaohsiung International Airport</a></td>
+															<td>Kaohsiung City</td>
+															<td>Taiwan</td>
+													</tr>
+											<tr>
+															<td>VOBL</td>
+															<td>BLR</td>
+															<td><a href="https://airportcodes.io/en/airport/kempegowda-international-airport/">Kempegowda International Airport</a></td>
+															<td>Bangalore</td>
+															<td>India</td>
+													</tr>
+											<tr>
+															<td>UHHH</td>
+															<td>KHV</td>
+															<td><a href="https://airportcodes.io/en/airport/khabarovsk-novy-airport/">Khabarovsk-Novy Airport</a></td>
+															<td>Khabarovsk</td>
+															<td>Russia</td>
+													</tr>
+											<tr>
+															<td>OEDR</td>
+															<td>DHA</td>
+															<td><a href="https://airportcodes.io/en/airport/king-abdulaziz-air-base/">King Abdulaziz Air Base</a></td>
+															<td>Dhahran</td>
+															<td>Saudi Arabia</td>
+													</tr>
+											<tr>
+															<td>OEJN</td>
+															<td>JED</td>
+															<td><a href="https://airportcodes.io/en/airport/king-abdulaziz-international-airport/">King Abdulaziz International Airport</a></td>
+															<td>Jeddah</td>
+															<td>Saudi Arabia</td>
+													</tr>
+											<tr>
+															<td>OEDF</td>
+															<td>DMM</td>
+															<td><a href="https://airportcodes.io/en/airport/king-fahd-international-airport/">King Fahd International Airport</a></td>
+															<td>Ad Dammam</td>
+															<td>Saudi Arabia</td>
+													</tr>
+											<tr>
+															<td>OERK</td>
+															<td>RUH</td>
+															<td><a href="https://airportcodes.io/en/airport/king-khaled-international-airport/">King Khaled International Airport</a></td>
+															<td>Riyadh</td>
+															<td>Saudi Arabia</td>
+													</tr>
+											<tr>
+															<td>RCBS</td>
+															<td>KNH</td>
+															<td><a href="https://airportcodes.io/en/airport/kinmen-airport/">Kinmen Airport</a></td>
+															<td>Shang-I</td>
+															<td>Taiwan</td>
+													</tr>
+											<tr>
+															<td>USSS</td>
+															<td>SVX</td>
+															<td><a href="https://airportcodes.io/en/airport/koltsovo-airport/">Koltsovo Airport</a></td>
+															<td>Yekaterinburg</td>
+															<td>Russia</td>
+													</tr>
+											<tr>
+															<td>WMKK</td>
+															<td>KUL</td>
+															<td><a href="https://airportcodes.io/en/airport/kuala-lumpur-international-airport/">Kuala Lumpur International Airport</a></td>
+															<td>Kuala Lumpur</td>
+															<td>Malaysia</td>
+													</tr>
+											<tr>
+															<td>WIMM</td>
+															<td>KNO</td>
+															<td><a href="https://airportcodes.io/en/airport/kualanamu-international-airport/">Kualanamu International Airport</a></td>
+															<td></td>
+															<td>Indonesia</td>
+													</tr>
+											<tr>
+															<td>ZPPP</td>
+															<td>KMG</td>
+															<td><a href="https://airportcodes.io/en/airport/kunming-changshui-international-airport/">Kunming Changshui International Airport</a></td>
+															<td>Kunming</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>RKJK</td>
+															<td>KUV</td>
+															<td><a href="https://airportcodes.io/en/airport/kunsan-air-base/">Kunsan Air Base</a></td>
+															<td>Kunsan</td>
+															<td>South Korea</td>
+													</tr>
+											<tr>
+															<td>OKBK</td>
+															<td>KWI</td>
+															<td><a href="https://airportcodes.io/en/airport/kuwait-international-airport/">Kuwait International Airport</a></td>
+															<td>Kuwait City</td>
+															<td>Kuwait</td>
+													</tr>
+											<tr>
+															<td>RPMY</td>
+															<td>CGY</td>
+															<td><a href="https://airportcodes.io/en/airport/laguindingan-airport/">Laguindingan Airport</a></td>
+															<td>Cagayan de Oro City</td>
+															<td>Philippines</td>
+													</tr>
+											<tr>
+															<td>LCLK</td>
+															<td>LCA</td>
+															<td><a href="https://airportcodes.io/en/airport/larnaca-international-airport/">Larnaca International Airport</a></td>
+															<td>Larnarca</td>
+															<td>Cyprus</td>
+													</tr>
+											<tr>
+															<td>ZUGY</td>
+															<td>KWE</td>
+															<td><a href="https://airportcodes.io/en/airport/longdongbao-airport/">Longdongbao Airport</a></td>
+															<td>Guiyang</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>VMMC</td>
+															<td>MFM</td>
+															<td><a href="https://airportcodes.io/en/airport/macau-international-airport/">Macau International Airport</a></td>
+															<td>Macau</td>
+															<td>Macau</td>
+													</tr>
+											<tr>
+															<td>RPVM</td>
+															<td>CEB</td>
+															<td><a href="https://airportcodes.io/en/airport/mactan-cebu-international-airport/">Mactan Cebu International Airport</a></td>
+															<td>Lapu-Lapu City</td>
+															<td>Philippines</td>
+													</tr>
+											<tr>
+															<td>VRMM</td>
+															<td>MLE</td>
+															<td><a href="https://airportcodes.io/en/airport/male-international-airport/">Malé International Airport</a></td>
+															<td>Malé</td>
+															<td>Maldives</td>
+													</tr>
+											<tr>
+															<td>UCFM</td>
+															<td>FRU</td>
+															<td><a href="https://airportcodes.io/en/airport/manas-international-airport/">Manas International Airport</a></td>
+															<td>Bishkek</td>
+															<td>Kyrgyzstan</td>
+													</tr>
+											<tr>
+															<td>VYMD</td>
+															<td>MDL</td>
+															<td><a href="https://airportcodes.io/en/airport/mandalay-international-airport/">Mandalay International Airport</a></td>
+															<td>Mandalay</td>
+															<td>Burma</td>
+													</tr>
+											<tr>
+															<td>OIMM</td>
+															<td>MHD</td>
+															<td><a href="https://airportcodes.io/en/airport/mashhad-international-airport/">Mashhad International Airport</a></td>
+															<td>Mashhad</td>
+															<td>Iran</td>
+													</tr>
+											<tr>
+															<td>VCRI</td>
+															<td>HRI</td>
+															<td><a href="https://airportcodes.io/en/airport/mattala-rajapaksa-international-airport/">Mattala Rajapaksa International Airport</a></td>
+															<td>Mattalla</td>
+															<td>Sri Lanka</td>
+													</tr>
+											<tr>
+															<td>OIII</td>
+															<td>THR</td>
+															<td><a href="https://airportcodes.io/en/airport/mehrabad-international-airport/">Mehrabad International Airport</a></td>
+															<td>Tehran</td>
+															<td>Iran</td>
+													</tr>
+											<tr>
+															<td>LTFE</td>
+															<td>BJV</td>
+															<td><a href="https://airportcodes.io/en/airport/milas-bodrum-airport/">Milas Bodrum Airport</a></td>
+															<td>Bodrum</td>
+															<td>Turkey</td>
+													</tr>
+											<tr>
+															<td>RJNS</td>
+															<td>FSZ</td>
+															<td><a href="https://airportcodes.io/en/airport/mt-fuji-shizuoka-airport/">Mt. Fuji Shizuoka Airport</a></td>
+															<td>Makinohara / Shimada</td>
+															<td>Japan</td>
+													</tr>
+											<tr>
+															<td>RKJB</td>
+															<td>MWX</td>
+															<td><a href="https://airportcodes.io/en/airport/muan-international-airport/">Muan International Airport</a></td>
+															<td>Piseo-ri (Muan)</td>
+															<td>South Korea</td>
+													</tr>
+											<tr>
+															<td>OOMS</td>
+															<td>MCT</td>
+															<td><a href="https://airportcodes.io/en/airport/muscat-international-airport/">Muscat International Airport</a></td>
+															<td>Muscat</td>
+															<td>Oman</td>
+													</tr>
+											<tr>
+															<td>ROAH</td>
+															<td>OKA</td>
+															<td><a href="https://airportcodes.io/en/airport/naha-airport/">Naha Airport</a></td>
+															<td>Naha</td>
+															<td>Japan</td>
+													</tr>
+											<tr>
+															<td>ZSNJ</td>
+															<td>NKG</td>
+															<td><a href="https://airportcodes.io/en/airport/nanjing-lukou-airport/">Nanjing Lukou Airport</a></td>
+															<td>Nanjing</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>ZGNN</td>
+															<td>NNG</td>
+															<td><a href="https://airportcodes.io/en/airport/nanning-wuxu-airport/">Nanning Wuxu Airport</a></td>
+															<td>Nanning</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>RJAA</td>
+															<td>NRT</td>
+															<td><a href="https://airportcodes.io/en/airport/narita-international-airport/">Narita International Airport</a></td>
+															<td>Tokyo</td>
+															<td>Japan</td>
+													</tr>
+											<tr>
+															<td>VECC</td>
+															<td>CCU</td>
+															<td><a href="https://airportcodes.io/en/airport/netaji-subhash-chandra-bose-international-airport/">Netaji Subhash Chandra Bose International Airport</a></td>
+															<td>Kolkata</td>
+															<td>India</td>
+													</tr>
+											<tr>
+															<td>RJCC</td>
+															<td>CTS</td>
+															<td><a href="https://airportcodes.io/en/airport/new-chitose-airport/">New Chitose Airport</a></td>
+															<td>Chitose / Tomakomai</td>
+															<td>Japan</td>
+													</tr>
+											<tr>
+															<td>OPIS</td>
+															<td>ISB</td>
+															<td><a href="https://airportcodes.io/en/airport/new-islamabad-international-airport/">New Islamabad International Airport</a></td>
+															<td>Islamabad</td>
+															<td>Pakistan</td>
+													</tr>
+											<tr>
+															<td>WADD</td>
+															<td>DPS</td>
+															<td><a href="https://airportcodes.io/en/airport/ngurah-rai-bali-international-airport/">Ngurah Rai (Bali) International Airport</a></td>
+															<td>Denpasar-Bali Island</td>
+															<td>Indonesia</td>
+													</tr>
+											<tr>
+															<td>ZSNB</td>
+															<td>NGB</td>
+															<td><a href="https://airportcodes.io/en/airport/ningbo-lishe-international-airport/">Ningbo Lishe International Airport</a></td>
+															<td>Ningbo</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>RPLL</td>
+															<td>MNL</td>
+															<td><a href="https://airportcodes.io/en/airport/ninoy-aquino-international-airport/">Ninoy Aquino International Airport</a></td>
+															<td>Manila</td>
+															<td>Philippines</td>
+													</tr>
+											<tr>
+															<td>VVNB</td>
+															<td>HAN</td>
+															<td><a href="https://airportcodes.io/en/airport/noi-bai-international-airport/">Noi Bai International Airport</a></td>
+															<td>Hanoi</td>
+															<td>Vietnam</td>
+													</tr>
+											<tr>
+															<td>RJOO</td>
+															<td>ITM</td>
+															<td><a href="https://airportcodes.io/en/airport/osaka-international-airport/">Osaka International Airport</a></td>
+															<td>Osaka</td>
+															<td>Japan</td>
+													</tr>
+											<tr>
+															<td>RKSO</td>
+															<td>OSN</td>
+															<td><a href="https://airportcodes.io/en/airport/osan-air-base/">Osan Air Base</a></td>
+															<td>Pyeongtaek</td>
+															<td>South Korea</td>
+													</tr>
+											<tr>
+															<td>LLOV</td>
+															<td>VDA</td>
+															<td><a href="https://airportcodes.io/en/airport/ovda-international-airport/">Ovda International Airport</a></td>
+															<td>Eilat</td>
+															<td>Israel</td>
+													</tr>
+											<tr>
+															<td>LCPH</td>
+															<td>PFO</td>
+															<td><a href="https://airportcodes.io/en/airport/paphos-international-airport/">Paphos International Airport</a></td>
+															<td>Paphos</td>
+															<td>Cyprus</td>
+													</tr>
+											<tr>
+															<td>VDPP</td>
+															<td>PNH</td>
+															<td><a href="https://airportcodes.io/en/airport/phnom-penh-international-airport/">Phnom Penh International Airport</a></td>
+															<td>Phnom Penh</td>
+															<td>Cambodia</td>
+													</tr>
+											<tr>
+															<td>VTSP</td>
+															<td>HKT</td>
+															<td><a href="https://airportcodes.io/en/airport/phuket-international-airport/">Phuket International Airport</a></td>
+															<td>Phuket</td>
+															<td>Thailand</td>
+													</tr>
+											<tr>
+															<td>OEMA</td>
+															<td>MED</td>
+															<td><a href="https://airportcodes.io/en/airport/prince-mohammad-bin-abdulaziz-airport/">Prince Mohammad Bin Abdulaziz Airport</a></td>
+															<td>Medina</td>
+															<td>Saudi Arabia</td>
+													</tr>
+											<tr>
+															<td>OJAI</td>
+															<td>AMM</td>
+															<td><a href="https://airportcodes.io/en/airport/queen-alia-international-airport/">Queen Alia International Airport</a></td>
+															<td>Amman</td>
+															<td>Jordan</td>
+													</tr>
+											<tr>
+															<td>VOHS</td>
+															<td>HYD</td>
+															<td><a href="https://airportcodes.io/en/airport/rajiv-gandhi-international-airport/">Rajiv Gandhi International Airport</a></td>
+															<td>Hyderabad</td>
+															<td>India</td>
+													</tr>
+											<tr>
+															<td>OORQ</td>
+															<td>MNH</td>
+															<td><a href="https://airportcodes.io/en/airport/rustaq-airport/">Rustaq Airport</a></td>
+															<td>Al Masna'ah</td>
+															<td>Oman</td>
+													</tr>
+											<tr>
+															<td>LTFJ</td>
+															<td>SAW</td>
+															<td><a href="https://airportcodes.io/en/airport/sabiha-gokcen-international-airport/">Sabiha Gökçen International Airport</a></td>
+															<td>Istanbul</td>
+															<td>Turkey</td>
+													</tr>
+											<tr>
+															<td>ZJSY</td>
+															<td>SYX</td>
+															<td><a href="https://airportcodes.io/en/airport/sanya-phoenix-international-airport/">Sanya Phoenix International Airport</a></td>
+															<td>Sanya</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>UAKK</td>
+															<td>KGF</td>
+															<td><a href="https://airportcodes.io/en/airport/sary-arka-airport/">Sary-Arka Airport</a></td>
+															<td>Karaganda</td>
+															<td>Kazakhstan</td>
+													</tr>
+											<tr>
+															<td>WAJJ</td>
+															<td>DJJ</td>
+															<td><a href="https://airportcodes.io/en/airport/sentani-international-airport/">Sentani International Airport</a></td>
+															<td>Jayapura-Papua Island</td>
+															<td>Indonesia</td>
+													</tr>
+											<tr>
+															<td>ZSSS</td>
+															<td>SHA</td>
+															<td><a href="https://airportcodes.io/en/airport/shanghai-hongqiao-international-airport/">Shanghai Hongqiao International Airport</a></td>
+															<td>Shanghai</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>ZSPD</td>
+															<td>PVG</td>
+															<td><a href="https://airportcodes.io/en/airport/shanghai-pudong-international-airport/">Shanghai Pudong International Airport</a></td>
+															<td>Shanghai</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>OMSJ</td>
+															<td>SHJ</td>
+															<td><a href="https://airportcodes.io/en/airport/sharjah-international-airport/">Sharjah International Airport</a></td>
+															<td>Sharjah</td>
+															<td>United Arab Emirates</td>
+													</tr>
+											<tr>
+															<td>ZGSZ</td>
+															<td>SZX</td>
+															<td><a href="https://airportcodes.io/en/airport/shenzhen-baoan-international-airport/">Shenzhen Bao'an International Airport</a></td>
+															<td>Shenzhen</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>OISS</td>
+															<td>SYZ</td>
+															<td><a href="https://airportcodes.io/en/airport/shiraz-shahid-dastghaib-international-airport/">Shiraz Shahid Dastghaib International Airport</a></td>
+															<td>Shiraz</td>
+															<td>Iran</td>
+													</tr>
+											<tr>
+															<td>OPST</td>
+															<td>SKT</td>
+															<td><a href="https://airportcodes.io/en/airport/sialkot-airport/">Sialkot Airport</a></td>
+															<td>Sialkot</td>
+															<td>Pakistan</td>
+													</tr>
+											<tr>
+															<td>VDSR</td>
+															<td>REP</td>
+															<td><a href="https://airportcodes.io/en/airport/siem-reap-international-airport/">Siem Reap International Airport</a></td>
+															<td>Siem Reap</td>
+															<td>Cambodia</td>
+													</tr>
+											<tr>
+															<td>WSSS</td>
+															<td>SIN</td>
+															<td><a href="https://airportcodes.io/en/airport/singapore-changi-airport/">Singapore Changi Airport</a></td>
+															<td>Singapore</td>
+															<td>Singapore</td>
+													</tr>
+											<tr>
+															<td>WIII</td>
+															<td>CGK</td>
+															<td><a href="https://airportcodes.io/en/airport/soekarno-hatta-international-airport/">Soekarno-Hatta International Airport</a></td>
+															<td>Jakarta</td>
+															<td>Indonesia</td>
+													</tr>
+											<tr>
+															<td>VIAR</td>
+															<td>ATQ</td>
+															<td><a href="https://airportcodes.io/en/airport/sri-guru-ram-dass-jee-international-airport/">Sri Guru Ram Dass Jee International Airport</a></td>
+															<td>Amritsar</td>
+															<td>India</td>
+													</tr>
+											<tr>
+															<td>LTFC</td>
+															<td>ISE</td>
+															<td><a href="https://airportcodes.io/en/airport/suleyman-demirel-international-airport/">Süleyman Demirel International Airport</a></td>
+															<td>Isparta</td>
+															<td>Turkey</td>
+													</tr>
+											<tr>
+															<td>VTBS</td>
+															<td>BKK</td>
+															<td><a href="https://airportcodes.io/en/airport/suvarnabhumi-airport/">Suvarnabhumi Airport</a></td>
+															<td>Bangkok</td>
+															<td>Thailand</td>
+													</tr>
+											<tr>
+															<td>OITT</td>
+															<td>TBZ</td>
+															<td><a href="https://airportcodes.io/en/airport/tabriz-international-airport/">Tabriz International Airport</a></td>
+															<td>Tabriz</td>
+															<td>Iran</td>
+													</tr>
+											<tr>
+															<td>ZYHB</td>
+															<td>HRB</td>
+															<td><a href="https://airportcodes.io/en/airport/taiping-airport/">Taiping Airport</a></td>
+															<td>Harbin</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>RCTP</td>
+															<td>TPE</td>
+															<td><a href="https://airportcodes.io/en/airport/taiwan-taoyuan-international-airport/">Taiwan Taoyuan International Airport</a></td>
+															<td>Taipei</td>
+															<td>Taiwan</td>
+													</tr>
+											<tr>
+															<td>ZBYN</td>
+															<td>TYN</td>
+															<td><a href="https://airportcodes.io/en/airport/taiyuan-wusu-airport/">Taiyuan Wusu Airport</a></td>
+															<td>Taiyuan</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>VVTS</td>
+															<td>SGN</td>
+															<td><a href="https://airportcodes.io/en/airport/tan-son-nhat-international-airport/">Tan Son Nhat International Airport</a></td>
+															<td>Ho Chi Minh City</td>
+															<td>Vietnam</td>
+													</tr>
+											<tr>
+															<td>ZYTX</td>
+															<td>SHE</td>
+															<td><a href="https://airportcodes.io/en/airport/taoxian-airport/">Taoxian Airport</a></td>
+															<td>Shenyang</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>UTTT</td>
+															<td>TAS</td>
+															<td><a href="https://airportcodes.io/en/airport/tashkent-international-airport/">Tashkent International Airport</a></td>
+															<td>Tashkent</td>
+															<td>Uzbekistan</td>
+													</tr>
+											<tr>
+															<td>UGTB</td>
+															<td>TBS</td>
+															<td><a href="https://airportcodes.io/en/airport/tbilisi-international-airport/">Tbilisi International Airport</a></td>
+															<td>Tbilisi</td>
+															<td>Georgia</td>
+													</tr>
+											<tr>
+															<td>ZBTJ</td>
+															<td>TSN</td>
+															<td><a href="https://airportcodes.io/en/airport/tianjin-binhai-international-airport/">Tianjin Binhai International Airport</a></td>
+															<td>Tianjin</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>RJTT</td>
+															<td>HND</td>
+															<td><a href="https://airportcodes.io/en/airport/tokyo-haneda-airport/">Tokyo Haneda Airport</a></td>
+															<td>Tokyo</td>
+															<td>Japan</td>
+													</tr>
+											<tr>
+															<td>UNNT</td>
+															<td>OVB</td>
+															<td><a href="https://airportcodes.io/en/airport/tolmachevo-airport/">Tolmachevo Airport</a></td>
+															<td>Novosibirsk</td>
+															<td>Russia</td>
+													</tr>
+											<tr>
+															<td>LTCG</td>
+															<td>TZX</td>
+															<td><a href="https://airportcodes.io/en/airport/trabzon-international-airport/">Trabzon International Airport</a></td>
+															<td>Trabzon</td>
+															<td>Turkey</td>
+													</tr>
+											<tr>
+															<td>VNKT</td>
+															<td>KTM</td>
+															<td><a href="https://airportcodes.io/en/airport/tribhuvan-international-airport/">Tribhuvan International Airport</a></td>
+															<td>Kathmandu</td>
+															<td>Nepal</td>
+													</tr>
+											<tr>
+															<td>VOTV</td>
+															<td>TRV</td>
+															<td><a href="https://airportcodes.io/en/airport/trivandrum-international-airport/">Trivandrum International Airport</a></td>
+															<td>Thiruvananthapuram</td>
+															<td>India</td>
+													</tr>
+											<tr>
+															<td>ZWWW</td>
+															<td>URC</td>
+															<td><a href="https://airportcodes.io/en/airport/urumqi-diwopu-international-airport/">Ürümqi Diwopu International Airport</a></td>
+															<td>Ürümqi</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>ZSWZ</td>
+															<td>WNZ</td>
+															<td><a href="https://airportcodes.io/en/airport/wenzhou-longwan-international-airport/">Wenzhou Longwan International Airport</a></td>
+															<td>Wenzhou</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>ZHHH</td>
+															<td>WUH</td>
+															<td><a href="https://airportcodes.io/en/airport/wuhan-tianhe-international-airport/">Wuhan Tianhe International Airport</a></td>
+															<td>Wuhan</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>ZLXY</td>
+															<td>XIY</td>
+															<td><a href="https://airportcodes.io/en/airport/xian-xianyang-international-airport/">Xi'an Xianyang International Airport</a></td>
+															<td>Xi'an</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>ZSAM</td>
+															<td>XMN</td>
+															<td><a href="https://airportcodes.io/en/airport/xiamen-gaoqi-international-airport/">Xiamen Gaoqi International Airport</a></td>
+															<td>Xiamen</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>VYYY</td>
+															<td>RGN</td>
+															<td><a href="https://airportcodes.io/en/airport/yangon-international-airport/">Yangon International Airport</a></td>
+															<td>Yangon</td>
+															<td>Burma</td>
+													</tr>
+											<tr>
+															<td>ZSJN</td>
+															<td>TNA</td>
+															<td><a href="https://airportcodes.io/en/airport/yaoqiang-airport/">Yaoqiang Airport</a></td>
+															<td>Jinan</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>RJTY</td>
+															<td>OKO</td>
+															<td><a href="https://airportcodes.io/en/airport/yokota-air-base/">Yokota Air Base</a></td>
+															<td>Fussa</td>
+															<td>Japan</td>
+													</tr>
+											<tr>
+															<td>ZHCC</td>
+															<td>CGO</td>
+															<td><a href="https://airportcodes.io/en/airport/zhengzhou-xinzheng-international-airport/">Zhengzhou Xinzheng International Airport</a></td>
+															<td>Zhengzhou</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>ZYTL</td>
+															<td>DLC</td>
+															<td><a href="https://airportcodes.io/en/airport/zhoushuizi-airport/">Zhoushuizi Airport</a></td>
+															<td>Dalian</td>
+															<td>China</td>
+													</tr>
+											<tr>
+															<td>UDYZ</td>
+															<td>EVN</td>
+															<td><a href="https://airportcodes.io/en/airport/zvartnots-international-airport/">Zvartnots International Airport</a></td>
+															<td>Yerevan</td>
+															<td>Armenia</td>
+													</tr>
+									</tbody>
+			</table>
+		</div>
+	</div>r><tr class="border1"><td><a href="http://www.emirates.com/" rel="nofollow" target="_top">Emirates Airline</a></td><td>&nbsp;</td><td style="text-align:right">27,454</td><td style="text-align:right">31,422</td>
+<td>&nbsp;</td>
+<td> Dubai International Airport</td><td><a href="map/google_map_Dubai.htm">Dubai</a></td><td><div class="flag" id="ARE"></div></td><td><a href="arab_emirates.htm">United Arab Emirates</a></td></tr>
+<tr class="border1"><td><a href="http://www.qatarairways.com" rel="nofollow" target="_top">Qatar Airways</a></td><td>&nbsp;</td><td style="text-align:right"> 10,212</td><td style="text-align:right">12,392</td>
+<td>&nbsp;</td>
+<td>Doha International Airport</td><td><a href="map/google_map_Doha.htm">Doha</a></td><td><div class="flag" id="QAT"></div></td><td><a href="qatar.htm" title="Qatar">Qatar</a></td></tr>
+<tr class="border1"><td><a href="http://www.saudiairlines.com/" rel="nofollow" target="_top">Saudi Arabian Airlines</a></td><td>&nbsp;</td><td style="text-align:right">18,334</td><td style="text-align:right">18,172</td>
+<td>&nbsp;</td>
+<td>Jeddah-King Abdulaziz International </td><td>Jeddah</td><td><div class="flag" id="SAU"></div></td><td><a href="saudi_arabia.htm">Saudi Arabia</a></td></tr>
+<tr class="border1"><td><strong><br>Asia/Pacific</strong></td><td>&nbsp;</td><td style="text-align:right">&nbsp;</td><td style="text-align:right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr class="border1"><td><a href="https://www.airasia.com/" rel="nofollow" target="_top">AirAsia</a></td><td>&nbsp;</td><td style="text-align:right">14,253</td><td style="text-align:right">16,055</td>
+<td>&nbsp;</td>
+<td>Kuala Lumpur International Airport</td><td><a href="map/google_map_Kuala_Lumpur.htm">Kuala Lumpur</a></td><td><div class="flag" id="MYS2"></div></td><td><a href="malaysia.htm">Malaysia</a></td></tr>
+<tr class="border1"><td><a href="http://airchina.com/" rel="nofollow" target="_top">Air China</a></td><td>&nbsp;</td><td style="text-align:right">39,841</td><td style="text-align:right">46,241</td>
+<td>&nbsp;</td>
+<td>Beijing Capital International Airport</td><td><a href="map/google_map_Beijing.htm">Beijing</a></td><td><div class="flag" id="CHN"></div></td><td><a href="china.htm">China</a></td></tr>
+<tr class="border1"><td><a href="http://www.airnewzealand.co.nz/" rel="nofollow" target="_top">Air New Zealand Group</a></td><td>&nbsp;</td><td style="text-align:right">12,368</td><td style="text-align:right">12,324</td>
+<td>&nbsp;</td>
+<td>Auckland Airport</td><td><a href="map/google_map_Auckland.htm">Auckland</a></td><td><div class="flag" id="NZL"></div></td><td><a href="new_zealand.htm">New Zealand</a></td></tr>
+<tr class="border1"><td><a href="http://www.ana.co.jp/" rel="nofollow" target="_top">ANA - All Nippon Airways</a></td><td>&nbsp;</td><td style="text-align:right">44,562</td><td style="text-align:right">45,743</td>
+<td>&nbsp;</td>
+<td><a href="map/google_map_Tokyo.htm"></a> Narita International Airport (<a href="airport_code.htm">IATA code</a>: NRT)</td><td><a href="map/google_map_Tokyo.htm">Tokyo</a></td><td><div class="flag" id="JPN"></div></td><td><a href="japan.htm">Japan</a></td></tr>
+<tr class="border1"><td><a href="http://flyasiana.com/" rel="nofollow" target="_top">Asiana Airlines</a></td><td>&nbsp;</td><td style="text-align:right">12,372</td><td style="text-align:right">13,944</td>
+<td>&nbsp;</td>
+<td>Incheon International Airport</td><td><a href="map/google_map_Seoul.htm">Seoul</a></td><td><div class="flag" id="KOR2"></div></td><td><a href="korea_south.htm">South Korea</a></td></tr>
+<tr class="border1"><td><a href="http://cathaypacific.com/" rel="nofollow" target="_top">Cathay Pacific</a></td><td>&nbsp;</td><td style="text-align:right">24,558</td><td style="text-align:right">26,796</td>
+<td>&nbsp;</td>
+<td>Hong Kong International Airport</td><td><a href="map/google_map_hong_kong.htm">Hong Kong</a></td><td><div class="flag" id="CHN2"></div></td><td><a href="china.htm">China</a></td></tr>
+<tr class="border1">
+<td><a href="http://www.cebupacificair.com/" rel="nofollow" target="_top">Cebu Pacific Air</a></td>
+<td>&nbsp;</td>
+<td style="text-align:right">&nbsp;</td>
+<td style="text-align:right">10,460</td>
+<td>&nbsp;</td>
+<td>Ninoy Aquino International Airport </td>
+<td><a href="map/google_map_Manila.htm">Manila</a></td>
+<td><div class="flag" id="PHL"></div></td>
+<td><a href="philippines.htm">Philippines</a></td>
+</tr>
+<tr class="border1"><td><a href="http://www.china-airlines.com/" rel="nofollow" target="_top">China Airlines</a></td><td>&nbsp;</td><td style="text-align:right">10,024</td><td style="text-align:right">11,326</td>
+<td>&nbsp;</td>
+<td>Taiwan Taoyuan International </td><td><a href="map/google_map_Taipei.htm">Taipei</a></td><td><div class="flag" id="TWN"></div></td><td><a href="taiwan.htm">Taiwan</a></td></tr>
+<tr class="border1"><td><a href="http://www.flychinaeastern.com/" rel="nofollow" target="_top">China Eastern Airlines</a></td><td>&nbsp;</td><td style="text-align:right">44,043</td><td style="text-align:right">64,878</td>
+<td>&nbsp;</td>
+<td>Shanghai Hongqiao International Airport</td><td><a href="map/google_map_Shanghai.htm">Shanghai</a></td><td><div class="flag" id="CHN3"></div></td><td><a href="china.htm">China</a></td></tr>
+<tr class="border1"><td><a href="http://www.csair.com/" rel="nofollow" target="_top">China Southern Airlines</a></td><td>&nbsp;</td><td style="text-align:right">66,279</td><td style="text-align:right">76,455</td>
+<td>&nbsp;</td>
+<td>Guangzhou Baiyun International Airport</td><td><a href="map/google_map_Guangzhou.htm">Guangzhou</a></td><td><div class="flag" id="CHN4"></div></td><td>China</td></tr>
+<tr class="border1"><td><a href="http://www.garuda-indonesia.com/" rel="nofollow" target="_top">Garuda Indonesia</a></td><td>&nbsp;</td><td style="text-align:right">11,206</td><td style="text-align:right">12,775</td>
+<td>&nbsp;</td>
+<td>Soekarno-Hatta International Airport</td><td><a href="map/google_map_Jakarta.htm">Jakarta</a></td><td><div class="flag" id="IDN2"></div></td><td><a href="indonesia.htm">Indonesia</a></td></tr>
+<tr class="border1"><td><a href="http://www.hnair.com/" rel="nofollow" target="_top">Hainan Group</a></td><td>&nbsp;</td><td style="text-align:right">17,879</td><td style="text-align:right">18,626</td>
+<td>&nbsp;</td>
+<td>Haikou Meilan International Airport</td><td>Haikou, Hainan</td><td><div class="flag" id="CHN5"></div></td><td><a href="china.htm">China</a></td></tr>
+<tr class="border1"><td><a href="http://jal.com/" rel="nofollow" target="_top">JAL Group</a>(Japan Airlines)</td><td>&nbsp;</td><td style="text-align:right">47,952</td><td style="text-align:right">34,795</td>
+<td>&nbsp;</td>
+<td>Narita International Airport and <br>Tokyo International Airport</td><td><a href="map/google_map_Tokyo.htm">Tokyo</a></td><td><div class="flag" id="JPN2"></div></td><td><a href="japan.htm">Japan</a></td></tr>
+<tr class="border1"><td><a href="http://www.jetairways.com/" rel="nofollow" target="_top">Jet Airways</a></td><td>&nbsp;</td><td style="text-align:right">12,039</td><td style="text-align:right">14,667</td>
+<td>&nbsp;</td>
+<td>Chhatrapati Shivaji International Airport </td><td><a href="map/google_map_Mumbai.htm">Mumbai</a></td><td><div class="flag" id="IND"></div></td><td><a href="india.htm">India</a></td></tr>
+<tr class="border1"><td><a href="https://www.jetstar.com/" rel="nofollow" target="_top">Jetstar</a></td><td>&nbsp;</td><td style="text-align:right">10,233</td><td style="text-align:right">12,277</td>
+<td>&nbsp;</td>
+<td>Melbourne Airport</td><td><a href="map/google_map_Melbourne.htm">Melbourne</a></td><td><div class="flag" id="AUS3"></div></td><td><a href="australia.htm">Australia</a></td></tr>
+<tr class="border1"><td><a href="http://flykingfisher.com/" rel="nofollow" target="_top">Kingfisher Airlines</a></td><td>&nbsp;</td><td style="text-align:right">11,060</td><td style="text-align:right">12,012</td>
+<td>&nbsp;</td>
+<td>Bengaluru International Airport</td><td>Bangalore</td><td><div class="flag" id="IND2"></div></td><td><a href="india.htm">India</a></td></tr>
+<tr class="border1"><td><a href="http://www.koreanair.com/" rel="nofollow" target="_top">Korean Air</a></td><td>&nbsp;</td><td style="text-align:right">20,410</td><td style="text-align:right">22,926</td>
+<td>&nbsp;</td>
+<td>Incheon International Airport</td><td><a href="map/google_map_Seoul.htm">Seoul</a></td><td><div class="flag" id="KOR"></div></td><td><a href="korea_south.htm">South Korea</a></td></tr>
+<tr class="border1"><td><a href="http://www2.lionair.co.id/" rel="nofollow" target="_top">Lion Air</a></td><td>&nbsp;</td><td style="text-align:right">13,377</td><td style="text-align:right">20,500</td>
+<td>&nbsp;</td>
+<td>Soekarno-Hatta International Airport</td><td><a href="map/google_map_Jakarta.htm">Jakarta</a></td><td><div class="flag" id="IDN"></div></td><td><a href="indonesia.htm">Indonesia</a></td></tr>
+<tr class="border1"><td><a href="http://www.malaysiaairlines.com/" rel="nofollow" target="_top">Malaysia Airlines</a></td><td>&nbsp;</td><td style="text-align:right">11,947</td><td style="text-align:right">13,112</td>
+<td>&nbsp;</td>
+<td>Kuala Lumpur International Airport</td><td><a href="map/google_map_Kuala_Lumpur.htm">Kuala Lumpur</a></td><td><div class="flag" id="MYS"></div></td><td><a href="malaysia.htm">Malaysia</a></td></tr>
+<tr class="border1"><td><a href="http://www.qantas.com.au/" rel="nofollow" target="_top">Qantas</a></td><td>&nbsp;</td><td style="text-align:right">23,622</td><td style="text-align:right">22,540</td>
+<td>&nbsp;</td>
+<td>Sydney Airport</td><td><a href="map/google_map_Sydney.htm">Sydney</a></td><td><div class="flag" id="AUS"></div></td><td><a href="australia.htm">Australia</a></td></tr>
+<tr class="border1"><td><a href="http://www.shenzhenair.com/" rel="nofollow" target="_top">Shenzhen Airlines</a></td><td>&nbsp;</td><td style="text-align:right">15,109</td><td style="text-align:right">17,568</td>
+<td>&nbsp;</td>
+<td>Shenzhen Bao'an International Airport</td><td><a href="map/google_map_Shenzhen.htm">Shenzhen</a></td><td><div class="flag" id="CHN6"></div></td><td><a href="china.htm">China</a></td></tr>
+<tr class="border1"><td><a href="http://www.singaporeair.com/" rel="nofollow" target="_top">Singapore Airlines</a></td><td>&nbsp;</td><td style="text-align:right">16,480</td><td style="text-align:right">16,647</td>
+<td>&nbsp;</td>
+<td>Singapore Changi Airport</td><td><a href="map/google_map_singapore.htm">Singapore</a></td><td><div class="flag" id="SGP"></div></td><td><a href="singapore.htm">Singapore</a></td></tr>
+<tr class="border1"><td><a href="http://www.thaiairways.com/" rel="nofollow" target="_top">Thai Airways International</a></td><td>&nbsp;</td><td style="text-align:right">18,477</td><td style="text-align:right">18,165</td>
+<td>&nbsp;</td>
+<td>Suvarnabhumi Airport</td><td><a href="map/google_map_Bangkok.htm">Bangkok</a></td><td><div class="flag" id="THA"></div></td><td><a href="thailand.htm">Thailand</a></td></tr>
+<tr class="border1">
+<td><a href="http://www.vietnamairlines.com/" rel="nofollow" target="_top">Vietnam Airlines</a></td>
+<td>&nbsp;</td>
+<td style="text-align:right">&nbsp;</td>
+<td style="text-align:right">12,300</td>
+<td>&nbsp;</td>
+<td>Noi Bai International Airport<br>
+Tan Son Nhat International Airport<br>
+</td>
+<td><a href="map/google_map_Hanoi.htm">Hanoi</a><br>
+<a href="map/google_map_Ho_Chi_Minh_City.htm">Ho Chi Minh City</a><br>
+</td>
+<td><div class="flag" id="VNM"></div></td>
+<td><a href="vietnam.htm">Vietnam</a></td>
+</tr>
+<tr class="border1"><td><a href="http://www.virginblue.com.au/">Virgin Blue Airlines</a></td><td>&nbsp;</td><td style="text-align:right">18,251</td><td style="text-align:right">19,009</td>
+<td>&nbsp;</td>
+<td>Brisbane Airport</td><td><a href="map/google_map_Brisbane.htm">Brisbane</a></td><td><div class="flag" id="AUS2"></div></td><td><a href="australia.htm">Australia</a></td></tr>
+<tr class="border1"><td><strong><br> Europe</strong></td><td>&nbsp;</td><td style="text-align:right">&nbsp;</td><td style="text-align:right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr class="border1"><td><a href="https://www.aerlingus.com/" rel="nofollow" target="_top">Aer Lingus</a></td><td>&nbsp;</td><td style="text-align:right">10,382</td><td style="text-align:right">9,346</td>
+<td>&nbsp;</td>
+<td>Belfast International</td><td><a href="map/google_map_Belfast.htm">Belfast</a></td><td><div class="flag" id="GBR"></div></td><td><a href="united_kingdom.htm">United Kingdom</a></td></tr>
+<tr class="border1">
+<td><a href="http://www.aeroflot.ru/" rel="nofollow" target="_top">Aeroflot Russian Airlines</a></td>
+<td>&nbsp;</td>
+<td style="text-align:right">&nbsp;</td>
+<td style="text-align:right">11,286</td>
+<td>&nbsp;</td>
+<td> Sheremetyevo International Airport</td>
+<td><a href="map/google_map_Moscow.htm">Moscow</a></td>
+<td><div class="flag" id="RUS"></div></td>
+<td><a href="russia.htm">Russia</a></td>
+</tr>
+<tr class="border1"><td><a href="http://www.airberlin.com/" rel="nofollow" target="_top">Air Berlin Group</a></td><td>&nbsp;</td><td style="text-align:right">27,911 </td><td style="text-align:right">33,593</td>
+<td>&nbsp;</td>
+<td>Berlin-Tegel Airport</td><td><a href="map/google_map_Berlin.htm">Berlin</a></td><td><div class="flag" id="DEU"></div></td><td><a href="germany.htm">Germany</a></td></tr>
+<tr class="border1"><td><a href="http://www.airfrance.com/" rel="nofollow" target="_top">Air France</a> <a href="http://www.klm.com/" rel="nofollow" target="_top">KLM</a></td><td>&nbsp;</td><td style="text-align:right">71,394</td><td style="text-align:right">71,320</td>
+<td>&nbsp;</td>
+<td>Paris-Charles de Gaulle Airport</td><td><a href="map/google_map_Paris.htm">Paris</a></td><td><div class="flag" id="FRA"></div></td><td><a href="france.htm">France</a></td></tr>
+<tr class="border1"><td><a href="http://www.alitalia.com/" rel="nofollow" target="_top">Alitalia</a></td><td>&nbsp;</td><td style="text-align:right">21,728</td>
+<td style="text-align:right">23,355</td>
+<td>&nbsp;</td>
+<td>Leonardo da Vinci-Fiumicino Airport</td><td><a href="map/google_map_Rome.htm">Rome</a></td><td><div class="flag" id="ITA"></div></td><td><a href="italy.htm">Italy</a></td></tr>
+<tr class="border1"><td><a href="http://www.aua.com/" rel="nofollow" target="_top">Austrian Airlines Group</a></td><td>&nbsp;</td><td style="text-align:right">9,945 </td><td style="text-align:right">10,895</td>
+<td>&nbsp;</td>
+<td>Vienna International Airport</td><td><a href="map/google_map_Vienna.htm">Vienna</a></td><td><div class="flag" id="AUT"></div></td><td><a href="austria.htm">Austria</a></td></tr>
+<tr class="border1"><td><a href="https://www.ba.com/" rel="nofollow" target="_top">British Airways</a></td><td>&nbsp;</td><td style="text-align:right">31,825 </td><td style="text-align:right">24,088</td>
+<td>&nbsp;</td>
+<td>London Heathrow Airport. </td><td><a href="map/google_map_London.htm">London</a></td><td><div class="flag" id="GBR2"></div></td><td><a href="united_kingdom.htm">United Kingdom</a></td></tr>
+<tr class="border1"><td><a href="http://www.easyjet.com/" rel="nofollow" target="_top">easyJet</a></td><td>&nbsp;</td><td style="text-align:right">45,164 </td><td style="text-align:right">48,800</td>
+<td>&nbsp;</td>
+<td>London Luton Airport</td><td><a href="map/google_map_London.htm">London</a></td><td><div class="flag" id="GBR3"></div></td><td><a href="united_kingdom.htm">United Kingdom</a></td></tr>
+<tr class="border1"><td><a href="http://www.iberia.com/" rel="nofollow" target="_top">Iberia Group</a><br>
+merged with British Airways to form <a href="http://www.iairgroup.com/" rel="nofollow" target="_top">International Airlines Group IAG</a></td><td>&nbsp;</td><td style="text-align:right">25,560</td>
+<td style="text-align:right">--- &nbsp;&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+<td>Madrid-Barajas Airport<br>
+<a href="map/google_map_Barcelona.htm">Barcelona El Prat Airport</a></td><td><a href="map/google_map_London.htm">London</a><br>
+(Head office) <br> <a href="map/google_map_Madrid.htm">Madrid</a><br>
+(Registered office)</td><td><div class="flag" id="GBR4"></div><br>
+<div class="flag" id="ESP"></div></td><td><a href="united_kingdom.htm">United Kingdom</a><br>
+<a href="spain.htm">Spain</a></td></tr>
+<tr class="border1"><td><a href="http://www.lufthansa.com/" rel="nofollow" target="_top">Lufthansa</a></td><td>&nbsp;</td><td style="text-align:right">55,589</td><td style="text-align:right">58,916</td>
+<td>&nbsp;</td>
+<td>Flughafen Frankfurt am Main</td><td><a href="map/google_map_Frankfurt_Main.htm">Frankfurt</a></td><td><div class="flag" id="DEU2"></div></td><td><a href="germany.htm">Germany</a></td></tr>
+<tr class="border1"><td><a href="https://www.norwegian.com/" rel="nofollow" target="_top">Norwegian Air Shuttle</a><br>
+trading as Norwegian
+</td><td>&nbsp;</td><td style="text-align:right">10,754</td><td style="text-align:right">13,029</td>
+<td>&nbsp;</td>
+<td>Oslo Airport, Copenhagen, Stockholm-Arlanda, Helsinki-Vantaa</td><td>&nbsp;</td><td><div class="flag" id="NOR"></div></td><td><a href="norway.htm">Norway</a></td></tr>
+<tr class="border1"><td><a href="https://www.ryanair.com/" rel="nofollow" target="_top">Ryanair</a></td><td>&nbsp;</td><td style="text-align:right">66,500</td><td style="text-align:right">72,100</td>
+<td>&nbsp;</td>
+<td>Dublin Airport</td><td><a href="map/google_map_Dublin.htm">Dublin</a></td><td><div class="flag" id="IRL"></div></td><td><a href="ireland.htm">Ireland</a></td></tr>
+<tr class="border1"><td><a href="http://www.sasgroup.net/" rel="nofollow" target="_top">SAS Scandinavian Airlines</a></td><td>&nbsp;</td><td style="text-align:right">21,383</td><td style="text-align:right">21,532</td>
+<td>&nbsp;</td>
+<td>Copenhagen Airport<br>Stockholm-Arlanda Airport <br> Oslo Airport</td>
+<td><a href="map/google_map_Copenhagen.htm">Copenhagen</a><br>
+<a href="map/google_map_Stockholm.htm">Stockholm</a><br>
+<br>
+<a href="map/google_map_Oslo.htm">Oslo</a><br>
+</td><td><div class="flag" id="DNK"></div><br><div class="flag" id="SWE"></div><br><div class="flag" id="NOR2"></div></td><td><a href="denmark.htm">Denmark</a> <br>
+<a href="sweden.htm">Sweden</a> <br>
+<a href="norway.htm">Norway</a></td></tr>
+<tr class="border1"><td><a href="http://www.swiss.com/" rel="nofollow" target="_top">Swiss</a></td><td>&nbsp;</td><td style="text-align:right">13,784</td><td style="text-align:right">14,132</td>
+<td>&nbsp;</td>
+<td>Zurich Airport</td><td><a href="map/google_map_Zuerich.htm">Zurich</a></td><td><div class="flag" id="CHE"></div></td><td><a href="switzerland.htm">Switzerland</a></td></tr>
+<tr class="border1"><td><a href="http://flights.thomson.co.uk/" rel="nofollow" target="_top">Thomson Airways</a></td><td>&nbsp;</td><td style="text-align:right">11,239</td><td style="text-align:right">10,965</td>
+<td>&nbsp;</td>
+<td>London Luton Airport</td><td><a href="map/google_map_London.htm">London</a></td><td><div class="flag" id="GBR5"></div></td><td><a href="united_kingdom.htm">United Kingdom</a></td></tr>
+<tr class="border1">
+<td><a href="http://www.turkishairlines.com/" rel="nofollow" target="_top">Turkish Airlines (THY)</a></td><td>&nbsp;</td><td style="text-align:right">25,099</td><td style="text-align:right">29,099</td>
+<td>&nbsp;</td>
+<td>Atatürk International Airport</td><td><a href="map/google_map_Istanbul.htm">Istanbul</a></td><td><div class="flag" id="TUR"></div></td><td><a href="turkey.htm">Turkey</a></td></tr>
+<tr class="border1">
+<td><a href="https://www.vueling.com/" rel="nofollow" target="_top">Vueling Airlines</a></td>
+<td>&nbsp;</td>
+<td style="text-align:right">&nbsp;</td>
+<td style="text-align:right">11,036</td>
+<td>&nbsp;</td>
+<td>Barcelona El Prat Airport</td>
+<td><a href="map/google_map_Barcelona.htm">Barcelona</a></td>
+<td><div class="flag" id="ESP2"></div></td>
+<td><a href="spain.htm">Spain</a></td>
+</tr>
+<tr class="border1"><td><strong><br>Latin America/ Caribbean</strong></td><td>&nbsp;</td><td style="text-align:right">&nbsp;</td><td style="text-align:right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr class="border1"><td><a href="http://www.avianca.com/" rel="nofollow" target="_top">Avianca</a></td><td>&nbsp;</td><td style="text-align:right">10,157</td><td style="text-align:right">11,663</td>
+<td>&nbsp;</td>
+<td>El Dorado International Airport</td><td><a href="map/google_map_Bogota.htm">Bogotá</a></td><td><div class="flag" id="COL"></div></td><td><a href="colombia.htm">Colombia</a></td></tr>
+<tr class="border1">
+<td><a href="http://www.aviancataca.com/" rel="nofollow" target="_top">AviancaTaca</a></td>
+<td>&nbsp;</td>
+<td style="text-align:right">&nbsp;</td>
+<td style="text-align:right">17,420</td>
+<td>&nbsp;</td>
+<td>El Dorado International Airport<br>
+<br>
+Comalapa International Airport<br>
+</td>
+<td><a href="map/google_map_Bogota.htm">Bogotá</a><br>
+<br>
+<a href="map/google_map_San_Salvador.htm">San Salvador</a><br>
+</td>
+<td><div class="flag" id="COL2"></div><br>
+<br>
+<div class="flag" id="SLV"></div></td>
+<td><a href="colombia.htm">Colombia</a><br>
+<br>
+<a href="el_salvador.htm">El Salvador</a></td>
+</tr>
+<tr class="border1"><td><a href="http://www.voegol.com.br/" rel="nofollow" target="_top">Gol Linhas Aereas</a></td><td>&nbsp;</td><td style="text-align:right">28,385</td>
+<td style="text-align:right">32,122</td>
+<td>&nbsp;</td>
+<td>Congonhas Airport - CGH</td><td><a href="map/google_map_Sao_Paulo.htm">São Paulo</a></td><td><div class="flag" id="BRA"></div></td><td><a href="brazil.htm">Brazil</a></td></tr>
+<tr class="border1"><td><a href="http://www.lan.com/" rel="nofollow" target="_top">LAN Airlines</a></td><td>&nbsp;</td><td style="text-align:right">15,406</td><td style="text-align:right">17,293</td>
+<td>&nbsp;</td>
+<td>Santiago International Airport - SCL</td><td><a href="map/google_map_Santiago.htm">Santiago</a></td><td><div class="flag" id="CHL"></div></td><td><a href="chile.htm">Chile</a></td></tr>
+<tr class="border1"><td><a href="http://www.tam.com.br/" rel="nofollow" target="_top">TAM Linhas Aereas</a></td><td>&nbsp;</td><td style="text-align:right">28,957</td>
+<td style="text-align:right">34,553</td>
+<td>&nbsp;</td>
+<td>Guarulhos International Airport</td><td><a href="map/google_map_Sao_Paulo.htm">São Paulo</a></td><td><div class="flag" id="BRA2"></div></td><td><a href="brazil.htm">Brazil</a></td></tr>
+<tr class="border1"><td><strong><br>North America</strong></td><td>&nbsp;</td><td style="text-align:right">&nbsp;</td><td style="text-align:right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr class="border1"><td><a href="http://www.aircanada.com/" rel="nofollow" target="_top">Air Canada</a></td><td>&nbsp;</td><td style="text-align:right">22,206</td><td style="text-align:right">23,615</td>
+<td>&nbsp;</td>
+<td>Toronto Pearson International Airport,</td>
+<td><a href="map/google_map_Montreal.htm">Montreal</a>, Quebec</td><td><div class="flag" id="CAN"></div></td><td><a href="canada.htm">Canada</a></td></tr><tr class="border1"><td><a href="http://www.airtran.com/" rel="nofollow" target="_top">AirTran Airways</a></td><td>&nbsp;</td><td style="text-align:right">23,998</td><td style="text-align:right">24,721</td>
+<td>&nbsp;</td>
+<td>Hartsfield-Jackson Atlanta International Airport</td><td><a href="map/google_map_Atlanta.htm">Atlanta</a></td><td><div class="flag" id="USA"></div></td><td><a href="united_states.htm">USA</a></td></tr>
+<tr class="border1"><td><a href="http://www.alaskaair.com/" rel="nofollow" target="_top">Alaska Airlines</a></td><td>&nbsp;</td><td style="text-align:right">15,561</td>
+<td style="text-align:right">16,514</td>
+<td>&nbsp;</td>
+<td>Seattle–Tacoma International Airport, Ted Stevens Anchorage International Airport, <br>Portland International Airport</td><td><a href="map/google_map_Seattle.htm">Seattle</a><br>
+<br><a href="map/google_map_Anchorage.htm">Anchorage</a><br>
+<br><a href="map/google_map_Portland.htm">Portland</a></td><td><div class="flag" id="USA2"></div></td><td><a href="united_states.htm">USA</a></td></tr>
+<tr class="border1"><td> <a href="https://www.aa.com/" rel="nofollow" target="_top">American Airlines</a></td><td>&nbsp;</td><td style="text-align:right">85,719</td>
+<td style="text-align:right">86,204</td>
+<td>&nbsp;</td>
+<td>Dallas-Fort Worth International Airport</td><td><a href="map/google_map_Dallas.htm">Dallas</a><br><a href="map/google_map_Fort_Worth.htm">Fort Worth</a></td><td><div class="flag" id="USA3"></div></td><td><a href="united_states.htm">USA</a></td></tr>
+<tr class="border1">
+<td><a href="https://www.aa.com/" rel="nofollow" target="_top">American Eagle Airlines</a>regional affiliate of American Airlines, (AA) <br>
+</td>
+<td>&nbsp;</td>
+<td style="text-align:right">&nbsp;</td>
+<td style="text-align:right">16,246</td>
+<td>&nbsp;</td>
+<td>Dallas-Fort Worth International Airport</td>
+<td><a href="map/google_map_Dallas.htm">Dallas</a><br>
+<a href="map/google_map_Fort_Worth.htm">Fort Worth</a><br>
+</td>
+<td><div class="flag" id="USA4"></div></td>
+<td><a href="united_states.htm">USA</a></td>
+</tr>
+<tr class="border1"><td><a href="http://www.flyasa.com/" rel="nofollow" target="_top">Atlantic Southeast Airlines</a></td><td>&nbsp;</td><td style="text-align:right">13,170</td><td style="text-align:right">13,931</td>
+<td>&nbsp;</td>
+<td>Hartsfield-Jackson Atlanta International Airport</td><td><a href="map/google_map_Atlanta.htm">Atlanta</a></td><td><div class="flag" id="USA5"></div></td><td><a href="united_states.htm">USA</a></td></tr>
+<tr class="border1"><td><a href="http://www.continental.com/" rel="nofollow" target="_top">Continental Airlines</a><br>
+merged with United Airlines in 2010 to United Continental </td><td>&nbsp;</td><td style="text-align:right">45,573</td><td style="text-align:right">--- &nbsp;&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+<td>George Bush Intercontinental Airport </td><td><a href="map/google_map_Houston.htm">Houston</a></td><td><div class="flag" id="USA6"></div></td><td><a href="united_states.htm">USA</a></td></tr>
+<tr class="border1"><td><a href="https://www.delta.com/" rel="nofollow" target="_top">Delta Air Lines</a></td><td>&nbsp;</td><td style="text-align:right">161,047</td><td style="text-align:right">162,615</td>
+<td>&nbsp;</td>
+<td>Hartsfield-Jackson Atlanta International Airport</td><td><a href="map/google_map_Atlanta.htm">Atlanta</a></td><td><div class="flag" id="USA7"></div></td><td><a href="united_states.htm">USA</a></td></tr>
+<tr class="border1"><td><a href="http://www.expressjet.com/">ExpressJet Airlines</a></td><td>&nbsp;</td><td style="text-align:right">13,395</td><td style="text-align:right">16,442</td>
+<td>&nbsp;</td>
+<td>LA/Ontario International Airport</td>
+<td><a href="map/google_map_Los_Angeles.htm">Los Angeles</a>/<br>
+Ontario</td><td><div class="flag" id="USA8"></div></td><td><a href="united_states.htm">USA</a></td></tr>
+<tr class="border1"><td><a href="http://www.frontierairlines.com/" rel="nofollow" target="_top">Frontier Airlines</a></td><td>&nbsp;</td><td style="text-align:right">10,261</td><td style="text-align:right">9,242</td>
+<td>&nbsp;</td>
+<td><a href="map/google_map_Denver.htm">Denver International Airport</a></td><td><a href="map/google_map_Indianapolis.htm">Indianapolis</a></td><td><div class="flag" id="USA9"></div></td><td><a href="united_states.htm">USA</a></td></tr>
+<tr class="border1"><td><a href="http://www.jetblue.com/" rel="nofollow" target="_top">JetBlue Airways</a></td><td>&nbsp;</td><td style="text-align:right">22,450</td><td style="text-align:right">24,254</td>
+<td>&nbsp;</td>
+<td>John F. Kennedy International Airport</td><td><a href="map/google_map_New_York_City.htm">New York</a></td><td><div class="flag" id="USA10"></div></td><td><a href="united_states.htm">USA</a></td></tr>
+<tr class="border1"><td><a href="http://www.mesa-air.com/" rel="nofollow" target="_top">Mesa Airlines</a></td><td>&nbsp;</td><td style="text-align:right">10,963</td><td style="text-align:right">9,042</td>
+<td>&nbsp;</td>
+<td>Phoenix Sky Harbor International Airport</td><td><a href="map/google_map_Phoenix.htm">Phoenix</a></td><td><div class="flag" id="USA11"></div></td><td><a href="united_states.htm">USA</a></td></tr>
+<tr class="border1"><td><a href="http://www.flypinnacle.com/" rel="nofollow" target="_top">Pinnacle Airlines</a></td><td>&nbsp;</td><td style="text-align:right">10,771</td><td style="text-align:right">10,537</td>
+<td>&nbsp;</td>
+<td>Memphis International Airport</td><td><a href="map/google_map_Memphis.htm">Memphis</a></td><td><div class="flag" id="USA12"></div></td><td><a href="united_states.htm">USA</a></td></tr>
+<tr class="border1"><td><a href="http://www.skywest.com/" rel="nofollow" target="_top">SkyWest Airlines</a></td><td>&nbsp;</td><td style="text-align:right">21,246</td><td style="text-align:right">24,218</td>
+<td>&nbsp;</td>
+<td>Hartsfield-Jackson International Airport<br>
+Atlanta</td><td>St. George</td><td><div class="flag" id="USA13"></div></td><td><a href="united_states.htm">USA</a></td></tr>
+<tr class="border1"><td><a href="http://www.southwest.com/" rel="nofollow" target="_top">Southwest Airlines</a></td><td>&nbsp;</td><td style="text-align:right">101,430</td><td style="text-align:right">106,307</td>
+<td>&nbsp;</td>
+<td>(Point-to-point transit)</td><td><a href="map/google_map_Dallas.htm">Dallas</a></td><td><div class="flag" id="USA14"></div></td><td><a href="united_states.htm">USA</a></td></tr>
+<tr class="border1"><td><a href="https://www.united.com/" rel="nofollow" target="_top">United Airlines</a><br>
+merged with Continental to form United Continental trading as <a href="https://www.united.com/" rel="nofollow" target="_top">United</a></td><td>&nbsp;</td><td style="text-align:right">56,083</td><td style="text-align:right">99,452</td>
+<td>&nbsp;</td>
+<td>O'Hare International Airport<br>
+George Bush Intercontinental Airport</td><td><a href="map/google_map_Chicago.htm">Chicago</a><br>
+<br>
+<a href="map/google_map_Houston.htm">Houston</a></td><td><div class="flag" id="USA15"></div></td><td><a href="united_states.htm">USA</a></td></tr>
+<tr class="border1"><td><a href="http://www.usairways.com/" rel="nofollow" target="_top">US Airways</a></td><td>&nbsp;</td><td style="text-align:right">51,016</td><td style="text-align:right">51,853</td>
+<td>&nbsp;</td>
+<td>Phoenix Sky Harbor International Airport</td><td><a href="map/google_map_Phoenix.htm">Phoenix</a></td><td><div class="flag" id="USA16"></div></td><td><a href="united_states.htm">USA</a></td></tr>
+<tr class="border1"><td><a href="https://www.westjet.com/" rel="nofollow" target="_top">WestJet</a></td><td>&nbsp;</td><td style="text-align:right">14,039</td><td style="text-align:right">15,174</td>
+<td>&nbsp;</td>
+<td>Calgary International Airport</td><td><a href="map/google_map_Calgary.htm">Calgary</a></td><td><div class="flag" id="CAN2"></div></td><td><a href="canada.htm">Canada</a></td></tr>
+<tr>
+<td colspan="9">&nbsp;</td>
+</tr>
+</tbody>
