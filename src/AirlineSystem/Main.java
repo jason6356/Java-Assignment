@@ -86,7 +86,7 @@ public class Main {
                     case 3:
                         // TODO : KangSheng -> Confirm Ticket
                         userAccount.confirmTicket(s);
-                        // TODO : Junwei -> Payment
+                        // TODO : Junwei -> Payment ( done )
                         break;
                     case 4:
                         // TODO : Huiyi -> Reschedule Ticket
@@ -523,6 +523,7 @@ public class Main {
         String regAddRoad = userScanner.nextLine();
         System.out.print("7.3 PostCode > ");
         int regAddPostcode = userScanner.nextInt();
+        userScanner.nextLine();
         System.out.print("7.4 City > ");
         String regAddCity = userScanner.nextLine();
         System.out.print("7.5 State > ");
