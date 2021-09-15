@@ -542,7 +542,7 @@ public void checkRequestStatus(Reservation reservation, Scanner s){
         }
         else if ( option == 2)
         {
-            error = debit1.validateDC();
+            error = debit1.validateDC(s);
             if(error == false)
             {
                 debit1.pay(amount);
