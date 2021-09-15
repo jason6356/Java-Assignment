@@ -239,7 +239,7 @@ public void updateProfile(Scanner s){
             System.out.print("Enter your Last Name > ");
             newLastName = s.nextLine();
         }
-        super.setFirstName(newLastName);                    //UPDATE LAST NAME
+        super.setLastName(newLastName);                    //UPDATE LAST NAME
         System.out.println("\n\nLast Name updated successfully !");
 
         case 3:
