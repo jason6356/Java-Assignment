@@ -139,12 +139,12 @@ public class FlightSchedule {
         System.out.println();
     }
 
-    public List<fSeat> bookSeat(Scanner sc){
+    public List<fSeat> bookSeat(Scanner s){
 
         List<fSeat> bookedSeats = new ArrayList<fSeat>();
 
         System.out.print("Enter Number of Seats to Book - ");
-            int numberOfSeats = sc.nextInt();
+            int numberOfSeats = s.nextInt();
             char bookSeatConfirm;
             //Loop through n times when buying the seat
             for(int j = 0; j < numberOfSeats; j++){
@@ -154,12 +154,12 @@ public class FlightSchedule {
                 displaySeats();
                 //Get seat number
                 System.out.print("Enter the seatNo according to the rows and columns (Ex: A1) :");
-                String seatInput = sc.next();
+                String seatInput = s.next();
                 fSeat seat = validateSeatID(seatInput);
                 //validate
                 while(seat == null){
                     System.out.print("Enter the seatNo according to the rows and columns (Ex: A1) :");
-                    seatInput = sc.next();
+                    seatInput = s.next();
                     seat = validateSeatID(seatInput);
                 }
                 //Display the details
@@ -167,7 +167,7 @@ public class FlightSchedule {
 
                 //ask for confirmation
                 System.out.print("Confirm To Book The Seat ? (Y/N)");
-                bookSeatConfirm = sc.next().charAt(0);
+                bookSeatConfirm = s.next().charAt(0);
 
                 if(Character.toUpperCase(bookSeatConfirm) == 'Y'){
                     bookedSeats.add(seat);

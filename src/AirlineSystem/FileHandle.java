@@ -30,10 +30,9 @@ public class FileHandle {
 
         Random rand = new Random();
 
-        for(int i = 0; i < 100; i++){
+        for(int i = 0; i < 10; i++){
 
         }
-
     }
 
     public static void makeFlights(){

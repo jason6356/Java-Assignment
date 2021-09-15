@@ -31,11 +31,10 @@ public class Main {
                 guestAcc.availableFlights();
                 break;
             case 2:
-                guestAcc = registerAccount();
+                guestAcc = registerAccount(s);
                 break;
             case 3:
-               // guestAcc = userLogin(s);
-                guestAcc = new RegisteredAccount();
+                guestAcc = userLogin(s);
                 break;
             case 4:
                 guestAcc = staffLogin(s);
@@ -60,20 +59,16 @@ public class Main {
             // TODO : Huiyi -> Cancel Ticket
             // TODO : Huiyi -> Reschedule Ticket
             // Update Profile (Done)
-
             int selection;
             do {
                 clearConsole();
-                System.out.println("\n\nREGISTERED ACCOUNT MENU");
-                System.out.println("1. Update Profile");
-                System.out.println("2. Make Reservation");
-                System.out.println("3. Confirm Ticket");
-                System.out.println("4. Reschedule Ticket");
-                System.out.println("5. Cancel Ticket");
-                System.out.println("6. Check Request Status");
-                System.out.println("7. Logout");
-                System.out.print("Enter Selection > ");
-                selection = s.nextInt();
+
+                selection = displayRegisteredAccountMenu(s);
+
+                while(selection < 1 || selection > 7){
+                    System.out.println("Invalid input");
+                    selection = displayRegisteredAccountMenu(s);
+                }
 
                 switch (selection) {
                     case 1:
@@ -86,7 +81,7 @@ public class Main {
                     case 3:
                         // TODO : KangSheng -> Confirm Ticket
                         userAccount.confirmTicket(s);
-                        // TODO : Junwei -> Payment
+                        // TODO : Junwei -> Payment ( done )
                         break;
                     case 4:
                         // TODO : Huiyi -> Reschedule Ticket
@@ -205,63 +200,37 @@ public class Main {
                 }
             } while (selection != 7);
         } else if (guestAcc instanceof Staff) {
-            // TODO : Nicole -> add flight,airport,airline (done)
-            // TODO : Nicole -> Check(done), accept, reject requests
-            // TODO : Generate Report (Summary of profit, Ranking of most frequent flights
-            // made)
-            //cast the guestAcc to Staff
+
             Staff stfAccount = ((Staff)guestAcc);
             int selection;
             do {
-                // Staff Menu
-                System.out.println("Staff Menu");
-                System.out.println("==========");
-                System.out.println("1. Add Records");
-                System.out.println("2. Update Records");
-                System.out.println("3. Delete Records");
-                System.out.println("4. Create staff account");
-                System.out.println("5. Check Request List");
-                System.out.println("6. Change Password");
-                System.out.println("7. Back to Main Menu");
-                System.out.print("Enter Selection: ");
-                selection = s.nextInt();
-
+                
+                selection = displayMenu(s);
                 //validation
                 while(selection<1 || selection>7){
-                    System.out.println("Invalid Input! Please enter again... ");
-                    System.out.println("Staff Menu");
-                    System.out.println("==========");
-                    System.out.println("1. Add Records");
-                    System.out.println("2. Update Records");
-                    System.out.println("3. Delete Records");
-                    System.out.println("4. Create staff account");
-                    System.out.println("5. Check Request List");
-                    System.out.println("6. Change Password");
-                    System.out.println("7. Back to Main Menu");
-                    System.out.print("Enter Selection: ");
-                    selection = s.nextInt();
+                    selection = displayMenu(s);
                 }
                 switch (selection) {
                     case 1:
-                        stfAccount.addRecordsMenu();
+                        stfAccount.addRecordsMenu(s);
                         break;
                     case 2: 
-                        stfAccount.updateRecordsMenu();
+                        stfAccount.updateRecordsMenu(s);
                         break;
                     case 3: 
-                        stfAccount.deleteRecordsMenu();
+                        stfAccount.deleteRecordsMenu(s);
                         break;
                     case 4:
                         if(stfAccount.getStaffID() == "S001")
-                            stfAccount.createStaffAcc();
+                            stfAccount.createStaffAcc(s);
                         else
                             System.out.println("This Staff ID does not have the access to create a new staff account.");
                         break;
                     case 5:
-                        stfAccount.checkRequest();
+                        stfAccount.checkRequest(s);
                         break;
                     case 6:
-                        stfAccount.changePassword();
+                        stfAccount.changePassword(s);
                         break;
                     case 7:
                         //back to main menu 
@@ -288,7 +257,7 @@ public class Main {
             yesNo = s.next().charAt(0);
 
             // validate yesNo
-            if (!guestAcc.validateOption(yesNo)) {
+            if (!validateOption(yesNo)) {
                 valid = false;
             }
 
@@ -297,7 +266,7 @@ public class Main {
                 System.out.print("\nWish to make a reservation(Y/N)? ");
                 yesNo = s.next().charAt(0);
 
-                if (guestAcc.validateOption(yesNo)) {
+                if (validateOption(yesNo)) {
                     valid = true;
                 }
             }
@@ -308,7 +277,7 @@ public class Main {
 
                 // Register account
                 if (Character.toUpperCase(registerOrLogin) == 'R') {
-                    guestAcc = registerAccount();
+                    guestAcc = registerAccount(s);
                 }
 
                 // Login account
@@ -317,7 +286,7 @@ public class Main {
                 }
 
                 // validate registerOrLogin
-                if (!guestAcc.validateOption(registerOrLogin)) {
+                if (!validateOption(registerOrLogin)) {
                     valid = false;
                 }
 
@@ -326,7 +295,7 @@ public class Main {
                     System.out.print("Register or Login (R/L)? ");
                     registerOrLogin = s.next().charAt(0);
 
-                    if (!guestAcc.validateOption(registerOrLogin)) {
+                    if (!validateOption(registerOrLogin)) {
                         valid = true;
                     }
                 }
@@ -341,11 +310,11 @@ public class Main {
 
     /**
      * Method to Display Menu
-     * @param input
+     * @param s
      * @return an int choice
      */
 
-    private static int displayMenu(Scanner input) {
+    private static int displayMenu(Scanner s) {
         clearConsole();
         System.out.println("Menu");
         System.out.println("1. Display Available Flights");
@@ -353,7 +322,34 @@ public class Main {
         System.out.println("3. Login");
         System.out.println("4. Staff Login");
         System.out.println("5. Exit Program");
-        return input.nextInt();
+        return s.nextInt();
+    }
+
+    private static int displayStaffMenu(Scanner s){
+        System.out.println("Staff Menu");
+        System.out.println("==========");
+        System.out.println("1. Add Records");
+        System.out.println("2. Update Records");
+        System.out.println("3. Delete Records");
+        System.out.println("4. Create staff account");
+        System.out.println("5. Check Request List");
+        System.out.println("6. Change Password");
+        System.out.println("7. Back to Main Menu");
+        System.out.print("Enter Selection: ");
+        return s.nextInt();
+    }
+
+    private static int displayRegisteredAccountMenu(Scanner s){
+        System.out.println("\n\nREGISTERED ACCOUNT MENU");
+        System.out.println("1. Update Profile");
+        System.out.println("2. Make Reservation");
+        System.out.println("3. Confirm Ticket");
+        System.out.println("4. Reschedule Ticket");
+        System.out.println("5. Cancel Ticket");
+        System.out.println("6. Check Request Status");
+        System.out.println("7. Logout");
+        System.out.print("Enter Selection > ");
+        return s.nextInt();
     }
 
     /** 
@@ -462,89 +458,89 @@ public class Main {
      * Method to create an registered account
      * @return a new Registered Account instance
      */
-    public static RegisteredAccount registerAccount() {
+    public static RegisteredAccount registerAccount(Scanner s) {
 
-        Scanner userScanner = new Scanner(System.in);
         Account acc = new Account();
         String regPassword;
         Boolean passwordMatch = true;
 
         System.out.println("Fill in the details below to sign up: ");
         System.out.print("1. First Name > "); // ENTER FIRST NAME
-        String regFirstName = userScanner.nextLine();
+        String regFirstName = s.nextLine();
         while (!acc.validateName(regFirstName)) // VALIDATE IF IT ONLY CONTAIN CHARACTERS
         {
             System.out.println("Invalid Name. Only Alphabets ");
             System.out.print("1. First Name > ");
-            regFirstName = userScanner.nextLine();
+            regFirstName = s.nextLine();
         }
         System.out.print("2. Last Name > "); // ENTER LAST NAME
-        String regLastName = userScanner.nextLine();
+        String regLastName = s.nextLine();
         while (!acc.validateName(regLastName)) {
             System.out.println("Invalid Name. Only Alphabets ");
             System.out.print("2. Last Name > ");
-            regFirstName = userScanner.nextLine();
+            regFirstName = s.nextLine();
         }
 
         System.out.print("3. Gender (M/F) > "); // ENTER GENDER
-        char regGender = userScanner.next().charAt(0);
+        char regGender = s.next().charAt(0);
         while (!acc.validateGender(regGender)) // VALIDATE ONLY EITHER M OR F
         {
             System.out.println("Male or Female only");
             System.out.print("3. Gender (M/F) > ");
-            regGender = userScanner.next().charAt(0);
+            regGender = s.next().charAt(0);
         }
 
         System.out.print("4. Age > "); // ENTER AGE
-        int regAge = userScanner.nextInt();
+        int regAge = s.nextInt();
 
         System.out.print("5. Phone Number  > "); // ENTER PHONE NUMBER
-        String regPhoneNum = userScanner.nextLine();
+        String regPhoneNum = s.nextLine();
         while (!acc.validatePhoneNum(regPhoneNum)) // VALIDATE ONLY NUMBER WITH +COUNTRY CODE
         {
             System.out.println("Phone Number Should Start With '+' followed by country code and phone number");
             System.out.println("Eg : +60123456789");
             System.out.print("5. Phone Number  > ");
-            regPhoneNum = userScanner.nextLine();
+            regPhoneNum = s.nextLine();
         }
 
         System.out.print("6. Email > "); // ENTER EMAIL
-        String regEmail = userScanner.nextLine();
+        String regEmail = s.nextLine();
         while (!acc.validateEmailFormat(regEmail)) // VALIDATE EMAIL IF IT CONTAIN "@"
         {
             System.out.println("Invalid Email. Try Again ");
             System.out.print("6. Email > ");
-            regEmail = userScanner.nextLine();
+            regEmail = s.nextLine();
         }
         System.out.println("7. Address > "); // ENTER ADDRESS
         System.out.print("7.1 Unit > ");
-        String regAddUnit = userScanner.nextLine();
+        String regAddUnit = s.nextLine();
         System.out.print("7.2 Road > ");
-        String regAddRoad = userScanner.nextLine();
+        String regAddRoad = s.nextLine();
         System.out.print("7.3 PostCode > ");
-        int regAddPostcode = userScanner.nextInt();
+        int regAddPostcode = s.nextInt();
+        s.nextLine();
         System.out.print("7.4 City > ");
-        String regAddCity = userScanner.nextLine();
+        String regAddCity = s.nextLine();
         System.out.print("7.5 State > ");
-        String regAddState = userScanner.nextLine();
+        String regAddState = s.nextLine();
         System.out.print("7.6 Country > ");
-        String regAddCountry = userScanner.nextLine();
+        String regAddCountry = s.nextLine();
 
         do {
             System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
             System.out.print("8. Password > "); // ENTER PASSWORD
-            regPassword = userScanner.nextLine();
+            regPassword = s.nextLine();
 
             while (!acc.validatePassword(regPassword)) // VALIDATE PASSWORD REQUIREMENT
             {
                 System.out.println("Invalid Password. ");
                 System.out.println("\t*NOTE*\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number\n");
                 System.out.print("8. Password > ");
-                regPassword = userScanner.nextLine();
+                regPassword = s.nextLine();
             }
 
             System.out.print("8.1 Confirm Password > "); // INPUT CONFIRM PASSWORD
-            String confirmPassword = userScanner.nextLine();
+            String confirmPassword = s.nextLine();
             if (!regPassword.equals(confirmPassword)) // COMPARE BOTH PASSWORD
             {
                 passwordMatch = false;
@@ -558,7 +554,6 @@ public class Main {
                 regAddCountry);
         RegisteredAccount register = new RegisteredAccount(regPassword, regFirstName, regLastName, regAddress,
                 regGender, regAge, regEmail, regPhoneNum);
-        userScanner.close();
         accountList.add(register); // ADD TO ACCOUNTLIST
         register.welcome(); // can remove if dont want line 210
         return register;
@@ -566,29 +561,29 @@ public class Main {
 
     /**
      * Method to perform User Login
-     * @param userScanner
+     * @param s
      * @return Exisiting RegisteredAccount Instance when found
      */
-    public static RegisteredAccount userLogin(Scanner userScanner){
-
-        //RegisteredAccount user = new RegisteredAccount();
+    public static RegisteredAccount userLogin(Scanner s){
         System.out.println("\nUser Login");
         System.out.println("===========");
         System.out.print("User ID: ");
-        String userID = userScanner.next();
+        String userID = s.next();
         System.out.print("Password: ");
-        String userPwd = userScanner.next();
+        String userPwd = s.next();
         
 
         for ( RegisteredAccount user : accountList){
-            if (user.getAccID().equals(userID)){
+            if (user.getUserID().equals(userID)){
                 if(user.getPassword().equals(userPwd)){
                     System.out.println("Login Successful.");
+                    System.out.printf("Welcome %s %s\n",user.getFirstName(),user.getLastName());
+                    System.out.printf("User ID: %s\n",user.getUserID());
                     return user;
                 }
             }
-        }
-        // account doesnt exist, return null
+        }   
+            // account doesnt exist, return null
             System.out.println("Wrong ID or Password.");
             return null;
     }
@@ -599,13 +594,13 @@ public class Main {
      * @return Existing Staff Instance when Success
      * @return null when no such Staff is found
      */
-    public static Staff staffLogin(Scanner staffScanner) {
+    public static Staff staffLogin(Scanner s) {
         System.out.println("\nStaff Login");
         System.out.println("===========");
         System.out.print("Staff ID: ");
-        String staffID = staffScanner.next();
+        String staffID = s.next();
         System.out.print("Password: ");
-        String staffPwd = staffScanner.next();
+        String staffPwd = s.next();
 
         // Iterate the staff list from the main program
         for (Staff stf : staffAccountList) {
@@ -641,6 +636,18 @@ public class Main {
         for(int i = 0; i < n; i++){
         System.out.print("-");
         }
+    }
+
+    
+    /**
+     * Method to validate Options
+     * @param option
+     * @return
+     */
+
+    public static boolean validateOption(char option){ 
+        return (Character.toUpperCase(option)=='Y' || Character.toUpperCase(option)=='N');
+    
     }
 
 }

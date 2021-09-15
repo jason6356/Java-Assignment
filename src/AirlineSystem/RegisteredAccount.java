@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class RegisteredAccount extends Account {
 
-    private static int nthAcc = 0;
-    private String accID;
+    private static int nthAcc = 1;
+    private String userID;
     private List<Reservation> reservations = new ArrayList<Reservation>();
     private List<Request> requests = new ArrayList<Request>();
 
@@ -18,12 +18,12 @@ public class RegisteredAccount extends Account {
     public RegisteredAccount(String password, String firstName, String lastName, Address address,
             char gender, int age, String email, String phoneNum) {
         super(password, firstName, lastName, address, gender, age, email, phoneNum);
-        this.accID = makeAccID();
+        this.userID = makeUserID();
         //Increment Once a staff has been created
         nthAcc++;
     }
 
-    private static String makeAccID(){
+    private static String makeUserID(){
         if(nthAcc < 10)
             return "A00" + nthAcc;
         else if(nthAcc < 100)
@@ -33,8 +33,8 @@ public class RegisteredAccount extends Account {
     }
 
     //getter
-    public String getAccID() {
-        return accID;
+    public String getUserID() {
+        return userID;
     }
     public static int getNthAcc() {
         return nthAcc;
@@ -52,7 +52,7 @@ public class RegisteredAccount extends Account {
 
 
 //methods
-public void makeReservation(Scanner sc){
+public void makeReservation(Scanner s){
 
     //Input, Country from another country ->
     List<FlightSchedule> fsList = Main.getFlightSchedules();
@@ -63,9 +63,9 @@ public void makeReservation(Scanner sc){
     do{
         System.out.println("Reservation Form");
         System.out.print("Enter the country u would like to go - ");
-        String destination = sc.next();
+        String destination = s.next();
         System.out.print("Enter the country u are currently at - ");
-        String location = sc.next();
+        String location = s.next();
         boolean found = false;
 
         System.out.println("Available Flight Schedules");
@@ -88,23 +88,23 @@ public void makeReservation(Scanner sc){
         if(found){
             System.out.println("Found!");
             System.out.print("Enter the No to book the flight - ");
-            int flightNo = sc.nextInt();
+            int flightNo = s.nextInt();
 
             while(flightNo < 0 || flightNo > i){
                 System.out.println("Invalid Input");
                 System.out.print("Enter the No to book the flight - ");
-                flightNo = sc.nextInt();
+                flightNo = s.nextInt();
             }
 
             fs = queryFsList.get(flightNo-1);
 
             System.out.print("Would u like to book it ? (Y/N) - ");
-            char choice = sc.next().charAt(0);
+            char choice = s.next().charAt(0);
             //validate choice
             while(Character.toUpperCase(choice) != 'Y' && Character.toUpperCase(choice) != 'N'){
                 System.out.println("Invalid Input");
                 System.out.print("Would u like to book it ? (Y/N) - ");
-                choice = sc.next().charAt(0);
+                choice = s.next().charAt(0);
             }
 
             if(Character.toUpperCase(choice) == 'Y'){
@@ -115,7 +115,7 @@ public void makeReservation(Scanner sc){
                 fs.displaySeats();
 
                 //Book Seat
-                List<fSeat> bookedSeat = fs.bookSeat(sc);
+                List<fSeat> bookedSeat = fs.bookSeat(s);
 
                 System.out.println("Successfully booked the seat");
                 Reservation reservation = new Reservation(bookedSeat.size(),fs,bookedSeat);
@@ -129,14 +129,20 @@ public void makeReservation(Scanner sc){
         else
             System.out.println("No Such country found!");
 
-        System.out.print("Continue to book another reservation ? ");
-        continueBook = sc.next().charAt(0);
+        System.out.print("Continue to book another reservation ? (Y/N)");
+        continueBook = s.next().charAt(0);
+
+        System.out.println(continueBook);
+        s.nextLine();  
+        s.nextLine();
+        
         while(Character.toUpperCase(continueBook)!='Y' && Character.toUpperCase(continueBook)!='N'){
             System.out.println("Invalid Input!");
             System.out.print("Continue to book another reservation ? ");
-            continueBook = sc.next().charAt(0);
+            continueBook = s.next().charAt(0);
         }
-        
+
+
         
     }while(Character.toUpperCase(continueBook) == 'Y');
 }
@@ -205,7 +211,7 @@ public void confirmTicket(Scanner s){
     }
 }
 
-public void updateProfile(Scanner scan){
+public void updateProfile(Scanner s){
         
         char another;
     do{
@@ -219,17 +225,17 @@ public void updateProfile(Scanner scan){
                            "7. Phone No.   [ " + super.getPhoneNum() + " ]\n"  +
                            "8. Exit \n\n" +
                            "Please Enter The Number that you wished to change > " );
-        int updateOption = scan.nextInt();
+        int updateOption = s.nextInt();
 
         switch (updateOption){
         case 1:
             System.out.print("Enter your First Name > ");   //INPUT NEW FIRST NAME
-            String newFirstName = scan.nextLine();
+            String newFirstName = s.nextLine();
             while(!super.validateName(newFirstName))          //VALIDATE FIRST NAME
             {
                 System.out.println("Your Name Should Only Contain Characters");
                 System.out.print("Enter your First Name > ");
-                newFirstName = scan.nextLine();
+                newFirstName = s.nextLine();
             }
             super.setFirstName(newFirstName);           //UPDATE FIRST NAME
             System.out.println("\n\nFirst Name updated successfully !");
@@ -237,20 +243,20 @@ public void updateProfile(Scanner scan){
         break;
         case 2:
         System.out.print("Enter your Last Name > ");            //INPUT NEW LAST NAME    
-        String newLastName = scan.nextLine();           
+        String newLastName = s.nextLine();           
         while(!super.validateName(newLastName))                    //VALIDATE NEW LAST NAME
         {
             System.out.println("Your Name Should Only Contain Characters");
             System.out.print("Enter your Last Name > ");
-            newLastName = scan.nextLine();
+            newLastName = s.nextLine();
         }
-        super.setFirstName(newLastName);                    //UPDATE LAST NAME
+        super.setLastName(newLastName);                    //UPDATE LAST NAME
         System.out.println("\n\nLast Name updated successfully !");
 
         case 3:
             System.out.println("GUIDE---> Input 'abc' if forget password");
             System.out.print("Enter your old password > ");         //ENTER OLD PASSWORD
-            String oldPassword = scan.nextLine();
+            String oldPassword = s.nextLine();
             while((!(super.getPassword().equals(oldPassword))) )          //COMPARE PASSWORD AND INPUT
             {
                 if(oldPassword == "abc")                               //if user forget password then return back to mainmenu
@@ -259,11 +265,11 @@ public void updateProfile(Scanner scan){
                 }
                 System.out.println("Wrong Password");
                 System.out.print("Enter your old password > ");         //ENTER OLD PASSWORD
-                oldPassword = scan.nextLine();
+                oldPassword = s.nextLine();
             }
                 System.out.println("\t*NOTE*\nYour password should be fulfilled the requirement below :\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number");
                 System.out.println("Enter your NEW Password >");        //ENTER NEW PASSWORD
-                String newPassword = scan.nextLine();
+                String newPassword = s.nextLine();
                
                 if(!super.validatePassword(newPassword))                //VALIDATE NEW PASSWORD FORMAT
                 {
@@ -277,29 +283,29 @@ public void updateProfile(Scanner scan){
         break;
         case 4:
                 System.out.print("Enter your Gender (M/F) > ");                 //ENTER GENDER
-                char newGender = scan.next().charAt(0);
+                char newGender = s.next().charAt(0);
                 while(!super.validateGender(newGender))                   //VALIDATE GENDER EITHER M OR F
                 {
                     System.out.println("Male or Female only");
                     System.out.print("Enter your Gender (M/F) > ");
-                    newGender = scan.next().charAt(0);
+                    newGender = s.next().charAt(0);
                 }
                 super.setGender(Character.toUpperCase(newGender));              //UPDATE GENDER WITH CAPITAL
                 System.out.println("\n\nGender updated successfully !"); 
         break;
         case 5:
                 System.out.print("Enter your Age > ");
-                super.setAge(scan.nextInt());
+                super.setAge(s.nextInt());
                 System.out.println("\n\nAge updated successfully !"); 
         break;
         case 6:
                 System.out.println("Enter your Email > ");                  //ENTER EMAIL
-                String newEmail = scan.nextLine();
+                String newEmail = s.nextLine();
                 while(!super.validateEmailFormat(newEmail))                    //VALIDATE EMAIL FORMAT, CONTAIN "@"
                 {
                     System.out.println("Invalid Email");
                     System.out.println("Enter your Email > ");                 
-                    newEmail = scan.nextLine();
+                    newEmail = s.nextLine();
   
                 }
                     super.setEmail(newEmail);                                   //UPDATE EMAIL
@@ -307,13 +313,13 @@ public void updateProfile(Scanner scan){
         break;
         case 7:
                 System.out.print("Enter your Phone Number > ");         //ENTER NUMBER
-                String newPhoneNum = scan.nextLine();
+                String newPhoneNum = s.nextLine();
                 while(!super.validatePhoneNum(newPhoneNum))           //VALIDATE ONLY NUMBER WITH +COUNTRY CODE
                 {
                     System.out.println("Phone Number Should Start With '+' followed by country code and phone number");
                     System.out.println("Eg : +60123456789");
                     System.out.print("Enter your Phone Number > ");
-                    newPhoneNum = scan.nextLine();
+                    newPhoneNum = s.nextLine();
                 }
                 super.setPhoneNum(newPhoneNum);
                 System.out.println("\n\nPhone Number updated successfully !"); 
@@ -326,18 +332,18 @@ public void updateProfile(Scanner scan){
         break;
     }
     System.out.print("Another Update? (Y/N) > ");
-    another = scan.next().charAt(0);
-    while(!super.validateOption(another)){
+    another = s.next().charAt(0);
+    while(!Main.validateOption(another)){
         System.out.println("Invalid Input.");
         System.out.print("Another Update? (Y/N) > ");
-        another = scan.next().charAt(0);
+        another = s.next().charAt(0);
     }
 } while (Character.toUpperCase(another) == 'Y');
     
    }
 
 //Reschedule Ticket
-public void rescheduleTicket(Reservation reservation, Scanner scanner) {
+public void rescheduleTicket(Reservation reservation, Scanner s) {
     
     List<FlightSchedule> flightScheduleList = Main.getFlightSchedules();
     List<FlightSchedule> availableSchedules = new ArrayList<FlightSchedule>(); 
@@ -369,7 +375,7 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
             }
         
         System.out.printf("\nEnter new schedule choice [1...%d]: ",n-1);
-        choice = scanner.nextInt();
+        choice = s.nextInt();
 
         if(choice < 1 || choice > n-1 ){
             System.out.println("\nInvalid Choice, Please Enter Again!");
@@ -386,21 +392,21 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
     targetSchedule.displaySeats();
 
     //Get seats
-    List<fSeat> bookedSeats = targetSchedule.bookSeat(scanner);
+    List<fSeat> bookedSeats = targetSchedule.bookSeat(s);
 
     //Set the new reservation
     Reservation newReservation = new Reservation(bookedSeats.size(),targetSchedule,bookedSeats);
     
     //DO A MENU (LIST OF REASONS)
-    customerRequest.requestReason(scanner);
+    customerRequest.requestReason(s);
 
     System.out.print("\nConfirm to reschedule? (Y/N) > ");
-    char next = scanner.next().charAt(0);
+    char next = s.next().charAt(0);
     
-    while(!super.validateOption(next)){
+    while(!Main.validateOption(next)){
         System.out.println("Invalid Input.");
         System.out.print("Confirm to reschedule? (Y/N) >");
-        next = scanner.next().charAt(0);
+        next = s.next().charAt(0);
     }
 
     if(Character.toUpperCase(next) == 'Y'){
@@ -421,14 +427,14 @@ public void rescheduleTicket(Reservation reservation, Scanner scanner) {
   
         System.out.println("\nRequested for Rescheduling Ticket.");
         System.out.println("ENTER ANY KEY TO CONTINUE >");
-        scanner.nextLine();
-        scanner.nextLine();
+        s.nextLine();
+        s.nextLine();
     
     }
 }
 
 //Cancel Ticket
-public void cancelTicket(Reservation reservation, Scanner scanner) {
+public void cancelTicket(Reservation reservation, Scanner s) {
 
     //Customer Request 
     Request request = new Request();
@@ -441,14 +447,14 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
 
     
     //DO A MENU (LIST OF REASONS)
-    request.requestReason(scanner);
+    request.requestReason(s);
 
     System.out.print("\nConfirm to cancel? (Y/N) > ");
-    char next = scanner.next().charAt(0);
-    while(!super.validateOption(next)){
+    char next = s.next().charAt(0);
+    while(!Main.validateOption(next)){
         System.out.println("Invalid Input.");
         System.out.print("Confirm to cancel? (Y/N) > ");
-        next = scanner.next().charAt(0);
+        next = s.next().charAt(0);
     }
 
     if(Character.toUpperCase(next) == 'Y'){
@@ -466,8 +472,8 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
 
         System.out.println("\nRequested for Cancelling Ticket.");
         System.out.println("ENTER ANY KEY TO CONTINUE >");
-        scanner.nextLine();
-        scanner.nextLine();
+        s.nextLine();
+        s.nextLine();
     }
 
 }
@@ -475,11 +481,15 @@ public void cancelTicket(Reservation reservation, Scanner scanner) {
 
 public void welcome(){ // can remove if dw, main line 149
     System.out.println("\n\n\n\n\n\n\n\n\nWelcome To SaiLou Airline !");
+    System.out.printf("User ID: %s", userID);
 }
 
 
 //Check Reservation
-public void checkRequestStatus(Request reservationRequest, Scanner scanner){
+
+public void checkRequestStatus(Reservation reservation, Scanner s){
+    List<Request> requestList = Main.getRequests();
+
     boolean found = false;
 
     for (Request request : requests) {
@@ -517,8 +527,8 @@ public void checkRequestStatus(Request reservationRequest, Scanner scanner){
         System.out.println("\nRESERVATION HAVE NO REQUEST.\n");
 
     System.out.println("ENTER ANY KEY TO CONTINUE >");
-        scanner.nextLine();
-        scanner.nextLine();
+        s.nextLine();
+        s.nextLine();
 
 }
      /**
@@ -540,7 +550,7 @@ public void checkRequestStatus(Request reservationRequest, Scanner scanner){
 
         if (option == 1)
         {
-            error = fpx1.validateFPX();
+            error = fpx1.validateFPX(s);
             if ( error == false)
             {
                 fpx1.pay(amount);
@@ -550,7 +560,7 @@ public void checkRequestStatus(Request reservationRequest, Scanner scanner){
         }
         else if ( option == 2)
         {
-            error = debit1.validateDC();
+            error = debit1.validateDC(s);
             if(error == false)
             {
                 debit1.pay(amount);
@@ -558,7 +568,7 @@ public void checkRequestStatus(Request reservationRequest, Scanner scanner){
                 return;
             }
         }
-        else if (option ==0)
+        else if (option == 0)
         {
             return;
         }
