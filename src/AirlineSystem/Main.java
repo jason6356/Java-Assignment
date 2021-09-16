@@ -511,7 +511,7 @@ public class Main {
         while (!acc.validateName(regLastName)) {
             System.out.println("Invalid Name. Only Alphabets ");
             System.out.print("2. Last Name > ");
-            regFirstName = s.nextLine();
+            regLastName = s.nextLine();
         }
 
         System.out.print("3. Gender (M/F) > "); // ENTER GENDER
