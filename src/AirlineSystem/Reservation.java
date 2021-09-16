@@ -95,18 +95,7 @@ public class Reservation {
     public static HashMap<Reservation, List<fSeat>> getSeatMap() {
         return seatMap;
     }
-
-    /**
-     * Method to display Reservation Details
-     */
-    public String toString() {
-        return String.format(
-                "\nReservation No: %s \nReservation Time: %s \nReservation Status: %s \nNumber of seat booked: %d \nTotal Amount: %.2f \n"
-                        + flight.toString(),
-                reservationNo, reservationTime, reservationStatus, noOfSeatBooked, totalAmount);
-
-    }
-
+    
     /**
      * Method to Display Reservation in Formatted
      * 
