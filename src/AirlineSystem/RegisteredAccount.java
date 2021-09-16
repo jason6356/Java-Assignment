@@ -356,7 +356,7 @@ public void updateProfile(Scanner s){
         }
         super.setLastName(newLastName);                    //UPDATE LAST NAME
         System.out.println("\n\nLast Name updated successfully !");
-
+        break;
         case 3:
             System.out.println("GUIDE---> Input 'abc' if forget password");
             System.out.print("Enter your old password > ");         //ENTER OLD PASSWORD
