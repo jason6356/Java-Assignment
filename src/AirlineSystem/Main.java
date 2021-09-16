@@ -504,12 +504,14 @@ public class Main {
             System.out.print("1. First Name > ");
             regFirstName = s.nextLine();
         }
+
         System.out.print("2. Last Name > "); // ENTER LAST NAME
+   
         String regLastName = s.nextLine();
         while (!acc.validateName(regLastName)) {
             System.out.println("Invalid Name. Only Alphabets ");
             System.out.print("2. Last Name > ");
-            regFirstName = s.nextLine();
+            regLastName = s.nextLine();
         }
 
         System.out.print("3. Gender (M/F) > "); // ENTER GENDER
@@ -524,6 +526,7 @@ public class Main {
         System.out.print("4. Age > "); // ENTER AGE
         int regAge = s.nextInt();
 
+      //  s.nextLine();
         System.out.print("5. Phone Number  > "); // ENTER PHONE NUMBER
         String regPhoneNum = s.nextLine();
         while (!acc.validatePhoneNum(regPhoneNum)) // VALIDATE ONLY NUMBER WITH +COUNTRY CODE
@@ -535,6 +538,7 @@ public class Main {
         }
 
         System.out.print("6. Email > "); // ENTER EMAIL
+        s.nextLine();
         String regEmail = s.nextLine();
         while (!acc.validateEmailFormat(regEmail)) // VALIDATE EMAIL IF IT CONTAIN "@"
         {

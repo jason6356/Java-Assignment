@@ -241,6 +241,7 @@ public void displayReservation(){
         reservations.forEach((e) -> System.out.println(e.displayReservation(e)));
     }
     ntg.nextLine();
+    ntg.close();
 }
 
 public void confirmTicket(Scanner s){
@@ -406,12 +407,12 @@ public void updateProfile(Scanner s){
                 System.out.println("\n\nAge updated successfully !"); 
         break;
         case 6:
-                System.out.println("Enter your Email > ");                  //ENTER EMAIL
+                System.out.print("Enter your Email > ");                  //ENTER EMAIL
                 String newEmail = s.nextLine();
                 while(!super.validateEmailFormat(newEmail))                    //VALIDATE EMAIL FORMAT, CONTAIN "@"
                 {
                     System.out.println("Invalid Email");
-                    System.out.println("Enter your Email > ");                 
+                    System.out.print("Enter your Email > ");                 
                     newEmail = s.nextLine();
   
                 }
@@ -771,7 +772,7 @@ public void checkRequestStatus(Request reservationRequest, Scanner s) {
 
 }while(option!=0);
 
-    System.out.println("Payment Cancelled!");
+
     return false;
     }
 
