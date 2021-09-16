@@ -1258,6 +1258,9 @@ public class Staff extends Account{
     public void rejectRequest(Request request){
         //change request status 
         request.setRequestStatus(rqStatus.REJECTED);
+
+        //call updateRequest methods
+        request.updateRequest(request);
     }
 
     public void changePassword(Scanner s){
