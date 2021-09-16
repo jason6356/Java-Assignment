@@ -241,7 +241,7 @@ public void displayReservation(){
         reservations.forEach((e) -> System.out.println(e.displayReservation(e)));
     }
     ntg.nextLine();
-    ntg.close();
+
 }
 
 public void confirmTicket(Scanner s){

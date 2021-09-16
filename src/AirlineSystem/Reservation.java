@@ -119,6 +119,17 @@ public class Reservation {
                 seatNo, totalAmount);
     }
 
+    public String getBookedSeaString(Reservation reservation){
+
+        List<fSeat> seat = seatMap.get(reservation);
+        String bookedSeat = " ";
+        for(fSeat s : seat)
+            bookedSeat += s.getSeatNo() + " ";
+
+
+        return bookedSeat;
+    }
+
     /**
      * Method to Override equals by comparing ReservationNo
      */

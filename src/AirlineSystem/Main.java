@@ -280,11 +280,14 @@ public class Main {
                     case 8:
                         userList(s);
                         break;
+                    case 9:
+                        dailySummaryReport();
+                        break;
                     default:
                         System.out.println("Invalid Input. Please enter again... ");
                         break;
                 }
-            } while (selection!=9);
+            } while (selection!=10);
 
         } else if(guestAcc instanceof Account){
             char yesNo;
@@ -375,7 +378,8 @@ public class Main {
         System.out.println("| 6. Change Password      |");
         System.out.println("| 7. History Report       |");
         System.out.println("| 8. User List            |");
-        System.out.println("| 9. Logout               |");
+        System.out.println("| 9. Daily Summary Report |");
+        System.out.println("|10. Logout               |");
         System.out.println("+-------------------------+");
         System.out.print("Enter Selection: ");
         return s.nextInt();
@@ -716,6 +720,28 @@ public class Main {
 
         s.nextLine();
         s.nextLine();
+    }
+
+    public static void dailySummaryReport(){
+
+        List<Reservation> rList = Main.getReservations();
+        if(rList.isEmpty())
+            System.out.println("No Reservations Today");
+        double profit = 0.0;
+        clearConsole();
+        System.out.println("\t SaiLou Airline Daily Summary Report");
+        System.out.println("+===============================================+");
+        System.out.printf("|%-4s|%-20s|Total Amount | Status |\n","ID","Booked Seats");
+        for (Reservation reservation : rList) {
+            if(reservation.getReservationStatus() == rStatus.PAID){
+            System.out.printf("|%-4s|%-20s|RM%11.2f|%-8s|\n",reservation.getReservationNo(),reservation.getBookedSeaString(reservation),reservation.getTotalAmount(),reservation.getReservationStatus().name());
+            profit += reservation.getTotalAmount();
+            }
+        }
+        System.out.println("+===============================================+");
+
+        System.out.printf("Total Profit for the day : RM%.2f\n",profit);
+
     }
 
 }
