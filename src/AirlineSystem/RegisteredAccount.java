@@ -75,8 +75,9 @@ public void makeReservation(Scanner s){
         System.out.println("Available Flight Schedules");
         System.out.println("Depart Country : " + location);
         System.out.println("Arrive Country : " + destination);
+        Main.printLine(138);
         System.out.printf("%-2s|%10s|%5s|%-37s|%-37s|%-16s|%-24s|\n","NO","DepartDate","Time","Location","Destination","Arrival Time","Direction");
-        Main.printLine(143);
+        Main.printLine(138);
         //Print the flightschedules the user wants
         int i = 1;
         for (FlightSchedule flightSchedule : fsList) {
@@ -88,6 +89,7 @@ public void makeReservation(Scanner s){
                 i++;
             }
         }
+        Main.printLine(138);
         
         if(found){
             System.out.println("Found!");
@@ -168,8 +170,9 @@ public void twoWayReserve(Scanner s,Reservation from){
     System.out.println("Depart Country");
     System.out.println("Depart Country : " + newLocation);
     System.out.println("Arrive Country : " + newDestination);
+    Main.printLine(138);
     System.out.printf("%-2s|%10s|%5s|%-37s|%-37s|%-16s|%-24s|\n","NO","DepartDate","Time","Location","Destination","Arrival Time","Direction");
-    Main.printLine(143);
+    Main.printLine(138);
     //Print the flightschedules the user wants
     int i = 1;
     for (FlightSchedule flightSchedule : fsList) {
@@ -181,7 +184,7 @@ public void twoWayReserve(Scanner s,Reservation from){
             i++;
         }
     }
-
+    Main.printLine(138);
     if(found){
         System.out.println("Found!");
         System.out.print("Enter the No to book the flight - ");
