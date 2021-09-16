@@ -1192,14 +1192,14 @@ public class Staff extends Account{
         }
         else{
             do{
-                System.out.println(" REQUESTS:");
+                System.out.println("\n\n REQUESTS:");
                 System.out.println("===========");
                 int requestCount = 1;
                 do{
                     //Display all list
                     for (Request request : requestList) {
-                        System.out.print("\n\n" + requestCount + ".");
-                        System.out.println(request.displayRequest());
+                        System.out.println(requestCount + ".");
+                        System.out.println(request.toString());
                         requestCount++;
                     }
 
@@ -1217,13 +1217,11 @@ public class Staff extends Account{
                 } while(requestChoice < 1 || requestChoice > requestCount - 1);
             
                 //approve or reject and validate
-                System.out.print("Approve (Y/y) or Reject (N/n): ");
-                char choice = s.next().charAt(0);
-                while(!Main.validateOption(choice)){
-                    System.out.println("Invalid Input.");
-                    System.out.print("Approve (Y/y) or Reject (N/n): ");
+                char choice;
+                do{
+                    System.out.print("Approve (Y/y) or Reject (N/n) or Ignore (I/i): ");
                     choice = s.next().charAt(0);
-                }
+                }while(Character.toUpperCase(choice) != 'Y' && Character.toUpperCase(choice) != 'N' && Character.toUpperCase(choice) != 'I');
 
                 //if else for accept or reject request 
                 if(Character.toUpperCase(choice) == 'Y'){

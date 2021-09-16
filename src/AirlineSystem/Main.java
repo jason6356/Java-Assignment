@@ -90,6 +90,13 @@ public class Main {
                         //Modified , get reservations from the user who login , not all 
                         clearConsole();
                         List<Reservation> reservation = userAccount.getReservations();
+                        List<Reservation> currentReservation = new ArrayList<Reservation>();
+
+                        boolean reservationFound = false;
+                        for (Reservation reservationCheck : reservation) {
+                            if(reservationCheck.getReservationStatus() != rStatus.CANCELLED)
+                                reservationFound = true;
+                        }
 
                         if(reservation.isEmpty()){
                             System.out.println("\nYou have no reservation.");
@@ -97,7 +104,7 @@ public class Main {
                             s.nextLine();
                             s.nextLine();
                         }
-                        else {
+                        else if(reservationFound == true){
                             int choiceReschedule;
                             int reservationCount;
                             do{
@@ -106,9 +113,12 @@ public class Main {
                                 reservationCount = 1;
                                 System.out.println("\nYour Reservations:");
                                 for (Reservation res : reservation) {
-                                    System.out.println(reservationCount + ". ");
-                                    System.out.println(res.displayReservation());
-                                    reservationCount++;
+                                    if(res.getReservationStatus() != rStatus.CANCELLED) {
+                                        System.out.println(reservationCount + ". ");
+                                        System.out.println(res.displayReservation());
+                                        currentReservation.add(res);
+                                        reservationCount++;
+                                    }
                                 }
                                 System.out.printf("Select Reservation to Reshedule[1...%d] > ",reservationCount - 1);
                                 choiceReschedule = s.nextInt();
@@ -119,14 +129,27 @@ public class Main {
 
                             } while(choiceReschedule < 1 || choiceReschedule > reservationCount - 1);
 
-                            userAccount.rescheduleTicket(reservation.get(choiceReschedule - 1), s, userAccount);
-                    }
+                            userAccount.rescheduleTicket(currentReservation.get(choiceReschedule - 1), s, userAccount);
+                        }
+                        else{
+                            System.out.println("\nYour reservation have been all cancelled.");
+                            System.out.println("ENTER ANY KEY TO CONTINUE >");
+                            s.nextLine();
+                            s.nextLine();
+                        }
 
                         break;
                     case 5:
                         // TODO : Huiyi -> Cancel Ticket
                         clearConsole();
                         List<Reservation> resToCancel = userAccount.getReservations();
+                        List<Reservation> currentReservations = new ArrayList<Reservation>();
+
+                        boolean reservationsFound = false;
+                        for (Reservation reservationCheck : resToCancel) {
+                            if(reservationCheck.getReservationStatus() != rStatus.CANCELLED)
+                                reservationsFound = true;
+                        }
 
                         if(resToCancel.isEmpty()){
                             System.out.println("\nYou have no reservation.");
@@ -134,7 +157,7 @@ public class Main {
                             s.nextLine();
                             s.nextLine();
                         }
-                        else {
+                        else if(reservationsFound == true) {
                             int choiceCancel;
                             int reservationsCount;
                             do{
@@ -143,10 +166,14 @@ public class Main {
                                 reservationsCount = 1;
                                 System.out.println("\nYour Reservations:");
                                 for (Reservation res : resToCancel) {
-                                    System.out.println(reservationsCount + ". ");
-                                    System.out.println(res.displayReservation());
-                                    reservationsCount++;
+                                     if(res.getReservationStatus() != rStatus.CANCELLED) {
+                                        System.out.println(reservationsCount + ". ");
+                                        System.out.println(res.displayReservation());
+                                        currentReservations.add(res);
+                                        reservationsCount++;
+                                    }
                                 }
+
                                 System.out.printf("Select Reservation to Cancel [1...%d]> ",reservationsCount - 1);
                                 choiceCancel = s.nextInt();
 
@@ -156,7 +183,13 @@ public class Main {
 
                             } while(choiceCancel < 1 || choiceCancel > reservationsCount - 1);
                             
-                            userAccount.cancelTicket(resToCancel.get(choiceCancel - 1), s, userAccount);
+                            userAccount.cancelTicket(currentReservations.get(choiceCancel - 1), s, userAccount);
+                        }
+                        else{
+                            System.out.println("\nYour reservation have been all cancelled.");
+                            System.out.println("ENTER ANY KEY TO CONTINUE >");
+                            s.nextLine();
+                            s.nextLine();
                         }
                         break;
                     case 6:
@@ -180,7 +213,7 @@ public class Main {
                                 System.out.println("\nYour Requests:");
                                 for (Request res : requestToCheck) {
                                     System.out.println(requestCount + ". ");
-                                    System.out.println(res.displayRequest());
+                                    System.out.println(res.toString());
                                     requestCount++;
                                 }
                                 System.out.printf("Select Request to Check Request Status [1...%d]> ",requestCount - 1);

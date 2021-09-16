@@ -104,9 +104,8 @@ public class Request {
      */
     public String toString() {
         return String.format(
-                "Request ID: %s      Request Description: %s      Reason of Request: %s \nOld Reservation: "
-                        + oldReservation.toString() + "\n\nNew Reservation: " + newReservation.toString(),
-                requestID, requestDescription, reason);
+                "| Request ID: [%s]    | Request Description: %-25s    | Reason of Request: %-26s    | Reservation No.: %s|\n--------------------------------------------------------------------------------------------------------------------------------------------------------",
+                requestID, requestDescription, reason, oldReservation.getReservationNo());
     }
 
     /**
