@@ -139,10 +139,6 @@ public void makeReservation(Scanner s){
         System.out.print("Continue to book another reservation ? (Y/N)");
         continueBook = s.next().charAt(0);
 
-        System.out.println(continueBook);
-        s.nextLine();  
-        s.nextLine();
-
         while(Character.toUpperCase(continueBook)!='Y' && Character.toUpperCase(continueBook)!='N'){
             System.out.println("Invalid Input!");
             System.out.print("Continue to book another reservation ? ");
@@ -152,6 +148,9 @@ public void makeReservation(Scanner s){
 
 
     }while(Character.toUpperCase(continueBook) == 'Y');
+    
+    s.nextLine();
+
 }
 
 //Split into 2 methods, 1 way reservation , 2 way reservations
@@ -236,9 +235,8 @@ public void displayReservation(){
         System.out.println("No Reservations");
     else{
         System.out.println("Your Reservations\n\n\n\n");
-        reservations.forEach((e) -> System.out.println(e.displayReservation()));
+        reservations.forEach((e) -> System.out.println(e.displayReservation(e)));
     }
-    ntg.nextLine();
     ntg.nextLine();
 }
 
@@ -305,6 +303,7 @@ public void confirmTicket(Scanner s){
                 }
             }
             else{
+                queryList.get(choice - 1).setReservationStatus(rStatus.PENDING);
                 System.out.println("For your reminder, the reservation that is not confirmed yet after 14 days will be removed!");
             }
         }

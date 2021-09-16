@@ -1,7 +1,8 @@
+Test Case 1 (Make Reservation)
 3
 A001
 abc123
-2
+3
 1
 Malaysia
 Singapore
@@ -11,5 +12,27 @@ Y
 A1
 Y
 N
+2
 
-if reservation is cancel or terminate - give status to cancelled, make sure the seat booked is available again
+8
+5
+
+
+Test Case 2 (Confirm Reservation)
+
+3
+A001
+abc123
+3
+1
+Malaysia
+Singapore
+1
+Y
+1
+A1
+Y
+N
+4
+1
+Y
