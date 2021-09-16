@@ -151,6 +151,7 @@ public class FlightSchedule {
             }
             col++;
         }
+        System.out.println("\n\n[X] - Occupied \n[B] - Bussiness Class \n[E] - Economy Class");
         //Next line
         System.out.println();
     }

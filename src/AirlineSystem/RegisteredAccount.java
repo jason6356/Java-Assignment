@@ -262,7 +262,7 @@ public void confirmTicket(Scanner s){
             found = true;
             queryList.add(reservation);
             System.out.printf("%2d", i++);
-            System.out.println(reservation);
+            System.out.println(reservation.displayReservation(reservation));
         }
     }
     if(found){
@@ -712,7 +712,7 @@ public void checkRequestStatus(Request reservationRequest, Scanner s) {
             fpx1.pay(amount);
             s.nextLine();
             s.nextLine();
-            return false;
+            return true;
         }
                
             
@@ -752,7 +752,7 @@ public void checkRequestStatus(Request reservationRequest, Scanner s) {
                 debit1.pay(amount);
                 s.nextLine();
                 s.nextLine();
-                return false;
+                return true;
 
         }
      
