@@ -24,7 +24,8 @@ public class Request {
     }
 
     // Remember to increase the requestCount once a request has been done
-    Request(String requestDescription, String reason, Reservation oldReservation, Reservation newReservation, RegisteredAccount requestedBy) {
+    Request(String requestDescription, String reason, Reservation oldReservation, Reservation newReservation,
+            RegisteredAccount requestedBy) {
         this.requestID = makeRequestID();
         this.requestDescription = requestDescription;
         this.reason = reason;
@@ -104,9 +105,8 @@ public class Request {
      */
     public String toString() {
         return String.format(
-                "Request ID: %s      Request Description: %s      Reason of Request: %s \nOld Reservation: "
-                        + oldReservation.toString() + "\n\nNew Reservation: " + newReservation.toString(),
-                requestID, requestDescription, reason);
+                "| Request ID: [%s]    | Request Description: %-25s    | Reason of Request: %-26s    | Reservation No.: %s|\n--------------------------------------------------------------------------------------------------------------------------------------------------------",
+                requestID, requestDescription, reason, oldReservation.getReservationNo());
     }
 
     /**
@@ -119,14 +119,14 @@ public class Request {
         if (requestDescription == "Cancel Ticket Request") {
             return String.format(
                     "\n---------------REQUEST-------------------------------------------------------------------------------------------------------------------------\nRequest ID: %s     Description: %s     Reason of Request: %s     Status: %s \n\nReservation: \n"
-                            + oldReservation.displayReservation()
+                            + oldReservation.displayReservation(oldReservation)
                             + "-----------------------------------------------------------------------------------------------------------------------------------------------",
                     requestID, requestDescription, reason, requestStatus);
         } else
             return String.format(
-                    "\n---------------REQUEST-------------------------------------------------------------------------------------------------------------------------\nRequest ID: %s     Description: %s     Reason of Request: %s     Status: %s \n\nReservation: \n"
-                            + oldReservation.displayReservation() + "\nNew Reservation: \n"
-                            + newReservation.displayReservation()
+                    "\n---------------REQUEST-------------------------------------------------------------------------------------------------------------------------\nRequest ID: %s     Description: %s     Reason of Request: %s     Status: %s \n\nOld Reservation: \n"
+                            + oldReservation.displayReservation(oldReservation) + "\nNew Reservation: \n"
+                            + newReservation.displayReservation(newReservation)
                             + "-----------------------------------------------------------------------------------------------------------------------------------------------",
                     requestID, requestDescription, reason, requestStatus);
     }
@@ -141,56 +141,43 @@ public class Request {
         List<Reservation> customerReservationList = requestedBy.getReservations();
         boolean found = false;
 
-        System.out.println("Before Update");
-        //Display all the contents
-        customerReservationList.forEach((e) -> System.out.println(e.displayReservation()));
-
         // if status is approved, update the reservation
         if (request.getRequestStatus() == rqStatus.APPROVED) {
             if (request.getRequestDescription() == "Cancel Ticket Request") {
 
+                // Make all the seats booked by the cancelled reservation into available again
+                Reservation.getSeatMap().get(request.getOldReservation()).forEach((seat) -> seat.makeSeatEmpty());
+                // Cancel the reservation
+                request.getOldReservation().setReservationStatus(rStatus.CANCELLED);
+
+            } else if (request.getRequestDescription() == "Reschedule Ticket Request") {
 
                 for (Reservation reservation : customerReservationList) {
-                    
+
                     if (request.getOldReservation().equals(reservation)) {
+                        found = true;
                         // Make all the seats booked by the cancelled reservation into available again
                         Reservation.getSeatMap().get(reservation).forEach((seat) -> seat.makeSeatEmpty());
-                        // Remove the reservation
-                        reservation.setReservationStatus(rStatus.CANCELLED);
-
-                        System.out.println("Found the item to cancel!");
-
+                        // Cancel the reservation
+                        request.getOldReservation().setReservationStatus(rStatus.CANCELLED);
                     }
                 }
+
             }
-             else if (request.getRequestDescription() == "Reschedule Ticket Request") {
+        } else if (request.getRequestStatus() == rqStatus.REJECTED) {
+            if (request.getRequestDescription() == "Reschedule Ticket Request") {
 
-                
-
-           
-                for (Reservation reservation : customerReservationList) {
-                    
-                    if (request.getOldReservation().equals(reservation)){
-                        found = true;
-                         // Make all the seats booked by the cancelled reservation into available again
-                         Reservation.getSeatMap().get(reservation).forEach((seat) -> seat.makeSeatEmpty());
-                         // Remove the reservation
-                         reservation.setReservationStatus(rStatus.CANCELLED);
-                      
-                         System.out.println("Found the item to reschedule!");
-                        }
-                }
+                // Make all the seats booked by the cancelled reservation into available again
+                Reservation.getSeatMap().get(request.getNewReservation()).forEach((seat) -> seat.makeSeatEmpty());
+                // Cancel the reservation
+                request.getNewReservation().setReservationStatus(rStatus.CANCELLED);
 
             }
         }
 
-        if(found)
+        if (found)
             customerReservationList.add(request.getNewReservation());
 
-        System.out.println("After update");
-        for (Reservation customerReservation : customerReservationList) {
-            System.out.println(customerReservation.displayReservation());
-        }
     }
 
     public void requestReason(Scanner s) {

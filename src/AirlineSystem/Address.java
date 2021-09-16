@@ -60,10 +60,6 @@ public class Address {
 
 
     ////////////////////////////////////////methods////////////////////////////////////////////
-    public void updateAddress()
-    {
-
-    }
     
     public String toString(){
         return String.format("Unit    : %s\nRoad    : %s\nPostcode : %d\nCity    : %s\nState   : %s\nCountry : %s\n", unit,road,postcode,city,state,country);

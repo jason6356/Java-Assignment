@@ -7,7 +7,24 @@ import java.util.Scanner;
 import java.time.format.DateTimeFormatter;
 
 public class Staff extends Account{
-   
+    
+    //Add store
+    private int addFlightCount = 0;
+    private int addAirlineCount = 0;
+    private int addAirportCount = 0;
+
+    //Update store
+    private int updateFlightCount = 0;
+    private int updateAirlineCount = 0;
+    private int updateAirportCount = 0;
+    private int updateFlightSCount = 0;
+
+    //Delete store
+    private int deleteFlightCount = 0;
+    private int deleteAirlineCount = 0;
+    private int deleteAirportCount = 0;
+    private int deleteFlightSCount = 0;
+
     private String staffID;
     private static int nthStaff = 1; // default value is 0
     Account acc = new Account();
@@ -48,24 +65,28 @@ public class Staff extends Account{
     public void addRecordsMenu(Scanner s){
         int choice; 
         Main.clearConsole();
-        System.out.println("Add Records");
-        System.out.println("===========");
-        System.out.println("1. Flights");
-        System.out.println("2. Airline");
-        System.out.println("3. Airport");
-        System.out.println("4. Back to Staff Menu");
+        System.out.println("+=======================+");
+        System.out.println("|      Add Records      |");
+        System.out.println("+=======================+");
+        System.out.println("| 1. Flights            |");
+        System.out.println("| 2. Airline            |");
+        System.out.println("| 3. Airport            |");
+        System.out.println("| 4. Back to Staff Menu |");
+        System.out.println("+-----------------------+");
         System.out.print("Enter Choice: ");
         choice = s.nextInt();
 
         //validation
         while(choice<1 || choice>4){
-            System.out.println("Invalid Input! Please enter again... ");
-            System.out.println("Add Records");
-            System.out.println("===========");
-            System.out.println("1. Flights");
-            System.out.println("2. Airline");
-            System.out.println("3. Airport");
-            System.out.println("4. Back to Staff Menu");
+            System.out.println("\nInvalid Input! Please enter again... \n");
+            System.out.println("+=======================+");
+            System.out.println("|      Add Records      |");
+            System.out.println("+=======================+");
+            System.out.println("| 1. Flights            |");
+            System.out.println("| 2. Airline            |");
+            System.out.println("| 3. Airport            |");
+            System.out.println("| 4. Back to Staff Menu |");
+            System.out.println("+-----------------------+");
             System.out.print("Enter Choice: ");
             choice = s.nextInt();
         }
@@ -90,23 +111,58 @@ public class Staff extends Account{
 
     public void addFlight(Scanner s){
         List<Flight> flightList = Main.getFlightList();
+        List<Airline> airlineList = Main.getAirlineList();
         char cont;
 
         do{
             //Input details 
             System.out.println("\n---Add Flight---");
-            s.nextLine();
-            System.out.print("Airline Name: ");
-            String airlineName = s.nextLine();
-            System.out.print("Airline Code: ");
-            String airlineCode = s.next();
+            System.out.println("\n        Choose Types of Airline");
+            System.out.println("=========================================");
+            System.out.println("   Airline Name            Airline Code");
+            System.out.println("=========================================");
+
+            int num = 1;
+            for (Airline airline : airlineList) {
+                System.out.printf("%d. %-23s %-12s\n\n",num++, airline.getAirlineName(), airline.getAirlineCode());
+            }
+            System.out.print("> ");
+            int typeAirline = s.nextInt();
+            int airlineIndex;
+
+            //validation for airline number 
+            while(typeAirline<1 || typeAirline>num){
+                System.out.println("\nNumber NOT FOUND! Please enter again... \n");
+                System.out.println("\n        Choose Types of Airline");
+                System.out.println("=========================================");
+                System.out.println("   Airline Name            Airline Code");
+                System.out.println("=========================================");
+
+                num = 1;
+                for (Airline airline : airlineList) {
+                    System.out.printf("%d. %-23s %-12s\n\n",num++, airline.getAirlineName(), airline.getAirlineCode());
+                }
+                System.out.print("> ");
+                typeAirline = s.nextInt();
+            }
+
+            typeAirline--;
+            airlineIndex = 0;
+            for(int i=0; i<airlineList.size(); i++){
+                if(airlineList.get(i).getAirlineName().equals(airlineList.get(typeAirline).getAirlineName())){
+                    airlineIndex = i;
+                }
+            }
+
             System.out.print("Total Seats: ");
             int totalSeat = s.nextInt();
             
             //Create object 
-            Airline airline = new Airline(airlineName, airlineCode);
+            Airline airline = new Airline(airlineList.get(airlineIndex).getAirlineName(), airlineList.get(airlineIndex).getAirlineCode());
             Flight flight = new Flight(airline, totalSeat);
             flightList.add(flight);
+            addFlightCount++;
+
             System.out.println("\nFlight added successfully!");
 
             System.out.println("\n                 ---Flight---");
@@ -125,7 +181,6 @@ public class Staff extends Account{
                 System.out.println("Continue add flight? ");
                 cont = s.next().charAt(0);
             }
-
         }while(Character.toUpperCase(cont) == 'Y');
     }
 
@@ -135,7 +190,7 @@ public class Staff extends Account{
 
         do{
             //Input details 
-            System.out.println("---Add Airline---");
+            System.out.println("\n---Add Airline---");
             s.nextLine();
             System.out.print("Airline Name: ");
             String airlineName = s.nextLine();
@@ -145,6 +200,7 @@ public class Staff extends Account{
             //Create object 
             Airline airline = new Airline(airlineName, airlineCode);
             airlineList.add(airline);
+            addAirlineCount++;
             System.out.println("Airline added successfully!");
     
             System.out.println("\n                 ---Airline---");
@@ -152,7 +208,7 @@ public class Staff extends Account{
             System.out.printf("%-20s %-20s %-20s \n", "Airline Name", "Airline Code", "Flight List");
             System.out.println("======================================================");
             for (Airline airline2 : airlineList) {
-                System.out.println(airline2.toString() + "\n");
+                System.out.println(airline2.toString());
             }
 
             //Continue?
@@ -172,7 +228,7 @@ public class Staff extends Account{
 
         do{
             //Input details 
-            System.out.println("---Add Airport---");
+            System.out.println("\n---Add Airport---");
             s.nextLine();
             System.out.print("Airport Name: ");
             String airportName = s.nextLine();
@@ -182,6 +238,7 @@ public class Staff extends Account{
             //Create object 
             Airport airport = new Airport(airportName, location);
             airportList.add(airport);
+            addAirportCount++;
             System.out.println("Airport added successfully!");
 
             System.out.println("\n                                ---Airport---");
@@ -207,15 +264,32 @@ public class Staff extends Account{
     public void updateRecordsMenu(Scanner s){
         int choice;
         do{
-            System.out.println("Update Records");
-            System.out.println("==============");
-            System.out.println("1. Flights");
-            System.out.println("2. Airline");
-            System.out.println("3. Airport");
-            System.out.println("4. Flight Schedule");
-            System.out.println("5. Back to Staff Menu");
+            System.out.println("\n+=======================+");
+            System.out.println("|     Update Records    |");
+            System.out.println("+=======================+");
+            System.out.println("| 1. Flights            |");
+            System.out.println("| 2. Airline            |");
+            System.out.println("| 3. Airport            |");
+            System.out.println("| 4. Flight Schedule    |");
+            System.out.println("| 5. Back to Staff Menu |");
+            System.out.println("+-----------------------+");
             System.out.print("Enter Choice: ");
             choice = s.nextInt();
+
+            while(choice<1 || choice>5){
+                System.out.println("\nInvalid Input! Please enter again... ");
+                System.out.println("\n+=======================+");
+                System.out.println("|     Update Records    |");
+                System.out.println("+=======================+");
+                System.out.println("| 1. Flights            |");
+                System.out.println("| 2. Airline            |");
+                System.out.println("| 3. Airport            |");
+                System.out.println("| 4. Flight Schedule    |");
+                System.out.println("| 5. Back to Staff Menu |");
+                System.out.println("+-----------------------+");
+                System.out.print("Enter Choice: ");
+                choice = s.nextInt();
+            }
 
             switch(choice){
                 case 1:
@@ -256,7 +330,7 @@ public class Staff extends Account{
             }
 
             //Enter Flight code 
-            System.out.println("----Update----");
+            System.out.println("\n----Update----");
             s.nextLine();
             System.out.print("Flight Code: ");
             String flightCode = s.nextLine();
@@ -271,7 +345,7 @@ public class Staff extends Account{
                 }
             }
 
-            //validation 
+            //validation flight code 
             while(search == false){
                 System.out.println("Flight Code NOT FOUND! Please enter again... \n");
                 System.out.print("Flight Code: ");
@@ -285,10 +359,13 @@ public class Staff extends Account{
                     }
                 }
             }
+
+            //display result 
             System.out.printf("\n%-15s %-20s %-20s \n", "Flight Code", "Airline Name", "Total Seats");
             System.out.println("================================================");
             System.out.println(flightList.get(updateIndex).toString());
 
+            //choose airline 
             System.out.println("\n        Choose Types of Airline");
             System.out.println("=========================================");
             System.out.println("   Airline Name            Airline Code");
@@ -300,6 +377,24 @@ public class Staff extends Account{
             }
             System.out.print("> ");
             int typeAirline = s.nextInt();
+
+            //validation for choose airline 
+            while(typeAirline<1 || typeAirline>num){
+                System.out.println("\nAirline NOT FOUND! Please enter again... ");
+                System.out.println("\n        Choose Types of Airline");
+                System.out.println("=========================================");
+                System.out.println("   Airline Name            Airline Code");
+                System.out.println("=========================================");
+
+                num = 1;
+                for (Airline airline : airlineList) {
+                    System.out.printf("%d. %-23s %-12s\n\n",num++, airline.getAirlineName(), airline.getAirlineCode());
+                }
+                System.out.print("> ");
+                typeAirline = s.nextInt();
+            }
+
+            //get airline index 
             typeAirline--;
             int airlineIndex = 0;
             for(int i=0; i<airlineList.size(); i++){
@@ -307,6 +402,7 @@ public class Staff extends Account{
                     airlineIndex = i;
                 }
             }
+
             System.out.print("Total Seats: ");
             int totalSeat = s.nextInt();
 
@@ -314,6 +410,7 @@ public class Staff extends Account{
             Airline airline = new Airline(airlineList.get(airlineIndex).getAirlineName(), airlineList.get(airlineIndex).getAirlineCode());
             Flight flight = new Flight(airline, totalSeat);
             flightList.set(updateIndex, flight);
+            updateFlightCount++;
             System.out.println("Flight updated successfully!");
 
             //Display Changes 
@@ -394,6 +491,7 @@ public class Staff extends Account{
             //Create object 
             Airline airline = new Airline(airlineName, airlineCode);
             airlineList.set(updateIndex, airline); 
+            updateAirlineCount++;
             System.out.println("Airline updated successfully!");
 
             //Display Changes 
@@ -422,7 +520,7 @@ public class Staff extends Account{
         
         do{
             //Display details 
-            System.out.println("                                   ---Airport---");
+            System.out.println("\n                                   ---Airport---");
             int airportCount = 1;
             System.out.println("==============================================================================");
             System.out.printf("   %-40s %-20s %-20s \n", "Airport Name", "Location", "Flight List");
@@ -438,19 +536,18 @@ public class Staff extends Account{
             int chooseAirport = s.nextInt();
 
             //validation
-            boolean search = false;
-            if(chooseAirport >= 1 && chooseAirport <= airportCount){
-                search = true;
-            }
-            
-            while(search == false){
-                System.out.println("Number NOT FOUND! Please enter again... \n");
+            while(chooseAirport<1 || chooseAirport>airportCount){
+                System.out.println("\nAirport NOT FOUND! Please enter again... ");
+                System.out.println("\n                                   ---Airport---");
+                airportCount = 1;
+                System.out.println("==============================================================================");
+                System.out.printf("   %-40s %-20s %-20s \n", "Airport Name", "Location", "Flight List");
+                System.out.println("==============================================================================");
+                for (Airport airport : airportList) {
+                    System.out.println(airportCount++ + ". " + airport.toString() + "\n");
+                }
                 System.out.print("Choose Airport: ");
                 chooseAirport = s.nextInt();
-
-                if(chooseAirport >= 1 && chooseAirport <= airportCount){
-                    search = true;
-                }
             }
 
             //get index 
@@ -462,7 +559,7 @@ public class Staff extends Account{
                 }
             }
 
-            //get specific record 
+            //display specific record 
             System.out.printf("\n%-40s %-20s %-20s \n", "Airport Name", "Location", "Flight List");
             System.out.println("==============================================================================");
             System.out.println(airportList.get(airportIndex).toString() + "\n");
@@ -477,6 +574,7 @@ public class Staff extends Account{
             //Create object 
             Airport airport = new Airport(airportName, location);
             airportList.set(airportIndex, airport);
+            updateAirportCount++;
             System.out.println("Airport updated successfully!");
 
             //Display Changes 
@@ -532,6 +630,7 @@ public class Staff extends Account{
                 }
             }
 
+            //Validate flight schedule code 
             while(search == false){
                 System.out.println("Flight Schedule Code NOT FOUND! Please enter again... \n");
                 System.out.print("Flight Schedule Code: ");
@@ -573,10 +672,41 @@ public class Staff extends Account{
             }
             System.out.print("Choose Location    > ");
             int chooseLocation = s.nextInt();
+
+            //validate location 
+            while(chooseLocation<1 || chooseLocation>countAirport){
+                System.out.println("\nLocation NOT FOUND! Please enter again... ");
+                System.out.println("\n                              Types of Airport");
+                System.out.println("==============================================================================");
+                System.out.printf("   %-40s %-20s %-20s \n", "Airport Name", "Location", "Flight List");
+                System.out.println("==============================================================================");
+                countAirport = 1;
+                for (Airport airport : airportList) {
+                    System.out.println(countAirport++ + ". " + airport.toString() + "\n");
+                }
+                System.out.print("Choose Location    > ");
+                chooseLocation = s.nextInt();
+            }
             
             System.out.print("Choose Destination > ");
             int chooseDestination = s.nextInt();
 
+            //validate destination 
+            while(chooseDestination<1 || chooseDestination>countAirport){
+                System.out.println("\nDestination NOT FOUND! Please enter again... ");
+                System.out.println("\n                              Types of Airport");
+                System.out.println("==============================================================================");
+                System.out.printf("   %-40s %-20s %-20s \n", "Airport Name", "Location", "Flight List");
+                System.out.println("==============================================================================");
+                countAirport = 1;
+                for (Airport airport : airportList) {
+                    System.out.println(countAirport++ + ". " + airport.toString() + "\n");
+                }
+                System.out.print("Choose Destination > ");
+                chooseDestination = s.nextInt();
+            }
+
+            //get location and destination index 
             chooseLocation--;
             chooseDestination--;
             int locationIndex = 0;
@@ -609,6 +739,24 @@ public class Staff extends Account{
             }
             System.out.print("> ");
             int chooseAirline = s.nextInt();
+
+            //validate airline 
+            while(chooseAirline<1 || chooseAirline>countAirline){
+                System.out.println("\nAirline NOT FOUND! Please enter again... ");
+                System.out.println("\n        Choose Types of Airline");
+                System.out.println("=========================================");
+                System.out.println("   Airline Name            Airline Code");
+                System.out.println("=========================================");
+
+                countAirline = 1;
+                for (Airline airline : airlineList) {
+                    System.out.printf("%d. %-23s %-12s\n\n",countAirline++, airline.getAirlineName(), airline.getAirlineCode());
+                }
+                System.out.print("> ");
+                chooseAirline = s.nextInt();
+            }
+
+            //get airline index 
             chooseAirline--;
             int airlineIndex = 0;
             for(int i=0; i<airlineList.size(); i++){
@@ -624,6 +772,7 @@ public class Staff extends Account{
             Flight flight = new Flight(airline, flightList.get(airlineIndex).getTotalSeat());
             FlightSchedule flightSchedule = new FlightSchedule(departureTime, flightDate, location, destination, estimatedArrivalTime, flight);
             flightScheduleList.set(updateIndex, flightSchedule);
+            updateFlightSCount++;
             System.out.println("Flight Schedule updated successfully!");
 
             //Display changes 
@@ -648,15 +797,32 @@ public class Staff extends Account{
     public void deleteRecordsMenu(Scanner s){
         int choice;
         do{
-            System.out.println("Delete Records");
-            System.out.println("==============");
-            System.out.println("1. Flights");
-            System.out.println("2. Airline");
-            System.out.println("3. Airport");
-            System.out.println("4. Flight Schedule");
-            System.out.println("5. Back to Staff Menu");
+            System.out.println("+=======================+");
+            System.out.println("|     Delete Records    |");
+            System.out.println("+=======================+");
+            System.out.println("| 1. Flights            |");
+            System.out.println("| 2. Airline            |");
+            System.out.println("| 3. Airport            |");
+            System.out.println("| 4. Flight Schedule    |");
+            System.out.println("| 5. Back to Staff Menu |");
+            System.out.println("+-----------------------+");
             System.out.print("Enter Choice: ");
             choice = s.nextInt();
+
+            while(choice<1 || choice>5){
+                System.out.println("\nInvalid Input! Please enter again... \n");
+                System.out.println("+=======================+");
+                System.out.println("|     Delete Records    |");
+                System.out.println("+=======================+");
+                System.out.println("| 1. Flights            |");
+                System.out.println("| 2. Airline            |");
+                System.out.println("| 3. Airport            |");
+                System.out.println("| 4. Flight Schedule    |");
+                System.out.println("| 5. Back to Staff Menu |");
+                System.out.println("+-----------------------+");
+                System.out.print("Enter Choice: ");
+                choice = s.nextInt();
+            }
 
             switch(choice){
                 case 1:
@@ -742,6 +908,7 @@ public class Staff extends Account{
             if(Character.toUpperCase(confirmation) == 'Y'){
                 //Remove Records 
                 flightList.remove(deleteIndex);
+                deleteFlightCount++;
                 System.out.println("Flight deleted successfully!");
             }
 
@@ -828,6 +995,7 @@ public class Staff extends Account{
             if(Character.toUpperCase(confirmation) == 'Y'){
                 //Remove Records 
                 airlineList.remove(deleteIndex); 
+                deleteAirlineCount++;
                 System.out.println("Airline deleted successfully!");
             }
 
@@ -860,7 +1028,7 @@ public class Staff extends Account{
         do{
             //Display details 
             int airportCount = 1;
-            System.out.println("                                   ---Airport---");
+            System.out.println("\n                                   ---Airport---");
             System.out.println("==============================================================================");
             System.out.printf("   %-40s %-20s %-20s \n", "Airport Name", "Location", "Flight List");
             System.out.println("==============================================================================");
@@ -875,19 +1043,18 @@ public class Staff extends Account{
             int chooseAirport = s.nextInt();
 
             //validation
-            boolean search = false;
-            if(chooseAirport >= 1 && chooseAirport <= airportCount){
-                search = true;
-            }
-            
-            while(search == false){
-                System.out.println("Number NOT FOUND! Please enter again... \n");
+            while(chooseAirport<1 || chooseAirport>airportCount){
+                System.out.println("\nAirport NOT FOUND! Please enter again... ");
+                airportCount = 1;
+                System.out.println("\n                                   ---Airport---");
+                System.out.println("==============================================================================");
+                System.out.printf("   %-40s %-20s %-20s \n", "Airport Name", "Location", "Flight List");
+                System.out.println("==============================================================================");
+                for (Airport airport : airportList) {
+                    System.out.println(airportCount++ + ". " + airport.toString() + "\n");
+                }
                 System.out.print("Choose Airport: ");
                 chooseAirport = s.nextInt();
-
-                if(chooseAirport >= 1 && chooseAirport <= airportCount){
-                    search = true;
-                }
             }
 
             //get index 
@@ -916,6 +1083,7 @@ public class Staff extends Account{
             if(Character.toUpperCase(confirmation) == 'Y'){
                 //Remove Records 
                 airportList.remove(airportIndex);
+                deleteAirportCount++;
                 System.out.println("Airport deleted successfully!");
             }
 
@@ -1001,6 +1169,7 @@ public class Staff extends Account{
 
             if(Character.toUpperCase(confirmation) == 'Y'){
                 //Remove Records 
+                deleteFlightSCount++;
                 flightScheduleList.remove(deleteIndex);
                 System.out.println("Flight Schedule deleted successfully!");
             }
@@ -1030,15 +1199,19 @@ public class Staff extends Account{
     public void createStaffAcc(Scanner s){
         List<Staff> staffList = Main.getStaffAccountList();
 
+        // Staff createStaff;
         Account acc = new Account();
         String regPassword;
         Boolean passwordMatch = true;
 
+
         //Input Details 
         System.out.println("\n---Create Staff---");
+        System.out.println("Staff ID - " + makeStaffID());
 
         //First Name
-        System.out.print("First Name: "); 
+        System.out.print("\nFirst Name: "); 
+        s.nextLine();
         String regFirstName = s.nextLine();
         while (!acc.validateName(regFirstName)) {
             System.out.println("Invalid Name. Must contian alphabets only. ");
@@ -1097,34 +1270,35 @@ public class Staff extends Account{
         }
 
         //Address 
-        System.out.println("Address - Unit: "); 
+        System.out.print("\nAddress - Unit: "); 
         String regAddUnit = s.nextLine();
-        System.out.print("          - Road: ");
+        System.out.print("        - Road: ");
         String regAddRoad = s.nextLine();
-        System.out.print("          - PostCode: ");
+        System.out.print("        - PostCode: ");
         int regAddPostcode = s.nextInt();
-        System.out.print("          - City: ");
+        System.out.print("        - City: ");
+        s.nextLine();
         String regAddCity = s.nextLine();
-        System.out.print("          - State: ");
+        System.out.print("        - State: ");
         String regAddState = s.nextLine();
-        System.out.print("          - Country: ");
+        System.out.print("        - Country: ");
         String regAddCountry = s.nextLine();
 
         //Password 
         do {
-            System.out.println("\n+-----------------------+\n|\t*NOTE*\t\t|\n|1.At Least 7 Characters|\n|2.At Least 1 Letter    |\n|3.At Least 1 Number    |\n+-----------------------+\n");
+            System.out.println("\n+-----------------------+\n|\t*NOTE*\t\t|\n|1.At Least 7 Characters|\n|2.At Least 1 Letter    |\n|3.At Least 1 Number    |\n+-----------------------+");
             System.out.print("Password: "); 
             regPassword = s.nextLine();
 
             while (!acc.validatePassword(regPassword)) {
                 System.out.println("Invalid Password. ");
-                System.out.println("\n+-----------------------+\n|\t*NOTE*\t\t|\n|1.At Least 7 Characters|\n|2.At Least 1 Letter    |\n|3.At Least 1 Number    |\n+-----------------------+\n");
+                System.out.println("\n+-----------------------+\n|\t*NOTE*\t\t|\n|1.At Least 7 Characters|\n|2.At Least 1 Letter    |\n|3.At Least 1 Number    |\n+-----------------------+");
                 System.out.print("Password: "); 
-                regPassword = s.nextLine();
+                regPassword = s.next();
             }
 
             System.out.print("Confirm Password: "); 
-            String confirmPassword = s.nextLine();
+            String confirmPassword = s.next();
             if (!regPassword.equals(confirmPassword)) {
                 passwordMatch = false;
                 System.out.println("Password Does Not Match! Re-Enter Again! ");
@@ -1157,14 +1331,14 @@ public class Staff extends Account{
         }
         else{
             do{
-                System.out.println(" REQUESTS:");
+                System.out.println("\n\n REQUESTS:");
                 System.out.println("===========");
                 int requestCount = 1;
                 do{
                     //Display all list
                     for (Request request : requestList) {
-                        System.out.print("\n\n" + requestCount + ".");
-                        System.out.println(request.displayRequest());
+                        System.out.println(requestCount + ".");
+                        System.out.println(request.toString());
                         requestCount++;
                     }
 
@@ -1177,18 +1351,17 @@ public class Staff extends Account{
                         System.out.println("\nInvalid Choice, Please Enter Again!");
                     }
                     //Display details of the request 
+                    Main.clearConsole();
                     System.out.println(requestList.get(requestChoice - 1).displayRequest());
 
                 } while(requestChoice < 1 || requestChoice > requestCount - 1);
             
                 //approve or reject and validate
-                System.out.print("Approve (Y/y) or Reject (N/n): ");
-                char choice = s.next().charAt(0);
-                while(!Main.validateOption(choice)){
-                    System.out.println("Invalid Input.");
-                    System.out.print("Approve (Y/y) or Reject (N/n): ");
+                char choice;
+                do{
+                    System.out.print("Approve (Y/y) or Reject (N/n) or Ignore (I/i): ");
                     choice = s.next().charAt(0);
-                }
+                }while(Character.toUpperCase(choice) != 'Y' && Character.toUpperCase(choice) != 'N' && Character.toUpperCase(choice) != 'I');
 
                 //if else for accept or reject request 
                 if(Character.toUpperCase(choice) == 'Y'){
@@ -1224,6 +1397,9 @@ public class Staff extends Account{
     public void rejectRequest(Request request){
         //change request status 
         request.setRequestStatus(rqStatus.REJECTED);
+
+        //call updateRequest methods
+        request.updateRequest(request);
     }
 
     public void changePassword(Scanner s){
@@ -1305,5 +1481,46 @@ public class Staff extends Account{
 
             s.nextLine();
         } while (passwordMatch == false);
+    }
+
+    public void report(Scanner s){
+        System.out.println("\n-------Report for Staff-------");
+
+        //Flight 
+        System.out.println("\n           Flight");
+        System.out.println("============================");
+        System.out.println("Added   " + addFlightCount + " Flight(s).");
+        System.out.println("Updated " + updateFlightCount + " Flight(s).");
+        System.out.println("Deleted " + deleteFlightCount + " Flight(s).");
+        System.out.printf("Total Flight(s) Modify = %d. \n", (addFlightCount+updateFlightCount+deleteFlightCount));
+
+        //Airline
+        System.out.println("\n         Airline");
+        System.out.println("============================");
+        System.out.println("Added   " + addAirlineCount + " Airline(s).");
+        System.out.println("Updated " + updateAirlineCount + " Airline(s).");
+        System.out.println("Deleted " + deleteAirlineCount + " Airline(s).");
+        System.out.printf("Total Airline(s) Modify = %d. \n", (addAirlineCount+updateAirlineCount+deleteAirlineCount));
+    
+        //Airport
+        System.out.println("\n         Airport");
+        System.out.println("============================");
+        System.out.println("Added   " + addAirportCount + " Airport(s).");
+        System.out.println("Updated " + updateAirportCount + " Airport(s).");
+        System.out.println("Deleted " + deleteAirportCount + " Airport(s).");
+        System.out.printf("Total Airport(s) Modify = %d. \n", (addAirportCount+updateAirportCount+deleteAirportCount));
+        
+
+        //Flight Schedule
+        System.out.println("\n         Flight Schedule");
+        System.out.println("============================");
+        System.out.println("Updated " + updateFlightSCount + " Airport(s).");
+        System.out.println("Deleted " + deleteFlightSCount + " Airport(s).");
+        System.out.printf("Total Flight Schedule(s) Modify = %d. \n", (updateFlightSCount+deleteFlightSCount));
+        
+
+        System.out.print("\nEnter any key to continue >> ");
+        s.nextLine();
+        s.nextLine();
     }
 }

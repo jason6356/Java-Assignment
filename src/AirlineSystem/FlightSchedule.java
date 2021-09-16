@@ -62,7 +62,6 @@ public class FlightSchedule {
 
         // return String.format("%4s|%10s|%5s|%-37s|%-37s|%13s|%-10s -> %-10s|", flightScheduleCode,flightDate.format(formatDate),departureTime.format(formatTime),location.getAirportName(),destination.getAirportName(),estimatedArrivalTime.format(formatBoth),location.getLocation(),destination.getLocation());
         return String.format("%-10s|%5s|%-37s|%-37s|%-13s|%-10s -> %-10s|",flightDate.format(formatDate),departureTime.format(formatTime),location.getAirportName(),destination.getAirportName(),estimatedArrivalTime.format(formatBoth),location.getLocation(),destination.getLocation());
-
     }
 
     public LocalTime getDepartureTime() {

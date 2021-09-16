@@ -1,6 +1,7 @@
 package AirlineSystem;
 
 import java.util.Scanner;
+
 import java.util.List;
 import java.time.*;
 import java.util.ArrayList;
@@ -93,6 +94,13 @@ public class Main {
                         //Modified , get reservations from the user who login , not all 
                         clearConsole();
                         List<Reservation> reservation = userAccount.getReservations();
+                        List<Reservation> currentReservation = new ArrayList<Reservation>();
+
+                        boolean reservationFound = false;
+                        for (Reservation reservationCheck : reservation) {
+                            if(reservationCheck.getReservationStatus() != rStatus.CANCELLED)
+                                reservationFound = true;
+                        }
 
                         if(reservation.isEmpty()){
                             System.out.println("\nYou have no reservation.");
@@ -100,7 +108,7 @@ public class Main {
                             s.nextLine();
                             s.nextLine();
                         }
-                        else {
+                        else if(reservationFound == true){
                             int choiceReschedule;
                             int reservationCount;
                             do{
@@ -109,9 +117,12 @@ public class Main {
                                 reservationCount = 1;
                                 System.out.println("\nYour Reservations:");
                                 for (Reservation res : reservation) {
-                                    System.out.println(reservationCount + ". ");
-                                    System.out.println(res.displayReservation());
-                                    reservationCount++;
+                                    if(res.getReservationStatus() != rStatus.CANCELLED) {
+                                        System.out.println(reservationCount + ". ");
+                                        System.out.println(res.displayReservation(res));
+                                        currentReservation.add(res);
+                                        reservationCount++;
+                                    }
                                 }
                                 System.out.printf("Select Reservation to Reshedule[1...%d] > ",reservationCount - 1);
                                 choiceReschedule = s.nextInt();
@@ -122,14 +133,27 @@ public class Main {
 
                             } while(choiceReschedule < 1 || choiceReschedule > reservationCount - 1);
 
-                            userAccount.rescheduleTicket(reservation.get(choiceReschedule - 1), s, userAccount);
-                    }
+                            userAccount.rescheduleTicket(currentReservation.get(choiceReschedule - 1), s, userAccount);
+                        }
+                        else{
+                            System.out.println("\nYour reservation have been all cancelled.");
+                            System.out.println("ENTER ANY KEY TO CONTINUE >");
+                            s.nextLine();
+                            s.nextLine();
+                        }
 
                         break;
                     case 6:
                         // TODO : Huiyi -> Cancel Ticket
                         clearConsole();
                         List<Reservation> resToCancel = userAccount.getReservations();
+                        List<Reservation> currentReservations = new ArrayList<Reservation>();
+
+                        boolean reservationsFound = false;
+                        for (Reservation reservationCheck : resToCancel) {
+                            if(reservationCheck.getReservationStatus() != rStatus.CANCELLED)
+                                reservationsFound = true;
+                        }
 
                         if(resToCancel.isEmpty()){
                             System.out.println("\nYou have no reservation.");
@@ -137,7 +161,7 @@ public class Main {
                             s.nextLine();
                             s.nextLine();
                         }
-                        else {
+                        else if(reservationsFound == true) {
                             int choiceCancel;
                             int reservationsCount;
                             do{
@@ -146,10 +170,14 @@ public class Main {
                                 reservationsCount = 1;
                                 System.out.println("\nYour Reservations:");
                                 for (Reservation res : resToCancel) {
-                                    System.out.println(reservationsCount + ". ");
-                                    System.out.println(res.displayReservation());
-                                    reservationsCount++;
+                                     if(res.getReservationStatus() != rStatus.CANCELLED) {
+                                        System.out.println(reservationsCount + ". ");
+                                        System.out.println(res.displayReservation(res));
+                                        currentReservations.add(res);
+                                        reservationsCount++;
+                                    }
                                 }
+
                                 System.out.printf("Select Reservation to Cancel [1...%d]> ",reservationsCount - 1);
                                 choiceCancel = s.nextInt();
 
@@ -159,7 +187,13 @@ public class Main {
 
                             } while(choiceCancel < 1 || choiceCancel > reservationsCount - 1);
                             
-                            userAccount.cancelTicket(resToCancel.get(choiceCancel - 1), s, userAccount);
+                            userAccount.cancelTicket(currentReservations.get(choiceCancel - 1), s, userAccount);
+                        }
+                        else{
+                            System.out.println("\nYour reservation have been all cancelled.");
+                            System.out.println("ENTER ANY KEY TO CONTINUE >");
+                            s.nextLine();
+                            s.nextLine();
                         }
                         break;
                     case 7:
@@ -183,7 +217,7 @@ public class Main {
                                 System.out.println("\nYour Requests:");
                                 for (Request res : requestToCheck) {
                                     System.out.println(requestCount + ". ");
-                                    System.out.println(res.displayRequest());
+                                    System.out.println(res.toString());
                                     requestCount++;
                                 }
                                 System.out.printf("Select Request to Check Request Status [1...%d]> ",requestCount - 1);
@@ -218,14 +252,15 @@ public class Main {
                 System.out.println("|4. Create staff account |");
                 System.out.println("|5. Check Request List   |");
                 System.out.println("|6. Change Password      |");
-                System.out.println("|7. Logout               |");
+                System.out.println("|7. History Report       |");
+                System.out.println("|8. Logout               |");
                 System.out.println("+------------------------+");
 
                 System.out.print("Enter Selection: ");
                 selection = s.nextInt();
 
                 //validation
-                while(selection<1 || selection>7){
+                while(selection<1 || selection>8){
                     System.out.println("Invalid Input! Please enter again... \n");
                     System.out.println("\n+========================+");
                     System.out.println("|\tStaff Menu       |");
@@ -236,8 +271,10 @@ public class Main {
                     System.out.println("|4. Create staff account |");
                     System.out.println("|5. Check Request List   |");
                     System.out.println("|6. Change Password      |");
-                    System.out.println("|7. Logout               |");
+                    System.out.println("|7. History Report       |");
+                    System.out.println("|8. Logout               |");
                     System.out.println("+------------------------+");
+                    System.out.print("Enter Selection: ");
                     selection = s.nextInt();
                 }
                 switch (selection) {
@@ -262,11 +299,14 @@ public class Main {
                     case 6:
                         stfAccount.changePassword(s);
                         break;
+                    case 7:
+                        stfAccount.report(s);
+                        break;
                     default:
                         System.out.println("Invalid Input. Please enter again... ");
                         break;
                 }
-            } while (selection!=7);
+            } while (selection!=8);
 
         } else if(guestAcc instanceof Account){
 
@@ -302,6 +342,22 @@ public class Main {
                 System.out.print("Register or Login (R/L)? ");
                 char registerOrLogin = s.next().charAt(0);
 
+                while(Character.toUpperCase(registerOrLogin)!='R' && Character.toUpperCase(registerOrLogin)!='L'){
+                    System.out.println("\nInvalid Input. Please enter again...\n");
+                    System.out.print("Register or Login (R/L)? ");
+                    registerOrLogin = s.next().charAt(0);
+
+                    // Register account
+                    if (Character.toUpperCase(registerOrLogin) == 'R') {
+                        guestAcc = registerAccount(s);
+                    }
+
+                    // Login account
+                    if (Character.toUpperCase(registerOrLogin) == 'L') {
+                        guestAcc = userLogin(s);
+                    }
+                }
+
                 // Register account
                 if (Character.toUpperCase(registerOrLogin) == 'R') {
                     guestAcc = registerAccount(s);
@@ -310,21 +366,6 @@ public class Main {
                 // Login account
                 if (Character.toUpperCase(registerOrLogin) == 'L') {
                     guestAcc = userLogin(s);
-                }
-
-                // validate registerOrLogin
-                if (Character.toUpperCase(registerOrLogin) != 'Y' && Character.toUpperCase(registerOrLogin) != 'N') {
-                    valid = false;
-                }
-
-                while(valid == false){
-                    System.out.println("Invalid Input. Please enter again...");
-                    System.out.print("Register or Login (R/L)? ");
-                    registerOrLogin = s.next().charAt(0);
-
-                    if (!validateOption(registerOrLogin)) {
-                        valid = true;
-                    }
                 }
 
             }else{
@@ -610,6 +651,8 @@ public class Main {
         }   
             // account doesnt exist, return null
             System.out.println("Wrong ID or Password.");
+            s.nextLine();
+            s.nextLine();
             return null;
     }
 
@@ -639,6 +682,8 @@ public class Main {
         }
         
         System.out.println("Wrong ID or Password.");
+        s.nextLine();
+        s.nextLine();
         return null;
     }
     /**  
