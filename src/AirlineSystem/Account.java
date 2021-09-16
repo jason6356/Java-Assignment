@@ -132,7 +132,7 @@ public class Account {
      */
 
     public boolean validateName(String name){
-        return name.matches("[A-Za-z]+"); // only alphabet
+        return name.matches("[A-Za-z\s]+"); // only alphabet and space
     }
 
     /**
