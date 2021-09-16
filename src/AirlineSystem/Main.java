@@ -504,8 +504,9 @@ public class Main {
             System.out.print("1. First Name > ");
             regFirstName = s.nextLine();
         }
+
         System.out.print("2. Last Name > "); // ENTER LAST NAME
-        s.nextLine();
+   
         String regLastName = s.nextLine();
         while (!acc.validateName(regLastName)) {
             System.out.println("Invalid Name. Only Alphabets ");
@@ -525,7 +526,7 @@ public class Main {
         System.out.print("4. Age > "); // ENTER AGE
         int regAge = s.nextInt();
 
-        s.nextLine();
+      //  s.nextLine();
         System.out.print("5. Phone Number  > "); // ENTER PHONE NUMBER
         String regPhoneNum = s.nextLine();
         while (!acc.validatePhoneNum(regPhoneNum)) // VALIDATE ONLY NUMBER WITH +COUNTRY CODE
