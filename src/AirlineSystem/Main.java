@@ -56,6 +56,8 @@ public class Main {
             //Cast the guestAcc to RegisteredAccount type
             RegisteredAccount userAccount = ((RegisteredAccount)guestAcc);
 
+            //Auto cancel the reservation if the reservation is not confirmed for 14 days
+            Reservation.autoCancelReservation();
             // TODO : Junwei -> Payment
             // TODO : Huiyi -> Check Request Status
             // TODO : Huiyi -> Cancel Ticket

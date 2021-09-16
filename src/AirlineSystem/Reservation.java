@@ -140,4 +140,19 @@ public class Reservation {
         }
         return totalAmount;
     }
+
+    /**
+     * Method to auto cancel reservation if the reservation is not been confirmed after 14 days
+     * 
+     */
+
+    public static void autoCancelReservation(){
+        List<Reservation> rList = Main.getReservations();
+        for(Reservation r : rList){
+            if(r.getReservationTime().plusDays(14).isAfter(LocalDateTime.now())){
+                Reservation.getSeatMap().get(r).forEach((seat) -> seat.makeSeatEmpty());
+                r.setReservationStatus(rStatus.CANCELLED);
+            }
+        }
+    }
 }
