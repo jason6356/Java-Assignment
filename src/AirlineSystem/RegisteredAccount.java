@@ -139,10 +139,6 @@ public void makeReservation(Scanner s){
         System.out.print("Continue to book another reservation ? (Y/N)");
         continueBook = s.next().charAt(0);
 
-        System.out.println(continueBook);
-        s.nextLine();  
-        s.nextLine();
-
         while(Character.toUpperCase(continueBook)!='Y' && Character.toUpperCase(continueBook)!='N'){
             System.out.println("Invalid Input!");
             System.out.print("Continue to book another reservation ? ");
@@ -152,6 +148,9 @@ public void makeReservation(Scanner s){
 
 
     }while(Character.toUpperCase(continueBook) == 'Y');
+    
+    s.nextLine();
+
 }
 
 //Split into 2 methods, 1 way reservation , 2 way reservations
@@ -229,9 +228,17 @@ public void twoWayReserve(Scanner s,Reservation from){
 
 }
 
+public void displayReservation(){
+    Scanner ntg = new Scanner(System.in);
 
-
-
+    if(reservations.size() == 0)
+        System.out.println("No Reservations");
+    else{
+        System.out.println("Your Reservations\n\n\n\n");
+        reservations.forEach((e) -> System.out.println(e.displayReservation(e)));
+    }
+    ntg.nextLine();
+}
 
 public void confirmTicket(Scanner s){
 
@@ -249,52 +256,63 @@ public void confirmTicket(Scanner s){
     Main.printLine(148);
     List<Reservation> queryList = new ArrayList<Reservation>();
     int i = 1;
+    boolean found = false;
     for (Reservation reservation : reservations) {
         if(reservation.getReservationStatus() == rStatus.PENDING){
+            found = true;
             queryList.add(reservation);
             System.out.printf("%2d", i++);
             System.out.println(reservation);
         }
     }
-
-    System.out.print("Enter the No to confirm reservation - ");
-    int choice = s.nextInt();
-    while(choice < 0 || choice > i){
-        System.out.println("Invalid Input");
+    if(found){
         System.out.print("Enter the No to confirm reservation - ");
-        choice = s.nextInt();
-    }
-
-    System.out.print("Are you sure to confirm? (Y/N) - ");
-    char confirm = s.next().charAt(0);
-
-    while(Character.toUpperCase(confirm) != 'Y' && Character.toUpperCase(confirm) != 'N'){
-        System.out.println("Invalid Input");
-        System.out.print("Are you sure to confirm? (Y/N) - ");
-        confirm = s.next().charAt(0);
-    }
-
-    if(confirm == 'Y'){
-        queryList.get(choice - 1).setReservationStatus(rStatus.BOOKED);
-
-        System.out.print("Do u want to pay for this reservation ? (Y/N) - ");
-        char payChoice = s.next().charAt(0);
-        while(Character.toUpperCase(payChoice) != 'Y' && Character.toUpperCase(payChoice) != 'N'){
+        int choice = s.nextInt();
+        while(choice < 0 || choice > i){
             System.out.println("Invalid Input");
-            System.out.print("Do u want to pay for this reservation ? (Y/N) - ");
-            payChoice = s.next().charAt(0);
+            System.out.print("Enter the No to confirm reservation - ");
+            choice = s.nextInt();
         }
 
-        if(payChoice == 'Y'){
-            payment(s, queryList.get(choice - 1).getTotalAmount());
-            System.out.println("Calling junwei method");
+        System.out.print("Are you sure to confirm? (Y/N) - ");
+        char confirm = s.next().charAt(0);
+
+        while(Character.toUpperCase(confirm) != 'Y' && Character.toUpperCase(confirm) != 'N'){
+            System.out.println("Invalid Input");
+            System.out.print("Are you sure to confirm? (Y/N) - ");
+            confirm = s.next().charAt(0);
         }
-        else{
-            System.out.println("For your reminder, the reservation that is not confirmed yet after 14 days will be removed!");
-            s.nextLine();
-            s.nextLine();
+
+        if(confirm == 'Y'){
+            queryList.get(choice - 1).setReservationStatus(rStatus.BOOKED);
+
+            System.out.print("Do u want to pay for this reservation ? (Y/N) - ");
+            char payChoice = s.next().charAt(0);
+            while(Character.toUpperCase(payChoice) != 'Y' && Character.toUpperCase(payChoice) != 'N'){
+                System.out.println("Invalid Input");
+                System.out.print("Do u want to pay for this reservation ? (Y/N) - ");
+                payChoice = s.next().charAt(0);
+            }
+
+            if(payChoice == 'Y'){
+                if(payment(s, queryList.get(choice - 1).getTotalAmount())){
+                    queryList.get(choice - 1).setReservationStatus(rStatus.PAID);
+                }
+                else{
+                    queryList.get(choice - 1).setReservationStatus(rStatus.PENDING);
+                }
+            }
+            else{
+                queryList.get(choice - 1).setReservationStatus(rStatus.PENDING);
+                System.out.println("For your reminder, the reservation that is not confirmed yet after 14 days will be removed!");
+            }
         }
     }
+    else
+        System.out.println("No Reservations to Confirmed");
+
+    s.nextLine();
+    s.nextLine();
 }
 
 public void updateProfile(Scanner s){
@@ -312,7 +330,7 @@ public void updateProfile(Scanner s){
                            "8. Exit \n\n" +
                            "Please Enter The Number that you wished to change > " );
         int updateOption = s.nextInt();
-
+        s.nextLine();
         switch (updateOption){
         case 1:
             System.out.print("Enter your First Name > ");   //INPUT NEW FIRST NAME
@@ -622,7 +640,7 @@ public void checkRequestStatus(Request reservationRequest, Scanner s) {
      * Method to choose payment method 
      * 
      */
-    public void payment(Scanner s, double amount){
+    public boolean payment(Scanner s, double amount){
           //simply create bank details
         FPX fpx1 = new FPX("maybank", "vic123", "apple", "abcd1234", 1000.0, 1234);
         DebitCardAccount debit1 = new DebitCardAccount("maybank", 123456789, 111, "09/25", "Wong Jun Wei", 1000.0, 123);
@@ -654,7 +672,7 @@ public void checkRequestStatus(Request reservationRequest, Scanner s) {
             inputBank = s.nextLine();
             if ( inputBank.equals("0"))                     // if user input 0 will exit
             {
-                return; 
+                return false; 
             }
             if (!inputBank.equalsIgnoreCase(fpx1.getBank()))                // if bank name not exsist 
             {                                                      // print error message 
@@ -668,13 +686,13 @@ public void checkRequestStatus(Request reservationRequest, Scanner s) {
             s.nextLine();
             if ( inputUserName.equals("0"))                 //as long as not 0, will proceed to input password
             {
-                return; 
+                return false; 
             }
             System.out.print("Password > ");
             inputPassword = s.nextLine();
             if ( inputUserName.equals("0"))
             {
-                return; 
+                return false; 
             }                                               // if either username or password wrong, will loop back to the top
             if(!inputPassword.equals(fpx1.getPassword()) || !inputPassword.equals(fpx1.getPassword())){
                 System.out.println("Incorrect User Name or Password!");
@@ -689,12 +707,12 @@ public void checkRequestStatus(Request reservationRequest, Scanner s) {
             if(inputTac != fpx1.getTac())
             {
                 System.out.println("Incorrect TAC\nPayment Terminated\nPlease Try Again!");
-                return;
+                return false;
             }
             fpx1.pay(amount);
             s.nextLine();
             s.nextLine();
-            return;
+            return false;
         }
                
             
@@ -709,21 +727,21 @@ public void checkRequestStatus(Request reservationRequest, Scanner s) {
             s.nextLine();
             if ( inputCardNumber == 0)                     // if user input 0 will exit
             {
-                return; 
+                return false; 
             }
             System.out.print("CVS > ");              // input CVS
             inputCVS = s.nextInt();
             s.nextLine();
             if ( inputCVS == 0 )             
             {
-                return; 
+                return false; 
             }
 
             System.out.print("Valid Date (MM/YY) > ");
             inputValidDate = s.nextLine();
             if ( inputValidDate.equals("0"))
             {
-                return; 
+                return false; 
             }                 
             if((inputCardNumber!=debit1.getCardNo())|| (inputCVS != debit1.getCvsNo()) || (!inputValidDate.equals(debit1.getValidDate()))){
                 System.out.println("Incorrect Card Details!");
@@ -734,13 +752,13 @@ public void checkRequestStatus(Request reservationRequest, Scanner s) {
                 debit1.pay(amount);
                 s.nextLine();
                 s.nextLine();
-                return;
+                return false;
 
         }
      
         else if (option == 0)
         {
-            return;
+            return false;
         }
         else 
         {
@@ -751,7 +769,7 @@ public void checkRequestStatus(Request reservationRequest, Scanner s) {
 }while(option!=0);
 
     System.out.println("Payment Cancelled!");
-    
+    return false;
     }
 
 }
