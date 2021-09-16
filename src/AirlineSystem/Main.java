@@ -240,40 +240,13 @@ public class Main {
             int selection;
             do {
                 // Staff Menu
-                System.out.println("\n+========================+");
-                System.out.println("|\tStaff Menu       |");
-                System.out.println("+========================+");
-                System.out.println("|1. Add Records          |");
-                System.out.println("|2. Update Records       |");
-                System.out.println("|3. Delete Records       |");
-                System.out.println("|4. Create staff account |");
-                System.out.println("|5. Check Request List   |");
-                System.out.println("|6. Change Password      |");
-                System.out.println("|7. History Report       |");
-                System.out.println("|8. Logout               |");
-                System.out.println("+------------------------+");
+                selection = displayStaffMenu(s);
 
-                System.out.print("Enter Selection: ");
-                selection = s.nextInt();
-
-                //validation
-                while(selection<1 || selection>8){
-                    System.out.println("Invalid Input! Please enter again... \n");
-                    System.out.println("\n+========================+");
-                    System.out.println("|\tStaff Menu       |");
-                    System.out.println("+========================+");
-                    System.out.println("|1. Add Records          |");
-                    System.out.println("|2. Update Records       |");
-                    System.out.println("|3. Delete Records       |");
-                    System.out.println("|4. Create staff account |");
-                    System.out.println("|5. Check Request List   |");
-                    System.out.println("|6. Change Password      |");
-                    System.out.println("|7. History Report       |");
-                    System.out.println("|8. Logout               |");
-                    System.out.println("+------------------------+");
-                    System.out.print("Enter Selection: ");
-                    selection = s.nextInt();
+                while(selection < 1 || selection > 8){
+                    System.out.println("Invalid input");
+                    selection = displayStaffMenu(s);
                 }
+
                 switch (selection) {
                     case 1:
                         stfAccount.addRecordsMenu(s);
@@ -306,14 +279,6 @@ public class Main {
             } while (selection!=8);
 
         } else if(guestAcc instanceof Account){
-
-            // TODO : Nicole -> Prompt for either the user want to book a reservation
-
-            // if yes -> ask to register or login
-            // if register -> call register account -> assign the output to guest account
-            // else if login - > call login account -> assign the login to guestAcc
-            // else validation input error
-            // else do nothing
             char yesNo;
             boolean valid = true;
 
@@ -324,7 +289,6 @@ public class Main {
             if (!validateOption(yesNo)) {
                 valid = false;
             }
-
             while(valid == false){
                 System.out.println("Invalid Input. Please enter again...");
                 System.out.print("\nWish to make a reservation(Y/N)? ");
@@ -339,6 +303,7 @@ public class Main {
                 System.out.print("Register or Login (R/L)? ");
                 char registerOrLogin = s.next().charAt(0);
 
+                //validate registerOrLogin
                 while(Character.toUpperCase(registerOrLogin)!='R' && Character.toUpperCase(registerOrLogin)!='L'){
                     System.out.println("\nInvalid Input. Please enter again...\n");
                     System.out.print("Register or Login (R/L)? ");
@@ -391,15 +356,18 @@ public class Main {
     }
 
     private static int displayStaffMenu(Scanner s){
-        System.out.println("Staff Menu");
-        System.out.println("==========");
-        System.out.println("1. Add Records");
-        System.out.println("2. Update Records");
-        System.out.println("3. Delete Records");
-        System.out.println("4. Create staff account");
-        System.out.println("5. Check Request List");
-        System.out.println("6. Change Password");
-        System.out.println("7. Back to Main Menu");
+        System.out.println("\n+=========================+");
+        System.out.println("| \tStaff Menu        |");
+        System.out.println("+=========================+");
+        System.out.println("| 1. Add Records          |");
+        System.out.println("| 2. Update Records       |");
+        System.out.println("| 3. Delete Records       |");
+        System.out.println("| 4. Create staff account |");
+        System.out.println("| 5. Check Request List   |");
+        System.out.println("| 6. Change Password      |");
+        System.out.println("| 7. History Report       |");
+        System.out.println("| 8. Logout               |");
+        System.out.println("+-------------------------+");
         System.out.print("Enter Selection: ");
         return s.nextInt();
     }
