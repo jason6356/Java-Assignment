@@ -372,7 +372,7 @@ public void updateProfile(Scanner s){
                 oldPassword = s.nextLine();
             }
                 System.out.println("\t*NOTE*\nYour password should be fulfilled the requirement below :\n1.At Least 7 Characters\n2.At Least 1 Letter\n3.At Least 1 Number");
-                System.out.println("Enter your NEW Password >");        //ENTER NEW PASSWORD
+                System.out.print("Enter your NEW Password >");        //ENTER NEW PASSWORD
                 String newPassword = s.nextLine();
                
                 if(!super.validatePassword(newPassword))                //VALIDATE NEW PASSWORD FORMAT
