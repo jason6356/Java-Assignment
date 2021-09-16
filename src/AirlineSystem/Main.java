@@ -245,7 +245,7 @@ public class Main {
                 // Staff Menu
                 selection = displayStaffMenu(s);
 
-                while(selection < 1 || selection > 8){
+                while(selection < 1 || selection > 9){
                     System.out.println("Invalid input");
                     selection = displayStaffMenu(s);
                 }
@@ -275,11 +275,14 @@ public class Main {
                     case 7:
                         stfAccount.report(s);
                         break;
+                    case 8:
+                        userList(s);
+                        break;
                     default:
                         System.out.println("Invalid Input. Please enter again... ");
                         break;
                 }
-            } while (selection!=8);
+            } while (selection!=9);
 
         } else if(guestAcc instanceof Account){
             char yesNo;
@@ -369,7 +372,8 @@ public class Main {
         System.out.println("| 5. Check Request List   |");
         System.out.println("| 6. Change Password      |");
         System.out.println("| 7. History Report       |");
-        System.out.println("| 8. Logout               |");
+        System.out.println("| 8. User List            |");
+        System.out.println("| 9. Logout               |");
         System.out.println("+-------------------------+");
         System.out.print("Enter Selection: ");
         return s.nextInt();
@@ -452,7 +456,7 @@ public class Main {
 
         // Add a customer account 
         Address sampleAddress = new Address("No 1", "Jalan Satu",40400, "Shah Alam", "Selangor", "Malaysia");
-        accountList.add(new RegisteredAccount("abc123", "Victor", "Wong", sampleAddress, 'M', 19, "wong@gmail.com", "+6012345678"));
+        accountList.add(new RegisteredAccount("abc1234", "Victor", "Wong", sampleAddress, 'M', 19, "wong@gmail.com", "+6012345678"));
     }
 
     public static List<Request> getRequests() {
@@ -693,6 +697,22 @@ public class Main {
     public static boolean validateOption(char option){ 
         return (Character.toUpperCase(option)=='Y' || Character.toUpperCase(option)=='N');
     
+    }
+
+    public static void userList(Scanner s){
+        System.out.println("\t SaiLou Airline Registered User List");
+        System.out.println("+=======+=====================+=========+===========================+================+");
+        System.out.println("|UserID |Name                 |Gender   |Email                      |Phone Number    |");
+        System.out.println("+=======+=====================+=========+===========================+================+");
+        
+        
+        for (RegisteredAccount list : accountList) {
+            System.out.printf("|%-7s|%-21s|%c        |%-27s|%-16s|\n",list.getUserID(),(list.getFirstName()+" "+list.getLastName()),list.getGender(),list.getEmail(),list.getPhoneNum());
+            System.out.println("+=======+=====================+=========+===========================+================+");
+        }
+
+        s.nextLine();
+        s.nextLine();
     }
 
 }
