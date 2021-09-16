@@ -403,12 +403,12 @@ public void updateProfile(Scanner s){
                 System.out.println("\n\nAge updated successfully !"); 
         break;
         case 6:
-                System.out.println("Enter your Email > ");                  //ENTER EMAIL
+                System.out.print("Enter your Email > ");                  //ENTER EMAIL
                 String newEmail = s.nextLine();
                 while(!super.validateEmailFormat(newEmail))                    //VALIDATE EMAIL FORMAT, CONTAIN "@"
                 {
                     System.out.println("Invalid Email");
-                    System.out.println("Enter your Email > ");                 
+                    System.out.print("Enter your Email > ");                 
                     newEmail = s.nextLine();
   
                 }
