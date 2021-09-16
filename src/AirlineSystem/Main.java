@@ -645,6 +645,8 @@ public class Main {
                     System.out.println("Login Successful.");
                     System.out.printf("Welcome %s %s\n",user.getFirstName(),user.getLastName());
                     System.out.printf("User ID: %s\n",user.getUserID());
+                    s.nextLine();
+                    s.nextLine();
                     return user;
                 }
             }

@@ -330,7 +330,7 @@ public void updateProfile(Scanner s){
                            "8. Exit \n\n" +
                            "Please Enter The Number that you wished to change > " );
         int updateOption = s.nextInt();
-
+        s.nextLine();
         switch (updateOption){
         case 1:
             System.out.print("Enter your First Name > ");   //INPUT NEW FIRST NAME
