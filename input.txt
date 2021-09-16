@@ -11,3 +11,5 @@ Y
 A1
 Y
 N
+
+if reservation is cancel or terminate - give status to cancelled, make sure the seat booked is available again
