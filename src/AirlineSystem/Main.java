@@ -116,7 +116,7 @@ public class Main {
                                 for (Reservation res : reservation) {
                                     if(res.getReservationStatus() != rStatus.CANCELLED) {
                                         System.out.println(reservationCount + ". ");
-                                        System.out.println(res.displayReservation());
+                                        System.out.println(res.displayReservation(res));
                                         currentReservation.add(res);
                                         reservationCount++;
                                     }
@@ -169,7 +169,7 @@ public class Main {
                                 for (Reservation res : resToCancel) {
                                      if(res.getReservationStatus() != rStatus.CANCELLED) {
                                         System.out.println(reservationsCount + ". ");
-                                        System.out.println(res.displayReservation());
+                                        System.out.println(res.displayReservation(res));
                                         currentReservations.add(res);
                                         reservationsCount++;
                                     }
