@@ -264,6 +264,7 @@ public class Staff extends Account{
     public void updateRecordsMenu(Scanner s){
         int choice;
         do{
+            Main.clearConsole();
             System.out.println("\n+=======================+");
             System.out.println("|     Update Records    |");
             System.out.println("+=======================+");
@@ -797,6 +798,7 @@ public class Staff extends Account{
     public void deleteRecordsMenu(Scanner s){
         int choice;
         do{
+            Main.clearConsole();
             System.out.println("+=======================+");
             System.out.println("|     Delete Records    |");
             System.out.println("+=======================+");
@@ -1484,41 +1486,26 @@ public class Staff extends Account{
     }
 
     public void report(Scanner s){
-        System.out.println("\n-------Report for Staff-------");
+        System.out.println("\n------------------------------------History Report----------------------------------");
 
-        //Flight 
-        System.out.println("\n           Flight");
-        System.out.println("============================");
-        System.out.println("Added   " + addFlightCount + " Flight(s).");
-        System.out.println("Updated " + updateFlightCount + " Flight(s).");
-        System.out.println("Deleted " + deleteFlightCount + " Flight(s).");
-        System.out.printf("Total Flight(s) Modify = %d. \n", (addFlightCount+updateFlightCount+deleteFlightCount));
-
-        //Airline
-        System.out.println("\n         Airline");
-        System.out.println("============================");
-        System.out.println("Added   " + addAirlineCount + " Airline(s).");
-        System.out.println("Updated " + updateAirlineCount + " Airline(s).");
-        System.out.println("Deleted " + deleteAirlineCount + " Airline(s).");
-        System.out.printf("Total Airline(s) Modify = %d. \n", (addAirlineCount+updateAirlineCount+deleteAirlineCount));
+        //Flight & Airline
+        System.out.println("\n           Flight\t\t\t         Airline");
+        System.out.println("============================\t\t============================");
+        System.out.println("Added   " + addFlightCount + " Flight(s)." + "\t\t\t" + "Added   " + addAirlineCount + " Airline(s).");
+        System.out.println("Updated " + updateFlightCount + " Flight(s)." + "\t\t\t" + "Updated " + updateAirlineCount + " Airline(s).");
+        System.out.println("Deleted " + deleteFlightCount + " Flight(s)." + "\t\t\t" + "Deleted " + deleteAirlineCount + " Airline(s).");
+        System.out.printf("Total Flight(s) Modify = %d. ", (addFlightCount+updateFlightCount+deleteFlightCount));
+        System.out.printf("\t\tTotal Airline(s) Modify = %d. \n", (addAirlineCount+updateAirlineCount+deleteAirlineCount));
     
-        //Airport
-        System.out.println("\n         Airport");
-        System.out.println("============================");
+        //Airport & Flight Schedule
+        System.out.println("\n         Airport\t\t\t       Flight Schedule");
+        System.out.println("============================\t\t============================");
         System.out.println("Added   " + addAirportCount + " Airport(s).");
-        System.out.println("Updated " + updateAirportCount + " Airport(s).");
-        System.out.println("Deleted " + deleteAirportCount + " Airport(s).");
-        System.out.printf("Total Airport(s) Modify = %d. \n", (addAirportCount+updateAirportCount+deleteAirportCount));
-        
-
-        //Flight Schedule
-        System.out.println("\n         Flight Schedule");
-        System.out.println("============================");
-        System.out.println("Updated " + updateFlightSCount + " Airport(s).");
-        System.out.println("Deleted " + deleteFlightSCount + " Airport(s).");
-        System.out.printf("Total Flight Schedule(s) Modify = %d. \n", (updateFlightSCount+deleteFlightSCount));
-        
-
+        System.out.println("Updated " + updateAirportCount + " Airport(s)." + "\t\t\t" + "Updated " + updateFlightSCount + " Airport(s).");
+        System.out.println("Deleted " + deleteAirportCount + " Airport(s)." + "\t\t\t" + "Deleted " + deleteFlightSCount + " Airport(s).");
+        System.out.printf("Total Airport(s) Modify = %d. ", (addAirportCount+updateAirportCount+deleteAirportCount));
+        System.out.printf("\t\tTotal Flight Schedule(s) Modify = %d. \n", (updateFlightSCount+deleteFlightSCount));
+    
         System.out.print("\nEnter any key to continue >> ");
         s.nextLine();
         s.nextLine();
