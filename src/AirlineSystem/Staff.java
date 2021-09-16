@@ -220,6 +220,7 @@ public class Staff extends Account{
                 cont = s.next().charAt(0);
             }
         }while(Character.toUpperCase(cont) == 'Y');
+        s.nextLine();
     }
 
     public void addAirport(Scanner s){
@@ -1122,7 +1123,7 @@ public class Staff extends Account{
             System.out.printf("%-5s|%11s|%5s|%-37s|%-37s|%13s|%-24s|\n", "Code", "Flight Date", "Departure Time", "Location", "Destination", "Estimated Arrival Time", "Location -> Destination");
             System.out.println("=============================================================================================================================================================");
             for (FlightSchedule flightSchedule : flightScheduleList) {
-                System.out.println(flightSchedule.toString());
+                System.out.println(flightSchedule.displayFlightSchedule());
             }
 
             //Input 
@@ -1156,9 +1157,10 @@ public class Staff extends Account{
             }
             
             //get specific record 
-            System.out.printf("\n%-40s %-20s %-20s \n", "Airport Name", "Location", "Flight List");
-            System.out.println("==============================================================================");
-            System.out.println(flightScheduleList.get(deleteIndex).toString() + "\n");
+            System.out.println("\n=============================================================================================================================================================");
+            System.out.printf("%-5s|%11s|%5s|%-37s|%-37s|%13s|%-24s|\n", "Code", "Flight Date", "Departure Time", "Location", "Destination", "Estimated Arrival Time", "Location -> Destination");
+            System.out.println("=============================================================================================================================================================");
+            System.out.println(flightScheduleList.get(deleteIndex).displayFlightSchedule() + "\n");
 
             System.out.print("Confirm Delete? ");
             char confirmation = s.next().charAt(0);
@@ -1182,7 +1184,7 @@ public class Staff extends Account{
             System.out.printf("%-5s|%11s|%5s|%-37s|%-37s|%13s|%-24s|\n", "Code", "Flight Date", "Departure Time", "Location", "Destination", "Estimated Arrival Time", "Location -> Destination");
             System.out.println("=============================================================================================================================================================");
             for (FlightSchedule flightSchedule : flightScheduleList) {
-                System.out.println(flightSchedule.toString());
+                System.out.println(flightSchedule.displayFlightSchedule());
             }
 
             //Continue?
@@ -1411,6 +1413,7 @@ public class Staff extends Account{
         System.out.println("\n---Change Password---");
 
         //Enter Staff ID 
+        s.nextLine();
         System.out.print("Staff ID: ");
         String staffId = s.nextLine();
 
@@ -1442,7 +1445,7 @@ public class Staff extends Account{
         String updPassword;
         boolean passwordMatch = true;
         do {
-            System.out.println("\n+-----------------------+\n|\t*NOTE*\t\t|\n|1.At Least 7 Characters|\n|2.At Least 1 Letter    |\n|3.At Least 1 Number    |\n+-----------------------+\n");
+            System.out.println("\n+-----------------------+\n|\t*NOTE*\t\t|\n|1.At Least 7 Characters|\n|2.At Least 1 Letter    |\n|3.At Least 1 Number    |\n+-----------------------+");
             System.out.print("Password: "); 
             updPassword = s.nextLine();
 
