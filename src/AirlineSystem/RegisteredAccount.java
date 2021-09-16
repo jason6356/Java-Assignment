@@ -358,12 +358,12 @@ public void updateProfile(Scanner s){
         System.out.println("\n\nLast Name updated successfully !");
         break;
         case 3:
-            System.out.println("GUIDE---> Input 'abc' if forget password");
+            System.out.println("GUIDE---> Input 'forget' if forget password");
             System.out.print("Enter your old password > ");         //ENTER OLD PASSWORD
             String oldPassword = s.nextLine();
             while((!(super.getPassword().equals(oldPassword))) )          //COMPARE PASSWORD AND INPUT
             {
-                if(oldPassword == "abc")                               //if user forget password then return back to mainmenu
+                if(oldPassword.equals("forget"))                               //if user forget password then return back to mainmenu
                 {
                     return;
                 }
