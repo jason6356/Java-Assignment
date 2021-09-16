@@ -702,6 +702,7 @@ public class Main {
     }
 
     public static void userList(Scanner s){
+        clearConsole();
         System.out.println("\t SaiLou Airline Registered User List");
         System.out.println("+=======+=====================+=========+===========================+================+");
         System.out.println("|UserID |Name                 |Gender   |Email                      |Phone Number    |");
