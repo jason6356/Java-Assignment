@@ -51,15 +51,6 @@ public class Airline {
         str+= "\n";
         return str;
     }
-
-    public String displayAirlineForReport(){
-        String str = String.format("%s|%s|", airlineName, airlineCode);
-        for (Flight flight : flightList) {
-            str += flight.getFlightCode() + " ";
-        }
-        str+= "\n";
-        return str;
-    }
     
     //Method of the class
     /**

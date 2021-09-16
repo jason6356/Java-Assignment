@@ -48,13 +48,6 @@ class Airport {
         }
         return str;
     }
-    public String displayAirportForReport(){
-        String str = String.format("%s|s|", airportName, location);
-        for (Flight flight : flightList) {
-            str += flight.getFlightCode() + " ";
-        }
-        return str;
-    }
     
     //Method of the class
     /**

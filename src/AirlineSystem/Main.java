@@ -1,6 +1,7 @@
 package AirlineSystem;
 
 import java.util.Scanner;
+
 import java.util.List;
 import java.time.*;
 import java.util.ArrayList;
@@ -256,7 +257,7 @@ public class Main {
                 selection = s.nextInt();
 
                 //validation
-                while(selection<1 || selection>7){
+                while(selection<1 || selection>8){
                     System.out.println("Invalid Input! Please enter again... \n");
                     System.out.println("\n+========================+");
                     System.out.println("|\tStaff Menu       |");
@@ -270,6 +271,7 @@ public class Main {
                     System.out.println("|7. History Report       |");
                     System.out.println("|8. Logout               |");
                     System.out.println("+------------------------+");
+                    System.out.print("Enter Selection: ");
                     selection = s.nextInt();
                 }
                 switch (selection) {
@@ -301,7 +303,7 @@ public class Main {
                         System.out.println("Invalid Input. Please enter again... ");
                         break;
                 }
-            } while (selection!=7);
+            } while (selection!=8);
 
         } else if(guestAcc instanceof Account){
 
@@ -337,6 +339,22 @@ public class Main {
                 System.out.print("Register or Login (R/L)? ");
                 char registerOrLogin = s.next().charAt(0);
 
+                while(Character.toUpperCase(registerOrLogin)!='R' && Character.toUpperCase(registerOrLogin)!='L'){
+                    System.out.println("\nInvalid Input. Please enter again...\n");
+                    System.out.print("Register or Login (R/L)? ");
+                    registerOrLogin = s.next().charAt(0);
+
+                    // Register account
+                    if (Character.toUpperCase(registerOrLogin) == 'R') {
+                        guestAcc = registerAccount(s);
+                    }
+
+                    // Login account
+                    if (Character.toUpperCase(registerOrLogin) == 'L') {
+                        guestAcc = userLogin(s);
+                    }
+                }
+
                 // Register account
                 if (Character.toUpperCase(registerOrLogin) == 'R') {
                     guestAcc = registerAccount(s);
@@ -345,21 +363,6 @@ public class Main {
                 // Login account
                 if (Character.toUpperCase(registerOrLogin) == 'L') {
                     guestAcc = userLogin(s);
-                }
-
-                // validate registerOrLogin
-                if (!validateOption(registerOrLogin)) {
-                    valid = false;
-                }
-
-                while(valid == false){
-                    System.out.println("Invalid Input. Please enter again...");
-                    System.out.print("Register or Login (R/L)? ");
-                    registerOrLogin = s.next().charAt(0);
-
-                    if (!validateOption(registerOrLogin)) {
-                        valid = true;
-                    }
                 }
 
             }else{
@@ -644,6 +647,8 @@ public class Main {
         }   
             // account doesnt exist, return null
             System.out.println("Wrong ID or Password.");
+            s.nextLine();
+            s.nextLine();
             return null;
     }
 
