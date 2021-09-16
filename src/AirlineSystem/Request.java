@@ -118,14 +118,14 @@ public class Request {
         if (requestDescription == "Cancel Ticket Request") {
             return String.format(
                     "\n---------------REQUEST-------------------------------------------------------------------------------------------------------------------------\nRequest ID: %s     Description: %s     Reason of Request: %s     Status: %s \n\nReservation: \n"
-                            + oldReservation.displayReservation()
+                            + oldReservation.displayReservation(oldReservation)
                             + "-----------------------------------------------------------------------------------------------------------------------------------------------",
                     requestID, requestDescription, reason, requestStatus);
         } else
             return String.format(
-                    "\n---------------REQUEST-------------------------------------------------------------------------------------------------------------------------\nRequest ID: %s     Description: %s     Reason of Request: %s     Status: %s \n\nReservation: \n"
-                            + oldReservation.displayReservation() + "\nNew Reservation: \n"
-                            + newReservation.displayReservation()
+                    "\n---------------REQUEST-------------------------------------------------------------------------------------------------------------------------\nRequest ID: %s     Description: %s     Reason of Request: %s     Status: %s \n\nOld Reservation: \n"
+                            + oldReservation.displayReservation(oldReservation) + "\nNew Reservation: \n"
+                            + newReservation.displayReservation(newReservation)
                             + "-----------------------------------------------------------------------------------------------------------------------------------------------",
                     requestID, requestDescription, reason, requestStatus);
     }
@@ -151,8 +151,7 @@ public class Request {
                         // Make all the seats booked by the cancelled reservation into available again
                         Reservation.getSeatMap().get(reservation).forEach((seat) -> seat.makeSeatEmpty());
                         // Remove the reservation
-                        reservation.setReservationStatus(rStatus.CANCELLED);
-
+                        request.getOldReservation().setReservationStatus(rStatus.CANCELLED);
                     }
                 }
             }
@@ -166,7 +165,7 @@ public class Request {
                          // Make all the seats booked by the cancelled reservation into available again
                          Reservation.getSeatMap().get(reservation).forEach((seat) -> seat.makeSeatEmpty());
                          // Remove the reservation
-                         reservation.setReservationStatus(rStatus.CANCELLED);
+                         request.getOldReservation().setReservationStatus(rStatus.CANCELLED);
                         }
                 }
 

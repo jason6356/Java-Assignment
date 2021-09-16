@@ -112,14 +112,22 @@ public class Reservation {
      * 
      * @return
      */
-    public String displayReservation() {
+    public String displayReservation(Reservation reservation) {
+        List<fSeat> seat = seatMap.get(reservation);
+
+        String seatNo = " ";
+
+        for (fSeat fSeat : seat) {
+            seatNo += fSeat.getSeatNo() + " ";
+        }
+
         return String.format(
-                "+---------------------------------------------------------------------------------------------------------------------------------------+\n| [%s]                                                                                                                                |\n| Reservation Time: %02d-%02d-%04d %02d:%-20d  | Status: %-50s                    |\n| Seat booked: %-30d           | Total Amount: %-50.2f              |\n| "
+                "+---------------------------------------------------------------------------------------------------------------------------------------+\n| [%s]                                                                                                                                |\n| Reservation Time: %02d-%02d-%04d %02d:%-20d  | Status: %-50s                    |\n| Seat booked: %-30s           | Total Amount: %-50.2f              |\n| "
                         + flight.displayInfo()
                         + "\n+---------------------------------------------------------------------------------------------------------------------------------------+\n",
                 reservationNo, reservationTime.getDayOfMonth(), reservationTime.getMonthValue(),
                 reservationTime.getYear(), reservationTime.getHour(), reservationTime.getMinute(), reservationStatus,
-                noOfSeatBooked, totalAmount);
+                seatNo, totalAmount);
     }
 
     /**

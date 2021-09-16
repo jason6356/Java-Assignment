@@ -441,7 +441,7 @@ public void rescheduleTicket(Reservation reservation, Scanner s, RegisteredAccou
     customerRequest.setRequestBy(user);
 
     Main.clearConsole();
-    System.out.println("\nCURRENT RESERVATION DETAILS:\n============================\n"+ reservation.displayReservation());
+    System.out.println("\nCURRENT RESERVATION DETAILS:\n============================\n"+ reservation.displayReservation(reservation));
 
     //display available flight schedule
     System.out.println("\n\nAVAILABLE FLIGHT SCHEDULE:");
@@ -531,7 +531,7 @@ public void cancelTicket(Reservation reservation, Scanner s, RegisteredAccount u
     request.setRequestBy(user);
 
     Main.clearConsole();
-    System.out.println("\nRESERVATION DETAILS\n====================\n"+reservation.displayReservation());
+    System.out.println("\nRESERVATION DETAILS\n====================\n"+reservation.displayReservation(reservation));
 
     
     //DO A MENU (LIST OF REASONS)

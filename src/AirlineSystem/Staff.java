@@ -1212,6 +1212,7 @@ public class Staff extends Account{
                         System.out.println("\nInvalid Choice, Please Enter Again!");
                     }
                     //Display details of the request 
+                    Main.clearConsole();
                     System.out.println(requestList.get(requestChoice - 1).displayRequest());
 
                 } while(requestChoice < 1 || requestChoice > requestCount - 1);
