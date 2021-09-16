@@ -67,7 +67,7 @@ public class Main {
 
                 selection = displayRegisteredAccountMenu(s);
 
-                while(selection < 1 || selection > 7){
+                while(selection < 1 || selection > 8){
                     System.out.println("Invalid input");
                     selection = displayRegisteredAccountMenu(s);
                 }
@@ -78,14 +78,17 @@ public class Main {
                         userAccount.updateProfile(s);
                         break;
                     case 2:
-                        userAccount.makeReservation(s);
+                        userAccount.displayReservation();
                         break;
                     case 3:
+                        userAccount.makeReservation(s);
+                        break;
+                    case 4:
                         // TODO : KangSheng -> Confirm Ticket
                         userAccount.confirmTicket(s);
                         // TODO : Junwei -> Payment ( done )
                         break;
-                    case 4:
+                    case 5:
                         // TODO : Huiyi -> Reschedule Ticket
 
                         //Modified , get reservations from the user who login , not all 
@@ -140,7 +143,7 @@ public class Main {
                         }
 
                         break;
-                    case 5:
+                    case 6:
                         // TODO : Huiyi -> Cancel Ticket
                         clearConsole();
                         List<Reservation> resToCancel = userAccount.getReservations();
@@ -193,7 +196,7 @@ public class Main {
                             s.nextLine();
                         }
                         break;
-                    case 6:
+                    case 7:
                         // TODO : Huiyi -> Check Request Status
                         clearConsole();
                         List<Request> requestToCheck = userAccount.getRequests();
@@ -233,7 +236,7 @@ public class Main {
                         System.out.println("Invalid Selection.");
                         break;
                 }
-            } while (selection != 7);
+            } while (selection != 8);
         } else if (guestAcc instanceof Staff) {
 
             Staff stfAccount = ((Staff)guestAcc);
@@ -407,12 +410,13 @@ public class Main {
     private static int displayRegisteredAccountMenu(Scanner s){
         System.out.println("\n\nREGISTERED ACCOUNT MENU");
         System.out.println("1. Update Profile");
-        System.out.println("2. Make Reservation");
-        System.out.println("3. Confirm Ticket");
-        System.out.println("4. Reschedule Ticket");
-        System.out.println("5. Cancel Ticket");
-        System.out.println("6. Check Request Status");
-        System.out.println("7. Logout");
+        System.out.println("2. Display Reservations");
+        System.out.println("3. Make Reservation");
+        System.out.println("4. Confirm Ticket");
+        System.out.println("5. Reschedule Ticket");
+        System.out.println("6. Cancel Ticket");
+        System.out.println("7. Check Request Status");
+        System.out.println("8. Logout");
         System.out.print("Enter Selection > ");
         return s.nextInt();
     }
