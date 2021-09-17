@@ -248,7 +248,7 @@ public class Main {
                 // Staff Menu
                 selection = displayStaffMenu(s);
 
-                while(selection < 1 || selection > 9){
+                while(selection < 1 || selection > 10){
                     System.out.println("Invalid input");
                     selection = displayStaffMenu(s);
                 }
@@ -481,7 +481,7 @@ public class Main {
         System.out.print("4. Age > "); // ENTER AGE
         int regAge = s.nextInt();
 
-      //  s.nextLine();
+        s.nextLine();
         System.out.print("5. Phone Number  > "); // ENTER PHONE NUMBER
         String regPhoneNum = s.nextLine();
         while (!acc.validatePhoneNum(regPhoneNum)) // VALIDATE ONLY NUMBER WITH +COUNTRY CODE
@@ -493,7 +493,6 @@ public class Main {
         }
 
         System.out.print("6. Email > "); // ENTER EMAIL
-        s.nextLine();
         String regEmail = s.nextLine();
         while (!acc.validateEmailFormat(regEmail)) // VALIDATE EMAIL IF IT CONTAIN "@"
         {
