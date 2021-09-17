@@ -983,7 +983,7 @@ public class Staff extends Account{
 
             //Display specific records 
             System.out.printf("\n%-20s %-20s %-20s \n", "Airline Name", "Airline Code", "Flight List");
-            System.out.println("================================================");
+            System.out.println("======================================================");
             System.out.println(airlineList.get(deleteIndex).toString() + "\n");
 
             System.out.print("Confirm Delete? ");

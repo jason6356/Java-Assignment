@@ -265,7 +265,7 @@ public void confirmTicket(Scanner s){
         if(reservation.getReservationStatus() == rStatus.PENDING){
             found = true;
             queryList.add(reservation);
-            System.out.printf("%2d", i++);
+            System.out.printf("%2d\n", i++);
             System.out.println(reservation.displayReservation(reservation));
         }
     }
