@@ -31,6 +31,7 @@ public class Main {
         switch (choice) {
             case 1:
                 guestAcc.availableFlights();
+                guestAcc = promptUserChoice(s, guestAcc);
                 break;
             case 2:
                 guestAcc = registerAccount(s);
@@ -288,62 +289,6 @@ public class Main {
                         break;
                 }
             } while (selection!=10);
-
-        } else if(guestAcc instanceof Account){
-            char yesNo;
-            boolean valid = true;
-
-            System.out.print("\nWish to make a reservation(Y/N)? ");
-            yesNo = s.next().charAt(0);
-
-            // validate yesNo
-            if (!validateOption(yesNo)) {
-                valid = false;
-            }
-            while(valid == false){
-                System.out.println("Invalid Input. Please enter again...");
-                System.out.print("\nWish to make a reservation(Y/N)? ");
-                yesNo = s.next().charAt(0);
-
-                if (validateOption(yesNo)) {
-                    valid = true;
-                }
-            }
-
-            if (Character.toUpperCase(yesNo) == 'Y') {
-                System.out.print("Register or Login (R/L)? ");
-                char registerOrLogin = s.next().charAt(0);
-
-                //validate registerOrLogin
-                while(Character.toUpperCase(registerOrLogin)!='R' && Character.toUpperCase(registerOrLogin)!='L'){
-                    System.out.println("\nInvalid Input. Please enter again...\n");
-                    System.out.print("Register or Login (R/L)? ");
-                    registerOrLogin = s.next().charAt(0);
-
-                    // Register account
-                    if (Character.toUpperCase(registerOrLogin) == 'R') {
-                        guestAcc = registerAccount(s);
-                    }
-
-                    // Login account
-                    if (Character.toUpperCase(registerOrLogin) == 'L') {
-                        guestAcc = userLogin(s);
-                    }
-                }
-
-                // Register account
-                if (Character.toUpperCase(registerOrLogin) == 'R') {
-                    guestAcc = registerAccount(s);
-                }
-
-                // Login account
-                if (Character.toUpperCase(registerOrLogin) == 'L') {
-                    guestAcc = userLogin(s);
-                }
-
-            }else{
-                System.exit(-1);
-            }
 
         }
     }while(!end);
@@ -605,6 +550,66 @@ public class Main {
         s.nextLine();
         s.nextLine();
         return register;
+    }
+
+    public static Account promptUserChoice(Scanner s,Account guestAcc)
+    {
+        char yesNo;
+        boolean valid = true;
+
+        System.out.print("\nWish to make a reservation(Y/N)? ");
+        yesNo = s.next().charAt(0);
+
+        // validate yesNo
+        if (!validateOption(yesNo)) {
+            valid = false;
+        }
+        while(valid == false){
+            System.out.println("Invalid Input. Please enter again...");
+            System.out.print("\nWish to make a reservation(Y/N)? ");
+            yesNo = s.next().charAt(0);
+
+            if (validateOption(yesNo)) {
+                valid = true;
+            }
+        }
+
+        if (Character.toUpperCase(yesNo) == 'Y') {
+            System.out.print("Register or Login (R/L)? ");
+            char registerOrLogin = s.next().charAt(0);
+
+            //validate registerOrLogin
+            while(Character.toUpperCase(registerOrLogin)!='R' && Character.toUpperCase(registerOrLogin)!='L'){
+                System.out.println("\nInvalid Input. Please enter again...\n");
+                System.out.print("Register or Login (R/L)? ");
+                registerOrLogin = s.next().charAt(0);
+
+                // Register account
+                if (Character.toUpperCase(registerOrLogin) == 'R') {
+                    guestAcc = registerAccount(s);
+                }
+
+                // Login account
+                if (Character.toUpperCase(registerOrLogin) == 'L') {
+                    guestAcc = userLogin(s);
+                }
+            }
+
+            // Register account
+            if (Character.toUpperCase(registerOrLogin) == 'R') {
+                guestAcc = registerAccount(s);
+            }
+
+            // Login account
+            if (Character.toUpperCase(registerOrLogin) == 'L') {
+                guestAcc = userLogin(s);
+            }
+
+        }else{
+            guestAcc = null;
+        }
+
+        return guestAcc;
     }
 
     /**
