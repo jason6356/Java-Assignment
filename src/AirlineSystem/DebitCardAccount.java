@@ -40,9 +40,6 @@ public class DebitCardAccount implements PaymentMethod{
     public double getBalance() {
         return balance;
     }
-    public int getTac() {
-        return tac;
-    }
 
     ///////////////////////////////////setter/////////////////////////////////////////
     //NO SETTER
